@@ -503,90 +503,96 @@
 
     <div class="cc-ad-mid" aria-hidden="true">Publicidad · 728×90</div>
 
-    <section class="ht-prose" aria-label="Guía de utilidades de texto">
+    <!-- Contenido SEO -->
+    <div class="ht-long">
 
       <h2>¿Qué son las utilidades de texto avanzadas?</h2>
       <p>Las utilidades de texto son herramientas especializadas que van más allá de la simple manipulación de caracteres. Incluyen criptografía clásica, análisis lingüístico, detección de patrones, conversión entre sistemas de comunicación y generación de datos seguros. Son esenciales para <strong>educación, seguridad y análisis de contenido</strong>.</p>
 
       <h2>Criptografía clásica: César, Vigenère y ROT13</h2>
-      <p>Los cifrados clásicos son la base de la criptografía moderna. El <a href="/utilidades-de-texto/cifrado-cesar/">cifrado César</a> desplaza cada letra un número fijo de posiciones — fue usado por Julio César para comunicaciones militares. El cifrado Vigenère usa una palabra clave para crear un desplazamiento variable, siendo mucho más resistente al análisis de frecuencias. ROT13, con desplazamiento 13, es su propio inverso: cifrar dos veces devuelve el original.</p>
+      <p>Los cifrados clásicos son la base de la criptografía moderna. El <a href="/utilidades-de-texto/cifrado-cesar">cifrado César</a> desplaza cada letra un número fijo de posiciones — fue usado por Julio César para comunicaciones militares. El cifrado Vigenère usa una palabra clave para crear un desplazamiento variable, siendo mucho más resistente al análisis de frecuencias. ROT13, con desplazamiento 13, es su propio inverso: cifrar dos veces devuelve el original.</p>
 
       <h2>Análisis de sentimientos y complejidad</h2>
-      <p>El análisis lingüístico automático permite entender el tono emocional y la dificultad de un texto sin leerlo completo. El <a href="/utilidades-de-texto/analizador-de-sentimientos/">analizador de sentimientos</a> es útil para evaluar reviews, comentarios de clientes y respuestas de encuestas. El analizador de complejidad ayuda a adaptar el lenguaje al público objetivo usando el índice Flesch-Kincaid.</p>
+      <p>El análisis lingüístico automático permite entender el tono emocional y la dificultad de un texto sin leerlo completo. El <a href="/utilidades-de-texto/analizador-de-sentimientos">analizador de sentimientos</a> es útil para evaluar reviews, comentarios de clientes y respuestas de encuestas. El analizador de complejidad ayuda a adaptar el lenguaje al público objetivo usando el índice Flesch-Kincaid.</p>
 
       <h2>Seguridad: contraseñas y tokens</h2>
-      <p>La seguridad digital empieza por contraseñas robustas. Una contraseña segura debe tener al menos 12 caracteres, combinar mayúsculas, minúsculas, números y símbolos, y ser única para cada servicio. Nuestro <a href="/utilidades-de-texto/generador-de-contrasenas/">generador de contraseñas</a> y <a href="/utilidades-de-texto/verificador-fortaleza-contrasena/">verificador de fortaleza</a> te ayudan a mantener la seguridad de tus cuentas.</p>
+      <p>La seguridad digital empieza por contraseñas robustas. Una contraseña segura debe tener al menos 12 caracteres, combinar mayúsculas, minúsculas, números y símbolos, y ser única para cada servicio. Nuestro <a href="/utilidades-de-texto/generador-de-contrasenas">generador de contraseñas</a> y <a href="/utilidades-de-texto/verificador-fortaleza-contrasena">verificador de fortaleza</a> te ayudan a mantener la seguridad de tus cuentas.</p>
 
-    </section>
+    </div>
 
-    <section class="ht-faq" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="ht-faq-title">Preguntas frecuentes</h2>
-
-      <div class="ht-faq-item">
-        <button class="ht-faq-q" onclick="HT.faqToggle(this)" aria-expanded="false">
-          ¿Qué es el cifrado César y cómo funciona?
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="ht-faq-a" hidden>El cifrado César es uno de los cifrados más simples: desplaza cada letra del alfabeto un número fijo de posiciones. Por ejemplo, con desplazamiento 3, la A se convierte en D, la B en E, etc. Es fácil de romper pero útil para enseñar criptografía básica.</div>
+    <!-- FAQ -->
+    <section class="ht-faq" aria-labelledby="faq-ut-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="faq-ut-title">Preguntas frecuentes</h2>
       </div>
+      <div class="ht-faq-list">
 
-      <div class="ht-faq-item">
-        <button class="ht-faq-q" onclick="HT.faqToggle(this)" aria-expanded="false">
-          ¿Qué diferencia hay entre un anagrama y una permutación?
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="ht-faq-a" hidden>Un anagrama reordena las letras de una palabra o frase para formar otra con significado (como "amor" y "Roma"). Una permutación es cualquier reordenación posible de elementos, tenga o no significado lingüístico. Los anagramas son un subconjunto de las permutaciones.</div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-ut-1" onclick="HT.faqToggle(this)">
+            ¿Qué es el cifrado César y cómo funciona?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-ut-1" role="region">
+            El cifrado César es uno de los cifrados más simples: desplaza cada letra del alfabeto un número fijo de posiciones. Por ejemplo, con desplazamiento 3, la A se convierte en D, la B en E, etc. Es fácil de romper pero útil para enseñar criptografía básica.
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-ut-2" onclick="HT.faqToggle(this)">
+            ¿Qué diferencia hay entre un anagrama y una permutación?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-ut-2" role="region">
+            Un anagrama reordena las letras de una palabra o frase para formar otra con significado (como "amor" y "Roma"). Una permutación es cualquier reordenación posible de elementos, tenga o no significado lingüístico. Los anagramas son un subconjunto de las permutaciones.
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-ut-3" onclick="HT.faqToggle(this)">
+            ¿Cómo funciona el análisis de sentimientos de texto?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-ut-3" role="region">
+            El análisis de sentimientos evalúa el tono emocional de un texto clasificándolo como positivo, negativo o neutro. Usa diccionarios de palabras con valencia emocional y reglas lingüísticas para calcular una puntuación. Es útil para analizar reseñas, comentarios y feedback de clientes.
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-ut-4" onclick="HT.faqToggle(this)">
+            ¿El conversor a Braille genera Braille real?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-ut-4" role="region">
+            Nuestro conversor genera la representación Unicode de los caracteres Braille Grado 1 (Braille literal, letra a letra). El Braille Grado 2 usa contracciones y es más complejo. La representación Unicode es válida para pantallas y software lector de Braille, aunque la impresión física requiere una impresora Braille.
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-ut-5" onclick="HT.faqToggle(this)">
+            ¿Qué es ROT13 y para qué se usa?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-ut-5" role="region">
+            ROT13 (Rotate by 13) es un caso especial del cifrado César con desplazamiento 13. Como el alfabeto latino tiene 26 letras, aplicar ROT13 dos veces devuelve el texto original. Se usa frecuentemente en foros online para ocultar spoilers o soluciones de puzzles de forma reversible.
+          </div>
+        </div>
+
       </div>
-
-      <div class="ht-faq-item">
-        <button class="ht-faq-q" onclick="HT.faqToggle(this)" aria-expanded="false">
-          ¿Cómo funciona el análisis de sentimientos de texto?
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="ht-faq-a" hidden>El análisis de sentimientos evalúa el tono emocional de un texto clasificándolo como positivo, negativo o neutro. Usa diccionarios de palabras con valencia emocional y reglas lingüísticas para calcular una puntuación. Es útil para analizar reseñas, comentarios y feedback de clientes.</div>
-      </div>
-
-      <div class="ht-faq-item">
-        <button class="ht-faq-q" onclick="HT.faqToggle(this)" aria-expanded="false">
-          ¿El conversor a Braille genera Braille real?
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="ht-faq-a" hidden>Nuestro conversor genera la representación Unicode de los caracteres Braille Grado 1 (Braille literal, letra a letra). El Braille Grado 2 usa contracciones y es más complejo. La representación Unicode es válida para pantallas y software lector de Braille, aunque la impresión física requiere una impresora Braille.</div>
-      </div>
-
-      <div class="ht-faq-item">
-        <button class="ht-faq-q" onclick="HT.faqToggle(this)" aria-expanded="false">
-          ¿Qué es ROT13 y para qué se usa?
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="ht-faq-a" hidden>ROT13 (Rotate by 13) es un caso especial del cifrado César con desplazamiento 13. Como el alfabeto latino tiene 26 letras, aplicar ROT13 dos veces devuelve el texto original. Se usa frecuentemente en foros online para ocultar spoilers o soluciones de puzzles de forma reversible.</div>
-      </div>
-
     </section>
 
   </main>
-</div>
 
-<footer class="ht-footer">
-  <div class="ht-footer-inner">
-    <div class="ht-footer-brand">
-      <div class="ht-logo-icon" style="width:28px;height:28px;font-size:11px;">Ht</div>
-      <span>HerramientasDeTexto.com</span>
-    </div>
-    <nav class="ht-footer-nav" aria-label="Navegación del pie de página">
-      <a href="/contadores-de-texto/">Contadores</a>
-      <a href="/convertidores-de-texto/">Convertidores</a>
-      <a href="/limpiadores-de-texto/">Limpiadores</a>
-      <a href="/manipulacion-de-texto/">Manipulación</a>
-      <a href="/generadores-de-texto/">Generadores</a>
-      <a href="/seo-tools-de-texto/">SEO</a>
-      <a href="/herramientas-de-escritura/">Escritura</a>
-      <a href="/desarrollo-y-codificacion/">Desarrollo</a>
-      <a href="/redes-sociales/">Redes sociales</a>
-      <a href="/utilidades-de-texto/">Utilidades</a>
-    </nav>
-    <p class="ht-footer-copy">© 2025 HerramientasDeTexto.com · <a href="/legal/aviso-legal.html">Aviso legal</a> · <a href="/legal/privacidad.html">Privacidad</a> · <a href="/legal/cookies.html">Cookies</a></p>
-  </div>
+</div><!-- /.ht-wrap -->
+
+<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+  <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
+  <nav class="ht-footer-nav" aria-label="Legal">
+    <a href="/">Inicio</a>
+    <a href="/legal/aviso-legal.html">Aviso legal</a>
+    <a href="/legal/politica-de-privacidad.html">Privacidad</a>
+    <a href="/legal/cookies.html">Cookies</a>
+    <a href="/legal/contacto.html">Contacto</a>
+  </nav>
 </footer>
 
 <script src="/js/tools.js"></script>

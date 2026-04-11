@@ -49,6 +49,10 @@ Options -Indexes
     # URL canónica: /{categoria}/{slug} → tools/{categoria}/{slug}.html
     RewriteRule ^([^/]+)/([^/]+)$ tools/$1/$2.html [L]
 
+    # Reglas explícitas para categorías con historial de 404
+    RewriteRule ^limpiadores-de-texto$ categories/limpiadores-de-texto.html [L]
+    RewriteRule ^manipulacion-de-texto$ categories/manipulacion-de-texto.html [L]
+
     # URL de categoría: /{categoria} → categories/{categoria}.html
     RewriteRule ^([^/]+)$ categories/$1.html [L]
 </IfModule>
