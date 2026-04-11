@@ -16,8 +16,8 @@ Options -Indexes
     # URL canónica: /{categoria}/{slug}/ → tools/{categoria}/{slug}.html
     RewriteRule ^([^/]+)/([^/]+)/?$ tools/$1/$2.html [L]
 
-    # URL de categoría: /{categoria}/ → tools/{categoria}/index.html
-    RewriteRule ^([^/]+)/?$ tools/$1/index.html [L]
+    # URL de categoría: /{categoria}/ → categories/{categoria}.html
+    RewriteRule ^([^/]+)/?$ categories/$1.html [L]
 </IfModule>
 
 # Página de error 404 amigable
