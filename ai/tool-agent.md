@@ -457,7 +457,17 @@ En el bloque `.ht-long`:
 
 ---
 
-## 11. Regla permanente — Actualización del sitemap
+## 11. Regla permanente — Actualización de URLS.md y sitemap
+
+**Cada vez que crees una herramienta nueva o una categoría nueva, debes actualizar `URLS.md` en el mismo commit.**
+
+- Añade la URL de la herramienta en la sección correspondiente de `URLS.md` bajo el encabezado de su categoría.
+- Si es una categoría nueva, añade primero su URL en la sección "Categorías" y crea el encabezado en "Herramientas por categoría".
+- La URL en URLS.md debe coincidir exactamente con el `<link rel="canonical">` de la herramienta.
+
+---
+
+## 12. Regla permanente — Actualización del sitemap
 
 **Cada vez que crees una herramienta nueva, debes actualizar `sitemap.xml` en el mismo commit.**
 
