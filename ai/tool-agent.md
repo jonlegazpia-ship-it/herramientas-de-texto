@@ -455,4 +455,29 @@ En el bloque `.ht-long`:
 
 ---
 
+---
+
+## 11. Regla permanente — Actualización del sitemap
+
+**Cada vez que crees una herramienta nueva, debes actualizar `sitemap.xml` en el mismo commit.**
+
+Añade el bloque siguiente al sitemap, justo antes del cierre `</urlset>`, sustituyendo `{categoria}` y `{slug}` por los valores reales y `{fecha}` por la fecha del día en formato `YYYY-MM-DD`:
+
+```xml
+<url>
+  <loc>https://herramientasdetexto.com/{categoria}/{slug}/</loc>
+  <lastmod>{fecha}</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+```
+
+**Reglas:**
+- Nunca crear el archivo HTML de una herramienta sin añadir su entrada al sitemap en el mismo commit.
+- La URL del sitemap debe coincidir exactamente con el `<link rel="canonical">` de la herramienta.
+- Usar siempre trailing slash: `.../slug/`
+- Prioridad: `1.0` para index, `0.8` para herramientas, `0.5` para legales.
+
+---
+
 *Documento mantenido en `/ai/tool-agent.md`. Actualizar cuando cambien los estilos globales, el template base o las reglas del proyecto.*
