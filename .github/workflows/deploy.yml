@@ -23,6 +23,8 @@ jobs:
           port: 21
           security: loose
           dangerous-clean-slate: true
+          passive: true
+          timeout: 60000
           exclude: |
             **/.git*
             **/.git*/**
