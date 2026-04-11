@@ -1,0 +1,22 @@
+DirectoryIndex index.html
+
+Options -Indexes
+
+<IfModule mod_mime.c>
+    AddType text/html .html
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType application/xml .xml
+    AddType text/plain .txt
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
