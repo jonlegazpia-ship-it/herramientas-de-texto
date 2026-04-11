@@ -5,6 +5,15 @@ https://herramientasdetexto.com/
 
 ## Categorías
 https://herramientasdetexto.com/contadores-de-texto/
+https://herramientasdetexto.com/convertidores-de-texto/
+https://herramientasdetexto.com/limpiadores-de-texto/
+https://herramientasdetexto.com/manipulacion-de-texto/
+https://herramientasdetexto.com/generadores-de-texto/
+https://herramientasdetexto.com/seo-tools-de-texto/
+https://herramientasdetexto.com/herramientas-de-escritura/
+https://herramientasdetexto.com/desarrollo-y-codificacion/
+https://herramientasdetexto.com/redes-sociales/
+https://herramientasdetexto.com/utilidades-de-texto/
 
 ## Herramientas por categoría
 
