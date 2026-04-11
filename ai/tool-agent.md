@@ -70,7 +70,7 @@ Todo el procesamiento ocurre en el navegador del usuario (100% client-side).
 ### Convención de URLs
 - Siempre en minúsculas y con guiones: `contador-de-palabras.html`
 - Sin tildes ni caracteres especiales en el nombre de archivo
-- URL canónica: `https://herramientasdetexto.com/{categoria}/{slug}/`
+- URL canónica: `https://herramientasdetexto.com/{categoria}/{slug}` (sin trailing slash)
 - La carpeta de categoría tiene su propio `index.html` con listado de herramientas
 
 ### Categorías (10 en total)
@@ -122,11 +122,11 @@ Cada herramienta incluye obligatoriamente:
 ```html
 <title>{Nombre de herramienta} Online Gratis | HerramientasDeTexto.com</title>
 <meta name="description" content="{Descripción de 140-160 caracteres con keyword principal}">
-<link rel="canonical" href="https://herramientasdetexto.com/{categoria}/{slug}/">
+<link rel="canonical" href="https://herramientasdetexto.com/{categoria}/{slug}">
 <meta property="og:title" content="{Nombre de herramienta} Online Gratis">
 <meta property="og:description" content="{Descripción corta}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://herramientasdetexto.com/{categoria}/{slug}/">
+<meta property="og:url" content="https://herramientasdetexto.com/{categoria}/{slug}">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="HerramientasDeTexto.com">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@ Schema.org obligatorio (WebApplication):
   "@type": "WebApplication",
   "name": "{Nombre}",
   "description": "{Descripción}",
-  "url": "https://herramientasdetexto.com/{categoria}/{slug}/",
+  "url": "https://herramientasdetexto.com/{categoria}/{slug}",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -247,7 +247,7 @@ Schema.org obligatorio (WebApplication):
 - Ejemplo: "Cuenta palabras en tu texto al instante. Obtén estadísticas completas de caracteres, frases y tiempo de lectura. Gratis, sin registro."
 
 ### Canonical
-- Siempre apunta a la URL con trailing slash: `.../contador-de-palabras/`
+- Siempre apunta a la URL SIN trailing slash: `.../contador-de-palabras`
 
 ---
 
@@ -341,7 +341,7 @@ Sigue estos pasos en orden para cada herramienta nueva:
 - Slug: `contador-de-parrafos`
 - Categoría: `contadores-de-texto`
 - Ruta del archivo: `tools/contadores-de-texto/contador-de-parrafos.html`
-- URL canónica: `https://herramientasdetexto.com/contadores-de-texto/contador-de-parrafos/`
+- URL canónica: `https://herramientasdetexto.com/contadores-de-texto/contador-de-parrafos`
 - Keyword principal: "contador de párrafos online gratis"
 - Estadísticas que mostrará: (listar las métricas del panel)
 
@@ -475,7 +475,7 @@ Añade el bloque siguiente al sitemap, justo antes del cierre `</urlset>`, susti
 
 ```xml
 <url>
-  <loc>https://herramientasdetexto.com/{categoria}/{slug}/</loc>
+  <loc>https://herramientasdetexto.com/{categoria}/{slug}</loc>
   <lastmod>{fecha}</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
@@ -485,7 +485,7 @@ Añade el bloque siguiente al sitemap, justo antes del cierre `</urlset>`, susti
 **Reglas:**
 - Nunca crear el archivo HTML de una herramienta sin añadir su entrada al sitemap en el mismo commit.
 - La URL del sitemap debe coincidir exactamente con el `<link rel="canonical">` de la herramienta.
-- Usar siempre trailing slash: `.../slug/`
+- Sin trailing slash: `.../slug` (el .htaccess redirige 301 la versión con slash)
 - Prioridad: `1.0` para index, `0.8` para herramientas, `0.5` para legales.
 
 ---

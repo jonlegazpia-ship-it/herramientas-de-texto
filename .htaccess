@@ -13,11 +13,44 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # URL canónica: /{categoria}/{slug}/ → tools/{categoria}/{slug}.html
-    RewriteRule ^([^/]+)/([^/]+)/?$ tools/$1/$2.html [L]
+    # Redirects 301 — URLs antiguas de WordPress
+    RewriteRule ^contador-de-palabras/?$ /contadores-de-texto/contador-de-palabras [R=301,L]
+    RewriteRule ^contador-de-caracteres/?$ /contadores-de-texto/contador-de-caracteres [R=301,L]
+    RewriteRule ^contador-de-emojis/?$ /contadores-de-texto/contador-de-emojis [R=301,L]
+    RewriteRule ^contador-de-lineas/?$ /contadores-de-texto/contador-de-lineas [R=301,L]
+    RewriteRule ^contador-de-letras/?$ /contadores-de-texto/contador-de-letras [R=301,L]
+    RewriteRule ^contador-de-numeros/?$ /contadores-de-texto/contador-de-numeros [R=301,L]
+    RewriteRule ^contador-de-parrafos/?$ /contadores-de-texto/contador-de-parrafos [R=301,L]
+    RewriteRule ^contador-de-frases/?$ /contadores-de-texto/contador-de-frases [R=301,L]
+    RewriteRule ^contador-de-frases-largas/?$ /contadores-de-texto/contador-de-frases-largas [R=301,L]
+    RewriteRule ^contador-de-frases-cortas/?$ /contadores-de-texto/contador-de-frases-cortas [R=301,L]
+    RewriteRule ^contador-de-palabras-largas/?$ /contadores-de-texto/contador-de-palabras-largas [R=301,L]
+    RewriteRule ^contador-de-palabras-cortas/?$ /contadores-de-texto/contador-de-palabras-cortas [R=301,L]
+    RewriteRule ^contador-de-palabras-repetidas/?$ /contadores-de-texto/contador-de-palabras-repetidas [R=301,L]
+    RewriteRule ^contador-de-palabras-unicas/?$ /contadores-de-texto/contador-de-palabras-unicas [R=301,L]
+    RewriteRule ^contador-de-palabras-clave/?$ /contadores-de-texto/contador-de-palabras-clave [R=301,L]
+    RewriteRule ^contador-de-densidad-de-palabras/?$ /contadores-de-texto/contador-de-densidad-de-palabras [R=301,L]
+    RewriteRule ^contador-de-tiempo-de-lectura/?$ /contadores-de-texto/contador-de-tiempo-de-lectura [R=301,L]
+    RewriteRule ^contador-de-tiempo-de-habla/?$ /contadores-de-texto/contador-de-tiempo-de-habla [R=301,L]
+    RewriteRule ^contador-de-conectores/?$ /contadores-de-texto/contador-de-conectores [R=301,L]
+    RewriteRule ^contador-de-silabas/?$ /contadores-de-texto/contador-de-silabas [R=301,L]
+    RewriteRule ^contador-de-urls/?$ /contadores-de-texto/contador-de-urls [R=301,L]
+    RewriteRule ^contador-de-menciones/?$ /contadores-de-texto/contador-de-menciones [R=301,L]
+    RewriteRule ^contador-de-hashtags/?$ /contadores-de-texto/contador-de-hashtags [R=301,L]
+    RewriteRule ^contador-de-parrafos-largos/?$ /contadores-de-texto/contador-de-parrafos-largos [R=301,L]
+    RewriteRule ^contador-de-caracteres-sin-espacios/?$ /contadores-de-texto/contador-de-caracteres-sin-espacios [R=301,L]
+    RewriteRule ^desarrollo-codificacion/?$ /desarrollo-y-codificacion [R=301,L]
+    RewriteRule ^sobre-nosotros/?$ /legal/sobre-nosotros [R=301,L]
 
-    # URL de categoría: /{categoria}/ → categories/{categoria}.html
-    RewriteRule ^([^/]+)/?$ categories/$1.html [L]
+    # Quitar trailing slash — redirigir a URL sin barra final (301)
+    RewriteCond %{REQUEST_URI} ^/(.+)/$
+    RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+    # URL canónica: /{categoria}/{slug} → tools/{categoria}/{slug}.html
+    RewriteRule ^([^/]+)/([^/]+)$ tools/$1/$2.html [L]
+
+    # URL de categoría: /{categoria} → categories/{categoria}.html
+    RewriteRule ^([^/]+)$ categories/$1.html [L]
 </IfModule>
 
 # Página de error 404 amigable
