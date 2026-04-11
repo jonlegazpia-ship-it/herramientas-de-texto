@@ -22,6 +22,7 @@ jobs:
           server-dir: /public_html/
           port: 21
           security: loose
+          dangerous-clean-slate: true
           exclude: |
             **/.git*
             **/.git*/**
