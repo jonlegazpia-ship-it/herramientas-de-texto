@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--
+  ================================================================
+  HerramientasDeTexto.com — Tool Page Template
+  ================================================================
+  HOW TO USE THIS TEMPLATE:
+  1. Search for all <!-- PLACEHOLDER --> comments and fill them in
+  2. Set the category color override in the <style> block below
+  3. Write the tool's JS logic in the <script> block at the bottom
+  4. Update all structured data (JSON-LD) with the tool's details
+  5. Add real FAQ questions and answers
+  6. Add real related tools in the .ht-related-grid section
+  7. Write the long SEO text in .ht-long
+  ================================================================
+-->
+
+<!-- REQUIRED: charset must be first -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PLACEHOLDER: Page title — include keyword + brand -->
+<title><!-- TOOL NAME --> Online Gratis &#8212; <!-- SHORT BENEFIT --> | HerramientasDeTexto.com</title>
+
+<!-- PLACEHOLDER: Meta description — 120-155 chars, include main keyword -->
+<meta name="description" content="<!-- DESCRIPTION -->">
+
+<!-- PLACEHOLDER: Canonical URL — always trailing slash -->
+<link rel="canonical" href="https://herramientasdetexto.com/<!-- CATEGORY-SLUG -->/<!-- TOOL-SLUG -->/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="<!-- TOOL NAME --> Online Gratis">
+<meta property="og:description" content="<!-- SHORT DESCRIPTION -->">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientasdetexto.com/<!-- CATEGORY-SLUG -->/<!-- TOOL-SLUG -->/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="HerramientasDeTexto.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<!-- TOOL NAME --> Online Gratis">
+<meta name="twitter:description" content="<!-- SHORT DESCRIPTION -->">
+
+<!-- PLACEHOLDER: Favicon color — change fill color to match category -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+
+<!--
+  PLACEHOLDER: Category color override
+  ─────────────────────────────────────
+  Contadores / generales → azul:    #2563EB / #EFF6FF / #DBEAFE
+  SEO / análisis          → violeta: #7C3AED / #F5F3FF / #EDE9FE
+  Convertidores           → verde:   #16A34A / #F0FDF4 / #BBF7D0
+  Redes sociales          → rosa:    #DB2777 / #FDF2F8 / #FBCFE8
+  Desarrollo / código     → gris:    #374151 / #F9FAFB / #E5E7EB
+  Generadores             → naranja: #EA580C / #FFF7ED / #FED7AA
+-->
+<style>
+  :root {
+    --cat-color:  #2563EB; /* PLACEHOLDER: change to category color */
+    --cat-bg:     #EFF6FF;
+    --cat-border: #DBEAFE;
+    /* If not blue accent, also override: */
+    /* --accent:       same as --cat-color; */
+    /* --accent-2:     darker shade; */
+    /* --accent-light: same as --cat-bg; */
+    /* --accent-border:same as --cat-border; */
+  }
+</style>
+
+<!-- Shared tool stylesheet — DO NOT change this path -->
+<link rel="stylesheet" href="/css/tools.css">
+
+<!-- ── Structured Data ──────────────────────────────────── -->
+
+<!-- WebApplication schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "<!-- TOOL NAME --> Online Gratis",
+  "description": "<!-- DESCRIPTION -->",
+  "url": "https://herramientasdetexto.com/<!-- CATEGORY-SLUG -->/<!-- TOOL-SLUG -->/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "featureList": [
+    "<!-- FEATURE 1 -->",
+    "<!-- FEATURE 2 -->",
+    "<!-- FEATURE 3 -->",
+    "Sin registro ni instalaci\u00f3n",
+    "Funciona en m\u00f3vil y escritorio"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "inLanguage": "es"
+}
+</script>
+
+<!-- BreadcrumbList schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",              "item": "https://herramientasdetexto.com/" },
+    { "@type": "ListItem", "position": 2, "name": "<!-- CATEGORY NAME -->", "item": "https://herramientasdetexto.com/<!-- CATEGORY-SLUG -->/" },
+    { "@type": "ListItem", "position": 3, "name": "<!-- TOOL NAME -->",  "item": "https://herramientasdetexto.com/<!-- CATEGORY-SLUG -->/<!-- TOOL-SLUG -->/" }
+  ]
+}
+</script>
+
+<!-- FAQPage schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "<!-- FAQ QUESTION 1 -->",
+      "acceptedAnswer": { "@type": "Answer", "text": "<!-- FAQ ANSWER 1 -->" }
+    },
+    {
+      "@type": "Question",
+      "name": "<!-- FAQ QUESTION 2 -->",
+      "acceptedAnswer": { "@type": "Answer", "text": "<!-- FAQ ANSWER 2 -->" }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfEs gratis?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Totalmente gratis, sin registro ni l\u00edmites de uso." }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfMi texto se env\u00eda a alg\u00fan servidor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Todo el an\u00e1lisis ocurre en tu navegador. Tu privacidad est\u00e1 garantizada." }
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SITE HEADER — do not change structure, only nav links
+     ═══════════════════════════════════════════════════════ -->
+<header class="ht-site-header">
+  <a href="/" class="ht-logo" aria-label="HerramientasDeTexto.com &#8212; Inicio">
+    <div class="ht-logo-icon">Ht</div>
+    <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+  </a>
+  <div class="ht-header-sep"></div>
+  <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
+    <!-- PLACEHOLDER: add class="active" to the current category link -->
+    <a href="/contadores-de-texto/">Contadores</a>
+    <a href="/seo/">SEO</a>
+    <a href="/generadores/">Generadores</a>
+    <a href="/desarrollo/">Dev</a>
+    <a href="/redes-sociales/">Redes</a>
+  </nav>
+  <div class="ht-header-right">
+    <a href="/" class="ht-home-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      Todas las herramientas
+    </a>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN WRAP
+     ═══════════════════════════════════════════════════════ -->
+<div class="ht-wrap">
+
+  <!-- Breadcrumb — PLACEHOLDER: update text and hrefs -->
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/<!-- CATEGORY-SLUG -->/"><!-- CATEGORY NAME --></a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page"><!-- TOOL NAME --></span>
+  </nav>
+
+  <!-- Hero — PLACEHOLDER: fill in badge, h1, description, pills -->
+  <header class="ht-hero">
+    <div class="ht-hero-left">
+      <div class="ht-cat-badge">
+        <!-- PLACEHOLDER: replace with appropriate SVG icon for category -->
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+        <!-- CATEGORY NAME -->
+      </div>
+      <h1 class="ht-h1"><!-- TOOL NAME --> <mark>online gratis</mark></h1>
+      <p class="ht-hero-desc"><!-- TOOL DESCRIPTION: 1-2 sentences, include main keyword --></p>
+      <div class="ht-hero-pills">
+        <!-- PLACEHOLDER: add/remove pills as relevant -->
+        <span class="ht-pill">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
+          Tiempo real
+        </span>
+        <span class="ht-pill">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
+          100&#37; privado
+        </span>
+        <span class="ht-pill">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
+          Sin registro
+        </span>
+        <!-- PLACEHOLDER: add a pill specific to this tool's key differentiator -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Ad Banner — replace comment with real AdSense tag when approved -->
+  <div class="ht-ad-banner" aria-hidden="true">
+    <span class="sr-only">Publicidad</span>
+    <!-- Google AdSense 728x90: replace with real script -->
+    Publicidad &#183; 728&#215;90
+  </div>
+
+  <main id="herramienta">
+
+    <!-- ═════════════════════════════════════════════════
+         TWO-COLUMN TOOL LAYOUT
+         Left (58%): textarea card
+         Right (380px): stats panel (sticky)
+         ═════════════════════════════════════════════════ -->
+    <div class="ht-tool-layout">
+
+      <!-- LEFT: Textarea Card ────────────────────────── -->
+      <div class="ht-textarea-card">
+        <div class="ht-textarea-card-header">
+          <div class="ht-textarea-card-title">
+            <!-- PLACEHOLDER: use relevant SVG icon -->
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg>
+            Tu texto
+          </div>
+          <!-- PLACEHOLDER: update the live counter label to match what's primary -->
+          <span class="ht-char-count" id="hdr-count" aria-live="polite">0 caracteres</span>
+        </div>
+
+        <!-- PLACEHOLDER: update label text -->
+        <label class="sr-only" for="ht-txt">Texto a analizar</label>
+        <textarea
+          id="ht-txt"
+          class="ht-textarea"
+          placeholder="<!-- PLACEHOLDER: contextual placeholder text for this tool -->"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          aria-label="Texto a analizar"
+        ></textarea>
+
+        <div class="ht-toolbar">
+          <div class="ht-toolbar-btns">
+            <!-- Standard paste button — keep for all tools -->
+            <button class="ht-btn" onclick="HT.paste('ht-txt')" title="Pegar desde portapapeles">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              Pegar
+            </button>
+
+            <!-- PLACEHOLDER: add tool-specific action buttons here -->
+            <!-- Example: Copy result button -->
+            <button class="ht-btn" onclick="copyResult()" title="Copiar resultado">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/><line x1="7" y1="8" x2="11" y2="8"/><line x1="9" y1="6" x2="9" y2="10"/></svg>
+              Copiar
+            </button>
+
+            <!-- Standard clear button — keep for all tools -->
+            <button class="ht-btn ht-btn--danger" onclick="clearText()" title="Limpiar texto">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div><!-- /.ht-textarea-card -->
+
+
+      <!-- RIGHT: Stats Panel ─────────────────────────── -->
+      <aside class="ht-stats-panel" aria-label="Estad&#237;sticas" aria-live="polite">
+        <div class="ht-stats-box">
+
+          <!-- Panel header — PLACEHOLDER: gradient can be customized per category -->
+          <div class="ht-panel-header">
+            <span class="ht-panel-title">Estad&#237;sticas</span>
+            <span class="ht-panel-live">
+              <span class="ht-panel-live-dot" aria-hidden="true"></span>
+              En vivo
+            </span>
+          </div>
+
+          <div class="ht-panel-body">
+
+            <!-- Stat cards — PLACEHOLDER: customize for each tool -->
+            <div class="ht-stat-cards">
+
+              <!-- PRIMARY stat (full width) — the tool's main metric -->
+              <div class="ht-stat-card ht-stat-card--primary">
+                <div class="ht-stat-label"><!-- PRIMARY STAT LABEL --></div>
+                <div class="ht-stat-num" id="s-primary">0</div>
+                <div class="ht-stat-sublabel"><!-- sublabel --></div>
+              </div>
+
+              <!-- SECONDARY stats (half width each, pairs) -->
+              <div class="ht-stat-card">
+                <div class="ht-stat-label"><!-- STAT 2 --></div>
+                <div class="ht-stat-num" id="s-two">0</div>
+                <div class="ht-stat-sublabel"><!-- sublabel --></div>
+              </div>
+
+              <div class="ht-stat-card">
+                <div class="ht-stat-label"><!-- STAT 3 --></div>
+                <div class="ht-stat-num" id="s-three">0</div>
+                <div class="ht-stat-sublabel"><!-- sublabel --></div>
+              </div>
+
+              <!-- Add more stat cards as needed — keep to max 5 total for visual balance -->
+
+            </div><!-- /.ht-stat-cards -->
+
+            <!--
+              PLACEHOLDER: Optional sections below the stat cards.
+              Include the ones relevant to this tool and DELETE the others.
+
+              OPTIONS:
+              A) Time stats row    → use .ht-time-stats for reading/speaking time
+              B) Platform bars     → use .ht-platform-bars for Twitter/SMS/Meta limits
+              C) Donut ring chart  → use .ht-donut-wrap for % visualizations
+            -->
+
+            <!-- OPTION A: Time stats row (reading/speaking time) -->
+            <div class="ht-time-stats">
+              <div class="ht-time-item">
+                <div class="ht-time-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10 9"/></svg>
+                </div>
+                <div>
+                  <div class="ht-time-val" id="t-metric-1">&#8212;</div>
+                  <div class="ht-time-desc"><!-- TIME METRIC LABEL --></div>
+                </div>
+              </div>
+              <div class="ht-time-item">
+                <div class="ht-time-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v6M5 5c0 1.657 1.343 3 3 3s3-1.343 3-3"/><path d="M3 10c0 2.761 2.239 5 5 5s5-2.239 5-5"/><line x1="8" y1="15" x2="8" y2="13"/></svg>
+                </div>
+                <div>
+                  <div class="ht-time-val" id="t-metric-2">&#8212;</div>
+                  <div class="ht-time-desc"><!-- TIME METRIC LABEL --></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- OPTION B: Platform limit bars -->
+            <!--
+            <div class="ht-platform-bars">
+              <div class="ht-platform-title">L&#237;mites de plataforma</div>
+              <div class="ht-platform-bar-item" data-bar="PLATFORM_ID">
+                <div class="ht-platform-bar-header">
+                  <span class="ht-platform-bar-name">
+                    SVG ICON HERE
+                    PLATFORM NAME
+                  </span>
+                  <span class="ht-platform-bar-count" id="bar-PLATFORM_ID-count">0 / LIMIT</span>
+                </div>
+                <div class="ht-bar-track">
+                  <div class="ht-bar-fill" id="bar-PLATFORM_ID-fill"></div>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <!-- OPTION C: Donut ring chart -->
+            <!--
+            <div class="ht-donut-wrap">
+              <div class="ht-donut" id="ht-donut" aria-hidden="true">
+                <div class="ht-donut-pct" id="donut-pct">0%</div>
+              </div>
+              <div class="ht-donut-legend">
+                <div class="ht-donut-row">
+                  <div class="ht-donut-dot" style="background:var(--cat-color)"></div>
+                  <span>LABEL A (<span id="legend-a">0</span>%)</span>
+                </div>
+                <div class="ht-donut-row">
+                  <div class="ht-donut-dot" style="background:var(--border)"></div>
+                  <span>LABEL B (<span id="legend-b">0</span>%)</span>
+                </div>
+              </div>
+            </div>
+            -->
+
+          </div><!-- /.ht-panel-body -->
+        </div><!-- /.ht-stats-box -->
+      </aside><!-- /.ht-stats-panel -->
+
+    </div><!-- /.ht-tool-layout -->
+
+
+    <!-- ── TIP BLOCK ──────────────────────────────────── -->
+    <!-- PLACEHOLDER: Write a useful single-sentence tip for the user -->
+    <div class="ht-tip" role="note">
+      <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+      <div>
+        <strong>Consejo:</strong> <!-- PLACEHOLDER: practical tip for this tool -->
+      </div>
+    </div>
+
+
+    <!-- ── INFO GRID 2x2 ──────────────────────────────── -->
+    <div class="ht-info-grid-section">
+      <div class="ht-info-grid-header">
+        <div class="ht-info-grid-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+        </div>
+        <div class="ht-info-grid-header-text">
+          <!-- PLACEHOLDER: section title and subtitle -->
+          <h2>&#191;Qu&#233; es <!-- TOOL NAME -->?</h2>
+          <p>Todo lo que necesitas saber sobre esta herramienta</p>
+        </div>
+      </div>
+      <div class="ht-info-grid">
+
+        <!-- Cell 1: Qu&#233; es -->
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#EFF6FF">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+            </div>
+            <h3 style="color:#2563EB">Qu&#233; es</h3>
+          </div>
+          <p><!-- PLACEHOLDER: define what this tool is, 2-3 sentences --></p>
+        </div>
+
+        <!-- Cell 2: Para qu&#233; sirve -->
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#F5F3FF">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg>
+            </div>
+            <h3 style="color:#7C3AED">Para qu&#233; sirve</h3>
+          </div>
+          <p><!-- PLACEHOLDER: use cases, 2-3 sentences --></p>
+        </div>
+
+        <!-- Cell 3: C&#243;mo usar -->
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#ECFDF5">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 8 6 13 15 3"/></svg>
+            </div>
+            <h3 style="color:#16A34A">C&#243;mo usarla</h3>
+          </div>
+          <p><!-- PLACEHOLDER: step-by-step how to use this tool --></p>
+        </div>
+
+        <!-- Cell 4: Ventajas -->
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#FFFBEB">
+              <svg viewBox="0 0 16 16" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg>
+            </div>
+            <h3 style="color:#D97706">Ventajas</h3>
+          </div>
+          <div class="ht-chips">
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Gratis</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Privado</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>M&#243;vil</span>
+            <!-- PLACEHOLDER: add a chip specific to this tool's advantage -->
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /.ht-info-grid-section -->
+
+
+    <!-- Ad mid -->
+    <div class="ht-ad-mid" aria-hidden="true">
+      <!-- Google AdSense 336x280: replace with real script -->
+      Publicidad &#183; 336&#215;280
+    </div>
+
+
+    <!-- ── LONG SEO TEXT ──────────────────────────────── -->
+    <div class="ht-long">
+      <!-- PLACEHOLDER: Write 400-800 words of SEO content in Spanish.
+           Structure: h2 (keyword-rich) → p → optional ul/table → repeat.
+           Include internal links to related tools. -->
+
+      <h2 id="que-es"><!-- MAIN KEYWORD -->: <!-- BENEFIT --></h2>
+      <p><!-- PLACEHOLDER: introductory paragraph --></p>
+
+      <h2 id="para-que-sirve">&#191;Para qu&#233; sirve <!-- TOOL NAME -->?</h2>
+      <p><!-- PLACEHOLDER: use cases paragraph --></p>
+      <ul>
+        <li><strong><!-- USE CASE 1 -->:</strong> <!-- explanation --></li>
+        <li><strong><!-- USE CASE 2 -->:</strong> <!-- explanation --></li>
+        <li><strong><!-- USE CASE 3 -->:</strong> <!-- explanation --></li>
+      </ul>
+
+      <h2 id="como-funciona">&#191;C&#243;mo funciona?</h2>
+      <p><!-- PLACEHOLDER: technical explanation in user-friendly language --></p>
+
+    </div><!-- /.ht-long -->
+
+
+    <!-- ── RELATED TOOLS ──────────────────────────────── -->
+    <section class="ht-related" aria-labelledby="related-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
+        <a href="/<!-- CATEGORY-SLUG -->/" class="ht-section-link">
+          Ver todas
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="ht-related-grid">
+
+        <!-- PLACEHOLDER: 6 related tool cards. Copy this block x6 and fill in. -->
+        <a href="/<!-- CATEGORY-SLUG -->/<!-- RELATED-TOOL-SLUG -->/" class="ht-related-card">
+          <div class="ht-related-card-icon" aria-hidden="true">
+            <!-- PLACEHOLDER: relevant SVG icon -->
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/></svg>
+          </div>
+          <div class="ht-related-card-body">
+            <div class="ht-related-card-name"><!-- RELATED TOOL NAME --></div>
+            <div class="ht-related-card-desc"><!-- SHORT DESCRIPTION --></div>
+          </div>
+        </a>
+
+        <!-- Repeat 5 more times ... -->
+
+      </div>
+    </section><!-- /.ht-related -->
+
+
+    <!-- ── FAQ ACCORDION ──────────────────────────────── -->
+    <section class="ht-faq" aria-labelledby="faq-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
+      </div>
+      <div class="ht-faq-list">
+
+        <!-- PLACEHOLDER: 6 FAQ items. The first should always be open. -->
+        <!-- Copy this block x6 with unique ids (faq-1, faq-2, ...) -->
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">
+            <!-- PLACEHOLDER: FAQ Question 1 -->
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-1" role="region">
+            <!-- PLACEHOLDER: FAQ Answer 1 -->
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">
+            <!-- PLACEHOLDER: FAQ Question 2 -->
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-2" role="region">
+            <!-- PLACEHOLDER: FAQ Answer 2 -->
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">
+            &#191;Es gratis para siempre?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-3" role="region">
+            Totalmente. No hay suscripciones, versiones premium ni l&#237;mites de uso diario.
+          </div>
+        </div>
+
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">
+            &#191;Mi texto se env&#237;a a alg&#250;n servidor?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-4" role="region">
+            No. Todo el procesamiento ocurre en tu navegador. Tu texto nunca sale de tu dispositivo.
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER: add 2 more tool-specific FAQ items -->
+
+      </div>
+    </section><!-- /.ht-faq -->
+
+  </main><!-- /main -->
+
+</div><!-- /.ht-wrap -->
+
+
+<!-- ── TOAST NOTIFICATION ─────────────────────────────── -->
+<!-- Do not change — required by HT.showToast() -->
+<div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+  <span>Copiado</span>
+</div>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="ht-page-footer" aria-label="Pie de p&#225;gina">
+  <div class="ht-footer-inner">
+    <div class="ht-footer-grid">
+      <div>
+        <a href="/" class="ht-logo" style="display:inline-flex">
+          <div class="ht-logo-icon">Ht</div>
+          <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+        </a>
+        <p class="ht-footer-brand-desc">300 herramientas de texto gratuitas en espa&#241;ol. Sin registro, sin l&#237;mites, sin anuncios invasivos.</p>
+      </div>
+      <div class="ht-footer-links">
+        <div class="ht-footer-col">
+          <h4>Contadores</h4>
+          <a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a>
+          <a href="/contadores-de-texto/contador-de-caracteres/">Contador de caracteres</a>
+          <a href="/contadores-de-texto/tiempo-de-lectura/">Tiempo de lectura</a>
+          <a href="/contadores-de-texto/">Ver todos</a>
+        </div>
+        <div class="ht-footer-col">
+          <h4>Populares</h4>
+          <a href="/seo/analizador-de-densidad-de-palabras/">Densidad de palabras</a>
+          <a href="/convertidores/mayusculas-minusculas/">May&#250;sculas / min&#250;sculas</a>
+          <a href="/generadores/generador-de-lorem-ipsum/">Lorem Ipsum</a>
+          <a href="/">Todas las herramientas</a>
+        </div>
+        <div class="ht-footer-col">
+          <h4>Sitio</h4>
+          <a href="/acerca-de/">Acerca de</a>
+          <a href="/privacidad/">Privacidad</a>
+          <a href="/contacto/">Contacto</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+    <div class="ht-footer-bottom">
+      <p class="ht-footer-copy">&#169; 2024 HerramientasDeTexto.com &#8212; Gratis para siempre</p>
+      <nav class="ht-footer-legal" aria-label="Legal">
+        <a href="/privacidad/">Privacidad</a>
+        <a href="/terminos/">T&#233;rminos</a>
+        <a href="/cookies/">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ── SHARED JS ─────────────────────────────────────── -->
+<!-- Load shared utilities — must come before tool script -->
+<script src="/js/tools.js"></script>
+
+<!-- ── TOOL-SPECIFIC JS ──────────────────────────────── -->
+<script>
+/*
+  PLACEHOLDER: Tool-specific logic.
+
+  Pattern to follow:
+  ─────────────────
+  (function () {
+    'use strict';
+
+    var txt = document.getElementById('ht-txt');
+
+    // 1. Query all stat DOM elements
+    var sPrimary = document.getElementById('s-primary');
+    var sTwo     = document.getElementById('s-two');
+    // ...
+
+    // 2. Core analysis function
+    function analyse() {
+      var raw = txt.value;
+
+      // PLACEHOLDER: calculate your metrics here
+      var primary = 0;
+      var two     = 0;
+
+      // 3. Update stats using HT.pop() for animated numbers
+      HT.pop(sPrimary, HT.fmt(primary));
+      HT.pop(sTwo,     HT.fmt(two));
+
+      // 4. Update platform bars (if needed)
+      // HT.updatePlatformBar('twitter', primary, 280);
+
+      // 5. Update donut chart (if needed)
+      // HT.updateDonut(pct);
+
+      // 6. Update time stats (if needed)
+      // document.getElementById('t-metric-1').textContent = HT.fmtTime(words, 225);
+    }
+
+    // 7. Debounce input event (40ms matches visible keystrokes)
+    txt.addEventListener('input', HT.debounce(analyse, 40));
+
+    // 8. Toolbar button handlers — define as window.X for onclick="X()"
+    window.copyResult = function () { HT.copy(txt.value); };
+    window.clearText  = function () { txt.value = ''; analyse(); txt.focus(); };
+
+    // 9. Run on load
+    analyse();
+  }());
+*/
+</script>
+
+</body>
+</html>

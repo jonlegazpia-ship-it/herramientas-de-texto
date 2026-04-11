@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO primario -->
+  <title>HerramientasDeTexto.com — 300 Herramientas de Texto Online Gratis</title>
+  <meta name="description" content="300 herramientas de texto online y gratis en español. Contadores, convertidores, limpiadores, generadores, SEO y más. Sin registro, sin instalación, todo en tu navegador.">
+  <meta name="keywords" content="herramientas de texto, contador de palabras, convertidor de texto, herramientas SEO, generador de texto, limpiador de texto, herramientas gratis español">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://herramientasdetexto.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://herramientasdetexto.com/">
+  <meta property="og:title"       content="HerramientasDeTexto.com — 300 Tools de Texto Gratis">
+  <meta property="og:description" content="Contadores, convertidores, limpiadores, SEO, generadores y más. Gratis, sin registro, en español.">
+  <meta property="og:image"       content="https://herramientasdetexto.com/assets/og-image.png">
+  <meta property="og:site_name"   content="HerramientasDeTexto.com">
+  <meta property="og:locale"      content="es_ES">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="HerramientasDeTexto.com — 300 Tools de Texto Gratis">
+  <meta name="twitter:description" content="Todas las herramientas de texto que necesitas, gratis y en español.">
+  <meta name="twitter:image"       content="https://herramientasdetexto.com/assets/og-image.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon inline SVG (carga instantánea) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F46E5'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>T</text></svg>">
+
+  <!-- Structured Data: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "HerramientasDeTexto.com",
+    "url": "https://herramientasdetexto.com",
+    "description": "300 herramientas de texto online gratis en español",
+    "inLanguage": "es",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://herramientasdetexto.com/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: ItemList de categorías -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Categorías de herramientas de texto",
+    "numberOfItems": 10,
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Contadores de texto","url":"https://herramientasdetexto.com/contadores-de-texto/"},
+      {"@type":"ListItem","position":2,"name":"Convertidores de texto","url":"https://herramientasdetexto.com/convertidores-de-texto/"},
+      {"@type":"ListItem","position":3,"name":"Formateadores de texto","url":"https://herramientasdetexto.com/formateadores-de-texto/"},
+      {"@type":"ListItem","position":4,"name":"Generadores de texto","url":"https://herramientasdetexto.com/generadores-de-texto/"},
+      {"@type":"ListItem","position":5,"name":"SEO tools de texto","url":"https://herramientasdetexto.com/seo-tools-de-texto/"},
+      {"@type":"ListItem","position":6,"name":"Desarrollo y codificación","url":"https://herramientasdetexto.com/desarrollo-y-codificacion/"},
+      {"@type":"ListItem","position":7,"name":"Redes sociales","url":"https://herramientasdetexto.com/redes-sociales/"},
+      {"@type":"ListItem","position":8,"name":"Analizadores de texto","url":"https://herramientasdetexto.com/analizadores-de-texto/"},
+      {"@type":"ListItem","position":9,"name":"Herramientas de escritura","url":"https://herramientasdetexto.com/herramientas-de-escritura/"},
+      {"@type":"ListItem","position":10,"name":"Utilidades de texto","url":"https://herramientasdetexto.com/utilidades-de-texto/"}
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════ -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+
+      <a href="/" class="logo" aria-label="HerramientasDeTexto.com — Inicio">
+        <span class="logo__icon" aria-hidden="true">Ht</span>
+        <span class="logo__text">HerramientasDeTexto<span>.com</span></span>
+      </a>
+
+      <nav class="nav" id="mainNav" aria-label="Secciones de la página">
+        <a href="#categorias"      class="nav__link">Categorías</a>
+        <a href="#populares"       class="nav__link">Populares</a>
+        <a href="#por-que"         class="nav__link">Por qué nosotros</a>
+        <a href="#como-funciona"   class="nav__link">Cómo funciona</a>
+        <a href="#faq"             class="nav__link">FAQ</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn-icon" id="themeToggle" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+          <!-- Icono sol -->
+          <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Icono luna -->
+          <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="btn-icon nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" aria-label="Buscador de herramientas">
+    <div class="container hero__inner">
+
+      <h1 class="hero__title">
+        <span>300 Herramientas de Texto</span><br>Online y Gratis
+      </h1>
+
+      <p class="hero__subtitle">
+        Contadores, convertidores, limpiadores, generadores, SEO y mucho más.<br>
+        Sin registros · Sin instalaciones · Todo en tu navegador.
+      </p>
+
+      <div class="search-box" role="search">
+        <svg class="search-box__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          type="search"
+          id="searchInput"
+          class="search-box__input"
+          placeholder="Buscar herramienta… ej: contador de palabras"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Buscar herramienta"
+        >
+        <kbd class="search-box__kbd" aria-hidden="true">ESC</kbd>
+      </div>
+
+      <div class="hero__stats" aria-label="Estadísticas del sitio">
+        <span class="hero__stat"><strong>300</strong> herramientas</span>
+        <span class="hero__stat-sep" aria-hidden="true">·</span>
+        <span class="hero__stat"><strong>10</strong> categorías</span>
+        <span class="hero__stat-sep" aria-hidden="true">·</span>
+        <span class="hero__stat"><strong>100%</strong> gratis</span>
+        <span class="hero__stat-sep" aria-hidden="true">·</span>
+        <span class="hero__stat"><strong>0</strong> registros</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       RESULTADOS DE BÚSQUEDA (oculto por defecto)
+  ═══════════════════════════════════════════ -->
+  <section class="search-results hidden container" id="searchResults" aria-live="polite" aria-label="Resultados de búsqueda">
+    <div class="section-header">
+      <h2 class="section-title" id="searchResultsTitle">Resultados</h2>
+    </div>
+    <div class="tools-grid" id="searchResultsGrid"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ═══════════════════════════════════════════ -->
+  <main class="main" id="mainContent">
+    <div class="container">
+
+      <!-- Ad leaderboard 728×90 -->
+      <div class="ad-banner" aria-label="Publicidad" role="complementary">
+        <span class="ad-label">Publicidad</span>
+        <!-- Google AdSense — reemplaza con tu código real:
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        -->
+        <span>728 × 90 — Anuncio</span>
+      </div>
+
+
+      <!-- ── CATEGORÍAS ───────────────────────────── -->
+      <section id="categorias" class="section" aria-labelledby="cats-title">
+        <div class="section-header">
+          <h2 class="section-title" id="cats-title">Explora por categoría</h2>
+          <span class="section-subtitle">10 categorías · 300 herramientas</span>
+        </div>
+
+        <div class="cat-grid">
+
+          <a href="/contadores-de-texto/" class="cat-card" style="--cat-color:#3B82F6">
+            <span class="cat-card__icon" aria-hidden="true">🔢</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Contadores de texto</h3>
+              <p class="cat-card__desc">Palabras, caracteres, sílabas, frases, tiempo de lectura y más estadísticas</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/convertidores-de-texto/" class="cat-card" style="--cat-color:#8B5CF6">
+            <span class="cat-card__icon" aria-hidden="true">🔄</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Convertidores de texto</h3>
+              <p class="cat-card__desc">Mayúsculas, camelCase, slug, binario, HTML, Markdown, JSON, CSV y más</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/formateadores-de-texto/" class="cat-card" style="--cat-color:#10B981">
+            <span class="cat-card__icon" aria-hidden="true">🧹</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Limpiadores de texto</h3>
+              <p class="cat-card__desc">Elimina espacios, duplicados, HTML, emojis, URLs y limpia texto de Word o PDF</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/analizadores-de-texto/" class="cat-card" style="--cat-color:#F59E0B">
+            <span class="cat-card__icon" aria-hidden="true">✂️</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Manipulación de texto</h3>
+              <p class="cat-card__desc">Invertir, ordenar, extraer emails/URLs/números, filtrar, dividir y reemplazar</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/generadores-de-texto/" class="cat-card" style="--cat-color:#EC4899">
+            <span class="cat-card__icon" aria-hidden="true">⚡</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Generadores de texto</h3>
+              <p class="cat-card__desc">Lorem ipsum, contraseñas, UUID, nombres aleatorios, hashtags, firmas y más</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/seo-tools-de-texto/" class="cat-card" style="--cat-color:#EF4444">
+            <span class="cat-card__icon" aria-hidden="true">📈</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">SEO tools de texto</h3>
+              <p class="cat-card__desc">Meta tags, densidad de keywords, legibilidad Flesch, slug, OpenGraph y schema</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/herramientas-de-escritura/" class="cat-card" style="--cat-color:#06B6D4">
+            <span class="cat-card__icon" aria-hidden="true">🎓</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Herramientas para estudiantes</h3>
+              <p class="cat-card__desc">Citas APA/MLA/Chicago, calculadora de notas, GPA, bibliografía y ensayos</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/desarrollo-y-codificacion/" class="cat-card" style="--cat-color:#6366F1">
+            <span class="cat-card__icon" aria-hidden="true">💻</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Desarrollo y codificación</h3>
+              <p class="cat-card__desc">JSON, Base64, URL encode, hashes MD5/SHA, minificadores, UUID y XML</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/redes-sociales/" class="cat-card" style="--cat-color:#F43F5E">
+            <span class="cat-card__icon" aria-hidden="true">📱</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Redes sociales</h3>
+              <p class="cat-card__desc">Contadores para Twitter, Instagram, LinkedIn, generadores de bios y hashtags</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+          <a href="/utilidades-de-texto/" class="cat-card" style="--cat-color:#7C3AED">
+            <span class="cat-card__icon" aria-hidden="true">🛠️</span>
+            <div class="cat-card__body">
+              <h3 class="cat-card__name">Utilidades avanzadas</h3>
+              <p class="cat-card__desc">Cifrados, detector de idioma, análisis de sentimiento, generadores y más</p>
+              <span class="cat-card__count">30 herramientas →</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+
+      <!-- ── HERRAMIENTAS POPULARES ───────────────── -->
+      <section id="populares" class="section" aria-labelledby="popular-title">
+        <div class="section-header">
+          <h2 class="section-title" id="popular-title">Herramientas más usadas</h2>
+        </div>
+
+        <div class="popular-grid">
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">🔢 Contadores</h3>
+            <ul class="popular-list">
+              <li><a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a></li>
+              <li><a href="/contadores-de-texto/contador-de-caracteres/">Contador de caracteres</a></li>
+              <li><a href="/contadores-de-texto/contador-de-frases/">Contador de frases</a></li>
+              <li><a href="/contadores-de-texto/">Ver todos los contadores</a></li>
+            </ul>
+          </div>
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">🔄 Convertidores</h3>
+            <ul class="popular-list">
+              <li><a href="/convertidores-de-texto/mayusculas/">Convertir a mayúsculas</a></li>
+              <li><a href="/convertidores-de-texto/minusculas/">Convertir a minúsculas</a></li>
+              <li><a href="/convertidores-de-texto/camelcase/">Texto a camelCase</a></li>
+              <li><a href="/convertidores-de-texto/slug/">Texto a slug URL</a></li>
+            </ul>
+          </div>
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">🧹 Limpiadores</h3>
+            <ul class="popular-list">
+              <li><a href="/formateadores-de-texto/eliminar-espacios/">Eliminar espacios extra</a></li>
+              <li><a href="/formateadores-de-texto/eliminar-html/">Eliminar HTML</a></li>
+              <li><a href="/formateadores-de-texto/eliminar-duplicados/">Eliminar líneas duplicadas</a></li>
+              <li><a href="/formateadores-de-texto/limpiar-word/">Limpiar texto de Word</a></li>
+            </ul>
+          </div>
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">📈 SEO</h3>
+            <ul class="popular-list">
+              <li><a href="/seo-tools-de-texto/contador-meta-description/">Contador meta description</a></li>
+              <li><a href="/seo-tools-de-texto/densidad-de-palabras/">Densidad de palabras</a></li>
+              <li><a href="/seo-tools-de-texto/generador-de-slug/">Generador de slug</a></li>
+              <li><a href="/seo-tools-de-texto/generador-de-meta-tags/">Generador de meta tags</a></li>
+            </ul>
+          </div>
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">💻 Desarrollo</h3>
+            <ul class="popular-list">
+              <li><a href="/desarrollo-y-codificacion/formateador-json/">Formateador JSON</a></li>
+              <li><a href="/desarrollo-y-codificacion/codificador-base64/">Codificador Base64</a></li>
+              <li><a href="/desarrollo-y-codificacion/generador-uuid/">Generador de UUID</a></li>
+              <li><a href="/desarrollo-y-codificacion/generador-md5/">Generador MD5</a></li>
+            </ul>
+          </div>
+
+          <div class="popular-group">
+            <h3 class="popular-group__title">📱 Redes sociales</h3>
+            <ul class="popular-list">
+              <li><a href="/redes-sociales/contador-twitter/">Contador Twitter/X</a></li>
+              <li><a href="/redes-sociales/contador-instagram/">Contador Instagram</a></li>
+              <li><a href="/redes-sociales/generador-hashtags/">Generador de hashtags</a></li>
+              <li><a href="/redes-sociales/bio-instagram/">Bio para Instagram</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ── POR QUÉ USARNOS ─────────────────────── -->
+      <section id="por-que" class="section" aria-labelledby="features-title">
+        <h2 class="section-title" id="features-title" style="margin-bottom:16px">¿Por qué HerramientasDeTexto.com?</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <span class="feature__icon" aria-hidden="true">⚡</span>
+            <h3 class="feature__title">Ultra rápido</h3>
+            <p class="feature__desc">Todo se procesa en tu navegador. Sin esperas ni llamadas a servidor.</p>
+          </div>
+          <div class="feature">
+            <span class="feature__icon" aria-hidden="true">🔒</span>
+            <h3 class="feature__title">100% privado</h3>
+            <p class="feature__desc">Tu texto nunca sale de tu dispositivo. No almacenamos nada.</p>
+          </div>
+          <div class="feature">
+            <span class="feature__icon" aria-hidden="true">🆓</span>
+            <h3 class="feature__title">Siempre gratis</h3>
+            <p class="feature__desc">300 herramientas sin límites, sin registro y sin suscripciones.</p>
+          </div>
+          <div class="feature">
+            <span class="feature__icon" aria-hidden="true">📱</span>
+            <h3 class="feature__title">Cualquier dispositivo</h3>
+            <p class="feature__desc">Diseño adaptado para móvil, tablet y escritorio.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════
+     CÓMO FUNCIONA — Info visual
+═══════════════════════════════════════════ -->
+<section id="como-funciona" class="seo-block" aria-labelledby="info-title">
+  <div class="container">
+
+    <div class="info-intro">
+      <div class="info-intro__text">
+        <h2 id="info-title">La suite de herramientas de texto más completa en español</h2>
+        <p><strong>HerramientasDeTexto.com</strong> reúne en un solo lugar las 300 utilidades de texto que necesitas para escribir, analizar, optimizar y transformar cualquier contenido. Todo funciona <strong>directamente en tu navegador</strong>: sin instalaciones, sin registro y con privacidad total porque tu texto nunca sale de tu dispositivo.</p>
+        <p>Cada herramienta está diseñada para dar una respuesta inmediata. Pegas el texto, obtienes el resultado. Sin esperas, sin formularios, sin trucos.</p>
+        <a href="#categorias" class="info-cta">Explorar las 300 herramientas →</a>
+      </div>
+      <div class="info-intro__stats">
+        <div class="info-stat"><span class="info-stat__num">300</span><span class="info-stat__lbl">Herramientas</span></div>
+        <div class="info-stat"><span class="info-stat__num">10</span><span class="info-stat__lbl">Categorías</span></div>
+        <div class="info-stat"><span class="info-stat__num">0€</span><span class="info-stat__lbl">Coste</span></div>
+        <div class="info-stat"><span class="info-stat__num">0s</span><span class="info-stat__lbl">Registro</span></div>
+      </div>
+    </div>
+
+    <h3 class="info-section-label">¿Quién las usa?</h3>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM3 18a7 7 0 0 1 14 0"/></svg>
+        </div>
+        <h4>Redactores y copywriters</h4>
+        <p>Cuentan palabras, analizan densidad de keywords y optimizan meta descriptions para SEO sin salir del navegador.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="11" y2="10"/><line x1="7" y1="13" x2="9" y2="13"/></svg>
+        </div>
+        <h4>Estudiantes y académicos</h4>
+        <p>Verifican la extensión de ensayos, generan referencias APA o MLA y limpian textos copiados con un solo clic.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="4 17 4 7 10 3 16 7 16 17"/><rect x="8" y="12" width="4" height="5"/></svg>
+        </div>
+        <h4>Community managers</h4>
+        <p>Ajustan publicaciones a los límites de X, LinkedIn e Instagram. Cuentan hashtags y menciones antes de publicar.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="5 7 2 10 5 13"/><polyline points="15 7 18 10 15 13"/><line x1="9" y1="6" x2="11" y2="14"/></svg>
+        </div>
+        <h4>Desarrolladores</h4>
+        <p>Formatean JSON, codifican en Base64, convierten a slug y generan UUIDs sin abrir el terminal.</p>
+      </div>
+    </div>
+
+    <h3 class="info-section-label">Herramientas más buscadas</h3>
+    <div class="popular-links-grid">
+      <a href="/contadores-de-texto/contador-de-palabras/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="7" y2="8"/></svg>
+        Contador de palabras online gratis
+      </a>
+      <a href="/contadores-de-texto/contador-de-caracteres/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="12" height="10" rx="1.5"/><line x1="4" y1="6" x2="10" y2="6"/><line x1="4" y1="9" x2="7" y2="9"/></svg>
+        Contador de caracteres online
+      </a>
+      <a href="/seo-tools-de-texto/contador-meta-description/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><circle cx="7" cy="9.5" r=".5" fill="currentColor"/></svg>
+        Contador de meta description SEO
+      </a>
+      <a href="/convertidores-de-texto/mayusculas-minusculas/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 10L5 4l3 6M3.5 8h3"/></svg>
+        Convertir mayúsculas / minúsculas
+      </a>
+      <a href="/desarrollo-y-codificacion/formateador-json/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2M10 2h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2"/></svg>
+        Formateador y validador JSON
+      </a>
+      <a href="/generadores-de-texto/lorem-ipsum/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h10M2 7h7M2 10h5"/></svg>
+        Generador de Lorem Ipsum en español
+      </a>
+      <a href="/redes-sociales/contador-twitter/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3 8.5 7 12.5 12H10L7.5 8.5 4.5 12H2L5.5 8 1.5 3H4L6.5 6.5 9.5 3Z"/></svg>
+        Contador de caracteres para Twitter/X
+      </a>
+      <a href="/contadores-de-texto/contador-de-silabas/" class="popular-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="4" cy="7" r="2"/><circle cx="10" cy="7" r="2"/><line x1="6" y1="7" x2="8" y2="7"/></svg>
+        Contador de sílabas en español
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════ -->
+<section id="faq" class="faq-home" aria-labelledby="faq-home-title">
+  <div class="container">
+    <div class="faq-home__header">
+      <h2 id="faq-home-title">Preguntas frecuentes</h2>
+      <p>Todo lo que necesitas saber antes de empezar</p>
+    </div>
+    <div class="faq-home__list">
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿Son realmente gratuitas para siempre o aparecerán funciones de pago?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>Sí, gratuitas de verdad. El modelo de negocio se basa en publicidad no invasiva, no en versiones premium. Las 300 herramientas seguirán siendo accesibles sin límites ni registro, independientemente de cuántas personas las usen.</p>
+        </div>
+      </div>
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿El contador de palabras funciona igual que el de Microsoft Word?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>Casi idéntico. Ambos separan palabras por espacios en blanco, por lo que «hola-mundo» cuenta como una sola palabra. La diferencia es que nuestra herramienta calcula frases, párrafos, sílabas y tiempo de lectura simultáneamente, algo que Word no hace nativamente.</p>
+        </div>
+      </div>
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿Mis textos están seguros? ¿Los guardáis en algún servidor?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>Absolutamente seguros. Toda la lógica corre en JavaScript dentro de tu propio navegador. El texto que introduces nunca llega a ningún servidor nuestro. Puedes verificarlo desconectando el WiFi: las herramientas siguen funcionando perfectamente.</p>
+        </div>
+      </div>
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿Hay límite de texto que puedo analizar de una sola vez?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>No hay límite impuesto por nosotros. El único límite práctico es la memoria de tu dispositivo. En pruebas hemos procesado manuscritos de más de 200.000 palabras sin que la herramienta pierda velocidad en un ordenador moderno.</p>
+        </div>
+      </div>
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿Funcionan las herramientas sin conexión a internet?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>Una vez que la página ha cargado, sí. Como el procesamiento es 100% local, puedes desconectarte de internet y las herramientas seguirán funcionando hasta que cierres la pestaña. Solo necesitas conexión para la carga inicial.</p>
+        </div>
+      </div>
+
+      <div class="faq-home__item">
+        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+          ¿Tenéis API para integrar las herramientas en mis propias aplicaciones?
+          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="faq-home__body">
+          <p>Por ahora no ofrecemos una API pública, pero dado que toda la lógica corre en el navegador, los desarrolladores pueden inspeccionar y reutilizar el código de cualquier herramienta. Si tienes un caso de uso empresarial, escríbenos en el <a href="/legal/contacto.html">formulario de contacto</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <div class="footer__brand">
+        <a href="/" class="logo" aria-label="HerramientasDeTexto.com inicio">
+          <span class="logo__icon" aria-hidden="true">Ht</span>
+          <span class="logo__text">HerramientasDeTexto<span>.com</span></span>
+        </a>
+        <p class="footer__desc">
+          300 herramientas de texto online gratis.<br>
+          Rápidas, privadas y en español.
+        </p>
+        <p class="footer__desc" style="margin-top:10px">
+          Herramienta online sin registro,<br>procesamiento 100% en tu navegador.
+        </p>
+      </div>
+
+      <nav class="footer__links" aria-label="Enlaces del pie de página">
+
+        <div class="footer__col">
+          <h4>Herramientas populares</h4>
+          <a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a>
+          <a href="/contadores-de-texto/contador-de-caracteres/">Contador de caracteres</a>
+          <a href="/convertidores-de-texto/mayusculas-minusculas/">Mayúsculas / minúsculas</a>
+          <a href="/desarrollo-y-codificacion/formateador-json/">Formateador JSON</a>
+          <a href="/generadores-de-texto/lorem-ipsum/">Generador Lorem Ipsum</a>
+          <a href="/seo-tools-de-texto/contador-meta-description/">Contador meta description</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Categorías</h4>
+          <a href="/contadores-de-texto/">Contadores</a>
+          <a href="/convertidores-de-texto/">Convertidores</a>
+          <a href="/seo-tools-de-texto/">SEO tools</a>
+          <a href="/desarrollo-y-codificacion/">Desarrollo</a>
+          <a href="/redes-sociales/">Redes sociales</a>
+          <a href="/herramientas-de-escritura/">Escritura</a>
+          <a href="/generadores-de-texto/">Generadores</a>
+          <a href="/formateadores-de-texto/">Formateadores</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Información</h4>
+          <a href="/legal/sobre-nosotros.html">Sobre nosotros</a>
+          <a href="/legal/contacto.html">Contacto</a>
+        </div>
+
+      </nav>
+
+    </div>
+
+    <!-- Barra legal inferior -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 HerramientasDeTexto.com — Todas las herramientas son gratuitas</p>
+        <nav class="footer__legal-links" aria-label="Enlaces legales">
+          <a href="/legal/aviso-legal.html">Aviso legal</a>
+          <a href="/legal/politica-de-privacidad.html">Privacidad</a>
+          <a href="/legal/cookies.html">Cookies</a>
+          <a href="/legal/contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script src="js/app.js"></script>
+  <script>
+  function htFaq(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-home__item.open').forEach(function(el) {
+      el.classList.remove('open');
+      el.querySelector('.faq-home__btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+  </script>
+
+</body>
+</html>
