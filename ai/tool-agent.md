@@ -122,11 +122,11 @@ Cada herramienta incluye obligatoriamente:
 ```html
 <title>{Nombre de herramienta} Online Gratis | HerramientasDeTexto.com</title>
 <meta name="description" content="{Descripción de 140-160 caracteres con keyword principal}">
-<link rel="canonical" href="https://herramientasdetexto.com/tools/{categoria}/{slug}/">
+<link rel="canonical" href="https://herramientasdetexto.com/{categoria}/{slug}/">
 <meta property="og:title" content="{Nombre de herramienta} Online Gratis">
 <meta property="og:description" content="{Descripción corta}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://herramientasdetexto.com/tools/{categoria}/{slug}/">
+<meta property="og:url" content="https://herramientasdetexto.com/{categoria}/{slug}/">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="HerramientasDeTexto.com">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@ Schema.org obligatorio (WebApplication):
   "@type": "WebApplication",
   "name": "{Nombre}",
   "description": "{Descripción}",
-  "url": "https://herramientasdetexto.com/tools/{categoria}/{slug}/",
+  "url": "https://herramientasdetexto.com/{categoria}/{slug}/",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -341,7 +341,7 @@ Sigue estos pasos en orden para cada herramienta nueva:
 - Slug: `contador-de-parrafos`
 - Categoría: `contadores-de-texto`
 - Ruta del archivo: `tools/contadores-de-texto/contador-de-parrafos.html`
-- URL canónica: `https://herramientasdetexto.com/tools/contadores-de-texto/contador-de-parrafos/`
+- URL canónica: `https://herramientasdetexto.com/contadores-de-texto/contador-de-parrafos/`
 - Keyword principal: "contador de párrafos online gratis"
 - Estadísticas que mostrará: (listar las métricas del panel)
 
