@@ -2,11 +2,26 @@ DirectoryIndex index.html
 
 Options -Indexes
 
-# Bloquear acceso a carpeta /ai/
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Bloquear acceso a /ai/
     RewriteRule ^ai(/.*)?$ - [F,L]
+
+    # No reescribir archivos o carpetas reales
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # URL canónica: /{categoria}/{slug}/ → tools/{categoria}/{slug}.html
+    RewriteRule ^([^/]+)/([^/]+)/?$ tools/$1/$2.html [L]
+
+    # URL de categoría: /{categoria}/ → tools/{categoria}/index.html
+    RewriteRule ^([^/]+)/?$ tools/$1/index.html [L]
 </IfModule>
+
+# Página de error 404 amigable
+ErrorDocument 404 /404.html
 
 # Cabeceras de seguridad
 <IfModule mod_headers.c>
