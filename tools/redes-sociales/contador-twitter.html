@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Caracteres Twitter/X Online Gratis &#8212; Tiempo Real | HerramientasDeTexto.com</title>
+<meta name="description" content="Cuenta caracteres para Twitter/X en tiempo real. Visualiza el l&#237;mite de 280 caracteres con indicador visual. Gratis, sin registro.">
+<link rel="canonical" href="https://herramientasdetexto.com/herramientas/redes-sociales/twitter">
+<meta property="og:title" content="Contador de Caracteres Twitter/X Online Gratis">
+<meta property="og:description" content="Cuenta caracteres para Twitter/X en tiempo real con indicador visual del l&#237;mite.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientasdetexto.com/herramientas/redes-sociales/twitter">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="HerramientasDeTexto.com">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+<style>
+  :root { --cat-color: #0F172A; --cat-bg: #F8FAFC; --cat-border: #E2E8F0; }
+  .tw-circle-wrap { display: flex; justify-content: center; align-items: center; margin: 1rem 0; }
+  .tw-circle { position: relative; width: 100px; height: 100px; }
+  .tw-circle svg { transform: rotate(-90deg); }
+  .tw-circle-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; }
+  .tw-circle-num { font-size: 1.6rem; line-height: 1; }
+  .tw-circle-sub { font-size: .7rem; color: #64748b; }
+  .tw-limits { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 1rem; }
+  .tw-limit-card { text-align: center; padding: .6rem; border-radius: 8px; border: 1.5px solid #e2e8f0; background: #f8fafc; }
+  .tw-limit-card .lc-name { font-size: .72rem; color: #64748b; margin-bottom: .2rem; }
+  .tw-limit-card .lc-num  { font-size: 1rem; font-weight: 800; }
+  .tw-limit-card.ok  { border-color: #86efac; background: #f0fdf4; }
+  .tw-limit-card.ok .lc-num { color: #15803d; }
+  .tw-limit-card.warn { border-color: #fcd34d; background: #fffbeb; }
+  .tw-limit-card.warn .lc-num { color: #d97706; }
+  .tw-limit-card.bad  { border-color: #fca5a5; background: #fef2f2; }
+  .tw-limit-card.bad .lc-num  { color: #dc2626; }
+  .tw-preview { border-radius: 12px; border: 1.5px solid #e2e8f0; padding: 1rem; background: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .tw-preview-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+  .tw-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: .9rem; }
+  .tw-name { font-weight: 700; font-size: .9rem; }
+  .tw-handle { font-size: .8rem; color: #64748b; }
+  .tw-preview-text { font-size: .95rem; line-height: 1.5; min-height: 2rem; color: #0f172a; white-space: pre-wrap; word-break: break-word; }
+  .tw-preview-footer { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid #f1f5f9; display: flex; gap: 1.5rem; }
+  .tw-action { display: flex; align-items: center; gap: .3rem; font-size: .8rem; color: #64748b; }
+</style>
+<link rel="stylesheet" href="/css/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Contador de Caracteres Twitter/X","description":"Contador de caracteres para Twitter/X en tiempo real con indicador visual del límite de 280 caracteres.","url":"https://herramientasdetexto.com/herramientas/redes-sociales/twitter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://herramientasdetexto.com/"},{"@type":"ListItem","position":2,"name":"Redes sociales","item":"https://herramientasdetexto.com/herramientas/redes-sociales/"},{"@type":"ListItem","position":3,"name":"Contador Twitter/X","item":"https://herramientasdetexto.com/herramientas/redes-sociales/twitter"}]}</script>
+</head>
+<body>
+
+<header class="ht-site-header">
+  <a href="/" class="ht-logo" aria-label="HerramientasDeTexto.com &#8212; Inicio">
+    <div class="ht-logo-icon">Ht</div>
+    <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+  </a>
+  <div class="ht-header-sep"></div>
+  <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
+    <a href="/herramientas/contadores-de-texto/">Contadores</a>
+    <a href="/herramientas/seo-tools-de-texto/">SEO</a>
+    <a href="/herramientas/generadores-de-texto/">Generadores</a>
+    <a href="/herramientas/desarrollo-y-codificacion/">Dev</a>
+    <a href="/herramientas/redes-sociales/" class="active">Redes</a>
+  </nav>
+  <div class="ht-header-right">
+    <a href="/" class="ht-home-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      Todas las herramientas
+    </a>
+  </div>
+</header>
+
+<div class="ht-wrap">
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/herramientas/redes-sociales/">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Contador Twitter/X</span>
+  </nav>
+
+  <header class="ht-hero">
+    <div class="ht-hero-left">
+      <div class="ht-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg>
+        Redes sociales
+      </div>
+      <h1 class="ht-h1">Contador de caracteres <mark>Twitter/X</mark></h1>
+      <p class="ht-hero-desc">Escribe tu tuit y visualiza al instante cu&#225;ntos caracteres te quedan. Con indicador circular, preview del tuit y sugerencias de optimizaci&#243;n.</p>
+      <div class="ht-hero-pills">
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>L&#237;mite 280 caracteres</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Preview del tuit</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Contador URLs</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
+
+  <main id="herramienta">
+    <div class="ht-tool-layout">
+
+      <!-- LEFT -->
+      <div class="ht-textarea-card">
+        <div class="ht-textarea-card-header">
+          <div class="ht-textarea-card-title">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg>
+            Tu tuit
+          </div>
+          <span class="ht-char-count" id="hdr-chars" aria-live="polite">0 / 280</span>
+        </div>
+        <label class="sr-only" for="ht-txt">Texto del tuit</label>
+        <textarea id="ht-txt" class="ht-textarea" placeholder="&#191;Qu&#233; est&#225; pasando? (280 caracteres m&#225;x.)" spellcheck="true" maxlength="280"></textarea>
+        <div class="ht-toolbar">
+          <div class="ht-toolbar-btns">
+            <button class="ht-btn" onclick="HT.paste('ht-txt').then(function(){TW.run()})">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              Pegar
+            </button>
+            <button class="ht-btn" onclick="HT.copy(document.getElementById('ht-txt').value)">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              Copiar
+            </button>
+            <button class="ht-btn ht-btn--danger" onclick="TW.clear()">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <aside class="ht-stats-panel" style="display:flex;flex-direction:column;gap:1rem;">
+
+        <!-- Indicador circular -->
+        <div class="tw-circle-wrap">
+          <div class="tw-circle">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="44" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+              <circle id="tw-arc" cx="50" cy="50" r="44" fill="none" stroke="#0F172A" stroke-width="8"
+                stroke-dasharray="276.46" stroke-dashoffset="276.46" stroke-linecap="round"
+                style="transition:stroke-dashoffset .15s,stroke .15s;"/>
+            </svg>
+            <div class="tw-circle-label">
+              <span class="tw-circle-num" id="tw-remaining">280</span>
+              <span class="tw-circle-sub">restantes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Métricas -->
+        <div class="tw-limits">
+          <div class="tw-limit-card" id="lc-chars">
+            <div class="lc-name">Caracteres</div>
+            <div class="lc-num" id="lc-chars-n">0</div>
+          </div>
+          <div class="tw-limit-card" id="lc-words">
+            <div class="lc-name">Palabras</div>
+            <div class="lc-num" id="lc-words-n">0</div>
+          </div>
+          <div class="tw-limit-card" id="lc-urls">
+            <div class="lc-name">URLs (23c)</div>
+            <div class="lc-num" id="lc-urls-n">0</div>
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="tw-preview">
+          <div class="tw-preview-header">
+            <div class="tw-avatar">U</div>
+            <div><div class="tw-name">Tu nombre</div><div class="tw-handle">@tuusuario</div></div>
+          </div>
+          <div class="tw-preview-text" id="tw-preview-text">Tu tuit aparecer&#225; aqu&#237;&#8230;</div>
+          <div class="tw-preview-footer">
+            <span class="tw-action"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14" stroke-linecap="round"><path d="M2 12c0-4 2-7 6-7s6 3 6 7"/><polyline points="9 8 12 5 15 8"/></svg> Responder</span>
+            <span class="tw-action"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14" stroke-linecap="round"><path d="M1 6l4-4 4 4M5 2v9M15 10l-4 4-4-4M11 14V5"/></svg> RT</span>
+            <span class="tw-action"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14" stroke-linecap="round"><path d="M8 2l1.8 3.6L14 6.3l-3 2.9.7 4.1L8 11.2l-3.7 2 .7-4.1L2 6.3l4.2-.7z"/></svg> Me gusta</span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <div class="ht-long">
+      <h2>L&#237;mites de Twitter/X explicados</h2>
+      <p>Twitter/X tiene un l&#237;mite de <strong>280 caracteres</strong> por tuit para la mayor&#237;a de usuarios. Las URLs, sin importar su longitud, siempre cuentan como <strong>23 caracteres</strong> gracias al servicio t.co de Twitter. Las menciones (@usuario) y los hashtags (#tema) cuentan como caracteres normales.</p>
+
+      <h2>Longitud &#243;ptima de un tuit</h2>
+      <div class="ht-ref-table-wrap">
+        <table class="ht-ref-table">
+          <thead><tr><th>Tipo de contenido</th><th>Longitud recomendada</th><th>Raz&#243;n</th></tr></thead>
+          <tbody>
+            <tr><td>Tuit de opini&#243;n</td><td>100&#8211;150 caracteres</td><td>Mayor engagement</td></tr>
+            <tr><td>Tuit con enlace</td><td>100&#8211;120 car. + URL</td><td>Deja espacio al preview</td></tr>
+            <tr><td>Hilo (thread)</td><td>250&#8211;280 por tuit</td><td>M&#225;ximo contenido por entrega</td></tr>
+            <tr><td>Tuit con imagen</td><td>100&#8211;200 caracteres</td><td>Texto complementa la imagen</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <section class="ht-related" aria-labelledby="related-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
+        <a href="/herramientas/redes-sociales/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      </div>
+      <div class="ht-related-grid">
+        <a href="/herramientas/redes-sociales/instagram" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle cx="11.5" cy="4.5" r=".5" fill="currentColor"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador Instagram</div><div class="ht-related-card-desc">L&#237;mites de caption y bio</div></div>
+        </a>
+        <a href="/herramientas/redes-sociales/hashtags-instagram" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><line x1="5" y1="2" x2="5" y2="14"/><line x1="11" y1="2" x2="11" y2="14"/><line x1="2" y1="6" x2="14" y2="6"/><line x1="2" y1="10" x2="14" y2="10"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Generador de hashtags</div><div class="ht-related-card-desc">Hashtags por tem&#225;tica</div></div>
+        </a>
+        <a href="/herramientas/redes-sociales/linkedin" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="7" x2="5" y2="12"/><line x1="5" y1="4" x2="5" y2="5.5"/><path d="M8 12V9c0-1.1.9-2 2-2s2 .9 2 2v3"/><line x1="8" y1="7" x2="8" y2="12"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador LinkedIn</div><div class="ht-related-card-desc">Posts y perfil optimizados</div></div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+  <span>Copiado</span>
+</div>
+
+<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+  <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
+  <nav class="ht-footer-nav" aria-label="Legal">
+    <a href="/">Inicio</a>
+    <a href="/legal/aviso-legal.html">Aviso legal</a>
+    <a href="/legal/politica-de-privacidad.html">Privacidad</a>
+    <a href="/legal/cookies.html">Cookies</a>
+    <a href="/legal/contacto.html">Contacto</a>
+  </nav>
+</footer>
+
+<script src="/js/tools.js"></script>
+<script>
+(function(){
+  'use strict';
+  var LIMIT = 280;
+  var CIRC  = 2 * Math.PI * 44; // ≈ 276.46
+
+  var txt      = document.getElementById('ht-txt');
+  var hdrChars = document.getElementById('hdr-chars');
+  var twRemain = document.getElementById('tw-remaining');
+  var twArc    = document.getElementById('tw-arc');
+  var lcCharsN = document.getElementById('lc-chars-n');
+  var lcWordsN = document.getElementById('lc-words-n');
+  var lcUrlsN  = document.getElementById('lc-urls-n');
+  var lcChars  = document.getElementById('lc-chars');
+  var prevText = document.getElementById('tw-preview-text');
+
+  function countURLs(s){ return (s.match(/https?:\/\/\S+/g) || []).length; }
+
+  function run(){
+    var raw   = txt.value;
+    var urls  = countURLs(raw);
+    // Twitter counts each URL as 23 chars regardless of length
+    var stripped = raw.replace(/https?:\/\/\S+/g, '');
+    var used  = stripped.length + urls * 23;
+    var remaining = LIMIT - used;
+    var pct   = Math.max(0, Math.min(1, used / LIMIT));
+
+    hdrChars.textContent = used + ' / ' + LIMIT;
+    twRemain.textContent = Math.max(0, remaining);
+    twArc.style.strokeDashoffset = CIRC * (1 - pct);
+    twArc.style.stroke = remaining < 0 ? '#dc2626' : remaining < 20 ? '#d97706' : '#0F172A';
+
+    var words = raw.trim() === '' ? 0 : raw.trim().split(/\s+/).length;
+    lcCharsN.textContent = used;
+    lcWordsN.textContent = words;
+    lcUrlsN.textContent  = urls;
+    lcChars.className = 'tw-limit-card ' + (used > LIMIT ? 'bad' : used > 240 ? 'warn' : 'ok');
+
+    prevText.textContent = raw || 'Tu tuit aparecer\u00e1 aqu\u00ed\u2026';
+    prevText.style.color = raw ? '#0f172a' : '#94a3b8';
+  }
+
+  window.TW = {
+    run: run,
+    clear: function(){ txt.value = ''; run(); txt.focus(); }
+  };
+
+  txt.addEventListener('input', run);
+  run();
+}());
+</script>
+</body>
+</html>

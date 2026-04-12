@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formateador JSON Online Gratis &#8212; Beautify y Validar | HerramientasDeTexto.com</title>
+<meta name="description" content="Formatea, valida y embellece JSON al instante. Detecta errores con mensajes claros. Gratis, sin registro, tu JSON nunca sale del navegador.">
+<link rel="canonical" href="https://herramientasdetexto.com/herramientas/desarrollo-y-codificacion/formateador-json">
+<meta property="og:title" content="Formateador JSON Online Gratis">
+<meta property="og:description" content="Formatea y valida JSON en tiempo real. Gratis, sin registro, 100% privado.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientasdetexto.com/herramientas/desarrollo-y-codificacion/formateador-json">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="HerramientasDeTexto.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Formateador JSON Online Gratis">
+<meta name="twitter:description" content="Formatea y valida JSON al instante. Sin registro.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+<style>
+  :root { --cat-color: #7C3AED; --cat-bg: #F5F3FF; --cat-border: #DDD6FE; }
+  .ht-code-area { font-family: 'Courier New', Courier, monospace; font-size: .875rem; line-height: 1.6; resize: vertical; }
+  .ht-output-box { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 1rem 1.25rem; font-family: 'Courier New', Courier, monospace; font-size: .85rem; line-height: 1.7; overflow: auto; white-space: pre; min-height: 200px; max-height: 500px; }
+  .json-key    { color: #93C5FD; }
+  .json-str    { color: #86EFAC; }
+  .json-num    { color: #FCA5A5; }
+  .json-bool   { color: #FCD34D; }
+  .json-null   { color: #94A3B8; }
+  .ht-status   { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 600; padding: .3rem .75rem; border-radius: 999px; margin-bottom: .75rem; }
+  .ht-status.ok  { background: #dcfce7; color: #15803d; }
+  .ht-status.err { background: #fee2e2; color: #dc2626; }
+  .ht-indent-sel { border: 1.5px solid #e2e8f0; border-radius: 6px; padding: .3rem .5rem; font-size: .85rem; margin-left: .5rem; }
+</style>
+<link rel="stylesheet" href="/css/tools.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Formateador JSON Online",
+  "description": "Formatea, valida y embellece JSON al instante con detecci\u00f3n de errores.",
+  "url": "https://herramientasdetexto.com/herramientas/desarrollo-y-codificacion/formateador-json",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://herramientasdetexto.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Desarrollo y codificaci\u00f3n", "item": "https://herramientasdetexto.com/herramientas/desarrollo-y-codificacion/" },
+    { "@type": "ListItem", "position": 3, "name": "Formateador JSON", "item": "https://herramientasdetexto.com/herramientas/desarrollo-y-codificacion/formateador-json" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="ht-site-header">
+  <a href="/" class="ht-logo" aria-label="HerramientasDeTexto.com &#8212; Inicio">
+    <div class="ht-logo-icon">Ht</div>
+    <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+  </a>
+  <div class="ht-header-sep"></div>
+  <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
+    <a href="/herramientas/contadores-de-texto/">Contadores</a>
+    <a href="/herramientas/seo-tools-de-texto/">SEO</a>
+    <a href="/herramientas/generadores-de-texto/">Generadores</a>
+    <a href="/herramientas/desarrollo-y-codificacion/" class="active">Dev</a>
+    <a href="/herramientas/redes-sociales/">Redes</a>
+  </nav>
+  <div class="ht-header-right">
+    <a href="/" class="ht-home-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      Todas las herramientas
+    </a>
+  </div>
+</header>
+
+<div class="ht-wrap">
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/herramientas/desarrollo-y-codificacion/">Desarrollo y codificaci&#243;n</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Formateador JSON</span>
+  </nav>
+
+  <header class="ht-hero">
+    <div class="ht-hero-left">
+      <div class="ht-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
+        Desarrollo y codificaci&#243;n
+      </div>
+      <h1 class="ht-h1">Formateador JSON <mark>online gratis</mark></h1>
+      <p class="ht-hero-desc">Pega tu JSON y obt&#233;n al instante el c&#243;digo formateado, validado y con colores de sintaxis. Detecta errores con mensaje exacto del problema.</p>
+      <div class="ht-hero-pills">
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Validaci&#243;n instant&#225;nea</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sintaxis coloreada</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100% privado</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
+
+  <main id="herramienta">
+    <div class="ht-tool-layout">
+
+      <!-- LEFT: Input -->
+      <div class="ht-textarea-card">
+        <div class="ht-textarea-card-header">
+          <div class="ht-textarea-card-title">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2"/></svg>
+            JSON de entrada
+          </div>
+          <span style="font-size:.8rem;color:#64748b;">Indentaci&#243;n:
+            <select class="ht-indent-sel" id="indent-sel" onchange="FJ.format()">
+              <option value="2">2 espacios</option>
+              <option value="4">4 espacios</option>
+              <option value="tab">Tab</option>
+            </select>
+          </span>
+        </div>
+        <label class="sr-only" for="ht-txt">JSON a formatear</label>
+        <textarea id="ht-txt" class="ht-textarea ht-code-area" placeholder='Pega aqu&#237; tu JSON, por ejemplo:&#10;{"nombre":"Ana","edad":28,"activo":true}' spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+        <div class="ht-toolbar">
+          <div class="ht-toolbar-btns">
+            <button class="ht-btn" onclick="HT.paste('ht-txt').then(function(){FJ.format()})">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              Pegar
+            </button>
+            <button class="ht-btn" onclick="FJ.format()">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 4h10M5 8h6M7 12h2"/></svg>
+              Formatear
+            </button>
+            <button class="ht-btn" onclick="FJ.minify()">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 8h12M5 5l-3 3 3 3M11 5l3 3-3 3"/></svg>
+              Minificar
+            </button>
+            <button class="ht-btn ht-btn--danger" onclick="FJ.clear()">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Output -->
+      <aside class="ht-stats-panel" style="display:flex;flex-direction:column;gap:.75rem;">
+        <div id="status-box"></div>
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;">
+          <button class="ht-btn" onclick="FJ.copyResult()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+            Copiar resultado
+          </button>
+        </div>
+        <div class="ht-output-box" id="json-out" aria-label="JSON formateado">Aqu&#237; aparecer&#225; el JSON formateado&#8230;</div>
+      </aside>
+    </div>
+
+    <div class="ht-long">
+      <h2>&#191;Qu&#233; es un formateador JSON?</h2>
+      <p>Un <strong>formateador JSON</strong> (o JSON beautifier) convierte JSON compacto o mal indentado en un formato legible con sangr&#237;as, saltos de l&#237;nea y colores de sintaxis. Es una herramienta esencial para desarrolladores que trabajan con APIs, archivos de configuraci&#243;n o datos de bases de datos NoSQL.</p>
+
+      <h2>JSON v&#225;lido: reglas b&#225;sicas</h2>
+      <div class="ht-ref-table-wrap">
+        <table class="ht-ref-table">
+          <thead><tr><th>Elemento</th><th>Correcto</th><th>Incorrecto</th></tr></thead>
+          <tbody>
+            <tr><td>Strings</td><td><code>"texto"</code> (comillas dobles)</td><td><code>'texto'</code> (simples)</td></tr>
+            <tr><td>Coma final</td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3,]</code></td></tr>
+            <tr><td>Claves</td><td><code>{"clave": valor}</code></td><td><code>{clave: valor}</code></td></tr>
+            <tr><td>Booleanos</td><td><code>true</code> / <code>false</code></td><td><code>True</code> / <code>False</code></td></tr>
+            <tr><td>Null</td><td><code>null</code></td><td><code>NULL</code> / <code>None</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <section class="ht-related" aria-labelledby="related-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
+        <a href="/herramientas/desarrollo-y-codificacion/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      </div>
+      <div class="ht-related-grid">
+        <a href="/herramientas/desarrollo-y-codificacion/validador-json" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><polyline points="2 8 6 12 14 4"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Validador JSON</div><div class="ht-related-card-desc">Comprueba si tu JSON es v&#225;lido</div></div>
+        </a>
+        <a href="/herramientas/desarrollo-y-codificacion/minificador-json" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 8h12M5 5l-3 3 3 3M11 5l3 3-3 3"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Minificador JSON</div><div class="ht-related-card-desc">Comprime JSON para producci&#243;n</div></div>
+        </a>
+        <a href="/herramientas/desarrollo-y-codificacion/base64" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="5" width="12" height="7" rx="1.5"/><path d="M5 5V4a3 3 0 0 1 6 0v1"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Codificador Base64</div><div class="ht-related-card-desc">Codifica y decodifica Base64</div></div>
+        </a>
+        <a href="/herramientas/desarrollo-y-codificacion/generador-uuid" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="1" y="4" width="14" height="8" rx="2"/><line x1="5" y1="8" x2="11" y2="8"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Generador UUID</div><div class="ht-related-card-desc">UUIDs v4 aleatorios</div></div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+  <span>Copiado</span>
+</div>
+
+<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+  <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
+  <nav class="ht-footer-nav" aria-label="Legal">
+    <a href="/">Inicio</a>
+    <a href="/legal/aviso-legal.html">Aviso legal</a>
+    <a href="/legal/politica-de-privacidad.html">Privacidad</a>
+    <a href="/legal/cookies.html">Cookies</a>
+    <a href="/legal/contacto.html">Contacto</a>
+  </nav>
+</footer>
+
+<script src="/js/tools.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var txt       = document.getElementById('ht-txt');
+  var jsonOut   = document.getElementById('json-out');
+  var statusBox = document.getElementById('status-box');
+  var indentSel = document.getElementById('indent-sel');
+  var lastFormatted = '';
+
+  function syntaxHL(json) {
+    return json
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'json-num';
+        if (/^"/.test(match)) cls = /:$/.test(match) ? 'json-key' : 'json-str';
+        else if (/true|false/.test(match)) cls = 'json-bool';
+        else if (/null/.test(match)) cls = 'json-null';
+        return '<span class="' + cls + '">' + match + '</span>';
+      });
+  }
+
+  function setStatus(ok, msg) {
+    statusBox.innerHTML = '<div class="ht-status ' + (ok ? 'ok' : 'err') + '">' +
+      (ok ? '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>' :
+            '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg>') +
+      msg + '</div>';
+  }
+
+  window.FJ = {
+    format: function () {
+      var raw = txt.value.trim();
+      if (!raw) { jsonOut.innerHTML = 'Pega JSON aqu\u00ed y pulsa Formatear\u2026'; statusBox.innerHTML = ''; return; }
+      var indent = indentSel.value === 'tab' ? '\t' : parseInt(indentSel.value);
+      try {
+        var parsed = JSON.parse(raw);
+        lastFormatted = JSON.stringify(parsed, null, indent);
+        jsonOut.innerHTML = syntaxHL(lastFormatted);
+        setStatus(true, 'JSON v\u00e1lido \u2714');
+      } catch (e) {
+        lastFormatted = '';
+        jsonOut.textContent = raw;
+        setStatus(false, 'Error: ' + e.message);
+      }
+    },
+    minify: function () {
+      var raw = txt.value.trim();
+      if (!raw) return;
+      try {
+        lastFormatted = JSON.stringify(JSON.parse(raw));
+        jsonOut.innerHTML = syntaxHL(lastFormatted.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+        setStatus(true, 'JSON minificado \u2714');
+      } catch (e) {
+        setStatus(false, 'Error: ' + e.message);
+      }
+    },
+    copyResult: function () {
+      if (lastFormatted) HT.copy(lastFormatted);
+    },
+    clear: function () {
+      txt.value = ''; jsonOut.innerHTML = 'Aqu\u00ed aparecer\u00e1 el JSON formateado\u2026';
+      statusBox.innerHTML = ''; lastFormatted = ''; txt.focus();
+    }
+  };
+
+  txt.addEventListener('input', HT.debounce(FJ.format, 300));
+}());
+</script>
+</body>
+</html>

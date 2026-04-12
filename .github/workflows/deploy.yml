@@ -22,6 +22,8 @@ jobs:
           server-dir: /domains/herramientasdetexto.com/public_html/
           port: 21
           security: loose
+          timeout: 60000
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
