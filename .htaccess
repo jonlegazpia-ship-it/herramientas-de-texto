@@ -49,6 +49,9 @@ Options -Indexes
     RewriteCond %{REQUEST_URI} ^/(.+)/$
     RewriteRule ^(.+)/$ /$1 [R=301,L]
 
+    # Páginas legales: /legal/{slug} → legal/{slug}.html
+    RewriteRule ^legal/([^/]+)$ legal/$1.html [L]
+
     # URL canónica: /{categoria}/{slug} → tools/{categoria}/{slug}.html
     RewriteRule ^([^/]+)/([^/]+)$ tools/$1/$2.html [L]
 
