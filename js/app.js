@@ -69,19 +69,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Convertidores
     { n: 'Convertir a mayúsculas',          i: '🔠', u: '/convertidores-de-texto/convertir-a-mayusculas/' },
     { n: 'Convertir a minúsculas',          i: '🔡', u: '/convertidores-de-texto/convertir-a-minusculas/' },
-    { n: 'Texto a camelCase',               i: '🐪', u: '/convertidores-de-texto/camelcase/' },
+    { n: 'Texto a camelCase',               i: '🐪', u: '/convertidores-de-texto/texto-a-camelcase/' },
     { n: 'Texto a slug URL',                i: '🔗', u: '/convertidores-de-texto/texto-a-slug-url/' },
     // SEO
     { n: 'Generador de meta tags',          i: '🏷️', u: '/seo-tools-de-texto/generador-de-meta-tags/' },
     // Desarrollo
     { n: 'Formateador JSON',                i: '{}',  u: '/desarrollo-y-codificacion/formateador-json/' },
-    { n: 'Codificador Base64',              i: '🔐', u: '/desarrollo-y-codificacion/base64/' },
+    { n: 'Codificador Base64',              i: '🔐', u: '/desarrollo-y-codificacion/codificador-base64/' },
     { n: 'Generador de UUID',               i: '🆔', u: '/desarrollo-y-codificacion/generador-uuid/' },
-    { n: 'Generador MD5',                   i: '#️⃣', u: '/desarrollo-y-codificacion/hash-md5/' },
+    { n: 'Generador MD5',                   i: '#️⃣', u: '/desarrollo-y-codificacion/generador-md5/' },
     // Redes sociales
-    { n: 'Contador caracteres Twitter/X',   i: '🐦', u: '/redes-sociales/twitter/' },
-    { n: 'Contador caracteres Instagram',   i: '📸', u: '/redes-sociales/instagram/' },
-    { n: 'Generador de hashtags Instagram', i: '#️⃣', u: '/redes-sociales/generador-hashtags/' },
+    { n: 'Contador caracteres Twitter/X',   i: '🐦', u: '/redes-sociales/contador-twitter/' },
+    { n: 'Contador caracteres Instagram',   i: '📸', u: '/redes-sociales/contador-instagram/' },
+    { n: 'Generador de hashtags Instagram', i: '#️⃣', u: '/redes-sociales/generador-hashtags-instagram/' },
     { n: 'Generador bio Instagram',         i: '👤', u: '/redes-sociales/bio-instagram/' },
   ];
 
