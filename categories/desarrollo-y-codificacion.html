@@ -446,22 +446,19 @@
     <div class="ht-long">
 
       <h2>¿Qué son las herramientas de desarrollo y codificación?</h2>
-      <p>Las herramientas de desarrollo son utilidades que facilitan el trabajo diario de programadores, analistas y técnicos. Permiten <strong>formatear, validar, convertir y transformar</strong> datos y código sin necesidad de instalar software adicional ni configurar entornos locales. Todo funciona directamente en el navegador, en tiempo real.</p>
+      <p>Las herramientas de desarrollo son utilidades que facilitan el trabajo diario de programadores, analistas y técnicos. Permiten <strong>formatear, codificar y transformar</strong> datos sin necesidad de instalar software adicional. Todo funciona directamente en el navegador, en tiempo real.</p>
 
-      <h2>Herramientas JSON: el estándar de las APIs modernas</h2>
-      <p>JSON (JavaScript Object Notation) es el formato de intercambio de datos más usado en APIs REST. Nuestro <a href="/desarrollo-y-codificacion/formateador-json/">formateador JSON</a> convierte JSON comprimido en código legible con coloreado de sintaxis y detección de errores como comas faltantes, comillas incorrectas o llaves sin cerrar.</p>
+      <h2>Formateador JSON: el estándar de las APIs modernas</h2>
+      <p>JSON es el formato de intercambio de datos más usado en APIs REST. El <a href="/desarrollo-y-codificacion/formateador-json/">formateador JSON</a> convierte JSON comprimido en código legible con coloreado de sintaxis y detección de errores como comas faltantes, comillas incorrectas o llaves sin cerrar.</p>
 
-      <h2>Codificación Base64 y URL encoding</h2>
-      <p>Base64 convierte datos binarios en texto ASCII, esencial para incrustar imágenes en CSS con <code>data:</code> URIs o para la autenticación HTTP Basic. El URL encoding (percent-encoding) protege caracteres especiales en parámetros de URL. Ambas codificaciones son reversibles con nuestros decodificadores correspondientes.</p>
+      <h2>Codificación Base64</h2>
+      <p>El <a href="/desarrollo-y-codificacion/codificador-base64/">codificador Base64</a> convierte datos binarios en texto ASCII, esencial para incrustar imágenes en CSS con <code>data:</code> URIs o para la autenticación HTTP Basic. Es una codificación reversible muy usada en APIs y servicios web.</p>
 
-      <h2>Hashes criptográficos: MD5, SHA-1 y SHA-256</h2>
-      <p>Los hashes son funciones matemáticas unidireccionales que producen una huella digital única de cualquier texto. <strong>MD5</strong> (128 bits) y <strong>SHA-1</strong> (160 bits) están obsoletos para uso criptográfico pero aún se usan para verificación de integridad de archivos. <strong>SHA-256</strong> (256 bits) es el estándar actual recomendado para contraseñas y firmas digitales.</p>
+      <h2>Hashes criptográficos: MD5</h2>
+      <p>Los hashes son funciones matemáticas unidireccionales que producen una huella digital única de cualquier texto. El <a href="/desarrollo-y-codificacion/generador-md5/">generador MD5</a> calcula hashes de 128 bits, útiles para verificación de integridad de archivos y comparación de datos.</p>
 
-      <h2>Minificadores y embellecedores de código</h2>
-      <p>Los minificadores eliminan espacios, comentarios y caracteres innecesarios para reducir el tamaño de HTML, CSS y JavaScript en producción, mejorando los tiempos de carga. Los embellecedores hacen el proceso inverso: toman código comprimido u ofuscado y lo convierten en código legible con indentación correcta, ideal para revisar librerías de terceros o depurar bundles.</p>
-
-      <h2>Conversores numéricos: HEX, decimal y binario</h2>
-      <p>Los sistemas de numeración son fundamentales en programación de bajo nivel, electrónica y redes. El sistema hexadecimal (base 16) se usa para colores CSS, direcciones de memoria y códigos de color. El binario (base 2) es la base de toda la computación digital. Nuestros conversores soportan conversiones bidireccionales entre los tres sistemas.</p>
+      <h2>Generador de UUID</h2>
+      <p>El <a href="/desarrollo-y-codificacion/generador-uuid/">generador UUID</a> crea identificadores únicos universales v4 seguros para usar en bases de datos, APIs y sistemas distribuidos donde cada registro necesita un ID irrepetible.</p>
 
     </div>
 
@@ -504,11 +501,11 @@
 
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-dev-4" onclick="HT.faqToggle(this)">
-            ¿Cómo funciona la codificación de URL?
+            ¿Para qué sirve el generador de UUID?
             <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-dev-4" role="region">
-            La codificación de URL (percent-encoding) reemplaza caracteres especiales por su equivalente %XX hexadecimal. Por ejemplo, el espacio se convierte en %20. Es necesaria para incluir caracteres no-ASCII o reservados en URLs.
+            Un UUID (Universally Unique Identifier) es un identificador de 128 bits que garantiza unicidad global sin necesidad de un servidor central. Se usa como clave primaria en bases de datos, identificador de sesión, nombre único de archivos y en APIs REST para identificar recursos.
           </div>
         </div>
 
