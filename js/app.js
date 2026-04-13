@@ -74,15 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // SEO
     { n: 'Generador de meta tags',          i: '🏷️', u: '/seo-tools-de-texto/generador-de-meta-tags/' },
     // Desarrollo
-    { n: 'Formateador JSON',                i: '{}',  u: '/herramientas/desarrollo-y-codificacion/formateador-json/' },
-    { n: 'Codificador Base64',              i: '🔐', u: '/herramientas/desarrollo-y-codificacion/base64/' },
-    { n: 'Generador de UUID',               i: '🆔', u: '/herramientas/desarrollo-y-codificacion/generador-uuid/' },
-    { n: 'Generador MD5',                   i: '#️⃣', u: '/herramientas/desarrollo-y-codificacion/hash-md5/' },
+    { n: 'Formateador JSON',                i: '{}',  u: '/desarrollo-y-codificacion/formateador-json/' },
+    { n: 'Codificador Base64',              i: '🔐', u: '/desarrollo-y-codificacion/base64/' },
+    { n: 'Generador de UUID',               i: '🆔', u: '/desarrollo-y-codificacion/generador-uuid/' },
+    { n: 'Generador MD5',                   i: '#️⃣', u: '/desarrollo-y-codificacion/hash-md5/' },
     // Redes sociales
-    { n: 'Contador caracteres Twitter/X',   i: '🐦', u: '/herramientas/redes-sociales/twitter/' },
-    { n: 'Contador caracteres Instagram',   i: '📸', u: '/herramientas/redes-sociales/instagram/' },
+    { n: 'Contador caracteres Twitter/X',   i: '🐦', u: '/redes-sociales/twitter/' },
+    { n: 'Contador caracteres Instagram',   i: '📸', u: '/redes-sociales/instagram/' },
     { n: 'Generador de hashtags Instagram', i: '#️⃣', u: '/redes-sociales/generador-hashtags/' },
-    { n: 'Generador bio Instagram',         i: '👤', u: '/herramientas/redes-sociales/bio-instagram/' },
+    { n: 'Generador bio Instagram',         i: '👤', u: '/redes-sociales/bio-instagram/' },
   ];
 
 
