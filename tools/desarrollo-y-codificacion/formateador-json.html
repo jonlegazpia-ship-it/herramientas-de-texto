@@ -65,11 +65,11 @@
   </a>
   <div class="ht-header-sep"></div>
   <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
-    <a href="/contadores-de-texto/">Contadores</a>
-    <a href="/seo-tools-de-texto/">SEO</a>
-    <a href="/generadores-de-texto/">Generadores</a>
-    <a href="/desarrollo-y-codificacion/" class="active">Dev</a>
-    <a href="/redes-sociales/">Redes</a>
+    <a href="/contadores-de-texto">Contadores</a>
+    <a href="/seo-tools-de-texto">SEO</a>
+    <a href="/generadores-de-texto">Generadores</a>
+    <a href="/desarrollo-y-codificacion" class="active">Dev</a>
+    <a href="/redes-sociales">Redes</a>
   </nav>
   <div class="ht-header-right">
     <a href="/" class="ht-home-btn">
@@ -83,7 +83,7 @@
   <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/desarrollo-y-codificacion/">Desarrollo y codificaci&#243;n</a>
+    <a href="/desarrollo-y-codificacion">Desarrollo y codificaci&#243;n</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <span aria-current="page">Formateador JSON</span>
   </nav>
@@ -162,28 +162,315 @@
     </div>
 
     <div class="ht-long">
-      <h2>&#191;Qu&#233; es un formateador JSON?</h2>
-      <p>Un <strong>formateador JSON</strong> (o JSON beautifier) convierte JSON compacto o mal indentado en un formato legible con sangr&#237;as, saltos de l&#237;nea y colores de sintaxis. Es una herramienta esencial para desarrolladores que trabajan con APIs, archivos de configuraci&#243;n o datos de bases de datos NoSQL.</p>
 
-      <h2>JSON v&#225;lido: reglas b&#225;sicas</h2>
-      <div class="ht-ref-table-wrap">
-        <table class="ht-ref-table">
-          <thead><tr><th>Elemento</th><th>Correcto</th><th>Incorrecto</th></tr></thead>
-          <tbody>
-            <tr><td>Strings</td><td><code>"texto"</code> (comillas dobles)</td><td><code>'texto'</code> (simples)</td></tr>
-            <tr><td>Coma final</td><td><code>[1, 2, 3]</code></td><td><code>[1, 2, 3,]</code></td></tr>
-            <tr><td>Claves</td><td><code>{"clave": valor}</code></td><td><code>{clave: valor}</code></td></tr>
-            <tr><td>Booleanos</td><td><code>true</code> / <code>false</code></td><td><code>True</code> / <code>False</code></td></tr>
-            <tr><td>Null</td><td><code>null</code></td><td><code>NULL</code> / <code>None</code></td></tr>
-          </tbody>
-        </table>
-      </div>
+<style>
+.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
+@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
+.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition: box-shadow .18s, transform .18s; }
+.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
+.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
+.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
+.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
+.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
+@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
+.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
+.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
+.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
+.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
+.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
+.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
+.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
+.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
+.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
+.htl-table { width:100%; border-collapse:collapse; background:#fff; }
+.htl-table thead { background:#1E293B; }
+.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
+.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
+.htl-table tbody tr:hover { background:#F8FAFF; }
+.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
+.htl-table td:first-child { font-weight:600; color:#0F172A; }
+.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
+.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
+.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
+.htl-badge--green { background:#F0FDF4; color:#15803D; }
+.htl-badge--amber { background:#FFFBEB; color:#B45309; }
+.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
+.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
+.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
+.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
+.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
+.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
+.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
+.htl-tip-box--cut  h4 { color:#C2410C; }
+.htl-tip-box--grow h4 { color:#15803D; }
+.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
+.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
+.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
+.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
+.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
+@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
+.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
+.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
+.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
+.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
+.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
+.htl-section-label svg { width:12px; height:12px; }
+.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+</style>
+
+<!-- ══ INTRO ══ -->
+<h2>JSON roto en una l&#237;nea: por qu&#233; el formato importa tanto como el contenido</h2>
+<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
+  Una coma de m&#225;s al final de un array, una clave sin comillas, un <code style="background:#F5F3FF;color:#7C3AED;padding:.1rem .4rem;border-radius:4px;font-size:.85rem">True</code> con may&#250;scula. Cualquiera de esos detalles rompe un JSON v&#225;lido. El formateador detecta el error exacto y te muestra d&#243;nde est&#225;.
+</p>
+
+<div class="htl-intro">
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#F5F3FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 7l-2 3 2 3M13 7l2 3-2 3"/></svg>
+    </div>
+    <h3>Qu&#233; hace este formateador</h3>
+    <p>Convierte JSON compacto o mal indentado en un formato legible con sangr&#237;as, saltos de l&#237;nea y coloreado de sintaxis. Valida la estructura al mismo tiempo: si el JSON contiene un error, lo detecta y muestra la l&#237;nea y el tipo de problema para que puedas corregirlo r&#225;pidamente.</p>
+  </div>
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#EFF6FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
+    </div>
+    <h3>&#191;Qui&#233;n lo usa a diario?</h3>
+    <p><strong>Desarrolladores backend</strong> que depuran respuestas de APIs, <strong>analistas de datos</strong> que trabajan con exports JSON de bases de datos NoSQL, <strong>QA engineers</strong> que verifican estructuras de respuesta, y cualquier persona que necesite entender un bloque de JSON de un solo vistazo sin tener que contar llaves manualmente.</p>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ CÓMO USARLO ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Paso a paso
+</div>
+<h2>C&#243;mo formatear y validar JSON al instante</h2>
+
+<div class="htl-steps">
+  <div class="htl-step">
+    <div class="htl-step-num">1</div>
+    <div class="htl-step-body">
+      <h4>Pega el JSON</h4>
+      <p>Copia el JSON desde la respuesta de una API, un archivo de configuraci&#243;n o cualquier fuente y p&#233;galo en el editor izquierdo.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">2</div>
+    <div class="htl-step-body">
+      <h4>Formatea o valida</h4>
+      <p>El panel derecho muestra el JSON indentado con coloreado de sintaxis. Si hay errores, aparece el mensaje exacto y la l&#237;nea donde falla.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">3</div>
+    <div class="htl-step-body">
+      <h4>Copia o minifica</h4>
+      <p>Copia el JSON formateado para revisarlo o usa la opci&#243;n de minificar para compactar el JSON antes de enviarlo en una petici&#243;n API.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ USOS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+  Casos de uso
+</div>
+<h2>Cu&#225;ndo un formateador JSON te salva la vida</h2>
+
+<div class="htl-uses">
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#7C3AED"></div>
+    <div>
+      <h4>Depurar respuestas de API</h4>
+      <p>Las APIs devuelven JSON compacto en producci&#243;n para ahorrar bytes. Formatearlo revela al instante la estructura anidada y facilita encontrar el campo que buscas.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#2563EB"></div>
+    <div>
+      <h4>Validar JSON antes de enviarlo</h4>
+      <p>Un JSON inv&#225;lido en el body de una petici&#243;n POST devuelve un 400 crip&#769;tico. Validarlo aqu&#237; antes de enviar evita esa iteraci&#243;n innecesaria.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#0891B2"></div>
+    <div>
+      <h4>Archivos de configuraci&#243;n</h4>
+      <p>package.json, tsconfig.json, .eslintrc: un error de sintaxis en estos archivos bloquea el build entero. Formatear y validar antes de guardar evita bugs innecesarios.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#16A34A"></div>
+    <div>
+      <h4>Datos de MongoDB o Firestore</h4>
+      <p>Los exports de bases de datos NoSQL suelen ser JSON en una l&#237;nea. Formatearlo facilita inspeccionarlo, modificarlo y reimportarlo sin perder la estructura original.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#D97706"></div>
+    <div>
+      <h4>Preparar payloads para Postman o Insomnia</h4>
+      <p>Construir manualmente el body JSON de una petici&#243;n es propenso a errores. Redactarlo aqu&#237; con validaci&#243;n en tiempo real y luego copiarlo al cliente HTTP ahorra tiempo.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#E11D48"></div>
+    <div>
+      <h4>Code reviews y documentaci&#243;n</h4>
+      <p>Incluir un ejemplo de respuesta JSON bien formateado en la documentaci&#243;n de una API o en un PR facilita la revisi&#243;n por parte del equipo.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TABLA ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+  Referencia r&#225;pida
+</div>
+<h2>Errores de sintaxis JSON m&#225;s frecuentes</h2>
+
+<div class="htl-table-wrap">
+  <table class="htl-table">
+    <thead>
+      <tr>
+        <th>Error</th>
+        <th>Incorrecto</th>
+        <th>Correcto</th>
+        <th>Frecuencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Comillas simples en strings</td>
+        <td><span class="htl-range">'valor'</span></td>
+        <td style="color:#64748B;font-size:.83rem"><code>"valor"</code> (comillas dobles)</td>
+        <td><span class="htl-badge htl-badge--red">Muy com&#250;n</span></td>
+      </tr>
+      <tr>
+        <td>Trailing comma</td>
+        <td><span class="htl-range">[1, 2, 3,]</span></td>
+        <td style="color:#64748B;font-size:.83rem"><code>[1, 2, 3]</code> sin coma final</td>
+        <td><span class="htl-badge htl-badge--red">Muy com&#250;n</span></td>
+      </tr>
+      <tr>
+        <td>Clave sin comillas</td>
+        <td><span class="htl-range">{clave: valor}</span></td>
+        <td style="color:#64748B;font-size:.83rem"><code>{"clave": valor}</code></td>
+        <td><span class="htl-badge htl-badge--amber">Com&#250;n</span></td>
+      </tr>
+      <tr>
+        <td>Booleanos con may&#250;scula</td>
+        <td><span class="htl-range">True / False</span></td>
+        <td style="color:#64748B;font-size:.83rem"><code>true</code> / <code>false</code> (min&#250;sculas)</td>
+        <td><span class="htl-badge htl-badge--amber">Com&#250;n</span></td>
+      </tr>
+      <tr>
+        <td>Comentarios en JSON</td>
+        <td><span class="htl-range">// comentario</span></td>
+        <td style="color:#64748B;font-size:.83rem">JSON no admite comentarios. Usa JSON5 si los necesitas</td>
+        <td><span class="htl-badge htl-badge--blue">Ocasional</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TIPS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+  Consejos
+</div>
+<h2>Buenas pr&#225;cticas con JSON en desarrollo</h2>
+
+<div class="htl-tips">
+  <div class="htl-tip-box htl-tip-box--cut">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+      Errores que dan dolores de cabeza
+    </h4>
+    <ul class="htl-tip-list">
+      <li>JSON generado con <code style="font-size:.78rem">JSON.stringify</code> en Python o Ruby puede incluir <code style="font-size:.78rem">None</code> o <code style="font-size:.78rem">True</code> inv&#225;lidos</li>
+      <li>Copiar JSON desde un PDF o Word a veces convierte las comillas rectas en tipogr&#225;ficas (&#8220;&#8221;) que rompen el parser</li>
+      <li>Los n&#250;meros enteros muy grandes pueden perder precisi&#243;n en JavaScript: usa strings para IDs largos</li>
+      <li>Anidar m&#225;s de 5 niveles dificulta la lectura y el mantenimiento sin una buena convenci&#243;n de estructura</li>
+    </ul>
+  </div>
+  <div class="htl-tip-box htl-tip-box--grow">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+      H&#225;bitos de desarrollador con JSON
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Valida siempre el JSON antes de importarlo en una base de datos o enviarlo a una API</li>
+      <li>Usa minificaci&#243;n en producci&#243;n y formato legible en development y documentaci&#243;n</li>
+      <li>Para JSON con esquema fijo, considera JSON Schema para validaci&#243;n autom&#225;tica en tu pipeline</li>
+      <li>Guarda ejemplos de respuesta de cada endpoint formateados: son la mejor documentaci&#243;n r&#225;pida</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ WHY US ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Por qu&#233; elegirnos
+</div>
+<h2>&#191;Por qu&#233; usar este formateador JSON?</h2>
+
+<div class="htl-why">
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#10003;</span>
+    <strong>Valida en tiempo real</strong>
+    <span>Detecta errores de sintaxis mientras escribes, con mensaje exacto.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#127775;</span>
+    <strong>Coloreado de sintaxis</strong>
+    <span>Claves, valores, tipos y estructura visualmente diferenciados.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128274;</span>
+    <strong>100% privado</strong>
+    <span>Tu JSON no sale del navegador ni se env&#237;a a ning&#250;n servidor.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9889;</span>
+    <strong>Tiempo real</strong>
+    <span>Sin bot&#243;n de formatear: el resultado se actualiza autom&#225;ticamente.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128203;</span>
+    <strong>Copia al instante</strong>
+    <span>Copia el JSON formateado o minificado con un solo clic.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9745;&#65039;</span>
+    <strong>Sin registro</strong>
+    <span>Ni cuenta, ni email, ni cookies de seguimiento. Solo JSON.</span>
+  </div>
+</div>
+
     </div>
 
     <section class="ht-related" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
-        <a href="/desarrollo-y-codificacion/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        <a href="/desarrollo-y-codificacion" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       </div>
       <div class="ht-related-grid">
 

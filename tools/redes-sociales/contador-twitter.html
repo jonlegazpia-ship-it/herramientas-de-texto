@@ -54,11 +54,11 @@
   </a>
   <div class="ht-header-sep"></div>
   <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
-    <a href="/contadores-de-texto/">Contadores</a>
-    <a href="/seo-tools-de-texto/">SEO</a>
-    <a href="/generadores-de-texto/">Generadores</a>
-    <a href="/desarrollo-y-codificacion/">Dev</a>
-    <a href="/redes-sociales/" class="active">Redes</a>
+    <a href="/contadores-de-texto">Contadores</a>
+    <a href="/seo-tools-de-texto">SEO</a>
+    <a href="/generadores-de-texto">Generadores</a>
+    <a href="/desarrollo-y-codificacion">Dev</a>
+    <a href="/redes-sociales" class="active">Redes</a>
   </nav>
   <div class="ht-header-right">
     <a href="/" class="ht-home-btn">
@@ -71,7 +71,7 @@
 <div class="ht-wrap">
   <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/redes-sociales/">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/redes-sociales">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <span aria-current="page">Contador Twitter/X</span>
   </nav>
 
@@ -178,21 +178,319 @@
     </div>
 
     <div class="ht-long">
-      <h2>L&#237;mites de Twitter/X explicados</h2>
-      <p>Twitter/X tiene un l&#237;mite de <strong>280 caracteres</strong> por tuit para la mayor&#237;a de usuarios. Las URLs, sin importar su longitud, siempre cuentan como <strong>23 caracteres</strong> gracias al servicio t.co de Twitter. Las menciones (@usuario) y los hashtags (#tema) cuentan como caracteres normales.</p>
 
-      <h2>Longitud &#243;ptima de un tuit</h2>
-      <div class="ht-ref-table-wrap">
-        <table class="ht-ref-table">
-          <thead><tr><th>Tipo de contenido</th><th>Longitud recomendada</th><th>Raz&#243;n</th></tr></thead>
-          <tbody>
-            <tr><td>Tuit de opini&#243;n</td><td>100&#8211;150 caracteres</td><td>Mayor engagement</td></tr>
-            <tr><td>Tuit con enlace</td><td>100&#8211;120 car. + URL</td><td>Deja espacio al preview</td></tr>
-            <tr><td>Hilo (thread)</td><td>250&#8211;280 por tuit</td><td>M&#225;ximo contenido por entrega</td></tr>
-            <tr><td>Tuit con imagen</td><td>100&#8211;200 caracteres</td><td>Texto complementa la imagen</td></tr>
-          </tbody>
-        </table>
-      </div>
+<style>
+.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
+@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
+.htl-card {
+  border:1.5px solid #E2E8F0; border-radius:14px;
+  padding:1.5rem 1.75rem; background:#fff;
+  transition: box-shadow .18s, transform .18s;
+}
+.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
+.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
+.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
+.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
+.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
+@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
+.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
+.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
+.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
+.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
+.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
+.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
+.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
+.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
+.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
+.htl-table { width:100%; border-collapse:collapse; background:#fff; }
+.htl-table thead { background:#1E293B; }
+.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
+.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
+.htl-table tbody tr:hover { background:#F8FAFF; }
+.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
+.htl-table td:first-child { font-weight:600; color:#0F172A; }
+.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
+.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
+.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
+.htl-badge--green { background:#F0FDF4; color:#15803D; }
+.htl-badge--amber { background:#FFFBEB; color:#B45309; }
+.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
+.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
+.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
+.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
+.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
+.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
+.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
+.htl-tip-box--cut  h4 { color:#C2410C; }
+.htl-tip-box--grow h4 { color:#15803D; }
+.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
+.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
+.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
+.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
+.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
+@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
+.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
+.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
+.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
+.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
+.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
+.htl-section-label svg { width:12px; height:12px; }
+.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+</style>
+
+<!-- ══ INTRO ══ -->
+<h2>Contar caracteres en Twitter/X: lo que el propio Twitter no te explica</h2>
+<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
+  280 caracteres parece mucho hasta que pegas una URL y ves c&#243;mo se come 23 de golpe. Este contador reproduce la l&#243;gica exacta de Twitter para que sepas antes de publicar si cabes o no.
+</p>
+
+<div class="htl-intro">
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#F8FAFC">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"><path d="M3 16 L7 12 L3 5 L9 8.5 L15 3 L13 10 L18 12.5 L12 12.5 L10.5 17.5 Z"/></svg>
+    </div>
+    <h3>El l&#237;mite no es solo 280</h3>
+    <p>Twitter/X aplica su propio sistema de conteo. Cada URL, independientemente de su longitud, ocupa exactamente <strong>23 caracteres</strong> gracias al acortador t.co. Las menciones (@usuario) y los hashtags (#tema) s&#237; cuentan como caracteres normales. Si escribes 260 caracteres de texto y a&#241;ades una URL larga, el tuit seguir&#225; dentro del l&#237;mite, porque esa URL siempre suma 23.</p>
+  </div>
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#EFF6FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
+    </div>
+    <h3>&#191;Para qui&#233;n tiene sentido usarlo?</h3>
+    <p>Para cualquiera que publique en Twitter/X de forma regular: <strong>community managers</strong> que revisan textos antes de programarlos en Hootsuite o Buffer, <strong>periodistas</strong> que enlazan noticias con el titular justo, <strong>marcas</strong> que quieren aprovechar cada car&#225;cter y <strong>creadores</strong> que construyen hilos largos con precisi&#243;n.</p>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ CÓMO USARLO ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Paso a paso
+</div>
+<h2>C&#243;mo usar el contador de caracteres para Twitter</h2>
+
+<div class="htl-steps">
+  <div class="htl-step">
+    <div class="htl-step-num">1</div>
+    <div class="htl-step-body">
+      <h4>Escribe o pega el tuit</h4>
+      <p>Introduce el texto que quieres publicar. Puedes pegar desde cualquier editor o escribir aqu&#237; directamente, con o sin URL.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">2</div>
+    <div class="htl-step-body">
+      <h4>Lee el indicador circular</h4>
+      <p>El c&#237;rculo muestra en tiempo real cu&#225;ntos caracteres te quedan. Cambia de color: negro cuando vas bien, naranja al acercarte al l&#237;mite, rojo al superarlo.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">3</div>
+    <div class="htl-step-body">
+      <h4>Revisa el preview y copia</h4>
+      <p>El panel lateral simula c&#243;mo quedar&#225; tu tuit publicado. Cuando est&#233;s conforme, copia el texto con un clic y p&#233;galo en Twitter/X.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ USOS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+  Casos de uso
+</div>
+<h2>Qui&#233;n usa este contador y para qu&#233;</h2>
+
+<div class="htl-uses">
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#2563EB"></div>
+    <div>
+      <h4>Community managers</h4>
+      <p>Redactan tuits en documentos externos antes de programarlos. Verificar el conteo real antes de copiar a Hootsuite o Buffer evita errores que solo descubres al publicar.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#0F172A"></div>
+    <div>
+      <h4>Periodistas y medios</h4>
+      <p>Un titular m&#225;s la URL de la noticia ya suma 23 caracteres fijos. Saber el espacio real disponible permite escribir titulares m&#225;s informativos sin recortes de &#250;ltima hora.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#7C3AED"></div>
+    <div>
+      <h4>Creadores de hilos</h4>
+      <p>Al construir un thread, cada tuit debe aprovechar al m&#225;ximo los 280 caracteres para que el hilo sea denso y valioso. Este contador ayuda a ajustar cada entrega del hilo.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#D97706"></div>
+    <div>
+      <h4>Equipos de marketing</h4>
+      <p>Las campa&#241;as con hashtags de marca necesitan encajar junto con el mensaje. Ver el conteo exacto con hashtags incluidos evita rondas interminables de revisi&#243;n.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#16A34A"></div>
+    <div>
+      <h4>Instituciones y cuentas oficiales</h4>
+      <p>Administraciones y empresas que revisan los mensajes con varios niveles de aprobaci&#243;n necesitan verificar el conteo antes de dar el visto bueno final.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#E11D48"></div>
+    <div>
+      <h4>Usuarios de Twitter Premium</h4>
+      <p>Aunque Premium ampli&#243; algunas funciones, los tuits est&#225;ndar siguen contando exactamente igual. Este contador aplica la regla universal de 280 caracteres para todos.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TABLA ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+  Referencia r&#225;pida
+</div>
+<h2>L&#237;mites de caracteres en Twitter/X: tabla completa</h2>
+
+<div class="htl-table-wrap">
+  <table class="htl-table">
+    <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>L&#237;mite de caracteres</th>
+        <th>Notas clave</th>
+        <th>Nivel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tuit est&#225;ndar</td>
+        <td><span class="htl-range">280 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">Las URLs cuentan como 23 fijos</td>
+        <td><span class="htl-badge htl-badge--blue">Principal</span></td>
+      </tr>
+      <tr>
+        <td>Mensaje directo (DM)</td>
+        <td><span class="htl-range">10.000 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">Conversaciones privadas</td>
+        <td><span class="htl-badge htl-badge--green">Amplio</span></td>
+      </tr>
+      <tr>
+        <td>Bio del perfil</td>
+        <td><span class="htl-range">160 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">Se indexa en Google, cu&#237;dala</td>
+        <td><span class="htl-badge htl-badge--amber">Corto</span></td>
+      </tr>
+      <tr>
+        <td>Nombre visible</td>
+        <td><span class="htl-range">50 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">Distinto del @usuario</td>
+        <td><span class="htl-badge htl-badge--amber">Corto</span></td>
+      </tr>
+      <tr>
+        <td>URL en tuit</td>
+        <td><span class="htl-range">23 caracteres fijos</span></td>
+        <td style="color:#64748B;font-size:.83rem">t.co acorta cualquier URL</td>
+        <td><span class="htl-badge htl-badge--red">Fijo</span></td>
+      </tr>
+      <tr>
+        <td>Longitud &#243;ptima para engagement</td>
+        <td><span class="htl-range">100 &#8211; 150 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">M&#225;s RT y respuestas seg&#250;n estudios</td>
+        <td><span class="htl-badge htl-badge--purple">Recomendado</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TIPS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+  Consejos
+</div>
+<h2>Errores comunes y buenas pr&#225;cticas en Twitter/X</h2>
+
+<div class="htl-tips">
+  <div class="htl-tip-box htl-tip-box--cut">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+      Errores que cuestan caracteres
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Olvidar que cada URL ocupa 23 caracteres, no los que ves en pantalla</li>
+      <li>A&#241;adir hashtags al final sin contar que son caracteres normales</li>
+      <li>Copiar texto con espacios dobles o saltos de l&#237;nea invisibles que suman al total</li>
+      <li>Escribir hasta 280 y luego a&#241;adir una URL: el tuit ya no cabe</li>
+    </ul>
+  </div>
+  <div class="htl-tip-box htl-tip-box--grow">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+      C&#243;mo sacar m&#225;s partido a 280 caracteres
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Escribe el mensaje sin URL primero; a&#241;ade el enlace al final y ajusta el texto</li>
+      <li>Los tuits de entre 100 y 150 caracteres suelen recibir m&#225;s interacciones</li>
+      <li>Usa el preview para ver c&#243;mo quedar&#225; antes de copiar y publicar</li>
+      <li>Si necesitas m&#225;s espacio, considera un hilo en lugar de comprimir el mensaje</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ WHY US ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Por qu&#233; elegirnos
+</div>
+<h2>&#191;Por qu&#233; usar este contador en lugar del nativo de Twitter?</h2>
+
+<div class="htl-why">
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128290;</span>
+    <strong>Conteo exacto</strong>
+    <span>Reproduce la l&#243;gica de t.co: URLs siempre cuentan como 23 caracteres.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128065;&#65039;</span>
+    <strong>Preview real</strong>
+    <span>Ve c&#243;mo quedar&#225; tu tuit publicado antes de abrir Twitter siquiera.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9889;</span>
+    <strong>Sin login</strong>
+    <span>No necesitas cuenta ni acceso a Twitter. Funciona completamente offline.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128202;</span>
+    <strong>M&#233;tricas extras</strong>
+    <span>Palabras, URLs detectadas y estado del l&#237;mite en un solo vistazo.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128274;</span>
+    <strong>Privado</strong>
+    <span>Tu tuit no sale del navegador. &#218;til para mensajes sensibles o en borrador.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128241;</span>
+    <strong>M&#243;vil y escritorio</strong>
+    <span>Funciona igual en cualquier dispositivo sin instalar nada.</span>
+  </div>
+</div>
+
     </div>
 
     <section class="ht-related" aria-labelledby="related-title">

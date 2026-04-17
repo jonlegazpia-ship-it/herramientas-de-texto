@@ -59,11 +59,11 @@
   </a>
   <div class="ht-header-sep"></div>
   <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
-    <a href="/contadores-de-texto/">Contadores</a>
-    <a href="/seo-tools-de-texto/">SEO</a>
-    <a href="/generadores-de-texto/">Generadores</a>
-    <a href="/desarrollo-y-codificacion/" class="active">Dev</a>
-    <a href="/redes-sociales/">Redes</a>
+    <a href="/contadores-de-texto">Contadores</a>
+    <a href="/seo-tools-de-texto">SEO</a>
+    <a href="/generadores-de-texto">Generadores</a>
+    <a href="/desarrollo-y-codificacion" class="active">Dev</a>
+    <a href="/redes-sociales">Redes</a>
   </nav>
   <div class="ht-header-right">
     <a href="/" class="ht-home-btn">
@@ -77,7 +77,7 @@
   <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/desarrollo-y-codificacion/">Desarrollo y codificaci&#243;n</a>
+    <a href="/desarrollo-y-codificacion">Desarrollo y codificaci&#243;n</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <span aria-current="page">Codificador Base64</span>
   </nav>
@@ -175,31 +175,315 @@
     </div>
 
     <div class="ht-long">
-      <h2>&#191;Qu&#233; es Base64?</h2>
-      <p><strong>Base64</strong> es un sistema de codificaci&#243;n que convierte datos binarios (o texto) en una cadena de caracteres ASCII imprimibles usando un alfabeto de 64 caracteres (A&#8211;Z, a&#8211;z, 0&#8211;9, + y /). Se usa ampliamente para transmitir datos en contextos donde solo se permiten caracteres de texto: emails, URLs, APIs REST y almacenamiento de im&#225;genes en HTML como <code>data:image/png;base64,...</code>.</p>
 
-      <h2>&#191;Cu&#225;ndo usar Base64?</h2>
-      <div class="ht-ref-table-wrap">
-        <table class="ht-ref-table">
-          <thead><tr><th>Caso de uso</th><th>Ejemplo</th></tr></thead>
-          <tbody>
-            <tr><td>Autenticaci&#243;n HTTP Basic</td><td><code>Authorization: Basic dXNlcjpwYXNz</code></td></tr>
-            <tr><td>Im&#225;genes en CSS/HTML</td><td><code>background: url(data:image/png;base64,...)</code></td></tr>
-            <tr><td>Tokens JWT</td><td>El payload del JWT es Base64url</td></tr>
-            <tr><td>Adjuntos en email (MIME)</td><td>Los adjuntos se codifican en Base64</td></tr>
-            <tr><td>APIs REST</td><td>Pasar datos binarios en JSON</td></tr>
-          </tbody>
-        </table>
-      </div>
+<style>
+.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
+@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
+.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition: box-shadow .18s, transform .18s; }
+.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
+.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
+.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
+.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
+.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
+@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
+.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
+.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
+.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
+.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
+.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
+.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
+.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
+.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
+.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
+.htl-table { width:100%; border-collapse:collapse; background:#fff; }
+.htl-table thead { background:#1E293B; }
+.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
+.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
+.htl-table tbody tr:hover { background:#F8FAFF; }
+.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
+.htl-table td:first-child { font-weight:600; color:#0F172A; }
+.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
+.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
+.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
+.htl-badge--green { background:#F0FDF4; color:#15803D; }
+.htl-badge--amber { background:#FFFBEB; color:#B45309; }
+.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
+.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
+.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
+.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
+.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
+.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
+.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
+.htl-tip-box--cut  h4 { color:#C2410C; }
+.htl-tip-box--grow h4 { color:#15803D; }
+.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
+.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
+.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
+.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
+.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
+@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
+.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
+.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
+.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
+.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
+.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
+.htl-section-label svg { width:12px; height:12px; }
+.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+</style>
 
-      <h2>Base64 no es cifrado</h2>
-      <p>Es importante entender que Base64 es <strong>codificaci&#243;n, no cifrado</strong>. Cualquier persona puede decodificar un string Base64 al instante. No uses Base64 para proteger informaci&#243;n sensible; usa algoritmos de cifrado reales como AES o bcrypt para contrase&#241;as.</p>
+<!-- ══ INTRO ══ -->
+<h2>Base64: codificaci&#243;n, no cifrado &#8212; y esa diferencia importa mucho</h2>
+<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
+  Cualquiera que vea <code style="background:#F5F3FF;color:#7C3AED;padding:.1rem .4rem;border-radius:4px;font-size:.85rem">SGVsbG8=</code> puede decodificarlo al instante. Base64 no oculta informaci&#243;n, la transforma para que pueda viajar por canales que solo admiten texto ASCII. Entender cu&#225;ndo usarlo y cu&#225;ndo no evita errores de seguridad serios.
+</p>
+
+<div class="htl-intro">
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#F5F3FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="14" height="9" rx="2"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="12"/></svg>
+    </div>
+    <h3>Qu&#233; es Base64</h3>
+    <p>Base64 convierte cualquier dato binario o texto en una cadena de caracteres ASCII usando un alfabeto de 64 s&#237;mbolos (A&#8211;Z, a&#8211;z, 0&#8211;9, + y /). Cada 3 bytes de datos originales se convierten en 4 caracteres Base64, lo que aumenta el tama&#241;o aproximadamente un <strong>33%</strong>. La operaci&#243;n es completamente reversible: codificar y decodificar son dos caras de la misma moneda.</p>
+  </div>
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#EFF6FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
+    </div>
+    <h3>&#191;Para qu&#233; sirve en la pr&#225;ctica?</h3>
+    <p>Para transmitir datos en contextos que solo aceptan texto: <strong>cabeceras HTTP</strong> (autenticaci&#243;n Basic), <strong>tokens JWT</strong> (el payload viaja en Base64url), <strong>im&#225;genes incrustadas</strong> en HTML o CSS como data URIs, y <strong>adjuntos de email</strong> en formato MIME. Si alguna vez has visto una URL larga con letras, n&#250;meros y signos de igual al final, era probablemente Base64.</p>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ CÓMO USARLO ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Paso a paso
+</div>
+<h2>C&#243;mo codificar y decodificar Base64</h2>
+
+<div class="htl-steps">
+  <div class="htl-step">
+    <div class="htl-step-num">1</div>
+    <div class="htl-step-body">
+      <h4>Elige el modo</h4>
+      <p>Selecciona &#171;Codificar&#187; para convertir texto a Base64, o &#171;Decodificar&#187; para recuperar el texto original desde una cadena Base64.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">2</div>
+    <div class="htl-step-body">
+      <h4>Pega o escribe el contenido</h4>
+      <p>El resultado aparece en tiempo real en el panel derecho. Todo ocurre en el navegador, sin enviar datos a ning&#250;n servidor externo.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">3</div>
+    <div class="htl-step-body">
+      <h4>Copia el resultado</h4>
+      <p>Usa el bot&#243;n de copia para llevar la cadena codificada o decodificada al portapapeles y usarla en tu proyecto.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ USOS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+  Casos de uso
+</div>
+<h2>D&#243;nde aparece Base64 en el desarrollo real</h2>
+
+<div class="htl-uses">
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#7C3AED"></div>
+    <div>
+      <h4>Autenticaci&#243;n HTTP Basic</h4>
+      <p>El encabezado <code style="font-size:.78rem;background:#f1f5f9;padding:.1rem .3rem;border-radius:3px">Authorization: Basic</code> codifica en Base64 el par usuario:contrase&#241;a. No es seguro sin HTTPS porque cualquiera puede decodificarlo.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#2563EB"></div>
+    <div>
+      <h4>Tokens JWT</h4>
+      <p>El header y el payload de un JWT viajan codificados en Base64url (una variante que cambia + y / por - y _ para ser compatible con URLs). La firma s&#237; es criptogr&#225;fica, pero el payload es legible.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#0891B2"></div>
+    <div>
+      <h4>Data URIs en HTML y CSS</h4>
+      <p>Incrustar im&#225;genes peque&#241;as o iconos directamente en el c&#243;digo HTML evita peticiones HTTP adicionales. El formato es <code style="font-size:.78rem;background:#f1f5f9;padding:.1rem .3rem;border-radius:3px">data:image/png;base64,...</code>.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#16A34A"></div>
+    <div>
+      <h4>Adjuntos de email (MIME)</h4>
+      <p>El protocolo SMTP solo transmite texto ASCII. Los archivos adjuntos se codifican en Base64 antes de enviarse y se decodifican en el cliente de correo del destinatario.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#D97706"></div>
+    <div>
+      <h4>Variables de entorno con datos binarios</h4>
+      <p>Almacenar certificados, claves privadas o archivos de configuraci&#243;n binarios en variables de entorno requiere codificarlos en Base64 para evitar problemas con saltos de l&#237;nea y caracteres especiales.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#E11D48"></div>
+    <div>
+      <h4>Depuraci&#243;n de APIs y logs</h4>
+      <p>Cuando ves datos codificados en logs de APIs o en cabeceras de peticiones HTTP, decodificarlos revela inmediatamente qu&#233; informaci&#243;n est&#225; viajando en cada campo.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TABLA ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+  Referencia r&#225;pida
+</div>
+<h2>Base64 vs Base64url vs otras codificaciones</h2>
+
+<div class="htl-table-wrap">
+  <table class="htl-table">
+    <thead>
+      <tr>
+        <th>Formato</th>
+        <th>Alfabeto</th>
+        <th>Padding</th>
+        <th>Uso principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Base64 est&#225;ndar</td>
+        <td><span class="htl-range">A&#8211;Z, a&#8211;z, 0&#8211;9, +, /</span></td>
+        <td style="color:#64748B;font-size:.83rem">S&#237; (signo =)</td>
+        <td><span class="htl-badge htl-badge--blue">Email MIME, datos en HTML</span></td>
+      </tr>
+      <tr>
+        <td>Base64url</td>
+        <td><span class="htl-range">A&#8211;Z, a&#8211;z, 0&#8211;9, -, _</span></td>
+        <td style="color:#64748B;font-size:.83rem">Opcional</td>
+        <td><span class="htl-badge htl-badge--purple">JWT, URLs seguras</span></td>
+      </tr>
+      <tr>
+        <td>Hex (Base16)</td>
+        <td><span class="htl-range">0&#8211;9, a&#8211;f</span></td>
+        <td style="color:#64748B;font-size:.83rem">No</td>
+        <td><span class="htl-badge htl-badge--amber">Hashes, colores CSS</span></td>
+      </tr>
+      <tr>
+        <td>Base32</td>
+        <td><span class="htl-range">A&#8211;Z, 2&#8211;7</span></td>
+        <td style="color:#64748B;font-size:.83rem">S&#237; (signo =)</td>
+        <td><span class="htl-badge htl-badge--green">C&#243;digos TOTP, QR</span></td>
+      </tr>
+      <tr>
+        <td>ASCII plano</td>
+        <td><span class="htl-range">128 caracteres</span></td>
+        <td style="color:#64748B;font-size:.83rem">No aplica</td>
+        <td><span class="htl-badge htl-badge--red">Solo texto, no binario</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TIPS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+  Consejos
+</div>
+<h2>Errores comunes y cu&#225;ndo NO usar Base64</h2>
+
+<div class="htl-tips">
+  <div class="htl-tip-box htl-tip-box--cut">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+      Confusiones peligrosas
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Base64 no es cifrado: cualquiera puede decodificarlo sin clave ni contrase&#241;a</li>
+      <li>No uses Base64 para &#171;ocultar&#187; contrase&#241;as o datos sensibles en el frontend</li>
+      <li>Los data URIs de im&#225;genes grandes en Base64 aumentan el tiempo de carga del HTML</li>
+      <li>Base64 en URLs requiere codificar los = y + para evitar conflictos: usa Base64url en su lugar</li>
+    </ul>
+  </div>
+  <div class="htl-tip-box htl-tip-box--grow">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+      Cu&#225;ndo Base64 es la elecci&#243;n correcta
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Incrustar iconos SVG o im&#225;genes peque&#241;as en CSS para reducir peticiones HTTP</li>
+      <li>Pasar datos binarios en campos JSON que solo admiten strings</li>
+      <li>Almacenar certificados o claves en variables de entorno de plataformas como Heroku o Vercel</li>
+      <li>Decodificar el payload de un JWT para inspeccionar sus claims durante la depuraci&#243;n</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ WHY US ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Por qu&#233; elegirnos
+</div>
+<h2>&#191;Por qu&#233; usar este codificador Base64?</h2>
+
+<div class="htl-why">
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128274;</span>
+    <strong>100% privado</strong>
+    <span>Todo ocurre en el navegador. Ning&#250;n dato sale hacia servidores externos.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#8644;</span>
+    <strong>Codifica y decodifica</strong>
+    <span>Los dos sentidos en la misma herramienta, sin cambiar de p&#225;gina.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9889;</span>
+    <strong>Tiempo real</strong>
+    <span>El resultado se actualiza mientras escribes, sin bot&#243;n de calcular.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128203;</span>
+    <strong>Copia en un clic</strong>
+    <span>Copia el resultado codificado o decodificado al portapapeles al instante.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128241;</span>
+    <strong>Funciona en m&#243;vil</strong>
+    <span>Accesible desde cualquier dispositivo sin instalaci&#243;n ni configuraci&#243;n.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9745;&#65039;</span>
+    <strong>Sin registro</strong>
+    <span>Ni cuenta, ni email, ni formularios. Entra y usa.</span>
+  </div>
+</div>
+
     </div>
 
     <section class="ht-related" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
-        <a href="/desarrollo-y-codificacion/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        <a href="/desarrollo-y-codificacion" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       </div>
       <div class="ht-related-grid">
         <a href="/desarrollo-y-codificacion/formateador-json" class="ht-related-card">

@@ -62,11 +62,11 @@
   </a>
   <div class="ht-header-sep"></div>
   <nav class="ht-header-nav" aria-label="Categor&#237;as principales">
-    <a href="/contadores-de-texto/">Contadores</a>
-    <a href="/seo-tools-de-texto/">SEO</a>
-    <a href="/generadores-de-texto/">Generadores</a>
-    <a href="/desarrollo-y-codificacion/" class="active">Dev</a>
-    <a href="/redes-sociales/">Redes</a>
+    <a href="/contadores-de-texto">Contadores</a>
+    <a href="/seo-tools-de-texto">SEO</a>
+    <a href="/generadores-de-texto">Generadores</a>
+    <a href="/desarrollo-y-codificacion" class="active">Dev</a>
+    <a href="/redes-sociales">Redes</a>
   </nav>
   <div class="ht-header-right">
     <a href="/" class="ht-home-btn">
@@ -80,7 +80,7 @@
   <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/desarrollo-y-codificacion/">Desarrollo y codificaci&#243;n</a>
+    <a href="/desarrollo-y-codificacion">Desarrollo y codificaci&#243;n</a>
     <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <span aria-current="page">Generador MD5</span>
   </nav>
@@ -193,31 +193,315 @@
     </div>
 
     <div class="ht-long">
-      <h2>&#191;Qu&#233; es un hash MD5?</h2>
-      <p>MD5 (Message-Digest Algorithm 5) es una funci&#243;n de hash criptogr&#225;fica que convierte cualquier texto o archivo en una cadena hexadecimal de 32 caracteres (128 bits). Dos textos diferentes nunca producen el mismo hash (en la pr&#225;ctica), y cambiar un solo car&#225;cter del texto produce un hash completamente distinto.</p>
 
-      <h2>&#191;Para qu&#233; se usa MD5 hoy en d&#237;a?</h2>
-      <p>Aunque MD5 ya <strong>no se recomienda para seguridad criptogr&#225;fica</strong> (se han encontrado colisiones), sigue siendo muy &#250;til para verificar la integridad de archivos descargados, generar identificadores &#250;nicos no cr&#237;ticos, o hacer checksums r&#225;pidos de datos. Para almacenar contrase&#241;as usa bcrypt o Argon2.</p>
+<style>
+.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
+@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
+.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition: box-shadow .18s, transform .18s; }
+.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
+.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
+.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
+.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
+.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
+@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
+.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
+.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
+.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
+.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
+.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
+.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
+.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
+.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
+.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
+.htl-table { width:100%; border-collapse:collapse; background:#fff; }
+.htl-table thead { background:#1E293B; }
+.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
+.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
+.htl-table tbody tr:hover { background:#F8FAFF; }
+.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
+.htl-table td:first-child { font-weight:600; color:#0F172A; }
+.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
+.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
+.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
+.htl-badge--green { background:#F0FDF4; color:#15803D; }
+.htl-badge--amber { background:#FFFBEB; color:#B45309; }
+.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
+.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
+.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
+.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
+.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
+.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
+.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
+.htl-tip-box--cut  h4 { color:#C2410C; }
+.htl-tip-box--grow h4 { color:#15803D; }
+.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
+.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
+.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
+.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
+.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
+@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
+.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
+.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
+.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
+.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
+.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
+.htl-section-label svg { width:12px; height:12px; }
+.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+</style>
 
-      <h2>Comparativa de algoritmos de hash</h2>
-      <div class="ht-ref-table-wrap">
-        <table class="ht-ref-table">
-          <thead><tr><th>Algoritmo</th><th>Bits</th><th>Velocidad</th><th>Seguridad criptogr&#225;fica</th></tr></thead>
-          <tbody>
-            <tr><td>MD5</td><td>128</td><td>Muy r&#225;pido</td><td>&#10007; No recomendado</td></tr>
-            <tr><td>SHA-1</td><td>160</td><td>R&#225;pido</td><td>&#10007; Obsoleto</td></tr>
-            <tr><td>SHA-256</td><td>256</td><td>R&#225;pido</td><td>&#10003; Recomendado</td></tr>
-            <tr><td>SHA-512</td><td>512</td><td>Moderado</td><td>&#10003; Muy seguro</td></tr>
-            <tr><td>bcrypt</td><td>Variable</td><td>Lento (intencional)</td><td>&#10003; Para contrase&#241;as</td></tr>
-          </tbody>
-        </table>
-      </div>
+<!-- ══ INTRO ══ -->
+<h2>MD5: el hash que todos usan pero muy pocos entienden bien</h2>
+<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
+  Escribes &#171;hola&#187; y obtienes <code style="background:#F5F3FF;color:#7C3AED;padding:.1rem .4rem;border-radius:4px;font-size:.85rem">4d186321c1a7f0f354b297e8914ab240</code>. Siempre el mismo resultado, de forma instant&#225;nea, sin posibilidad de revertir el proceso. Eso es MD5 en esencia.
+</p>
+
+<div class="htl-intro">
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#F5F3FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="14" height="9" rx="2"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+    <h3>Qu&#233; es un hash MD5</h3>
+    <p>MD5 (Message-Digest Algorithm 5) es una funci&#243;n de hash que convierte cualquier texto en una cadena hexadecimal de exactamente <strong>32 caracteres (128 bits)</strong>. El proceso es unidireccional: a partir del hash no puedes recuperar el texto original. Cambiar una sola letra del texto de entrada produce un hash completamente diferente.</p>
+  </div>
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#EFF6FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
+    </div>
+    <h3>&#191;A&#250;n se usa MD5 en 2025?</h3>
+    <p>Para <strong>seguridad criptogr&#225;fica y contrase&#241;as</strong>, no. Se han encontrado colisiones (dos textos con el mismo hash), lo que lo hace inseguro. Pero para <strong>verificar integridad de archivos, generar checksums r&#225;pidos</strong> o crear identificadores no cr&#237;ticos, sigue siendo la opci&#243;n habitual por su velocidad y universalidad.</p>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ CÓMO USARLO ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Paso a paso
+</div>
+<h2>C&#243;mo generar un hash MD5 con esta herramienta</h2>
+
+<div class="htl-steps">
+  <div class="htl-step">
+    <div class="htl-step-num">1</div>
+    <div class="htl-step-body">
+      <h4>Escribe o pega el texto</h4>
+      <p>Introduce el texto que quieres hashear. El hash MD5 se calcula en el navegador, en tiempo real, sin enviar datos a ning&#250;n servidor.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">2</div>
+    <div class="htl-step-body">
+      <h4>Obt&#233;n el hash al instante</h4>
+      <p>El resultado de 32 caracteres aparece autom&#225;ticamente mientras escribes. Tambi&#233;n se muestran versiones SHA-1, SHA-256 y SHA-512 para comparar.</p>
+    </div>
+  </div>
+  <div class="htl-step">
+    <div class="htl-step-num">3</div>
+    <div class="htl-step-body">
+      <h4>Copia con un clic</h4>
+      <p>Usa el bot&#243;n de copia junto a cada algoritmo para llevarte el hash al portapapeles y usarlo donde lo necesites.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ USOS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+  Casos de uso
+</div>
+<h2>Cu&#225;ndo usar MD5 hoy en d&#237;a</h2>
+
+<div class="htl-uses">
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#7C3AED"></div>
+    <div>
+      <h4>Verificaci&#243;n de integridad</h4>
+      <p>Muchas distribuciones de software publican el MD5 del instalador. Genera el hash del archivo descargado y comp&#225;ralo para confirmar que no ha sido modificado en tr&#225;nsito.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#2563EB"></div>
+    <div>
+      <h4>Identificadores no cr&#237;ticos</h4>
+      <p>Cachear recursos web, generar claves de cach&#233; para APIs o crear nombres de archivo &#250;nicos a partir del contenido son usos habituales donde MD5 sigue siendo perfectamente v&#225;lido.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#0891B2"></div>
+    <div>
+      <h4>Checksums en bases de datos</h4>
+      <p>Detectar si un registro ha cambiado comparando el hash de sus campos es m&#225;s eficiente que comparar campo a campo, especialmente en tablas con muchas columnas de texto.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#16A34A"></div>
+    <div>
+      <h4>Gr&#225;vatars y avatares</h4>
+      <p>Gravatar usa el hash MD5 del email para generar la URL del avatar. <code style="font-size:.78rem;background:#f1f5f9;padding:.1rem .3rem;border-radius:3px">gravatar.com/avatar/{MD5}</code> es la URL resultante. Muchos CMS lo calculan autom&#225;ticamente.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#D97706"></div>
+    <div>
+      <h4>Comparaci&#243;n r&#225;pida de textos largos</h4>
+      <p>Si necesitas saber si dos documentos son id&#233;nticos sin leerlos completos, comparar sus hashes MD5 es la v&#237;a m&#225;s r&#225;pida. Mismo hash significa mismo contenido.</p>
+    </div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#E11D48"></div>
+    <div>
+      <h4>Aprendizaje y experimentaci&#243;n</h4>
+      <p>Para entender c&#243;mo funcionan los hashes criptogr&#225;ficos es &#250;til probar con textos reales. Observa c&#243;mo un espacio adicional produce un hash completamente distinto.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TABLA ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+  Referencia r&#225;pida
+</div>
+<h2>MD5 vs otros algoritmos de hash: gu&#237;a de elecci&#243;n</h2>
+
+<div class="htl-table-wrap">
+  <table class="htl-table">
+    <thead>
+      <tr>
+        <th>Algoritmo</th>
+        <th>Longitud del hash</th>
+        <th>Velocidad</th>
+        <th>&#191;Usar para seguridad?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>MD5</td>
+        <td><span class="htl-range">32 caracteres (128 bit)</span></td>
+        <td style="color:#64748B;font-size:.83rem">Muy r&#225;pido</td>
+        <td><span class="htl-badge htl-badge--red">No &#8212; hay colisiones</span></td>
+      </tr>
+      <tr>
+        <td>SHA-1</td>
+        <td><span class="htl-range">40 caracteres (160 bit)</span></td>
+        <td style="color:#64748B;font-size:.83rem">R&#225;pido</td>
+        <td><span class="htl-badge htl-badge--red">No &#8212; obsoleto</span></td>
+      </tr>
+      <tr>
+        <td>SHA-256</td>
+        <td><span class="htl-range">64 caracteres (256 bit)</span></td>
+        <td style="color:#64748B;font-size:.83rem">R&#225;pido</td>
+        <td><span class="htl-badge htl-badge--green">S&#237; &#8212; est&#225;ndar actual</span></td>
+      </tr>
+      <tr>
+        <td>SHA-512</td>
+        <td><span class="htl-range">128 caracteres (512 bit)</span></td>
+        <td style="color:#64748B;font-size:.83rem">Moderado</td>
+        <td><span class="htl-badge htl-badge--green">S&#237; &#8212; muy robusto</span></td>
+      </tr>
+      <tr>
+        <td>bcrypt / Argon2</td>
+        <td><span class="htl-range">Variable</span></td>
+        <td style="color:#64748B;font-size:.83rem">Lento (dise&#241;ado as&#237;)</td>
+        <td><span class="htl-badge htl-badge--blue">S&#237; &#8212; solo para contrase&#241;as</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ TIPS ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+  Consejos
+</div>
+<h2>Cu&#225;ndo usar MD5 y cu&#225;ndo evitarlo</h2>
+
+<div class="htl-tips">
+  <div class="htl-tip-box htl-tip-box--cut">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+      Nunca uses MD5 para esto
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Almacenar contrase&#241;as: usa bcrypt, Argon2 o scrypt; MD5 es reversible con tablas rainbow</li>
+      <li>Firmar documentos legales o transacciones financieras: las colisiones lo hacen inseguro</li>
+      <li>Tokens de autenticaci&#243;n o cookies de sesi&#243;n: un atacante puede forjar el valor</li>
+      <li>Certificados digitales: SHA-256 es el est&#225;ndar m&#237;nimo aceptado hoy en d&#237;a</li>
+    </ul>
+  </div>
+  <div class="htl-tip-box htl-tip-box--grow">
+    <h4>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+      Usos seguros y recomendados
+    </h4>
+    <ul class="htl-tip-list">
+      <li>Verificar que un archivo descargado no ha sido corrompido o alterado</li>
+      <li>Generar claves de cach&#233; o nombres de archivo &#250;nicos a partir del contenido</li>
+      <li>Checksums internos en bases de datos para detectar cambios en registros</li>
+      <li>Cuando necesitas velocidad m&#225;xima y la seguridad criptogr&#225;fica no es el requisito</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<!-- ══ WHY US ══ -->
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Por qu&#233; elegirnos
+</div>
+<h2>&#191;Por qu&#233; usar este generador MD5?</h2>
+
+<div class="htl-why">
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128274;</span>
+    <strong>100% privado</strong>
+    <span>El hash se calcula en tu navegador. Ning&#250;n texto sale hacia servidores externos.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9889;</span>
+    <strong>Tiempo real</strong>
+    <span>El hash se actualiza mientras escribes, letra a letra, sin bot&#243;n de calcular.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128202;</span>
+    <strong>4 algoritmos</strong>
+    <span>MD5, SHA-1, SHA-256 y SHA-512 en la misma pantalla para comparar.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128203;</span>
+    <strong>Copia individual</strong>
+    <span>Bot&#243;n de copia junto a cada algoritmo para llevar exactamente el que necesitas.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#128241;</span>
+    <strong>Funciona en m&#243;vil</strong>
+    <span>Genera hashes desde cualquier dispositivo sin instalaci&#243;n ni configuraci&#243;n.</span>
+  </div>
+  <div class="htl-why-item">
+    <span class="htl-why-icon">&#9745;&#65039;</span>
+    <strong>Sin registro</strong>
+    <span>Ni cuenta, ni email, ni formularios. Entra, genera y listo.</span>
+  </div>
+</div>
+
     </div>
 
     <section class="ht-related" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
-        <a href="/desarrollo-y-codificacion/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        <a href="/desarrollo-y-codificacion" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       </div>
       <div class="ht-related-grid">
         
