@@ -579,7 +579,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 
 /* Panel header */
 .ht-panel-header {
-  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  background: linear-gradient(135deg, var(--cat-color) 0%, var(--cat-color-2, var(--cat-color)) 100%);
   padding: 14px 18px 12px;
   color: #fff;
   display: flex;
@@ -1500,12 +1500,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 }
 .ht-dh-orb:nth-child(2) {
   width: 420px; height: 420px; top: -80px; right: -100px;
-  background: radial-gradient(circle, var(--cat-color), transparent 70%);
+  background: radial-gradient(circle, var(--cat-color-2, var(--cat-color)), transparent 70%);
   opacity: 0.18; animation-duration: 14s; animation-delay: -4s;
 }
 .ht-dh-orb:nth-child(3) {
   width: 360px; height: 360px; bottom: -120px; left: 40%;
-  background: radial-gradient(circle, var(--cat-color), transparent 70%);
+  background: radial-gradient(circle, var(--cat-color-3, var(--cat-color)), transparent 70%);
   opacity: 0.12; animation-duration: 9s; animation-delay: -2s;
 }
 
