@@ -26,6 +26,9 @@
   <meta name="twitter:description" content="Todas las herramientas de texto que necesitas, gratis y en español.">
   <meta name="twitter:image"       content="https://herramientasdetexto.com/assets/og-image.png">
 
+  <!-- Base dark override — antes de cualquier CSS externo -->
+  <style>html,body{background:#080b14!important;color:#e2e8f0!important;}</style>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -972,6 +975,124 @@
   }
   .logo__icon { animation: logo-glow 3s ease-in-out infinite; }
   </style>
+
+  <!-- ── Dark theme hard overrides (mayor especificidad que cualquier CSS externo) ── -->
+  <style>
+  /* Base */
+  html, body { background: #080b14 !important; color: #e2e8f0 !important; }
+
+  /* Header */
+  .header { background: rgba(8,11,20,0.85) !important; backdrop-filter: blur(20px) !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+  .header.scrolled { background: rgba(8,11,20,0.95) !important; box-shadow: 0 1px 40px rgba(0,0,0,0.7) !important; }
+
+  /* Logo */
+  .logo__text { color: #e2e8f0 !important; }
+  .logo__text span { color: #818cf8 !important; }
+
+  /* Nav */
+  .nav__link { color: #94a3b8 !important; }
+  .nav__link:hover { color: #ffffff !important; }
+  @media (max-width: 768px) { .nav { background: rgba(8,11,20,0.97) !important; } }
+
+  /* Hero */
+  .hero { background: transparent !important; }
+  .hero__subtitle { color: #94a3b8 !important; }
+  #heroWord { color: #a5b4fc !important; }
+  .hero__badge { background: rgba(99,102,241,0.15) !important; border-color: rgba(99,102,241,0.4) !important; color: #a5b4fc !important; }
+  .hero__badge-dot { background: #a5b4fc !important; }
+  .hero__pill { background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important; color: #94a3b8 !important; }
+  .hero__stat { color: #94a3b8 !important; }
+  .hero__stat strong { color: #e2e8f0 !important; }
+  .hero__stat-sep { color: #334155 !important; }
+
+  /* Search */
+  .search-box__input { background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.1) !important; color: #e2e8f0 !important; }
+  .search-box__input::placeholder { color: #475569 !important; }
+  .search-box__input:focus { background: rgba(99,102,241,0.08) !important; border-color: #6366f1 !important; box-shadow: 0 0 0 4px rgba(99,102,241,0.2), 0 4px 24px rgba(0,0,0,0.5) !important; }
+  .search-box__kbd { color: #475569 !important; border-color: rgba(255,255,255,0.08) !important; }
+
+  /* Secciones */
+  .section-title { color: #e2e8f0 !important; }
+  .section-subtitle { color: #475569 !important; }
+  .ad-banner { background: rgba(255,255,255,0.03) !important; border-color: rgba(255,255,255,0.06) !important; color: #334155 !important; }
+  .ad-label { color: #334155 !important; border-color: rgba(255,255,255,0.08) !important; }
+
+  /* Category cards */
+  .cat-card { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .cat-card:not([aria-disabled="true"]):hover { background: rgba(255,255,255,0.07) !important; border-color: rgba(99,102,241,0.5) !important; box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.18) !important; }
+  .cat-card__name { color: #e2e8f0 !important; }
+  .cat-card__desc { color: #94a3b8 !important; }
+  .cat-card__count { color: #818cf8 !important; }
+  .cat-card[aria-disabled="true"] .cat-card__count { color: #334155 !important; }
+
+  /* Popular groups */
+  .popular-group { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .popular-group:hover { border-color: rgba(99,102,241,0.2) !important; }
+  .popular-group__title { color: #94a3b8 !important; }
+  .popular-list a { color: #94a3b8 !important; }
+  .popular-list a:hover { color: #e2e8f0 !important; background: rgba(255,255,255,0.05) !important; }
+
+  /* Features */
+  .feature { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .feature:hover { border-color: rgba(99,102,241,0.5) !important; box-shadow: 0 4px 24px rgba(99,102,241,0.18) !important; }
+  .feature__title { color: #e2e8f0 !important; }
+  .feature__desc { color: #94a3b8 !important; }
+
+  /* SEO block / info */
+  .seo-block { background: rgba(99,102,241,0.03) !important; border-color: rgba(255,255,255,0.06) !important; }
+  .info-intro__text h2 { color: #e2e8f0 !important; }
+  .info-intro__text p { color: #94a3b8 !important; }
+  .info-stat { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .info-stat__lbl { color: #475569 !important; }
+  .info-section-label { color: #475569 !important; }
+  .info-section-label::after { background: rgba(255,255,255,0.07) !important; }
+
+  /* Persona cards */
+  .persona-card { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .persona-card:hover { border-color: rgba(99,102,241,0.3) !important; }
+  .persona-card h4 { color: #e2e8f0 !important; }
+  .persona-card p { color: #94a3b8 !important; }
+  .persona-card__icon { background: rgba(99,102,241,0.12) !important; color: #818cf8 !important; }
+
+  /* Popular links */
+  .popular-link { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; color: #94a3b8 !important; }
+  .popular-link:hover { color: #e2e8f0 !important; border-color: rgba(99,102,241,0.3) !important; background: rgba(255,255,255,0.07) !important; }
+  .popular-link svg { color: #818cf8 !important; }
+
+  /* FAQ */
+  .faq-home__header h2 { color: #e2e8f0 !important; }
+  .faq-home__header p { color: #94a3b8 !important; }
+  .faq-home__item { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; }
+  .faq-home__item.open { border-color: rgba(99,102,241,0.35) !important; }
+  .faq-home__btn { color: #e2e8f0 !important; }
+  .faq-home__btn:hover { color: #a5b4fc !important; }
+  .faq-home__arrow { color: #475569 !important; }
+  .faq-home__item.open .faq-home__arrow { color: #818cf8 !important; }
+  .faq-home__body p { color: #94a3b8 !important; }
+  .faq-home__body a { color: #818cf8 !important; }
+
+  /* Footer */
+  .footer { background: #0a0d16 !important; border-color: rgba(255,255,255,0.06) !important; }
+  .footer__desc { color: #475569 !important; }
+  .footer__col h4 { color: #334155 !important; }
+  .footer__col a { color: #64748b !important; }
+  .footer__col a:hover { color: #e2e8f0 !important; }
+  .footer__bottom { border-color: rgba(255,255,255,0.05) !important; }
+  .footer__bottom p { color: #334155 !important; }
+  .footer__legal-links a { color: #334155 !important; }
+  .footer__legal-links a:hover { color: #64748b !important; }
+
+  /* Blobs — más visibles sobre oscuro */
+  .bg-ambient__blob--1 { opacity: 0.2 !important; }
+  .bg-ambient__blob--2 { opacity: 0.15 !important; }
+  .bg-ambient__blob--3 { opacity: 0.1 !important; }
+  .blob-cats     { opacity: 0.3 !important; }
+  .blob-features { opacity: 0.3 !important; }
+
+  /* Btn icon */
+  .btn-icon { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.08) !important; color: #94a3b8 !important; }
+  .btn-icon:hover { color: #e2e8f0 !important; background: rgba(255,255,255,0.08) !important; border-color: rgba(99,102,241,0.4) !important; }
+  </style>
 </head>
 
 <body>
@@ -1710,10 +1831,6 @@
 
     function frame() {
       ctx.clearRect(0, 0, W, H);
-      var dark = document.documentElement.getAttribute('data-theme') !== 'light';
-      var dotA  = dark ? 0.5 : 0.3;
-      var lineA = dark ? 0.18 : 0.1;
-
       for (var i = 0; i < pts.length; i++) {
         var p = pts[i];
         p.x += p.vx; p.y += p.vy;
@@ -1721,11 +1838,11 @@
         if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 6.2832);
-        ctx.fillStyle = 'rgba(129,140,248,' + dotA + ')';
+        ctx.fillStyle = 'rgba(139,92,246,0.6)';
         ctx.fill();
       }
 
-      ctx.lineWidth = 0.7;
+      ctx.lineWidth = 0.8;
       for (var i = 0; i < pts.length - 1; i++) {
         for (var j = i + 1; j < pts.length; j++) {
           var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
@@ -1734,7 +1851,7 @@
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = 'rgba(99,102,241,' + ((1 - d / MAX_DIST) * lineA).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(139,92,246,' + ((1 - d / MAX_DIST) * 0.25).toFixed(3) + ')';
             ctx.stroke();
           }
         }
