@@ -28,11 +28,11 @@ jobs:
           local    = Path('.')
           remote   = '/domains/herramientasdetexto.com/public_html'
 
-          EXCLUDE_DIRS  = {'.git', '.claude', 'ai', 'node_modules', 'templates'}
-          EXCLUDE_FILES = {'CATEGORIAS-Y-HERRAMIENTAS.md', 'PROYECTO.md'}
-          EXCLUDE_GLOBS = {'fix_*.js', 'check_*.js', 'update_*.js', '*.js.bak'}
+          EXCLUDE_DIRS  = {'.git', '.github', '.claude', 'ai', 'node_modules', 'templates'}
+          EXCLUDE_FILES = {'CATEGORIAS-Y-HERRAMIENTAS.md', 'PROYECTO.md', 'URLS.md'}
+          EXCLUDE_GLOBS = {'fix_*.js', 'check_*.js', 'update_*.js', '_patch_*.js', '*.js.bak'}
 
-          import fnmatch
+          import fnmatch, time
           def skip(rel):
               parts = rel.parts
               if any(p in EXCLUDE_DIRS for p in parts): return True
@@ -41,14 +41,18 @@ jobs:
               if any(fnmatch.fnmatch(name, g) for g in EXCLUDE_GLOBS): return True
               return False
 
-          ftp = ftplib.FTP()
-          ftp.connect(server, 21, timeout=60)
-          ftp.login(user, password)
-          ftp.set_pasv(True)
+          def connect():
+              f = ftplib.FTP()
+              f.connect(server, 21, timeout=90)
+              f.login(user, password)
+              f.set_pasv(True)
+              return f
+
+          ftp = connect()
           print(f"Connected to {server}")
 
           made_dirs = set()
-          def ensure_dir(path):
+          def ensure_dir(ftp, path):
               if path in made_dirs: return
               parts = path.split('/')
               for i in range(2, len(parts)+1):
@@ -58,6 +62,20 @@ jobs:
                       except: pass
                       made_dirs.add(d)
 
+          def upload(ftp, f, rpath, retries=3):
+              for attempt in range(retries):
+                  try:
+                      with open(f, 'rb') as fh:
+                          ftp.storbinary('STOR ' + rpath, fh)
+                      return True, ftp
+                  except ftplib.all_errors as e:
+                      print(f'  RETRY {attempt+1}/{retries} {f.name}: {e}', file=sys.stderr)
+                      time.sleep(2)
+                      try: ftp.quit()
+                      except: pass
+                      ftp = connect()
+              return False, ftp
+
           files = sorted(p for p in local.rglob('*') if p.is_file())
           ok = err = 0
           for f in files:
@@ -65,17 +83,17 @@ jobs:
               if skip(rel): continue
               rpath = remote + '/' + rel.as_posix()
               rfolder = rpath.rsplit('/', 1)[0]
-              ensure_dir(rfolder)
-              try:
-                  with open(f, 'rb') as fh:
-                      ftp.storbinary('STOR ' + rpath, fh)
+              ensure_dir(ftp, rfolder)
+              success, ftp = upload(ftp, f, rpath)
+              if success:
                   print(f'  OK  {rel}')
                   ok += 1
-              except Exception as e:
-                  print(f'  ERR {rel}: {e}', file=sys.stderr)
+              else:
+                  print(f'  ERR {rel}', file=sys.stderr)
                   err += 1
 
-          ftp.quit()
+          try: ftp.quit()
+          except: pass
           print(f"\nDone: {ok} uploaded, {err} errors")
           sys.exit(1 if err > 0 else 0)
           PYEOF
