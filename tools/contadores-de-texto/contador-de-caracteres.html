@@ -127,20 +127,14 @@
   </div>
 </header>
 
-<div class="ht-wrap">
 
-  <!-- Breadcrumb -->
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/contadores-de-texto/">Contadores de texto</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Contador de caracteres</span>
-  </nav>
-
-  <!-- Hero -->
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
@@ -162,7 +156,19 @@
         </span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <!-- Breadcrumb -->
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/contadores-de-texto/">Contadores de texto</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Contador de caracteres</span>
+  </nav>
 
   <!-- Ad Banner -->
   <div class="ht-ad-banner" aria-hidden="true">
@@ -333,7 +339,7 @@
     </div><!-- /.ht-tool-layout -->
 
     <!-- Tip block -->
-    <div class="ht-tip" role="note">
+    <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div>
         <strong>Consejo SEO:</strong> el Meta title ideal tiene entre <strong>50 y 60 caracteres</strong>; la Meta description entre <strong>120 y 155 caracteres</strong>. Superar esos l&#237;mites hace que Google lo trunque en los resultados de b&#250;squeda.
@@ -341,7 +347,7 @@
     </div>
 
     <!-- Info grid 2x2 -->
-    <div class="ht-info-grid-section">
+    <div class="ht-info-grid-section reveal">
       <div class="ht-info-grid-header">
         <div class="ht-info-grid-header-icon" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
@@ -392,12 +398,12 @@
     </div>
 
     <!-- Ad mid -->
-    <div class="ht-ad-mid" aria-hidden="true">
+    <div class="ht-ad-mid reveal" aria-hidden="true">
       Publicidad &#183; 336&#215;280
     </div>
 
     <!-- Long SEO text -->
-    <div class="ht-long">
+    <div class="ht-long reveal">
       <h2 id="que-es">Contador de caracteres online: cu&#233;ntalos todos al instante</h2>
       <p>El <strong>contador de caracteres online</strong> analiza tu texto al instante y te devuelve el total de caracteres con espacios, sin espacios, el n&#250;mero de palabras y el de espacios. Adem&#225;s, incluye barras de progreso para los <strong>l&#237;mites de las plataformas m&#225;s populares</strong>: Twitter/X, Meta title, Meta description y SMS.</p>
 
@@ -427,7 +433,7 @@
     </div>
 
     <!-- Related tools -->
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/contadores-de-texto/" class="ht-section-link">
@@ -460,7 +466,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
@@ -629,5 +635,15 @@
 }());
 </script>
 
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

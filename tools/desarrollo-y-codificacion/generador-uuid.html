@@ -879,20 +879,14 @@ a:hover { text-decoration: underline; }
 <!-- ══════════════════════════════════════════════════════════════
      MAIN WRAP
 ══════════════════════════════════════════════════════════════ -->
-<div class="ht-wrap">
 
-  <!-- Breadcrumb -->
-  <nav class="ht-bc" aria-label="Ruta de navegación">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">›</span>
-    <a href="/desarrollo-y-codificacion/">Desarrollo y codificación</a>
-    <span class="ht-bc-sep" aria-hidden="true">›</span>
-    <span aria-current="page">Generador de UUID</span>
-  </nav>
-
-  <!-- Hero -->
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
           <rect x="2" y="2" width="12" height="12" rx="2"/>
@@ -927,7 +921,19 @@ a:hover { text-decoration: underline; }
         </span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <!-- Breadcrumb -->
+  <nav class="ht-bc" aria-label="Ruta de navegación">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">›</span>
+    <a href="/desarrollo-y-codificacion/">Desarrollo y codificación</a>
+    <span class="ht-bc-sep" aria-hidden="true">›</span>
+    <span aria-current="page">Generador de UUID</span>
+  </nav>
 
   <!-- Ad banner placeholder -->
   <div class="ht-ad-banner" aria-hidden="true">
@@ -1111,12 +1117,12 @@ a:hover { text-decoration: underline; }
     </div>
 
     <!-- Ad mid -->
-    <div class="ht-ad-mid" aria-hidden="true">Publicidad · 336×280</div>
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad · 336×280</div>
 
     <!-- ═══════════════════════════════════════════════════════════
          LONG-FORM SEO CONTENT (~700 words)
     ════════════════════════════════════════════════════════════ -->
-    <div class="ht-long">
+    <div class="ht-long reveal">
 
       <h2>¿Qué es un UUID y para qué sirve?</h2>
       <p>
@@ -1264,7 +1270,7 @@ a:hover { text-decoration: underline; }
     </div><!-- /.ht-long -->
 
     <!-- FAQ -->
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <h2 class="ht-faq-title" id="faq-title">Preguntas frecuentes sobre UUID</h2>
       <div class="ht-faq-list">
 
@@ -1322,7 +1328,7 @@ a:hover { text-decoration: underline; }
     </section><!-- /.ht-faq -->
 
     <!-- Related tools -->
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/desarrollo-y-codificacion/" class="ht-section-link">
@@ -1666,5 +1672,15 @@ a:hover { text-decoration: underline; }
 }());
 </script>
 
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

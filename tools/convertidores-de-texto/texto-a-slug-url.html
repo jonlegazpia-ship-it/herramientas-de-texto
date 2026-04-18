@@ -105,18 +105,14 @@
   </div>
 </header>
 
-<div class="ht-wrap">
 
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/convertidores-de-texto/">Convertidores de texto</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Convertidor a Slug URL</span>
-  </nav>
-
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="5" width="12" height="6" rx="3"/><line x1="5" y1="8" x2="11" y2="8"/></svg>
         Convertidores de texto
@@ -130,7 +126,18 @@
         <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/convertidores-de-texto/">Convertidores de texto</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Convertidor a Slug URL</span>
+  </nav>
 
   <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
 
@@ -196,12 +203,12 @@
 
     </div>
 
-    <div class="ht-tip" role="note">
+    <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div><strong>Regla de oro para slugs SEO:</strong> mant&#233;n los slugs entre <strong>3 y 5 palabras clave</strong>. M&#225;s corto es mejor: &#8220;contador-de-palabras&#8221; posiciona igual que &#8220;contador-de-palabras-online-gratis-en-espanol&#8221; pero es m&#225;s limpio y f&#225;cil de recordar.</div>
     </div>
 
-    <div class="ht-info-grid-section">
+    <div class="ht-info-grid-section reveal">
       <div class="ht-info-grid-header">
         <div class="ht-info-grid-header-icon" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="12" height="6" rx="3"/><line x1="5" y1="8" x2="11" y2="8"/></svg>
@@ -248,9 +255,9 @@
       </div>
     </div>
 
-    <div class="ht-ad-mid" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
 
-    <div class="ht-long">
+    <div class="ht-long reveal">
       <h2 id="que-es">Generador de slugs URL: crea URLs SEO-friendly al instante</h2>
       <p>El <strong>conversor de texto a slug</strong> transforma cualquier t&#237;tulo en una URL amigable siguiendo las mejores pr&#225;cticas SEO. Elimina autom&#225;ticamente tildes (&#225;&#233;&#237;&#243;&#250; &#8594; aeiou), convierte espacios en guiones, pasa todo a min&#250;sculas y elimina caracteres especiales como &#8216;&#8217;!&#63;&#64;# que no son v&#225;lidos en URLs. Todo en tiempo real, directamente en tu navegador.</p>
 
@@ -267,7 +274,7 @@
       <p>Escribe el t&#237;tulo de tu art&#237;culo o p&#225;gina en el campo de entrada, copia el slug generado y p&#233;galo en el campo &#8220;Permalink&#8221; de tu editor WordPress. Tambi&#233;n es &#250;til para generar slugs en Webflow, Ghost, Shopify y cualquier CMS.</p>
     </div>
 
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/seo-tools-de-texto/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
@@ -294,7 +301,7 @@
       </div>
     </section>
 
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
@@ -384,6 +391,16 @@
 
   analyze();
 }());
+</script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>

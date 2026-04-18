@@ -68,15 +68,14 @@
   </div>
 </header>
 
-<div class="ht-wrap">
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/redes-sociales">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Contador Twitter/X</span>
-  </nav>
 
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg>
         Redes sociales
@@ -89,7 +88,15 @@
         <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Contador URLs</span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/redes-sociales">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Contador Twitter/X</span>
+  </nav>
 
   <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
 
@@ -177,7 +184,7 @@
       </aside>
     </div>
 
-    <div class="ht-long">
+    <div class="ht-long reveal">
 
 <style>
 .htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
@@ -493,7 +500,7 @@
 
     </div>
 
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/redes-sociales/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
@@ -576,6 +583,16 @@
   txt.addEventListener('input', run);
   run();
 }());
+</script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>

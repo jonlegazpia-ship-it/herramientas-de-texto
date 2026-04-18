@@ -123,21 +123,14 @@
   </div>
 </header>
 
-<!-- ── MAIN WRAP ── -->
-<div class="ht-wrap">
 
-  <!-- Breadcrumb -->
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/contadores-de-texto/">Contadores de texto</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Contador de palabras</span>
-  </nav>
-
-  <!-- Hero -->
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
@@ -163,7 +156,20 @@
         </span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<!-- ── MAIN WRAP ── -->
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <!-- Breadcrumb -->
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/contadores-de-texto/">Contadores de texto</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Contador de palabras</span>
+  </nav>
 
   <!-- Ad Banner -->
   <div class="ht-ad-banner" aria-hidden="true">
@@ -304,7 +310,7 @@
     </div><!-- /.ht-tool-layout -->
 
     <!-- Tip block -->
-    <div class="ht-tip" role="note">
+    <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div>
         <strong>Referencia r&#225;pida:</strong> 1.000 palabras &#61; <strong>&#8776; 4 min 27 s de lectura</strong> y <strong>&#8776; 7 min 8 s hablando</strong> en voz alta. &#191;Necesitas ajustar la velocidad? Usa nuestra herramienta de tiempo de lectura personalizable.
@@ -312,7 +318,7 @@
     </div>
 
     <!-- Info grid 2x2 -->
-    <div class="ht-info-grid-section">
+    <div class="ht-info-grid-section reveal">
       <div class="ht-info-grid-header">
         <div class="ht-info-grid-header-icon" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
@@ -369,11 +375,11 @@
     </div>
 
     <!-- Ad mid -->
-    <div class="ht-ad-mid" aria-hidden="true">
+    <div class="ht-ad-mid reveal" aria-hidden="true">
       Publicidad &#183; 336&#215;280
     </div>
 
-    <div class="ht-long">
+    <div class="ht-long reveal">
 
 <style>
 /* ── Visual enhancements scoped to .ht-long and .ht-faq ── */
@@ -815,7 +821,7 @@
     </div>
 
     <!-- Related tools -->
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/contadores-de-texto/" class="ht-section-link">
@@ -848,7 +854,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
@@ -1019,5 +1025,15 @@
 }());
 </script>
 
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

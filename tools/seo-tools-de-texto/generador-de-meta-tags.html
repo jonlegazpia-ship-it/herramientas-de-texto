@@ -148,18 +148,14 @@
   </div>
 </header>
 
-<div class="ht-wrap">
 
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/seo-tools-de-texto/">SEO tools</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Generador de Meta Tags</span>
-  </nav>
-
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         SEO tools de texto
@@ -173,7 +169,18 @@
         <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/seo-tools-de-texto/">SEO tools</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Generador de Meta Tags</span>
+  </nav>
 
   <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
 
@@ -311,12 +318,12 @@
 
     </div>
 
-    <div class="ht-tip" role="note">
+    <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div><strong>Consejo Pro:</strong> La imagen Open Graph ideal mide <strong>1200×630 píxeles</strong> y pesa menos de 1 MB. Facebook la recorta a 600×314 en el feed móvil, así que coloca el elemento principal en el centro.</div>
     </div>
 
-    <div class="ht-info-grid-section">
+    <div class="ht-info-grid-section reveal">
       <div class="ht-info-grid-header">
         <div class="ht-info-grid-header-icon" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
@@ -363,9 +370,9 @@
       </div>
     </div>
 
-    <div class="ht-ad-mid" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
 
-    <div class="ht-long">
+    <div class="ht-long reveal">
       <h2 id="que-son">Generador de meta tags: todo el c&#243;digo SEO en segundos</h2>
       <p>El <strong>generador de meta tags online</strong> crea autom&#225;ticamente el bloque HTML completo que necesitas para optimizar cualquier p&#225;gina web. En lugar de escribir manualmente cada etiqueta y recordar la sintaxis exacta, rellenas un formulario y obtienes el c&#243;digo listo para copiar y pegar. Incluye las meta tags b&#225;sicas de SEO, las etiquetas Open Graph para Facebook, LinkedIn e Instagram, y las Twitter Cards para una vista previa perfecta en Twitter/X.</p>
 
@@ -389,7 +396,7 @@
       </ul>
     </div>
 
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/seo-tools-de-texto/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
@@ -411,7 +418,7 @@
       </div>
     </section>
 
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
@@ -571,6 +578,16 @@
 
   generate();
 }());
+</script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>

@@ -105,18 +105,14 @@
   </div>
 </header>
 
-<div class="ht-wrap">
 
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/convertidores-de-texto/">Convertidores de texto</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Convertidor a Min&#250;sculas</span>
-  </nav>
-
-  <header class="ht-hero">
-    <div class="ht-hero-left">
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+<div class="ht-hero-left">
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 5 L8 13 L13 5"/><line x1="5" y1="9" x2="11" y2="9"/></svg>
         Convertidores de texto
@@ -130,7 +126,18 @@
         <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Con tildes</span>
       </div>
     </div>
-  </header>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <a href="/convertidores-de-texto/">Convertidores de texto</a>
+    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+    <span aria-current="page">Convertidor a Min&#250;sculas</span>
+  </nav>
 
   <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
 
@@ -191,12 +198,12 @@
 
     </div>
 
-    <div class="ht-tip" role="note">
+    <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div><strong>Consejo:</strong> Cuando pegues texto de un PDF o Word con mayúsculas aleatorias, usa primero este conversor y luego Limpiar texto de Word para eliminar tambi&#233;n caracteres especiales no deseados.</div>
     </div>
 
-    <div class="ht-info-grid-section">
+    <div class="ht-info-grid-section reveal">
       <div class="ht-info-grid-header">
         <div class="ht-info-grid-header-icon" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5 L8 13 L13 5"/><line x1="5" y1="9" x2="11" y2="9"/></svg>
@@ -243,9 +250,9 @@
       </div>
     </div>
 
-    <div class="ht-ad-mid" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
 
-    <div class="ht-long">
+    <div class="ht-long reveal">
       <h2 id="que-es">Conversor de texto a min&#250;sculas: normaliza cualquier texto al instante</h2>
       <p>El <strong>conversor de texto a min&#250;sculas online</strong> transforma instant&#225;neamente todas las letras may&#250;sculas en min&#250;sculas. Es una herramienta indispensable cuando recibes texto con formato incorrecto: documentos escaneados con OCR, copias de PDFs, datos exportados de bases de datos, o simplemente texto escrito con la tecla BloqMay&#250;s activada. Todo el procesamiento ocurre en tu navegador: <strong>tu texto nunca se env&#237;a a ning&#250;n servidor</strong>.</p>
 
@@ -263,7 +270,7 @@
       <p>Convertir a min&#250;sculas es s&#243;lo un paso de normalizaci&#243;n. Si adem&#225;s necesitas eliminar tildes (para slugs SEO), usa el <a href="/convertidores-de-texto/texto-a-slug-url/">conversor a slug</a> que aplica <code>toLowerCase</code> + elimina diacr&#237;ticos + reemplaza espacios por guiones. Para limpiar caracteres especiales de Word, usa Limpiar texto de Word.</p>
     </div>
 
-    <section class="ht-related" aria-labelledby="related-title">
+    <section class="ht-related reveal" aria-labelledby="related-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
         <a href="/convertidores-de-texto/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
@@ -289,7 +296,7 @@
       </div>
     </section>
 
-    <section class="ht-faq" aria-labelledby="faq-title">
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
       <div class="ht-section-header">
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
@@ -365,6 +372,16 @@
 
   analyze();
 }());
+</script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>
