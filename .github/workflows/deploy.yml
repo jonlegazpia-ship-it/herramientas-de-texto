@@ -12,28 +12,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /domains/herramientasdetexto.com/public_html/
-          port: 21
-          security: loose
-          timeout: 300000
-          log-level: standard
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/ai/**
-            **/.claude/**
-            **/node_modules/**
-            **/CATEGORIAS-Y-HERRAMIENTAS.md
-            **/PROYECTO.md
-            **/templates/**
-            fix_*.js
-            check_*.js
-            update_*.js
-            fix_*.js.bak
+        run: |
+          lftp -u "${{ secrets.FTP_USER }}","${{ secrets.FTP_PASSWORD }}" \
+            -e "
+              set ftp:ssl-allow no;
+              set net:timeout 60;
+              set net:max-retries 5;
+              set net:reconnect-interval-base 5;
+              mirror -R --delete --parallel=4 \
+                --exclude-glob .git/ \
+                --exclude-glob .git \
+                --exclude-glob .claude/ \
+                --exclude-glob ai/ \
+                --exclude-glob node_modules/ \
+                --exclude-glob templates/ \
+                --exclude-glob CATEGORIAS-Y-HERRAMIENTAS.md \
+                --exclude-glob PROYECTO.md \
+                --exclude-glob fix_*.js \
+                --exclude-glob check_*.js \
+                --exclude-glob update_*.js \
+                ./ /domains/herramientasdetexto.com/public_html/;
+              quit
+            " \
+            ${{ secrets.FTP_SERVER }}
