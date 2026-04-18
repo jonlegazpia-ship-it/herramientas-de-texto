@@ -14,59 +14,709 @@
 <meta property="og:site_name" content="HerramientasDeTexto.com">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+
 <style>
-  :root { --cat-color: #C2185B; --cat-bg: #FFF0F6; --cat-border: #FBCFE8; }
+/* ── Page tokens ── */
+:root {
+  --ig-1: #833AB4;
+  --ig-2: #C13584;
+  --ig-3: #E1306C;
+  --ig-4: #F56040;
+  --ig-5: #FFDC80;
+  --cat-color:  #C13584;
+  --cat-bg:     #FDF2F8;
+  --cat-border: #F5D0EA;
+}
 
-  .ht-field-group { margin-bottom: .9rem; }
-  .ht-field-group label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; color: #1e293b; }
-  .ht-field-group input, .ht-field-group select {
-    width: 100%; box-sizing: border-box; border: 1.5px solid #e2e8f0;
-    border-radius: 8px; padding: .55rem .85rem; font-size: .9rem; font-family: inherit;
-    transition: border-color .15s; background: #fff;
-  }
-  .ht-field-group input:focus, .ht-field-group select:focus { outline: none; border-color: var(--cat-color); }
-  .ht-field-hint { font-size: .75rem; color: #94a3b8; margin-top: .2rem; }
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.bio-hero {
+  position: relative;
+  background: #0d0d14;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 64px) 24px 72px;
+  text-align: center;
+}
 
-  /* Emoji selector */
-  .ht-emoji-row { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
-  .ht-emoji-opt { font-size: 1.1rem; cursor: pointer; padding: .2rem .3rem; border-radius: 6px; border: 1.5px solid transparent; transition: border-color .12s, background .12s; }
-  .ht-emoji-opt:hover  { background: var(--cat-bg); border-color: var(--cat-border); }
-  .ht-emoji-opt.active { background: var(--cat-bg); border-color: var(--cat-color); }
+/* animated gradient orbs */
+.bio-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+.bio-hero-orb:nth-child(1) { width:480px;height:480px;top:-120px;left:-80px;  background:radial-gradient(circle,#833ab4,transparent 70%); animation-duration:11s; }
+.bio-hero-orb:nth-child(2) { width:420px;height:420px;top:-60px; right:-100px; background:radial-gradient(circle,#e1306c,transparent 70%); animation-duration:14s;animation-delay:-4s; }
+.bio-hero-orb:nth-child(3) { width:360px;height:360px;bottom:-100px;left:30%;  background:radial-gradient(circle,#f56040,transparent 70%); animation-duration:9s; animation-delay:-2s; }
 
-  /* Progress bar */
-  .bio-progress { height: 6px; border-radius: 999px; background: #f1f5f9; margin: .5rem 0 .25rem; overflow: hidden; }
-  .bio-progress-bar { height: 100%; border-radius: 999px; background: var(--cat-color); transition: width .15s, background .15s; }
+@keyframes orbFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(30px,20px) scale(1.1); }
+}
 
-  /* IG profile preview */
-  .ig-profile-preview {
-    background: #fff; border: 1.5px solid #e2e8f0; border-radius: 16px;
-    overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  .ig-profile-header { background: #fafafa; border-bottom: 1px solid #f0f0f0; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem; }
-  .ig-profile-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #f9a825, #e91e63, #9c27b0); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.1rem; }
-  .ig-profile-meta { flex: 1; }
-  .ig-profile-username { font-weight: 700; font-size: .95rem; color: #0f172a; }
-  .ig-profile-stats { display: flex; gap: 1rem; font-size: .75rem; color: #64748b; margin-top: .2rem; }
-  .ig-profile-stats span b { color: #0f172a; }
-  .ig-profile-body { padding: 1rem 1.25rem; }
-  .ig-profile-name { font-weight: 700; font-size: .92rem; color: #0f172a; margin-bottom: .25rem; }
-  .ig-profile-bio { font-size: .88rem; color: #0f172a; line-height: 1.55; white-space: pre-wrap; word-break: break-word; min-height: 2.5rem; }
-  .ig-profile-bio .ig-link { color: #0066cc; }
-  .ig-profile-bio .ig-placeholder { color: #94a3b8; }
-  .ig-profile-link { font-size: .85rem; color: #0066cc; margin-top: .35rem; }
+.bio-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
 
-  /* Bio templates */
-  .ht-tpl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1rem; }
-  @media (max-width: 500px) { .ht-tpl-grid { grid-template-columns: 1fr; } }
-  .ht-tpl-btn { padding: .5rem .75rem; border: 1.5px solid var(--cat-border); border-radius: 8px; background: transparent; font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--cat-color); text-align: left; transition: background .12s; }
-  .ht-tpl-btn:hover { background: var(--cat-bg); }
-  .ht-tpl-btn.active { background: var(--cat-color); color: #fff; border-color: var(--cat-color); }
+.bio-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.7);
+  backdrop-filter: blur(8px);
+  margin-bottom: 24px;
+  animation: fadeSlideUp .6s var(--ease) both;
+}
+.bio-hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: linear-gradient(135deg,#e1306c,#f56040);
+}
 
-  .ht-char-status { font-size: .8rem; font-weight: 700; }
-  .ht-char-status.ok   { color: #15803d; }
-  .ht-char-status.warn { color: #d97706; }
-  .ht-char-status.bad  { color: #dc2626; }
+.bio-hero-h1 {
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+  animation: fadeSlideUp .7s .1s var(--ease) both;
+}
+
+.bio-hero-h1 .bio-grad {
+  background: linear-gradient(90deg,#c13584,#e1306c,#f56040);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bio-hero-sub {
+  font-size: clamp(15px,2vw,18px);
+  color: rgba(255,255,255,.55);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+  animation: fadeSlideUp .7s .2s var(--ease) both;
+}
+
+.bio-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  animation: fadeSlideUp .7s .3s var(--ease) both;
+}
+.bio-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.bio-hero-pill svg { width:11px;height:11px;color:#4ade80; }
+
+/* ══════════════════════════════════════════
+   TOOL SECTION
+══════════════════════════════════════════ */
+.bio-tool-section {
+  background: #f8f8fb;
+  padding: 48px 24px 64px;
+}
+
+.bio-tool-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .bio-tool-wrap { grid-template-columns: 1fr; }
+}
+
+/* Glass card */
+.bio-card {
+  background: #fff;
+  border: 1px solid #e8e8f0;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04), 0 8px 32px rgba(0,0,0,.04);
+  overflow: hidden;
+  transition: box-shadow .25s var(--ease);
+}
+.bio-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.06), 0 16px 48px rgba(0,0,0,.07); }
+
+.bio-card-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid #f0f0f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bio-card-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -.1px;
+}
+.bio-card-title svg { width:16px;height:16px;color:var(--cat-color); }
+
+.bio-card-body { padding: 22px; }
+
+/* ── Template selector ── */
+.bio-tpl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.bio-tpl-btn {
+  padding: 10px 12px;
+  border: 1.5px solid #e4e4ec;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #52525b;
+  text-align: left;
+  transition: all .18s var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bio-tpl-btn:hover { border-color: var(--cat-border); background: var(--cat-bg); color: var(--cat-color); }
+.bio-tpl-btn.active { background: var(--cat-color); color: #fff; border-color: var(--cat-color); box-shadow: 0 4px 12px rgba(193,53,132,.25); }
+
+/* ── Fields ── */
+.bio-field { margin-bottom: 14px; }
+.bio-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 5px;
+  letter-spacing: .01em;
+}
+.bio-field label .opt { font-weight: 400; color: #9ca3af; }
+.bio-field input {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #0f172a;
+  background: #fafafa;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+  outline: none;
+}
+.bio-field input:focus {
+  border-color: var(--cat-color);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(193,53,132,.1);
+}
+.bio-field-hint { font-size: 11.5px; color: #9ca3af; margin-top: 4px; }
+
+/* ── Emoji picker ── */
+.bio-emoji-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.bio-emoji-opt {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  transition: all .12s;
+  line-height: 1;
+}
+.bio-emoji-opt:hover  { background: var(--cat-bg); border-color: var(--cat-border); }
+.bio-emoji-opt.active { background: var(--cat-bg); border-color: var(--cat-color); }
+.bio-emoji-none {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 9px;
+  color: #64748b;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all .12s;
+}
+.bio-emoji-none.active { background: var(--cat-bg); border-color: var(--cat-color); color: var(--cat-color); }
+
+/* ── Toolbar ── */
+.bio-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+.bio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all .18s var(--ease);
+}
+.bio-btn--primary {
+  background: linear-gradient(135deg, var(--ig-1), var(--ig-3));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(193,53,132,.3);
+}
+.bio-btn--primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(193,53,132,.4); }
+.bio-btn--ghost {
+  background: #f1f5f9;
+  color: #64748b;
+}
+.bio-btn--ghost:hover { background: #fee2e2; color: #dc2626; }
+.bio-btn svg { width:14px;height:14px; }
+
+/* ══════════════════════════════════════════
+   INSTAGRAM PREVIEW (right column)
+══════════════════════════════════════════ */
+.ig-mock {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e8e8f0;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04), 0 8px 32px rgba(0,0,0,.04);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.ig-mock-bar {
+  padding: 10px 16px;
+  border-bottom: 1px solid #efefef;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ig-mock-dot { width:7px;height:7px;border-radius:50%; }
+
+.ig-mock-profile {
+  padding: 20px;
+}
+
+.ig-mock-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+.ig-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #f9a825, #e91e63, #9c27b0);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: 1.4rem; flex-shrink: 0;
+  position: relative;
+}
+.ig-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#f9a825,#e91e63,#9c27b0);
+  z-index: -1;
+}
+
+.ig-stats { display: flex; gap: 20px; }
+.ig-stat { text-align: center; }
+.ig-stat-num { font-weight: 700; font-size: 15px; color: #0f172a; }
+.ig-stat-label { font-size: 11px; color: #737373; }
+
+.ig-mock-name { font-weight: 700; font-size: 13px; color: #0f172a; margin-bottom: 4px; }
+.ig-mock-username { font-size: 13px; color: #0f172a; margin-bottom: 10px; }
+.ig-mock-bio {
+  font-size: 13px; color: #0f172a; line-height: 1.6;
+  white-space: pre-wrap; word-break: break-word; min-height: 40px;
+}
+.ig-mock-bio .ig-placeholder { color: #c0c0c0; font-style: italic; }
+.ig-mock-link { font-size: 12px; color: #0066cc; margin-top: 6px; }
+
+.ig-mock-btns {
+  display: flex; gap: 6px; margin-top: 14px;
+}
+.ig-mock-btn {
+  flex: 1; padding: 7px; border-radius: 8px;
+  font-size: 12px; font-weight: 700; text-align: center;
+  background: #efefef; color: #0f172a; cursor: default;
+}
+.ig-mock-btn--primary { background: #3897f0; color: #fff; }
+
+/* ── Progress + stats below preview ── */
+.bio-prog-wrap {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #e8e8f0;
+  border-radius: 16px;
+}
+
+.bio-prog-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.bio-prog-label { font-size: 12px; font-weight: 600; color: #64748b; }
+.bio-char-status { font-size: 13px; font-weight: 700; }
+.bio-char-status.ok   { color: #16a34a; }
+.bio-char-status.warn { color: #d97706; }
+.bio-char-status.bad  { color: #dc2626; }
+
+.bio-progress {
+  height: 5px; border-radius: 99px;
+  background: #f1f5f9; overflow: hidden; margin-bottom: 6px;
+}
+.bio-progress-bar {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg,var(--ig-1),var(--ig-3));
+  transition: width .2s var(--ease);
+}
+.bio-prog-hint { font-size: 11.5px; color: #94a3b8; }
+
+.bio-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+.bio-stat-box {
+  background: #f8f8fb;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+.bio-stat-num { font-size: 22px; font-weight: 800; color: var(--cat-color); line-height: 1; margin-bottom: 3px; }
+.bio-stat-label { font-size: 10.5px; color: #94a3b8; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+/* tip box */
+.bio-tip {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg,#fdf2f8,#fff5fb);
+  border: 1px solid var(--cat-border);
+  border-radius: 14px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #475569;
+}
+.bio-tip strong { color: var(--cat-color); }
+
+/* ══════════════════════════════════════════
+   CONTENT SECTIONS (below tool)
+══════════════════════════════════════════ */
+.bio-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.bio-section { margin: 64px 0; }
+
+.bio-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cat-color);
+  background: var(--cat-bg);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+.bio-section-label svg { width:11px;height:11px; }
+
+.bio-section h2 {
+  font-size: clamp(20px,3vw,28px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -.5px;
+  margin-bottom: 6px;
+}
+.bio-section-sub {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 600px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+/* Divider */
+.bio-divider { border: none; border-top: 1px solid #f1f5f9; margin: 0; }
+
+/* ── 2-col intro cards ── */
+.bio-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) { .bio-intro-grid { grid-template-columns: 1fr; } }
+
+.bio-intro-card {
+  border: 1px solid #e8e8f0;
+  border-radius: 18px;
+  padding: 24px;
+  background: #fff;
+  transition: all .22s var(--ease);
+}
+.bio-intro-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); }
+.bio-intro-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.bio-intro-card h3 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+.bio-intro-card p  { font-size: 13.5px; color: #475569; line-height: 1.65; margin: 0; }
+
+/* ── Steps ── */
+.bio-steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+}
+@media (max-width: 640px) { .bio-steps { grid-template-columns: 1fr; } }
+
+.bio-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #e8e8f0;
+  background: #fff;
+  transition: all .22s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.bio-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ig-1), var(--ig-3));
+  opacity: 0;
+  transition: opacity .22s;
+}
+.bio-step:hover::before { opacity: 1; }
+.bio-step:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); }
+
+.bio-step-num {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--ig-1), var(--ig-3));
+  color: #fff; display: flex; align-items: center;
+  justify-content: center; font-size: 14px; font-weight: 800;
+  flex-shrink: 0;
+}
+.bio-step h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin: 0; }
+.bio-step p  { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
+
+/* ── Uses grid ── */
+.bio-uses-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+@media (max-width: 700px) { .bio-uses-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 440px) { .bio-uses-grid { grid-template-columns: 1fr; } }
+
+.bio-use-card {
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #e8e8f0;
+  background: #fff;
+  transition: all .22s var(--ease);
+}
+.bio-use-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+.bio-use-dot {
+  width: 8px; height: 8px; border-radius: 50%; margin-bottom: 10px;
+}
+.bio-use-card h4 { font-size: 13.5px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+.bio-use-card p  { font-size: 12.5px; color: #64748b; line-height: 1.6; margin: 0; }
+
+/* ── Table ── */
+.bio-table-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e8e8f0;
+}
+.bio-table {
+  width: 100%; border-collapse: collapse;
+  background: #fff;
+}
+.bio-table thead { background: #0f172a; }
+.bio-table thead th {
+  padding: 14px 18px;
+  text-align: left; font-size: 11px;
+  font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: #94a3b8;
+}
+.bio-table tbody tr { border-top: 1px solid #f1f5f9; transition: background .12s; }
+.bio-table tbody tr:hover { background: #fafafa; }
+.bio-table td { padding: 14px 18px; font-size: 13.5px; color: #334155; vertical-align: middle; }
+.bio-table td:first-child { font-weight: 700; color: #0f172a; }
+
+.bio-badge {
+  display: inline-block;
+  padding: 3px 9px; border-radius: 6px;
+  font-size: 11px; font-weight: 700;
+}
+.bio-badge--blue   { background: #eff6ff; color: #1d4ed8; }
+.bio-badge--purple { background: #f5f3ff; color: #6d28d9; }
+.bio-badge--green  { background: #f0fdf4; color: #15803d; }
+.bio-badge--amber  { background: #fffbeb; color: #b45309; }
+.bio-badge--red    { background: #fff1f2; color: #be123c; }
+.bio-range {
+  display: inline-block; background: #f8f8fb;
+  color: #374151; border-radius: 6px; padding: 3px 9px;
+  font-size: 12.5px; font-weight: 600;
+}
+
+/* ── Tips ── */
+.bio-tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .bio-tips-grid { grid-template-columns: 1fr; } }
+
+.bio-tip-box { border-radius: 18px; padding: 24px; }
+.bio-tip-box--bad  { background: #fff7ed; border: 1px solid #fed7aa; }
+.bio-tip-box--good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.bio-tip-box h4 {
+  font-size: 14px; font-weight: 700; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.bio-tip-box--bad  h4 { color: #c2410c; }
+.bio-tip-box--good h4 { color: #15803d; }
+.bio-tip-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bio-tip-list li {
+  font-size: 13px; color: #475569; line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.bio-tip-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.bio-tip-box--bad  .bio-tip-list li::before { background: #fb923c; }
+.bio-tip-box--good .bio-tip-list li::before { background: #4ade80; }
+
+/* ── Why grid ── */
+.bio-why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+@media (max-width: 600px) { .bio-why-grid { grid-template-columns: 1fr 1fr; } }
+
+.bio-why-card {
+  border-radius: 16px; padding: 20px;
+  background: #fff; border: 1px solid #e8e8f0;
+  text-align: center; transition: all .22s var(--ease);
+}
+.bio-why-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+.bio-why-icon { font-size: 26px; margin-bottom: 10px; }
+.bio-why-card strong { display: block; font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+.bio-why-card span   { font-size: 12px; color: #64748b; line-height: 1.5; }
+
+/* ── Related ── */
+.bio-related-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 14px;
+}
+.bio-related-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px; border-radius: 14px;
+  border: 1px solid #e8e8f0; background: #fff;
+  text-decoration: none; transition: all .18s var(--ease);
+}
+.bio-related-card:hover { border-color: var(--cat-border); box-shadow: 0 4px 16px rgba(193,53,132,.1); transform: translateX(3px); }
+.bio-related-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--cat-bg); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.bio-related-icon svg { width:18px;height:18px;color:var(--cat-color); }
+.bio-related-name { font-size: 13.5px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
+.bio-related-desc { font-size: 12px; color: #64748b; }
+
+/* ── FAQ ── */
+.bio-faq-list { display: flex; flex-direction: column; gap: 2px; }
+.bio-faq-item {
+  border: 1px solid #e8e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+.bio-faq-btn {
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  padding: 18px 20px; font-size: 14px; font-weight: 600;
+  color: #0f172a; text-align: left; cursor: pointer;
+  background: none; border: none; transition: color .12s;
+}
+.bio-faq-btn:hover { color: var(--cat-color); }
+.bio-faq-chevron { width:16px;height:16px;flex-shrink:0;transition:transform .2s var(--ease); }
+.bio-faq-btn[aria-expanded="true"] .bio-faq-chevron { transform: rotate(180deg); }
+.bio-faq-body {
+  padding: 0 20px; max-height: 0; overflow: hidden;
+  font-size: 13.5px; color: #475569; line-height: 1.7;
+  transition: max-height .3s var(--ease), padding .3s;
+}
+.bio-faq-body.open { max-height: 200px; padding: 0 20px 18px; }
+
+/* ══════════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .08s; }
+.reveal-delay-2 { transition-delay: .16s; }
+.reveal-delay-3 { transition-delay: .24s; }
+
+/* ══════════════════════════════════════════
+   FOOTER / SHARED OVERRIDES
+══════════════════════════════════════════ */
+.bio-ad {
+  max-width: 1080px; margin: 0 auto;
+  padding: 0 24px 24px;
+}
+.bio-ad-inner {
+  background: #f1f5f9; border-radius: 14px;
+  padding: 14px 24px; text-align: center;
+  font-size: 12px; color: #94a3b8;
+}
+
+/* NAV label override for this page */
+.ht-header-nav a.active { background: var(--cat-bg); color: var(--cat-color); }
 </style>
+
 <link rel="stylesheet" href="/css/tools.css">
 <script type="application/ld+json">
 {
@@ -116,531 +766,447 @@
   </div>
 </header>
 
-<div class="ht-wrap">
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+<!-- ══ HERO ══ -->
+<section class="bio-hero">
+  <div class="bio-hero-orb"></div>
+  <div class="bio-hero-orb"></div>
+  <div class="bio-hero-orb"></div>
+  <div class="bio-hero-inner">
+    <div class="bio-hero-badge">
+      <div class="bio-hero-badge-dot"></div>
+      Redes sociales
+    </div>
+    <h1 class="bio-hero-h1">
+      Tu bio de Instagram,<br>
+      <span class="bio-grad">en 60 segundos</span>
+    </h1>
+    <p class="bio-hero-sub">
+      150 caracteres para decidir si alguien te sigue o no. Rellena los campos, elige tu estilo y copia tu bio profesional al instante.
+    </p>
+    <div class="bio-hero-pills">
+      <span class="bio-hero-pill">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        Preview en tiempo real
+      </span>
+      <span class="bio-hero-pill">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        4 plantillas
+      </span>
+      <span class="bio-hero-pill">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        150 car. máx.
+      </span>
+      <span class="bio-hero-pill">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        Gratis, sin registro
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- breadcrumb -->
+<div style="background:#f8f8fb;border-bottom:1px solid #f0f0f5;">
+  <nav class="ht-bc" style="max-width:1080px;margin:0 auto;padding:10px 24px;" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <a href="/redes-sociales">Redes sociales</a><span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
     <span aria-current="page">Generador bio Instagram</span>
   </nav>
+</div>
 
-  <header class="ht-hero">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
-        Redes sociales
-      </div>
-      <h1 class="ht-h1">Generador de bio <mark>para Instagram</mark></h1>
-      <p class="ht-hero-desc">Rellena los campos con tu informaci&#243;n y genera al instante una bio profesional optimizada para los 150 caracteres de Instagram.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Preview en tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>M&#250;ltiples plantillas</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>150 car. m&#225;x.</span>
-      </div>
-    </div>
-  </header>
+<!-- ══ TOOL ══ -->
+<div class="bio-tool-section">
+  <div class="bio-tool-wrap" id="herramienta">
 
-  <div class="ht-ad-banner" aria-hidden="true"><span class="sr-only">Publicidad</span>Publicidad &#183; 728&#215;90</div>
-
-  <main id="herramienta">
-    <div class="ht-tool-layout">
-
-      <!-- LEFT: Formulario -->
-      <div class="ht-textarea-card" style="overflow:visible;">
-        <div class="ht-textarea-card-header">
-          <div class="ht-textarea-card-title">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
-            Tus datos
-          </div>
-        </div>
-
-        <div style="padding: 1rem;">
-
-          <!-- Plantilla -->
-          <div style="margin-bottom:1rem;">
-            <div style="font-size:.82rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;">Estilo de bio</div>
-            <div class="ht-tpl-grid">
-              <button class="ht-tpl-btn active" id="tpl-profesional" onclick="BIO.setTemplate('profesional',this)">&#128188; Profesional</button>
-              <button class="ht-tpl-btn" id="tpl-creador" onclick="BIO.setTemplate('creador',this)">&#127775; Creador de contenido</button>
-              <button class="ht-tpl-btn" id="tpl-negocio" onclick="BIO.setTemplate('negocio',this)">&#127981; Negocio / Marca</button>
-              <button class="ht-tpl-btn" id="tpl-personal" onclick="BIO.setTemplate('personal',this)">&#128578; Personal / Casual</button>
-            </div>
-          </div>
-
-          <!-- Campos -->
-          <div class="ht-field-group">
-            <label for="f-nombre">Tu nombre o marca</label>
-            <input type="text" id="f-nombre" placeholder="Ana García" maxlength="40" oninput="BIO.generate()">
-          </div>
-
-          <div class="ht-field-group">
-            <label for="f-profesion">Profesi&#243;n / Lo que haces</label>
-            <input type="text" id="f-profesion" placeholder="Fotógrafa de bodas" maxlength="40" oninput="BIO.generate()">
-          </div>
-
-          <div class="ht-field-group">
-            <label for="f-especialidad">Especialidad o propuesta de valor <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
-            <input type="text" id="f-especialidad" placeholder="Capturo momentos únicos en Madrid" maxlength="50" oninput="BIO.generate()">
-          </div>
-
-          <div class="ht-field-group">
-            <label for="f-cta">CTA / Llamada a la acci&#243;n <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
-            <input type="text" id="f-cta" placeholder="Reserva tu sesión 👇" maxlength="40" oninput="BIO.generate()">
-          </div>
-
-          <div class="ht-field-group">
-            <label for="f-link">Enlace en bio <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
-            <input type="text" id="f-link" placeholder="linktr.ee/tuusuario" maxlength="60" oninput="BIO.generate()">
-            <div class="ht-field-hint">El enlace va separado del texto de la bio en Instagram.</div>
-          </div>
-
-          <!-- Emojis decorativos -->
-          <div class="ht-field-group">
-            <label>Emoji de separador <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
-            <div class="ht-emoji-row" id="emoji-row">
-              <span class="ht-emoji-opt active" data-emoji="" onclick="BIO.setEmoji('',this)">Sin emoji</span>
-              <span class="ht-emoji-opt" data-emoji="✨" onclick="BIO.setEmoji('✨',this)">✨</span>
-              <span class="ht-emoji-opt" data-emoji="🌟" onclick="BIO.setEmoji('🌟',this)">🌟</span>
-              <span class="ht-emoji-opt" data-emoji="📍" onclick="BIO.setEmoji('📍',this)">📍</span>
-              <span class="ht-emoji-opt" data-emoji="💼" onclick="BIO.setEmoji('💼',this)">💼</span>
-              <span class="ht-emoji-opt" data-emoji="🎯" onclick="BIO.setEmoji('🎯',this)">🎯</span>
-              <span class="ht-emoji-opt" data-emoji="🔥" onclick="BIO.setEmoji('🔥',this)">🔥</span>
-              <span class="ht-emoji-opt" data-emoji="💡" onclick="BIO.setEmoji('💡',this)">💡</span>
-              <span class="ht-emoji-opt" data-emoji="🚀" onclick="BIO.setEmoji('🚀',this)">🚀</span>
-              <span class="ht-emoji-opt" data-emoji="🌿" onclick="BIO.setEmoji('🌿',this)">🌿</span>
-              <span class="ht-emoji-opt" data-emoji="💜" onclick="BIO.setEmoji('💜',this)">💜</span>
-            </div>
-          </div>
-
-          <div class="ht-toolbar" style="margin-top:.5rem;">
-            <div class="ht-toolbar-btns">
-              <button class="ht-btn" onclick="BIO.copyBio()">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
-                Copiar bio
-              </button>
-              <button class="ht-btn ht-btn--danger" onclick="BIO.clear()">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
-                Limpiar
-              </button>
-            </div>
-          </div>
+    <!-- LEFT: form -->
+    <div class="bio-card">
+      <div class="bio-card-header">
+        <div class="bio-card-title">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          Tus datos
         </div>
       </div>
+      <div class="bio-card-body">
 
-      <!-- RIGHT: Preview + stats -->
-      <aside class="ht-stats-panel" style="display:flex;flex-direction:column;gap:1rem;">
-
-        <!-- IG Profile preview -->
-        <div class="ig-profile-preview">
-          <div class="ig-profile-header">
-            <div class="ig-profile-avatar" id="prev-initial">U</div>
-            <div class="ig-profile-meta">
-              <div class="ig-profile-username" id="prev-username">tuusuario</div>
-              <div class="ig-profile-stats">
-                <span><b>0</b> publicaciones</span>
-                <span><b>0</b> seguidores</span>
-                <span><b>0</b> seguidos</span>
-              </div>
-            </div>
-          </div>
-          <div class="ig-profile-body">
-            <div class="ig-profile-name" id="prev-name">Tu nombre</div>
-            <div class="ig-profile-bio" id="prev-bio"><span class="ig-placeholder">Tu bio aparecer&#225; aqu&#237;&#8230;</span></div>
-            <div class="ig-profile-link" id="prev-link" style="display:none;"></div>
+        <!-- Template selector -->
+        <div style="margin-bottom:18px;">
+          <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Estilo de bio</div>
+          <div class="bio-tpl-grid">
+            <button class="bio-tpl-btn active" id="tpl-profesional" onclick="BIO.setTemplate('profesional',this)">&#128188; Profesional</button>
+            <button class="bio-tpl-btn" id="tpl-creador"    onclick="BIO.setTemplate('creador',this)">&#127775; Creador</button>
+            <button class="bio-tpl-btn" id="tpl-negocio"    onclick="BIO.setTemplate('negocio',this)">&#127981; Negocio</button>
+            <button class="bio-tpl-btn" id="tpl-personal"   onclick="BIO.setTemplate('personal',this)">&#128578; Personal</button>
           </div>
         </div>
 
-        <!-- Barra de progreso -->
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem;">
-            <span style="font-size:.82rem;font-weight:600;color:#64748b;">Longitud de la bio</span>
-            <span class="ht-char-status ok" id="char-status">0 / 150</span>
-          </div>
-          <div class="bio-progress">
-            <div class="bio-progress-bar" id="bio-prog-bar" style="width:0%;"></div>
-          </div>
-          <div style="font-size:.75rem;color:#94a3b8;" id="bio-prog-hint">Rellena los campos para generar tu bio.</div>
+        <div class="bio-field">
+          <label for="f-nombre">Tu nombre o marca</label>
+          <input type="text" id="f-nombre" placeholder="Ana García" maxlength="40" oninput="BIO.generate()">
+        </div>
+        <div class="bio-field">
+          <label for="f-profesion">Profesi&#243;n / Lo que haces</label>
+          <input type="text" id="f-profesion" placeholder="Fotógrafa de bodas" maxlength="40" oninput="BIO.generate()">
+        </div>
+        <div class="bio-field">
+          <label for="f-especialidad">Propuesta de valor <span class="opt">(opcional)</span></label>
+          <input type="text" id="f-especialidad" placeholder="Capturo momentos únicos en Madrid" maxlength="50" oninput="BIO.generate()">
+        </div>
+        <div class="bio-field">
+          <label for="f-cta">CTA / Llamada a la acci&#243;n <span class="opt">(opcional)</span></label>
+          <input type="text" id="f-cta" placeholder="Reserva tu sesión 👇" maxlength="40" oninput="BIO.generate()">
+        </div>
+        <div class="bio-field">
+          <label for="f-link">Enlace en bio <span class="opt">(opcional)</span></label>
+          <input type="text" id="f-link" placeholder="linktr.ee/tuusuario" maxlength="60" oninput="BIO.generate()">
+          <div class="bio-field-hint">Va separado del texto de la bio en Instagram.</div>
         </div>
 
-        <!-- Stats -->
-        <div class="ht-stats-box">
-          <div class="ht-panel-header"><span class="ht-panel-title">Estad&#237;sticas</span><span class="ht-panel-live"><span class="ht-panel-live-dot"></span>En vivo</span></div>
-          <div class="ht-panel-body">
-            <div class="ht-stat-cards">
-              <div class="ht-stat-card ht-stat-card--primary">
-                <div class="ht-stat-label">Caracteres</div>
-                <div class="ht-stat-num" id="s-chars">0</div>
-                <div class="ht-stat-sublabel">usados</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">Restantes</div>
-                <div class="ht-stat-num" id="s-remaining">150</div>
-                <div class="ht-stat-sublabel">disponibles</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">L&#237;neas</div>
-                <div class="ht-stat-num" id="s-lines">0</div>
-                <div class="ht-stat-sublabel">en la bio</div>
-              </div>
-            </div>
+        <div class="bio-field">
+          <label>Emoji separador <span class="opt">(opcional)</span></label>
+          <div class="bio-emoji-row" id="emoji-row">
+            <span class="bio-emoji-none active" data-emoji="" onclick="BIO.setEmoji('',this)">Sin emoji</span>
+            <span class="bio-emoji-opt" data-emoji="✨" onclick="BIO.setEmoji('✨',this)">✨</span>
+            <span class="bio-emoji-opt" data-emoji="🌟" onclick="BIO.setEmoji('🌟',this)">🌟</span>
+            <span class="bio-emoji-opt" data-emoji="📍" onclick="BIO.setEmoji('📍',this)">📍</span>
+            <span class="bio-emoji-opt" data-emoji="💼" onclick="BIO.setEmoji('💼',this)">💼</span>
+            <span class="bio-emoji-opt" data-emoji="🎯" onclick="BIO.setEmoji('🎯',this)">🎯</span>
+            <span class="bio-emoji-opt" data-emoji="🔥" onclick="BIO.setEmoji('🔥',this)">🔥</span>
+            <span class="bio-emoji-opt" data-emoji="💡" onclick="BIO.setEmoji('💡',this)">💡</span>
+            <span class="bio-emoji-opt" data-emoji="🚀" onclick="BIO.setEmoji('🚀',this)">🚀</span>
+            <span class="bio-emoji-opt" data-emoji="🌿" onclick="BIO.setEmoji('🌿',this)">🌿</span>
+            <span class="bio-emoji-opt" data-emoji="💜" onclick="BIO.setEmoji('💜',this)">💜</span>
           </div>
         </div>
 
-        <!-- Tip -->
-        <div style="padding:.75rem 1rem;background:var(--cat-bg);border:1.5px solid var(--cat-border);border-radius:10px;font-size:.82rem;line-height:1.6;">
-          <strong style="color:var(--cat-color);">&#128161; Consejos:</strong><br>
-          &#8226; Usa la primera l&#237;nea para decir <em>qui&#233;n eres</em>.<br>
-          &#8226; La segunda, tu <em>propuesta de valor</em>.<br>
-          &#8226; Cierra con un <em>CTA claro</em> (&#171;Reserva&#187;, &#171;Descarga&#187;, &#171;Env&#237;ame un DM&#187;).<br>
-          &#8226; El enlace en bio va fuera del texto: &#250;sala para tu Linktree o landing.
+        <div class="bio-toolbar">
+          <button class="bio-btn bio-btn--primary" onclick="BIO.copyBio()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+            Copiar bio
+          </button>
+          <button class="bio-btn bio-btn--ghost" onclick="BIO.clear()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+            Limpiar
+          </button>
         </div>
 
-      </aside>
-    </div><!-- /.ht-tool-layout -->
-
-    <div class="ht-long">
-
-<style>
-.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
-@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
-.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition: box-shadow .18s, transform .18s; }
-.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
-.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
-.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
-.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
-.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
-@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
-.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
-.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
-.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
-.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
-.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
-.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
-.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
-.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
-.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
-.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
-.htl-table { width:100%; border-collapse:collapse; background:#fff; }
-.htl-table thead { background:#1E293B; }
-.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
-.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
-.htl-table tbody tr:hover { background:#F8FAFF; }
-.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
-.htl-table td:first-child { font-weight:600; color:#0F172A; }
-.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
-.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
-.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
-.htl-badge--green { background:#F0FDF4; color:#15803D; }
-.htl-badge--amber { background:#FFFBEB; color:#B45309; }
-.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
-.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
-.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
-@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
-.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
-.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
-.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
-.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
-.htl-tip-box--cut  h4 { color:#C2410C; }
-.htl-tip-box--grow h4 { color:#15803D; }
-.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
-.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
-.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
-.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
-.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
-.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
-@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
-.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
-.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
-.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
-.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
-.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
-.htl-section-label svg { width:12px; height:12px; }
-.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
-</style>
-
-<!-- ══ INTRO ══ -->
-<h2>La bio de Instagram: 150 caracteres que deciden si alguien te sigue o no</h2>
-<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
-  Un visitante tarda menos de 3 segundos en decidir si sigue una cuenta. La bio es lo &#250;nico que puede leer antes de tomar esa decisi&#243;n. 150 caracteres para responder qui&#233;n eres, qu&#233; haces y qu&#233; gana la persona que te sigue.
-</p>
-
-<div class="htl-intro">
-  <div class="htl-card">
-    <div class="htl-card-icon" style="background:#FFF0F6">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C2185B" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="7" r="4"/><path d="M3 18c0-4.4 3.1-8 7-8s7 3.6 7 8"/></svg>
-    </div>
-    <h3>Para qu&#233; sirve este generador</h3>
-    <p>Rellenas cuatro campos &#8212;profesi&#243;n, propuesta de valor, CTA y enlace&#8212; y el generador monta autom&#225;ticamente una bio estructurada y profesional. Cuatro plantillas distintas se adaptan a creadores, profesionales, marcas y perfiles personales. Ver el resultado en tiempo real en el preview del perfil evita sorpresas al pegarlo en Instagram.</p>
-  </div>
-  <div class="htl-card">
-    <div class="htl-card-icon" style="background:#EFF6FF">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
-    </div>
-    <h3>&#191;Qui&#233;n deber&#237;a optimizar su bio?</h3>
-    <p>Cualquiera que quiera que Instagram funcione: <strong>freelances</strong> que buscan clientes, <strong>negocios locales</strong> que necesitan ser encontrados por su ciudad o servicio, <strong>creadores de contenido</strong> que intentan convertir visitas en seguidores, y <strong>profesionales</strong> que usan Instagram como portfolio o CV visual.</p>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<!-- ══ CÓMO USARLO ══ -->
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-  Paso a paso
-</div>
-<h2>C&#243;mo generar tu bio en menos de un minuto</h2>
-
-<div class="htl-steps">
-  <div class="htl-step">
-    <div class="htl-step-num">1</div>
-    <div class="htl-step-body">
-      <h4>Elige el estilo de bio</h4>
-      <p>Selecciona entre Profesional, Creador de contenido, Negocio&#47;Marca o Personal. Cada plantilla usa una estructura diferente para los mismos datos.</p>
-    </div>
-  </div>
-  <div class="htl-step">
-    <div class="htl-step-num">2</div>
-    <div class="htl-step-body">
-      <h4>Rellena los campos</h4>
-      <p>Profesi&#243;n, especialidad, CTA y enlace. El preview del perfil se actualiza en tiempo real para que veas exactamente c&#243;mo quedar&#225; en Instagram.</p>
-    </div>
-  </div>
-  <div class="htl-step">
-    <div class="htl-step-num">3</div>
-    <div class="htl-step-body">
-      <h4>Copia y pega</h4>
-      <p>Con un clic copias la bio al portapapeles. P&#233;gala directamente en el campo de bio de tu perfil de Instagram sin modificaciones.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<!-- ══ USOS ══ -->
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
-  Casos de uso
-</div>
-<h2>Qui&#233;n se beneficia de una bio bien construida</h2>
-
-<div class="htl-uses">
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#C2185B"></div>
-    <div>
-      <h4>Fotograf&#243;s y artistas</h4>
-      <p>Una bio clara que indica especialidad y ubicaci&#243;n convierte visitas en consultas. &#171;Fotograf&#237;a de producto en Barcelona&#187; en 150 caracteres vale m&#225;s que cinco hashtags.</p>
-    </div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#2563EB"></div>
-    <div>
-      <h4>Profesionales independientes</h4>
-      <p>Abogados, dise&#241;adores, consultores: la bio es el primer lugar donde un cliente potencial verifica si eres la persona que busca antes de enviar un mensaje.</p>
-    </div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#7C3AED"></div>
-    <div>
-      <h4>Negocios locales</h4>
-      <p>Incluir ciudad, servicio y CTA en la bio mejora la visibilidad en b&#250;squedas dentro de Instagram. &#171;Peluquer&#237;a en Valencia | Reservas online &#8595;&#187; funciona como un mini anuncio.</p>
-    </div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#D97706"></div>
-    <div>
-      <h4>Creadores de contenido</h4>
-      <p>La bio responde en segundos qu&#233; tipo de contenido publicas. Un creador de contenido de recetas veganas necesita que eso est&#233; claro en las primeras palabras para captar al seguidor correcto.</p>
-    </div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#16A34A"></div>
-    <div>
-      <h4>Marcas y e-commerce</h4>
-      <p>La bio de una marca debe comunicar propuesta de valor, no solo el nombre. &#171;Ropa sostenible hecha en Portugal&#187; + enlace a la tienda es m&#225;s efectivo que solo el nombre de la marca.</p>
-    </div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#0891B2"></div>
-    <div>
-      <h4>Community managers</h4>
-      <p>Gestionar m&#250;ltiples perfiles significa escribir bios distintas para cada cliente. Este generador acelera el proceso y garantiza una estructura consistente y profesional.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<!-- ══ TABLA ══ -->
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
-  Referencia r&#225;pida
-</div>
-<h2>Estructura de una bio de Instagram por l&#237;neas</h2>
-
-<div class="htl-table-wrap">
-  <table class="htl-table">
-    <thead>
-      <tr>
-        <th>L&#237;nea</th>
-        <th>Contenido</th>
-        <th>Ejemplo real</th>
-        <th>Impacto</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1&#170; l&#237;nea</td>
-        <td><span class="htl-range">Profesi&#243;n + emoji</span></td>
-        <td style="color:#64748B;font-size:.83rem">Fotógrafa de bodas &#128247;</td>
-        <td><span class="htl-badge htl-badge--blue">SEO interno</span></td>
-      </tr>
-      <tr>
-        <td>2&#170; l&#237;nea</td>
-        <td><span class="htl-range">Propuesta de valor</span></td>
-        <td style="color:#64748B;font-size:.83rem">Capturo momentos únicos en Madrid</td>
-        <td><span class="htl-badge htl-badge--purple">Diferenciaci&#243;n</span></td>
-      </tr>
-      <tr>
-        <td>3&#170; l&#237;nea</td>
-        <td><span class="htl-range">Prueba social (opcional)</span></td>
-        <td style="color:#64748B;font-size:.83rem">+200 bodas &#8226; Publicada en Vogue ES</td>
-        <td><span class="htl-badge htl-badge--green">Credibilidad</span></td>
-      </tr>
-      <tr>
-        <td>4&#170; l&#237;nea</td>
-        <td><span class="htl-range">CTA claro</span></td>
-        <td style="color:#64748B;font-size:.83rem">&#8595; Reserva tu sesi&#243;n</td>
-        <td><span class="htl-badge htl-badge--amber">Conversi&#243;n</span></td>
-      </tr>
-      <tr>
-        <td>Campo enlace</td>
-        <td><span class="htl-range">URL (separada del texto)</span></td>
-        <td style="color:#64748B;font-size:.83rem">linktr.ee/tuusuario</td>
-        <td><span class="htl-badge htl-badge--red">Tr&#225;fico externo</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<hr class="htl-divider">
-
-<!-- ══ TIPS ══ -->
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
-  Consejos
-</div>
-<h2>Lo que arruina una bio y lo que la hace funcionar</h2>
-
-<div class="htl-tips">
-  <div class="htl-tip-box htl-tip-box--cut">
-    <h4>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
-      Errores que cuestan seguidores
-    </h4>
-    <ul class="htl-tip-list">
-      <li>Bio gen&#233;rica tipo &#171;Amante de la vida &#10024;&#187;: no explica nada &#250;til al visitante</li>
-      <li>No incluir ning&#250;n CTA: el visitante no sabe qu&#233; hacer ni a d&#243;nde ir</li>
-      <li>No usar el campo del nombre para keywords: desaprovecha el &#250;nico campo que indexa Instagram</li>
-      <li>Poner la URL completa dentro del texto de la bio: ocupa caracteres innecesarios y no es clicable</li>
-    </ul>
-  </div>
-  <div class="htl-tip-box htl-tip-box--grow">
-    <h4>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
-      Claves de una bio que convierte
-    </h4>
-    <ul class="htl-tip-list">
-      <li>Pon tu profesi&#243;n o especialidad tambi&#233;n en el campo de nombre (aparece indexado en b&#250;squedas)</li>
-      <li>Usa saltos de l&#237;nea para que la bio sea f&#225;cil de leer de un vistazo</li>
-      <li>El CTA debe estar en la &#250;ltima l&#237;nea, justo antes del enlace</li>
-      <li>Actualiza la bio cuando cambies de especialidad, ciudad o tengas un nuevo proyecto</li>
-    </ul>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<!-- ══ WHY US ══ -->
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-  Por qu&#233; elegirnos
-</div>
-<h2>&#191;Por qu&#233; usar este generador de bio?</h2>
-
-<div class="htl-why">
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#128203;</span>
-    <strong>4 plantillas</strong>
-    <span>Profesional, creador, marca y personal. Cada una con estructura diferente.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#128065;&#65039;</span>
-    <strong>Preview real</strong>
-    <span>Ve c&#243;mo quedar&#225; tu bio en el perfil antes de tocar Instagram.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#128290;</span>
-    <strong>Contador incluido</strong>
-    <span>Nunca superar&#225;s los 150 caracteres: el generador lo controla por ti.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#128512;</span>
-    <strong>Emojis a elegir</strong>
-    <span>A&#241;ade un separador visual sin tener que buscarlos por tu cuenta.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#128274;</span>
-    <strong>100% privado</strong>
-    <span>Tus datos no salen del navegador ni se guardan en ning&#250;n servidor.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">&#9889;</span>
-    <strong>Sin cuenta</strong>
-    <span>Sin registro, sin email, sin formularios. Directo al resultado.</span>
-  </div>
-</div>
-
-    </div>
-
-    <section class="ht-related" aria-labelledby="related-title">
-      <div class="ht-section-header">
-        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
-        <a href="/redes-sociales/" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       </div>
-      <div class="ht-related-grid">
-        <a href="/redes-sociales/contador-instagram" class="ht-related-card">
-          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/></svg></div>
-          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador Instagram</div><div class="ht-related-card-desc">Caption y bio con preview real</div></div>
+    </div>
+
+    <!-- RIGHT: preview + stats -->
+    <div>
+
+      <!-- IG mock -->
+      <div class="ig-mock">
+        <div class="ig-mock-bar">
+          <div class="ig-mock-dot" style="background:#ff5f57"></div>
+          <div class="ig-mock-dot" style="background:#febc2e"></div>
+          <div class="ig-mock-dot" style="background:#28c840"></div>
+          <span style="flex:1;text-align:center;font-size:11px;color:#aaa;font-family:system-ui;">instagram.com</span>
+        </div>
+        <div class="ig-mock-profile">
+          <div class="ig-mock-top">
+            <div class="ig-avatar" id="prev-initial">U</div>
+            <div class="ig-stats">
+              <div class="ig-stat"><div class="ig-stat-num">0</div><div class="ig-stat-label">publicaciones</div></div>
+              <div class="ig-stat"><div class="ig-stat-num">0</div><div class="ig-stat-label">seguidores</div></div>
+              <div class="ig-stat"><div class="ig-stat-num">0</div><div class="ig-stat-label">seguidos</div></div>
+            </div>
+          </div>
+          <div class="ig-mock-name" id="prev-name">Tu nombre</div>
+          <div class="ig-mock-username" id="prev-username" style="color:#737373;font-size:12px;">@tuusuario</div>
+          <div class="ig-mock-bio" id="prev-bio"><span class="ig-placeholder">Tu bio aparecer&#225; aqu&#237;&#8230;</span></div>
+          <div class="ig-mock-link" id="prev-link" style="display:none;"></div>
+          <div class="ig-mock-btns">
+            <div class="ig-mock-btn ig-mock-btn--primary">Seguir</div>
+            <div class="ig-mock-btn">Mensaje</div>
+            <div class="ig-mock-btn" style="flex:0;padding:7px 10px;">&#x2193;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress + stats -->
+      <div class="bio-prog-wrap">
+        <div class="bio-prog-top">
+          <span class="bio-prog-label">Longitud de la bio</span>
+          <span class="bio-char-status ok" id="char-status">0 / 150</span>
+        </div>
+        <div class="bio-progress">
+          <div class="bio-progress-bar" id="bio-prog-bar" style="width:0%;"></div>
+        </div>
+        <div class="bio-prog-hint" id="bio-prog-hint">Rellena los campos para generar tu bio.</div>
+        <div class="bio-stats-row">
+          <div class="bio-stat-box">
+            <div class="bio-stat-num" id="s-chars">0</div>
+            <div class="bio-stat-label">Caracteres</div>
+          </div>
+          <div class="bio-stat-box">
+            <div class="bio-stat-num" id="s-remaining">150</div>
+            <div class="bio-stat-label">Restantes</div>
+          </div>
+          <div class="bio-stat-box">
+            <div class="bio-stat-num" id="s-lines">0</div>
+            <div class="bio-stat-label">L&#237;neas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tip -->
+      <div class="bio-tip">
+        <strong>&#128161; Consejos:</strong><br>
+        &#8226; 1&#170; l&#237;nea: qui&#233;n eres &nbsp;&#8226;&nbsp; 2&#170;: propuesta de valor<br>
+        &#8226; Cierra con un <em>CTA claro</em> (&#171;Reserva&#187;, &#171;DM&#187;, &#171;Descarga&#187;)<br>
+        &#8226; El enlace va fuera del texto &#8212; usa Linktree o landing propia
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div style="background:#fff;">
+  <div class="bio-content">
+
+    <div class="bio-ad">
+      <div class="bio-ad-inner">Publicidad &middot; 728&times;90</div>
+    </div>
+
+    <!-- Intro -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+        Sobre esta herramienta
+      </div>
+      <h2>La bio de Instagram: 150 caracteres que deciden si alguien te sigue</h2>
+      <p class="bio-section-sub">Un visitante tarda menos de 3 segundos en decidir si sigue una cuenta. La bio es lo &#250;nico que puede leer antes de tomar esa decisi&#243;n.</p>
+      <div class="bio-intro-grid">
+        <div class="bio-intro-card reveal reveal-delay-1">
+          <div class="bio-intro-icon" style="background:#fdf2f8;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#C13584" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="7" r="4"/><path d="M3 18c0-4.4 3.1-8 7-8s7 3.6 7 8"/></svg>
+          </div>
+          <h3>Para qu&#233; sirve este generador</h3>
+          <p>Rellenas cuatro campos &#8212;profesi&#243;n, propuesta de valor, CTA y enlace&#8212; y el generador monta autom&#225;ticamente una bio estructurada. Cuatro plantillas distintas se adaptan a creadores, profesionales, marcas y perfiles personales.</p>
+        </div>
+        <div class="bio-intro-card reveal reveal-delay-2">
+          <div class="bio-intro-icon" style="background:#eff6ff;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="13" x2="10.01" y2="13"/></svg>
+          </div>
+          <h3>&#191;Qui&#233;n deber&#237;a optimizar su bio?</h3>
+          <p>Cualquiera que quiera que Instagram funcione: <strong>freelances</strong> que buscan clientes, <strong>negocios locales</strong> que necesitan ser encontrados, <strong>creadores</strong> que convierten visitas en seguidores, y <strong>profesionales</strong> que usan Instagram como portfolio.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Steps -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        Paso a paso
+      </div>
+      <h2>C&#243;mo generar tu bio en menos de un minuto</h2>
+      <div class="bio-steps">
+        <div class="bio-step reveal reveal-delay-1">
+          <div class="bio-step-num">1</div>
+          <h4>Elige el estilo de bio</h4>
+          <p>Selecciona entre Profesional, Creador, Negocio o Personal. Cada plantilla usa una estructura diferente para los mismos datos.</p>
+        </div>
+        <div class="bio-step reveal reveal-delay-2">
+          <div class="bio-step-num">2</div>
+          <h4>Rellena los campos</h4>
+          <p>Profesi&#243;n, especialidad, CTA y enlace. El preview se actualiza en tiempo real para que veas exactamente c&#243;mo quedar&#225; en Instagram.</p>
+        </div>
+        <div class="bio-step reveal reveal-delay-3">
+          <div class="bio-step-num">3</div>
+          <h4>Copia y pega</h4>
+          <p>Con un clic copias la bio al portapapeles. P&#233;gala directamente en tu perfil de Instagram sin modificaciones.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Uses -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/></svg>
+        Casos de uso
+      </div>
+      <h2>Qui&#233;n se beneficia de una bio bien construida</h2>
+      <div class="bio-uses-grid">
+        <div class="bio-use-card reveal reveal-delay-1">
+          <div class="bio-use-dot" style="background:#C13584;"></div>
+          <h4>Fotograf&#243;s y artistas</h4>
+          <p>Una bio clara que indica especialidad y ubicaci&#243;n convierte visitas en consultas. &#171;Fotograf&#237;a de producto en Barcelona&#187; vale m&#225;s que cinco hashtags.</p>
+        </div>
+        <div class="bio-use-card reveal reveal-delay-2">
+          <div class="bio-use-dot" style="background:#2563EB;"></div>
+          <h4>Profesionales independientes</h4>
+          <p>Abogados, dise&#241;adores, consultores: la bio es donde un cliente potencial verifica si eres la persona que busca antes de enviar un mensaje.</p>
+        </div>
+        <div class="bio-use-card reveal reveal-delay-3">
+          <div class="bio-use-dot" style="background:#7C3AED;"></div>
+          <h4>Negocios locales</h4>
+          <p>Incluir ciudad, servicio y CTA mejora la visibilidad en b&#250;squedas de Instagram. &#171;Peluquer&#237;a en Valencia | Reservas online &#8595;&#187; funciona como un mini anuncio.</p>
+        </div>
+        <div class="bio-use-card reveal">
+          <div class="bio-use-dot" style="background:#D97706;"></div>
+          <h4>Creadores de contenido</h4>
+          <p>La bio responde en segundos qu&#233; tipo de contenido publicas. Un creador de recetas veganas necesita que eso est&#233; claro en las primeras palabras.</p>
+        </div>
+        <div class="bio-use-card reveal reveal-delay-1">
+          <div class="bio-use-dot" style="background:#16A34A;"></div>
+          <h4>Marcas y e-commerce</h4>
+          <p>&#171;Ropa sostenible hecha en Portugal&#187; + enlace a la tienda es m&#225;s efectivo que solo el nombre de la marca. La propuesta de valor primero.</p>
+        </div>
+        <div class="bio-use-card reveal reveal-delay-2">
+          <div class="bio-use-dot" style="background:#0891B2;"></div>
+          <h4>Community managers</h4>
+          <p>Gestionar m&#250;ltiples perfiles significa escribir bios distintas para cada cliente. Este generador acelera el proceso con una estructura consistente.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Table -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+        Referencia r&#225;pida
+      </div>
+      <h2>Estructura de una bio de Instagram por l&#237;neas</h2>
+      <div class="bio-table-wrap">
+        <table class="bio-table">
+          <thead>
+            <tr>
+              <th>L&#237;nea</th>
+              <th>Contenido</th>
+              <th>Ejemplo real</th>
+              <th>Impacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1&#170; l&#237;nea</td><td><span class="bio-range">Profesi&#243;n + emoji</span></td><td style="color:#64748b;font-size:13px">Fotógrafa de bodas 📷</td><td><span class="bio-badge bio-badge--blue">SEO interno</span></td></tr>
+            <tr><td>2&#170; l&#237;nea</td><td><span class="bio-range">Propuesta de valor</span></td><td style="color:#64748b;font-size:13px">Capturo momentos únicos en Madrid</td><td><span class="bio-badge bio-badge--purple">Diferenciaci&#243;n</span></td></tr>
+            <tr><td>3&#170; l&#237;nea</td><td><span class="bio-range">Prueba social</span></td><td style="color:#64748b;font-size:13px">+200 bodas · Publicada en Vogue ES</td><td><span class="bio-badge bio-badge--green">Credibilidad</span></td></tr>
+            <tr><td>4&#170; l&#237;nea</td><td><span class="bio-range">CTA claro</span></td><td style="color:#64748b;font-size:13px">↓ Reserva tu sesión</td><td><span class="bio-badge bio-badge--amber">Conversi&#243;n</span></td></tr>
+            <tr><td>Enlace</td><td><span class="bio-range">URL (separada)</span></td><td style="color:#64748b;font-size:13px">linktr.ee/tuusuario</td><td><span class="bio-badge bio-badge--red">Tr&#225;fico externo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Tips -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+        Consejos
+      </div>
+      <h2>Lo que arruina una bio y lo que la hace funcionar</h2>
+      <div class="bio-tips-grid">
+        <div class="bio-tip-box bio-tip-box--bad reveal reveal-delay-1">
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+            Errores que cuestan seguidores
+          </h4>
+          <ul class="bio-tip-list">
+            <li>Bio gen&#233;rica &#171;Amante de la vida ✨&#187;: no explica nada &#250;til al visitante</li>
+            <li>No incluir ning&#250;n CTA: el visitante no sabe qu&#233; hacer ni a d&#243;nde ir</li>
+            <li>No usar el campo del nombre para keywords: desaprovecha el &#250;nico campo indexado</li>
+            <li>Poner la URL completa dentro del texto: ocupa caracteres y no es clicable</li>
+          </ul>
+        </div>
+        <div class="bio-tip-box bio-tip-box--good reveal reveal-delay-2">
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+            Claves de una bio que convierte
+          </h4>
+          <ul class="bio-tip-list">
+            <li>Pon tu profesi&#243;n en el campo nombre: aparece indexado en b&#250;squedas de Instagram</li>
+            <li>Usa saltos de l&#237;nea para que la bio sea f&#225;cil de leer de un vistazo</li>
+            <li>El CTA debe ir en la &#250;ltima l&#237;nea, justo antes del enlace</li>
+            <li>Actualiza la bio al cambiar de especialidad, ciudad o proyecto</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Why -->
+    <div class="bio-section reveal">
+      <div class="bio-section-label">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+        Por qu&#233; elegirnos
+      </div>
+      <h2>&#191;Por qu&#233; usar este generador de bio?</h2>
+      <div class="bio-why-grid">
+        <div class="bio-why-card reveal reveal-delay-1"><div class="bio-why-icon">📋</div><strong>4 plantillas</strong><span>Profesional, creador, marca y personal. Cada una con estructura diferente.</span></div>
+        <div class="bio-why-card reveal reveal-delay-2"><div class="bio-why-icon">👁️</div><strong>Preview real</strong><span>Ve c&#243;mo quedar&#225; tu bio en el perfil antes de tocar Instagram.</span></div>
+        <div class="bio-why-card reveal reveal-delay-3"><div class="bio-why-icon">📐</div><strong>Contador incluido</strong><span>Nunca superar&#225;s los 150 caracteres: el generador lo controla.</span></div>
+        <div class="bio-why-card reveal"><div class="bio-why-icon">😊</div><strong>Emojis a elegir</strong><span>A&#241;ade un separador visual sin tener que buscarlos t&#250;.</span></div>
+        <div class="bio-why-card reveal reveal-delay-1"><div class="bio-why-icon">🔒</div><strong>100% privado</strong><span>Tus datos no salen del navegador ni se guardan en ning&#250;n servidor.</span></div>
+        <div class="bio-why-card reveal reveal-delay-2"><div class="bio-why-icon">⚡</div><strong>Sin cuenta</strong><span>Sin registro, sin email, sin formularios. Directo al resultado.</span></div>
+      </div>
+    </div>
+
+    <hr class="bio-divider">
+
+    <!-- Related -->
+    <div class="bio-section reveal">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <h2 style="margin-bottom:0;">Herramientas relacionadas</h2>
+        <a href="/redes-sociales/" style="font-size:13px;font-weight:600;color:var(--cat-color);display:flex;align-items:center;gap:5px;">
+          Ver todas
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        
-        <a href="/redes-sociales/contador-twitter" class="ht-related-card">
-          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg></div>
-          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador Twitter/X</div><div class="ht-related-card-desc">280 car. con preview del tuit</div></div>
+      </div>
+      <div class="bio-related-grid">
+        <a href="/redes-sociales/contador-instagram" class="bio-related-card">
+          <div class="bio-related-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/></svg></div>
+          <div><div class="bio-related-name">Contador Instagram</div><div class="bio-related-desc">Caption y bio con preview real</div></div>
         </a>
-        
+        <a href="/redes-sociales/contador-twitter" class="bio-related-card">
+          <div class="bio-related-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg></div>
+          <div><div class="bio-related-name">Contador Twitter/X</div><div class="bio-related-desc">280 car. con preview del tuit</div></div>
+        </a>
       </div>
-    </section>
+    </div>
 
-    <section class="ht-faq" aria-labelledby="faq-title">
-      <div class="ht-section-header"><h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2></div>
-      <div class="ht-faq-list">
-        <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">&#191;Cu&#225;ntos caracteres tiene la bio de Instagram? <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></button>
-          <div class="ht-faq-body" id="faq-1" role="region">La bio de Instagram tiene un l&#237;mite de <strong>150 caracteres</strong>. El campo del nombre (que aparece en negrita) tiene un l&#237;mite adicional de 30 caracteres y tambi&#233;n ayuda al SEO dentro de Instagram.</div>
+    <hr class="bio-divider">
+
+    <!-- FAQ -->
+    <div class="bio-section reveal">
+      <h2>Preguntas frecuentes</h2>
+      <div class="bio-faq-list">
+        <div class="bio-faq-item">
+          <button class="bio-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="bioFaq(this)">
+            &#191;Cu&#225;ntos caracteres tiene la bio de Instagram?
+            <svg class="bio-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="bio-faq-body" id="faq-1">La bio de Instagram tiene un l&#237;mite de <strong>150 caracteres</strong>. El campo del nombre (en negrita) tiene un l&#237;mite adicional de 30 caracteres y tambi&#233;n ayuda al SEO dentro de Instagram.</div>
         </div>
-        <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">&#191;La bio de Instagram afecta al SEO de la plataforma? <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></button>
-          <div class="ht-faq-body" id="faq-2" role="region">S&#237;. El campo <strong>nombre</strong> (no el nombre de usuario) es el que indexa Instagram para las b&#250;squedas internas. Si incluyes tu profesi&#243;n o especialidad en el nombre, aparecer&#225;s cuando alguien busque esa palabra en la plataforma. Por ejemplo, &#171;Ana Garc&#237;a | Fotógrafa Madrid&#187;.</div>
+        <div class="bio-faq-item">
+          <button class="bio-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="bioFaq(this)">
+            &#191;La bio de Instagram afecta al SEO de la plataforma?
+            <svg class="bio-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="bio-faq-body" id="faq-2">S&#237;. El campo <strong>nombre</strong> (no el nombre de usuario) es el que indexa Instagram para b&#250;squedas internas. Si incluyes tu profesi&#243;n en el nombre, aparecer&#225;s cuando alguien busque esa palabra en la plataforma.</div>
         </div>
-        <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">&#191;Puedo poner m&#250;ltiples enlaces en la bio? <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></button>
-          <div class="ht-faq-body" id="faq-3" role="region">Instagram solo permite <strong>un enlace clicable</strong> en la bio. Para compartir varios links, usa herramientas como Linktree, Beacons o una p&#225;gina de aterrizaje propia donde agregues todos tus destinos.</div>
+        <div class="bio-faq-item">
+          <button class="bio-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="bioFaq(this)">
+            &#191;Puedo poner m&#250;ltiples enlaces en la bio?
+            <svg class="bio-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="bio-faq-body" id="faq-3">Instagram solo permite <strong>un enlace clicable</strong> en la bio. Para compartir varios links, usa herramientas como Linktree, Beacons o una p&#225;gina de aterrizaje propia.</div>
         </div>
       </div>
-    </section>
-  </main>
-</div><!-- /.ht-wrap -->
+    </div>
+
+  </div>
+</div>
 
 <div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
@@ -651,21 +1217,45 @@
   <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
   <nav class="ht-footer-nav" aria-label="Legal">
     <a href="/">Inicio</a>
-    <a href="/legal/aviso-legal.html">Aviso legal</a>
-    <a href="/legal/politica-de-privacidad.html">Privacidad</a>
-    <a href="/legal/cookies.html">Cookies</a>
-    <a href="/legal/contacto.html">Contacto</a>
+    <a href="/legal/aviso-legal">Aviso legal</a>
+    <a href="/legal/politica-de-privacidad">Privacidad</a>
+    <a href="/legal/cookies">Cookies</a>
+    <a href="/legal/contacto">Contacto</a>
   </nav>
 </footer>
 
 <script src="/js/tools.js"></script>
 <script>
+/* ── Reveal on scroll ── */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+}());
+
+/* ── FAQ ── */
+function bioFaq(btn) {
+  var id   = btn.getAttribute('aria-controls');
+  var body = document.getElementById(id);
+  var open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', !open);
+  body.classList.toggle('open', !open);
+}
+
+/* ── Bio generator ── */
 (function () {
   'use strict';
 
   var LIMIT = 150;
 
-  /* Templates: functions that build bio lines */
   var TEMPLATES = {
     profesional: function (d) {
       var lines = [];
@@ -703,37 +1293,35 @@
   var currentEmoji    = '';
   var lastBio         = '';
 
-  /* DOM refs */
-  var fNombre      = document.getElementById('f-nombre');
-  var fProfesion   = document.getElementById('f-profesion');
-  var fEspecialidad= document.getElementById('f-especialidad');
-  var fCTA         = document.getElementById('f-cta');
-  var fLink        = document.getElementById('f-link');
+  var fNombre       = document.getElementById('f-nombre');
+  var fProfesion    = document.getElementById('f-profesion');
+  var fEspecialidad = document.getElementById('f-especialidad');
+  var fCTA          = document.getElementById('f-cta');
+  var fLink         = document.getElementById('f-link');
 
-  var prevInitial  = document.getElementById('prev-initial');
-  var prevUsername = document.getElementById('prev-username');
-  var prevName     = document.getElementById('prev-name');
-  var prevBio      = document.getElementById('prev-bio');
-  var prevLink     = document.getElementById('prev-link');
+  var prevInitial   = document.getElementById('prev-initial');
+  var prevName      = document.getElementById('prev-name');
+  var prevBio       = document.getElementById('prev-bio');
+  var prevLink      = document.getElementById('prev-link');
 
-  var charStatus   = document.getElementById('char-status');
-  var bioProgBar   = document.getElementById('bio-prog-bar');
-  var bioProgHint  = document.getElementById('bio-prog-hint');
-  var sChars       = document.getElementById('s-chars');
-  var sRemaining   = document.getElementById('s-remaining');
-  var sLines       = document.getElementById('s-lines');
+  var charStatus    = document.getElementById('char-status');
+  var bioProgBar    = document.getElementById('bio-prog-bar');
+  var bioProgHint   = document.getElementById('bio-prog-hint');
+  var sChars        = document.getElementById('s-chars');
+  var sRemaining    = document.getElementById('s-remaining');
+  var sLines        = document.getElementById('s-lines');
 
   window.BIO = {
     setTemplate: function (tpl, btn) {
       currentTemplate = tpl;
-      document.querySelectorAll('.ht-tpl-btn').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.bio-tpl-btn').forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
       BIO.generate();
     },
 
     setEmoji: function (emoji, el) {
       currentEmoji = emoji;
-      document.querySelectorAll('.ht-emoji-opt').forEach(function (e) { e.classList.remove('active'); });
+      document.querySelectorAll('.bio-emoji-opt, .bio-emoji-none').forEach(function (e) { e.classList.remove('active'); });
       el.classList.add('active');
       BIO.generate();
     },
@@ -749,31 +1337,28 @@
       };
 
       var bio = TEMPLATES[currentTemplate](data);
-
-      /* Truncate to 150 chars */
       if (bio.length > LIMIT) bio = bio.slice(0, LIMIT);
       lastBio = bio;
 
-      var len      = bio.length;
-      var remain   = LIMIT - len;
-      var pct      = (len / LIMIT) * 100;
-      var lines    = bio ? bio.split('\n').length : 0;
+      var len    = bio.length;
+      var remain = LIMIT - len;
+      var pct    = (len / LIMIT) * 100;
+      var lines  = bio ? bio.split('\n').length : 0;
 
-      /* Char status */
       charStatus.textContent = len + ' / ' + LIMIT;
-      charStatus.className   = 'ht-char-status ' + (len > 140 ? 'bad' : len > 120 ? 'warn' : 'ok');
+      charStatus.className   = 'bio-char-status ' + (len > 140 ? 'bad' : len > 120 ? 'warn' : 'ok');
       bioProgBar.style.width = pct + '%';
-      bioProgBar.style.background = len > 140 ? '#dc2626' : len > 120 ? '#d97706' : 'var(--cat-color)';
-      bioProgHint.textContent = remain > 0 ? (remain + ' caracteres disponibles') : 'Bio al l\u00edmite \u2014 revisa que no se haya cortado contenido';
+      bioProgHint.textContent = remain > 0
+        ? remain + ' caracteres disponibles'
+        : 'Bio al l\u00edmite \u2014 revisa que no se haya cortado contenido';
 
       HT.pop(sChars,     len);
       HT.pop(sRemaining, Math.max(0, remain));
       HT.pop(sLines,     lines);
 
-      /* Preview */
       var nombre = data.nombre || 'Tu nombre';
-      prevInitial.textContent  = nombre.charAt(0).toUpperCase();
-      prevName.textContent     = nombre;
+      prevInitial.textContent = nombre.charAt(0).toUpperCase();
+      prevName.textContent    = nombre;
 
       if (bio) {
         prevBio.textContent = bio;
@@ -782,7 +1367,7 @@
       }
 
       if (data.link) {
-        prevLink.textContent = data.link;
+        prevLink.textContent   = data.link;
         prevLink.style.display = '';
       } else {
         prevLink.style.display = 'none';
@@ -797,11 +1382,6 @@
       BIO.generate();
     }
   };
-
-  /* Input listeners */
-  [fNombre, fProfesion, fEspecialidad, fCTA, fLink].forEach(function (el) {
-    el.addEventListener('input', BIO.generate);
-  });
 
   BIO.generate();
 }());
