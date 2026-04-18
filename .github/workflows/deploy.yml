@@ -12,21 +12,70 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
-      - name: Deploy via FTP
+      - name: Deploy via FTP (Python)
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          cat > /tmp/lftp_script.txt << 'EOF'
-          set ftp:ssl-allow no
-          set net:timeout 60
-          set net:max-retries 5
-          set net:reconnect-interval-base 5
-          mirror -R --delete --parallel=4 --exclude-glob .git/ --exclude-glob .claude/ --exclude-glob ai/ --exclude-glob node_modules/ --exclude-glob templates/ --exclude-glob CATEGORIAS-Y-HERRAMIENTAS.md --exclude-glob PROYECTO.md --exclude-glob fix_*.js --exclude-glob check_*.js --exclude-glob update_*.js ./ /domains/herramientasdetexto.com/public_html/
-          quit
-          EOF
-          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_SERVER" < /tmp/lftp_script.txt
+          python3 << 'PYEOF'
+          import ftplib, os, sys
+          from pathlib import Path
+
+          server   = os.environ['FTP_SERVER']
+          user     = os.environ['FTP_USER']
+          password = os.environ['FTP_PASSWORD']
+          local    = Path('.')
+          remote   = '/domains/herramientasdetexto.com/public_html'
+
+          EXCLUDE_DIRS  = {'.git', '.claude', 'ai', 'node_modules', 'templates'}
+          EXCLUDE_FILES = {'CATEGORIAS-Y-HERRAMIENTAS.md', 'PROYECTO.md'}
+          EXCLUDE_GLOBS = {'fix_*.js', 'check_*.js', 'update_*.js', '*.js.bak'}
+
+          import fnmatch
+          def skip(rel):
+              parts = rel.parts
+              if any(p in EXCLUDE_DIRS for p in parts): return True
+              name = rel.name
+              if name in EXCLUDE_FILES: return True
+              if any(fnmatch.fnmatch(name, g) for g in EXCLUDE_GLOBS): return True
+              return False
+
+          ftp = ftplib.FTP()
+          ftp.connect(server, 21, timeout=60)
+          ftp.login(user, password)
+          ftp.set_pasv(True)
+          print(f"Connected to {server}")
+
+          made_dirs = set()
+          def ensure_dir(path):
+              if path in made_dirs: return
+              parts = path.split('/')
+              for i in range(2, len(parts)+1):
+                  d = '/'.join(parts[:i])
+                  if d not in made_dirs:
+                      try: ftp.mkd(d)
+                      except: pass
+                      made_dirs.add(d)
+
+          files = sorted(p for p in local.rglob('*') if p.is_file())
+          ok = err = 0
+          for f in files:
+              rel = f.relative_to(local)
+              if skip(rel): continue
+              rpath = remote + '/' + rel.as_posix()
+              rfolder = rpath.rsplit('/', 1)[0]
+              ensure_dir(rfolder)
+              try:
+                  with open(f, 'rb') as fh:
+                      ftp.storbinary('STOR ' + rpath, fh)
+                  print(f'  OK  {rel}')
+                  ok += 1
+              except Exception as e:
+                  print(f'  ERR {rel}: {e}', file=sys.stderr)
+                  err += 1
+
+          ftp.quit()
+          print(f"\nDone: {ok} uploaded, {err} errors")
+          sys.exit(1 if err > 0 else 0)
+          PYEOF
