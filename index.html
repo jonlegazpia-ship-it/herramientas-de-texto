@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,11 +26,13 @@
   <meta name="twitter:description" content="Todas las herramientas de texto que necesitas, gratis y en español.">
   <meta name="twitter:image"       content="https://herramientasdetexto.com/assets/og-image.png">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Favicon inline SVG (carga instantánea) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F46E5'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>T</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>T</text></svg>">
 
   <!-- Structured Data: WebSite -->
   <script type="application/ld+json">
@@ -52,7 +54,7 @@
   }
   </script>
 
-  <!-- Structured Data: ItemList de categorías -->
+  <!-- Structured Data: ItemList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,14 +75,781 @@
     ]
   }
   </script>
+
+  <style>
+  /* ================================================================
+     DESIGN TOKENS
+  ================================================================ */
+  :root {
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --bg:            #0a0a0f;
+    --bg-2:          #0f0f1a;
+    --bg-3:          #13131f;
+    --surface:       rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --border:        rgba(255,255,255,0.08);
+    --border-hover:  rgba(99,102,241,0.5);
+    --text:          #f0f0ff;
+    --text-2:        #9898b8;
+    --text-3:        #5a5a7a;
+
+    --accent:        #6366f1;
+    --accent-light:  #818cf8;
+    --accent-dark:   #4f46e5;
+    --accent-glow:   rgba(99,102,241,0.25);
+
+    --radius-sm:  8px;
+    --radius-md:  14px;
+    --radius-lg:  20px;
+
+    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  [data-theme="light"] {
+    --bg:            #f8f8ff;
+    --bg-2:          #ffffff;
+    --bg-3:          #f0f0ff;
+    --surface:       rgba(0,0,0,0.03);
+    --surface-hover: rgba(99,102,241,0.06);
+    --border:        rgba(0,0,0,0.08);
+    --border-hover:  rgba(99,102,241,0.4);
+    --text:          #0f0f1a;
+    --text-2:        #4a4a6a;
+    --text-3:        #8888aa;
+    --accent-glow:   rgba(99,102,241,0.15);
+  }
+
+  /* ================================================================
+     RESET + BASE
+  ================================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  button { cursor: pointer; font-family: var(--font); }
+  img, svg { display: block; }
+
+  .container {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ================================================================
+     AMBIENT BLOBS
+  ================================================================ */
+  .bg-ambient {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-ambient__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+  }
+  .bg-ambient__blob--1 { width:600px;height:600px;background:#6366f1;top:-200px;left:-100px; }
+  .bg-ambient__blob--2 { width:500px;height:500px;background:#8b5cf6;top:200px;right:-150px; }
+  .bg-ambient__blob--3 { width:400px;height:400px;background:#3b82f6;bottom:100px;left:30%;opacity:.08; }
+  [data-theme="light"] .bg-ambient__blob { opacity: 0.06; }
+
+  /* ================================================================
+     HEADER
+  ================================================================ */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    border-bottom: 1px solid transparent;
+  }
+  .header.scrolled {
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-color: var(--border);
+    box-shadow: 0 1px 40px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] .header.scrolled {
+    background: rgba(248,248,255,0.85);
+    box-shadow: 0 1px 20px rgba(99,102,241,0.1);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    transition: opacity var(--transition);
+  }
+  .logo:hover { opacity: 0.85; }
+  .logo__icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px var(--accent-glow);
+  }
+  .logo__text {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+  }
+  .logo__text span { color: var(--accent-light); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+  }
+  .nav__link {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-2);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+    position: relative;
+  }
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 12px; right: 12px;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 99px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  .nav__link:hover { color: var(--text); }
+  .nav__link:hover::after { transform: scaleX(1); }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .btn-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    transition: color var(--transition), background var(--transition), border-color var(--transition);
+  }
+  .btn-icon:hover {
+    color: var(--text);
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+  }
+  .nav-toggle { display: none; }
+
+  /* ================================================================
+     HERO
+  ================================================================ */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+    opacity: 0.5;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 99px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent-light);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+    animation: badge-in 0.6s ease both;
+  }
+  .hero__badge-dot {
+    width: 6px; height: 6px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:.5; transform:scale(0.7); }
+  }
+  @keyframes badge-in {
+    from { opacity:0; transform:translateY(-10px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero__title {
+    font-size: clamp(36px,7vw,68px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+    animation: hero-in 0.7s 0.1s ease both;
+  }
+  .hero__title span {
+    background: linear-gradient(135deg, #ffffff 30%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  [data-theme="light"] .hero__title span {
+    background: linear-gradient(135deg, #0f0f1a 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  @keyframes hero-in {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .hero__subtitle {
+    font-size: clamp(15px,2vw,18px);
+    color: var(--text-2);
+    margin-bottom: 36px;
+    line-height: 1.7;
+    animation: hero-in 0.7s 0.2s ease both;
+  }
+
+  .search-box {
+    position: relative;
+    max-width: 560px;
+    margin: 0 auto 24px;
+    animation: hero-in 0.7s 0.3s ease both;
+  }
+  .search-box__icon {
+    position: absolute;
+    left: 18px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-3);
+    pointer-events: none;
+  }
+  .search-box__input {
+    width: 100%;
+    padding: 16px 56px 16px 50px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    backdrop-filter: blur(10px);
+  }
+  .search-box__input::placeholder { color: var(--text-3); }
+  .search-box__input:focus {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.06);
+    box-shadow: 0 0 0 4px var(--accent-glow), 0 4px 24px rgba(0,0,0,0.4);
+  }
+  .search-box__kbd {
+    position: absolute;
+    right: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-family: var(--font);
+    pointer-events: none;
+  }
+
+  .hero__pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+    animation: hero-in 0.7s 0.4s ease both;
+  }
+  .hero__pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-2);
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    background: var(--surface);
+  }
+
+  .hero__stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 0;
+    animation: hero-in 0.7s 0.5s ease both;
+  }
+  .hero__stat { font-size:14px; color:var(--text-2); padding:0 16px; }
+  .hero__stat strong { color:var(--text); font-weight:700; }
+  .hero__stat-sep { color:var(--text-3); }
+
+  /* ================================================================
+     SEARCH RESULTS
+  ================================================================ */
+  .search-results { position:relative; z-index:1; margin-bottom:20px; }
+  .search-results.hidden { display:none; }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  /* ================================================================
+     MAIN
+  ================================================================ */
+  .main { position:relative; z-index:1; }
+
+  .ad-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 64px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 60px;
+    color: var(--text-3);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .ad-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  .section { margin-bottom: 80px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: clamp(20px,3vw,26px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .section-subtitle { font-size:13px; color:var(--text-3); font-weight:500; }
+
+  /* ================================================================
+     CATEGORY CARDS
+  ================================================================ */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    gap: 16px;
+  }
+  .cat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0;
+    transform: translateY(16px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .cat-card.visible { opacity:1; transform:translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, border-color var(--transition), box-shadow var(--transition), background var(--transition); }
+  .cat-card:not([aria-disabled="true"]):hover {
+    transform: translateY(-3px);
+    border-color: var(--border-hover);
+    background: var(--surface-hover);
+    box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.15);
+  }
+  .cat-card[aria-disabled="true"] { opacity:0.45; cursor:default; pointer-events:none; }
+  .cat-card[aria-disabled="true"].visible { opacity:0.45; }
+
+  .cat-card__icon {
+    font-size: 24px;
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--cat-color, #6366f1) 15%, transparent);
+    flex-shrink: 0;
+  }
+  .cat-card__body { flex:1; min-width:0; }
+  .cat-card__name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; letter-spacing:-0.01em; }
+  .cat-card__desc { font-size:12px; color:var(--text-2); line-height:1.5; margin-bottom:8px; }
+  .cat-card__count { font-size:11.5px; font-weight:600; color:var(--accent-light); }
+  .cat-card[aria-disabled="true"] .cat-card__count { color:var(--text-3); }
+
+  /* ================================================================
+     POPULAR
+  ================================================================ */
+  .popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+    gap: 16px;
+  }
+  .popular-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    transition: border-color var(--transition);
+  }
+  .popular-group:hover { border-color:rgba(99,102,241,0.2); }
+  .popular-group__title { font-size:12.5px; font-weight:700; color:var(--text-2); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; }
+  .popular-list { display:flex; flex-direction:column; gap:3px; }
+  .popular-list a { font-size:13px; color:var(--text-2); padding:5px 8px; border-radius:6px; transition:color var(--transition),background var(--transition); display:block; }
+  .popular-list a:hover { color:var(--text); background:var(--surface-hover); }
+
+  /* ================================================================
+     FEATURES
+  ================================================================ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .feature {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .feature:hover { border-color:var(--border-hover); transform:translateY(-2px); box-shadow:0 4px 24px var(--accent-glow); }
+  .feature__icon { font-size:24px; display:block; margin-bottom:12px; }
+  .feature__title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-0.01em; }
+  .feature__desc { font-size:13px; color:var(--text-2); line-height:1.6; }
+
+  /* ================================================================
+     SEO BLOCK
+  ================================================================ */
+  .seo-block {
+    position: relative;
+    z-index: 1;
+    padding: 80px 0;
+    background: linear-gradient(180deg, transparent, rgba(99,102,241,0.04) 50%, transparent);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-intro {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+  .info-intro__text h2 { font-size:clamp(22px,3.5vw,30px); font-weight:800; letter-spacing:-0.03em; margin-bottom:16px; color:var(--text); }
+  .info-intro__text p { font-size:14.5px; color:var(--text-2); line-height:1.75; margin-bottom:12px; max-width:540px; }
+  .info-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: 99px;
+    transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 2px 16px var(--accent-glow);
+  }
+  .info-cta:hover { opacity:.9; transform:translateY(-1px); box-shadow:0 4px 24px var(--accent-glow); }
+
+  .info-intro__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .info-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    text-align: center;
+    min-width: 100px;
+  }
+  .info-stat__num {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--text), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .info-stat__lbl { display:block; font-size:11px; font-weight:600; color:var(--text-3); text-transform:uppercase; letter-spacing:0.06em; }
+
+  .info-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .persona-card {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .persona-card:hover { border-color:rgba(99,102,241,0.3); transform:translateY(-2px); }
+  .persona-card__icon {
+    width: 40px; height: 40px;
+    margin-bottom: 14px;
+    background: rgba(99,102,241,0.1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    color: var(--accent-light);
+  }
+  .persona-card__icon svg { width:100%; height:100%; }
+  .persona-card h4 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:8px; letter-spacing:-0.01em; }
+  .persona-card p { font-size:13px; color:var(--text-2); line-height:1.65; }
+
+  .popular-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+    gap: 10px;
+  }
+  .popular-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-2);
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+  }
+  .popular-link svg { flex-shrink:0; color:var(--accent-light); width:14px; height:14px; }
+  .popular-link:hover { color:var(--text); border-color:rgba(99,102,241,0.3); background:var(--surface-hover); }
+
+  /* ================================================================
+     FAQ
+  ================================================================ */
+  .faq-home { position:relative; z-index:1; padding:80px 0; }
+  .faq-home__header { text-align:center; margin-bottom:48px; }
+  .faq-home__header h2 { font-size:clamp(22px,3.5vw,30px); font-weight:800; letter-spacing:-0.03em; margin-bottom:8px; color:var(--text); }
+  .faq-home__header p { font-size:14px; color:var(--text-2); }
+  .faq-home__list { max-width:680px; margin:0 auto; display:flex; flex-direction:column; gap:8px; }
+  .faq-home__item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--transition);
+  }
+  .faq-home__item.open { border-color:rgba(99,102,241,0.3); }
+  .faq-home__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    transition: color var(--transition);
+    line-height: 1.5;
+  }
+  .faq-home__btn:hover { color:var(--accent-light); }
+  .faq-home__arrow { width:16px; height:16px; flex-shrink:0; color:var(--text-3); transition:transform 0.25s ease, color 0.25s ease; }
+  .faq-home__item.open .faq-home__arrow { transform:rotate(180deg); color:var(--accent-light); }
+  .faq-home__body { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+  .faq-home__item.open .faq-home__body { max-height:300px; }
+  .faq-home__body p { padding:0 20px 18px; font-size:13.5px; color:var(--text-2); line-height:1.75; }
+  .faq-home__body a { color:var(--accent-light); text-decoration:underline; text-underline-offset:2px; }
+
+  /* ================================================================
+     FOOTER
+  ================================================================ */
+  .footer { position:relative; z-index:1; border-top:1px solid var(--border); background:var(--bg-2); }
+  .footer__inner { display:grid; grid-template-columns:1fr 2fr; gap:48px; padding-top:48px; padding-bottom:48px; }
+  .footer__brand .logo { margin-bottom:14px; }
+  .footer__desc { font-size:13px; color:var(--text-3); line-height:1.65; }
+  .footer__links { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .footer__col h4 { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-3); margin-bottom:14px; }
+  .footer__col a { display:block; font-size:13px; color:var(--text-2); padding:3px 0; transition:color var(--transition); }
+  .footer__col a:hover { color:var(--text); }
+  .footer__bottom { border-top:1px solid var(--border); padding:16px 0; }
+  .footer__bottom-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .footer__bottom p { font-size:12px; color:var(--text-3); }
+  .footer__legal-links { display:flex; gap:20px; }
+  .footer__legal-links a { font-size:12px; color:var(--text-3); transition:color var(--transition); }
+  .footer__legal-links a:hover { color:var(--text-2); }
+
+  /* ================================================================
+     SCROLL REVEAL
+  ================================================================ */
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ================================================================
+     RESPONSIVE
+  ================================================================ */
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      inset: 60px 0 0;
+      background: rgba(10,10,15,0.96);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px;
+      gap: 4px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: 99;
+      margin-left: 0;
+    }
+    [data-theme="light"] .nav { background:rgba(248,248,255,0.97); }
+    .nav.open { transform:translateY(0); }
+    .nav__link { font-size:16px; padding:12px 16px; width:100%; }
+    .nav-toggle { display:flex; }
+    .hero { padding:70px 0 56px; }
+    .info-intro { grid-template-columns:1fr; gap:32px; }
+    .info-intro__stats { grid-template-columns:repeat(4,1fr); }
+    .footer__inner { grid-template-columns:1fr; gap:32px; }
+    .footer__links { grid-template-columns:1fr 1fr; }
+    .cat-grid { grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); }
+  }
+  @media (max-width: 480px) {
+    .info-intro__stats { grid-template-columns:1fr 1fr; }
+    .footer__links { grid-template-columns:1fr; }
+    .hero__stats { flex-direction:column; gap:4px; }
+    .hero__stat-sep { display:none; }
+    .popular-grid { grid-template-columns:1fr 1fr; }
+  }
+
+  /* ================================================================
+     REDUCED MOTION
+  ================================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after { animation-duration:0.01ms!important; animation-iteration-count:1!important; transition-duration:0.01ms!important; }
+    .cat-card,.reveal { opacity:1!important; transform:none!important; }
+  }
+  </style>
 </head>
 
 <body>
 
-  <!-- ═══════════════════════════════════════════
+  <!-- Ambient background -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="bg-ambient__blob bg-ambient__blob--1"></div>
+    <div class="bg-ambient__blob bg-ambient__blob--2"></div>
+    <div class="bg-ambient__blob bg-ambient__blob--3"></div>
+  </div>
+
+  <!-- ─────────────────────────────────────────
        HEADER
-  ═══════════════════════════════════════════ -->
-  <header class="header" role="banner">
+  ───────────────────────────────────────── -->
+  <header class="header" role="banner" id="siteHeader">
     <div class="container header__inner">
 
       <a href="/" class="logo" aria-label="HerramientasDeTexto.com — Inicio">
@@ -89,16 +858,15 @@
       </a>
 
       <nav class="nav" id="mainNav" aria-label="Secciones de la página">
-        <a href="#categorias"      class="nav__link">Categorías</a>
-        <a href="#populares"       class="nav__link">Populares</a>
-        <a href="#por-que"         class="nav__link">Por qué nosotros</a>
-        <a href="#como-funciona"   class="nav__link">Cómo funciona</a>
-        <a href="#faq"             class="nav__link">FAQ</a>
+        <a href="#categorias"    class="nav__link">Categorías</a>
+        <a href="#populares"     class="nav__link">Populares</a>
+        <a href="#por-que"       class="nav__link">Por qué nosotros</a>
+        <a href="#como-funciona" class="nav__link">Cómo funciona</a>
+        <a href="#faq"           class="nav__link">FAQ</a>
       </nav>
 
       <div class="header__actions">
         <button class="btn-icon" id="themeToggle" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
-          <!-- Icono sol -->
           <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -106,7 +874,6 @@
             <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
-          <!-- Icono luna -->
           <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
@@ -122,14 +889,19 @@
   </header>
 
 
-  <!-- ═══════════════════════════════════════════
+  <!-- ─────────────────────────────────────────
        HERO
-  ═══════════════════════════════════════════ -->
+  ───────────────────────────────────────── -->
   <section class="hero" aria-label="Buscador de herramientas">
     <div class="container hero__inner">
 
+      <div class="hero__badge" role="img" aria-label="16 herramientas gratis en español">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        ✦ 16 herramientas gratis en español
+      </div>
+
       <h1 class="hero__title">
-        <span>Herramientas de Texto</span><br>Online y Gratis
+        <span>Herramientas de Texto<br>Online y Gratis</span>
       </h1>
 
       <p class="hero__subtitle">
@@ -153,6 +925,13 @@
         <kbd class="search-box__kbd" aria-hidden="true">ESC</kbd>
       </div>
 
+      <div class="hero__pills" aria-label="Características principales">
+        <span class="hero__pill">🔒 Sin registro</span>
+        <span class="hero__pill">⚡ Sin instalación</span>
+        <span class="hero__pill">🛡️ 100% privado</span>
+        <span class="hero__pill">✨ Siempre gratis</span>
+      </div>
+
       <div class="hero__stats" aria-label="Estadísticas del sitio">
         <span class="hero__stat"><strong>16</strong> herramientas</span>
         <span class="hero__stat-sep" aria-hidden="true">·</span>
@@ -167,9 +946,9 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       RESULTADOS DE BÚSQUEDA (oculto por defecto)
-  ═══════════════════════════════════════════ -->
+  <!-- ─────────────────────────────────────────
+       RESULTADOS DE BÚSQUEDA
+  ───────────────────────────────────────── -->
   <section class="search-results hidden container" id="searchResults" aria-live="polite" aria-label="Resultados de búsqueda">
     <div class="section-header">
       <h2 class="section-title" id="searchResultsTitle">Resultados</h2>
@@ -178,28 +957,23 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       CONTENIDO PRINCIPAL
-  ═══════════════════════════════════════════ -->
+  <!-- ─────────────────────────────────────────
+       MAIN
+  ───────────────────────────────────────── -->
   <main class="main" id="mainContent">
     <div class="container">
 
-      <!-- Ad leaderboard 728×90 -->
+      <!-- Ad -->
       <div class="ad-banner" aria-label="Publicidad" role="complementary">
         <span class="ad-label">Publicidad</span>
         <!-- Google AdSense — reemplaza con tu código real:
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="XXXXXXXXXX"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
         -->
         <span>728 × 90 — Anuncio</span>
       </div>
 
 
-      <!-- ── CATEGORÍAS ───────────────────────────── -->
+      <!-- ── CATEGORÍAS ───────────────────────────────────── -->
       <section id="categorias" class="section" aria-labelledby="cats-title">
         <div class="section-header">
           <h2 class="section-title" id="cats-title">Explora por categoría</h2>
@@ -272,7 +1046,7 @@
           </a>
 
           <a class="cat-card" aria-disabled="true" style="--cat-color:#06B6D4">
-            <span class="cat-card__icon" aria-hidden="true">🎓</span>
+            <span class="cat-card__icon" aria-hidden="true">📚</span>
             <div class="cat-card__body">
               <h3 class="cat-card__name">Herramientas para estudiantes</h3>
               <p class="cat-card__desc">Citas APA/MLA, bibliografía y más</p>
@@ -302,7 +1076,7 @@
       </section>
 
 
-      <!-- ── HERRAMIENTAS POPULARES ───────────────── -->
+      <!-- ── HERRAMIENTAS POPULARES ───────────────────────── -->
       <section id="populares" class="section" aria-labelledby="popular-title">
         <div class="section-header">
           <h2 class="section-title" id="popular-title">Herramientas más usadas</h2>
@@ -310,7 +1084,7 @@
 
         <div class="popular-grid">
 
-          <div class="popular-group">
+          <div class="popular-group reveal">
             <h3 class="popular-group__title">🔢 Contadores</h3>
             <ul class="popular-list">
               <li><a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a></li>
@@ -319,7 +1093,7 @@
             </ul>
           </div>
 
-          <div class="popular-group">
+          <div class="popular-group reveal">
             <h3 class="popular-group__title">🔄 Convertidores</h3>
             <ul class="popular-list">
               <li><a href="/convertidores-de-texto/convertir-a-mayusculas/">Convertir a mayúsculas</a></li>
@@ -329,14 +1103,14 @@
             </ul>
           </div>
 
-          <div class="popular-group">
+          <div class="popular-group reveal">
             <h3 class="popular-group__title">📈 SEO</h3>
             <ul class="popular-list">
               <li><a href="/seo-tools-de-texto/generador-de-meta-tags/">Generador de meta tags</a></li>
             </ul>
           </div>
 
-          <div class="popular-group">
+          <div class="popular-group reveal">
             <h3 class="popular-group__title">💻 Desarrollo</h3>
             <ul class="popular-list">
               <li><a href="/desarrollo-y-codificacion/formateador-json/">Formateador JSON</a></li>
@@ -346,7 +1120,7 @@
             </ul>
           </div>
 
-          <div class="popular-group">
+          <div class="popular-group reveal">
             <h3 class="popular-group__title">📱 Redes sociales</h3>
             <ul class="popular-list">
               <li><a href="/redes-sociales/contador-twitter/">Contador Twitter/X</a></li>
@@ -360,26 +1134,26 @@
       </section>
 
 
-      <!-- ── POR QUÉ USARNOS ─────────────────────── -->
+      <!-- ── POR QUÉ ────────────────────────────────────────── -->
       <section id="por-que" class="section" aria-labelledby="features-title">
-        <h2 class="section-title" id="features-title" style="margin-bottom:16px">¿Por qué HerramientasDeTexto.com?</h2>
+        <h2 class="section-title" id="features-title" style="margin-bottom:24px">¿Por qué HerramientasDeTexto.com?</h2>
         <div class="features-grid">
-          <div class="feature">
+          <div class="feature reveal">
             <span class="feature__icon" aria-hidden="true">⚡</span>
             <h3 class="feature__title">Ultra rápido</h3>
             <p class="feature__desc">Todo se procesa en tu navegador. Sin esperas ni llamadas a servidor.</p>
           </div>
-          <div class="feature">
+          <div class="feature reveal">
             <span class="feature__icon" aria-hidden="true">🔒</span>
             <h3 class="feature__title">100% privado</h3>
             <p class="feature__desc">Tu texto nunca sale de tu dispositivo. No almacenamos nada.</p>
           </div>
-          <div class="feature">
-            <span class="feature__icon" aria-hidden="true">🆓</span>
+          <div class="feature reveal">
+            <span class="feature__icon" aria-hidden="true">🎁</span>
             <h3 class="feature__title">Siempre gratis</h3>
             <p class="feature__desc">Todas las herramientas sin límites, sin registro y sin suscripciones.</p>
           </div>
-          <div class="feature">
+          <div class="feature reveal">
             <span class="feature__icon" aria-hidden="true">📱</span>
             <h3 class="feature__title">Cualquier dispositivo</h3>
             <p class="feature__desc">Diseño adaptado para móvil, tablet y escritorio.</p>
@@ -391,169 +1165,182 @@
   </main>
 
 
-  <!-- ═══════════════════════════════════════════
-     CÓMO FUNCIONA — Info visual
-═══════════════════════════════════════════ -->
-<section id="como-funciona" class="seo-block" aria-labelledby="info-title">
-  <div class="container">
+  <!-- ─────────────────────────────────────────
+       CÓMO FUNCIONA
+  ───────────────────────────────────────── -->
+  <section id="como-funciona" class="seo-block" aria-labelledby="info-title">
+    <div class="container">
 
-    <div class="info-intro">
-      <div class="info-intro__text">
-        <h2 id="info-title">La suite de herramientas de texto más completa en español</h2>
-        <p><strong>HerramientasDeTexto.com</strong> reúne en un solo lugar las utilidades de texto que necesitas para escribir, analizar, optimizar y transformar cualquier contenido. Todo funciona <strong>directamente en tu navegador</strong>: sin instalaciones, sin registro y con privacidad total porque tu texto nunca sale de tu dispositivo.</p>
-        <p>Cada herramienta está diseñada para dar una respuesta inmediata. Pegas el texto, obtienes el resultado. Sin esperas, sin formularios, sin trucos.</p>
-        <a href="#categorias" class="info-cta">Explorar las herramientas →</a>
-      </div>
-      <div class="info-intro__stats">
-        <div class="info-stat"><span class="info-stat__num">16</span><span class="info-stat__lbl">Herramientas</span></div>
-        <div class="info-stat"><span class="info-stat__num">10</span><span class="info-stat__lbl">Categorías</span></div>
-        <div class="info-stat"><span class="info-stat__num">0€</span><span class="info-stat__lbl">Coste</span></div>
-        <div class="info-stat"><span class="info-stat__num">0s</span><span class="info-stat__lbl">Registro</span></div>
-      </div>
-    </div>
-
-    <h3 class="info-section-label">¿Quién las usa?</h3>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM3 18a7 7 0 0 1 14 0"/></svg>
+      <div class="info-intro">
+        <div class="info-intro__text reveal">
+          <h2 id="info-title">La suite de herramientas de texto más completa en español</h2>
+          <p><strong>HerramientasDeTexto.com</strong> reúne en un solo lugar las utilidades de texto que necesitas para escribir, analizar, optimizar y transformar cualquier contenido. Todo funciona <strong>directamente en tu navegador</strong>: sin instalaciones, sin registro y con privacidad total porque tu texto nunca sale de tu dispositivo.</p>
+          <p>Cada herramienta está diseñada para dar una respuesta inmediata. Pegas el texto, obtienes el resultado. Sin esperas, sin formularios, sin trucos.</p>
+          <a href="#categorias" class="info-cta">Explorar las herramientas →</a>
         </div>
-        <h4>Redactores y copywriters</h4>
-        <p>Cuentan palabras, analizan densidad de keywords y optimizan meta descriptions para SEO sin salir del navegador.</p>
-      </div>
-      <div class="persona-card">
-        <div class="persona-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="11" y2="10"/><line x1="7" y1="13" x2="9" y2="13"/></svg>
-        </div>
-        <h4>Estudiantes y académicos</h4>
-        <p>Verifican la extensión de ensayos, generan referencias APA o MLA y limpian textos copiados con un solo clic.</p>
-      </div>
-      <div class="persona-card">
-        <div class="persona-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="4 17 4 7 10 3 16 7 16 17"/><rect x="8" y="12" width="4" height="5"/></svg>
-        </div>
-        <h4>Community managers</h4>
-        <p>Ajustan publicaciones a los límites de X, LinkedIn e Instagram. Cuentan hashtags y menciones antes de publicar.</p>
-      </div>
-      <div class="persona-card">
-        <div class="persona-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="5 7 2 10 5 13"/><polyline points="15 7 18 10 15 13"/><line x1="9" y1="6" x2="11" y2="14"/></svg>
-        </div>
-        <h4>Desarrolladores</h4>
-        <p>Formatean JSON, codifican en Base64, convierten a slug y generan UUIDs sin abrir el terminal.</p>
-      </div>
-    </div>
-
-    <h3 class="info-section-label">Herramientas más buscadas</h3>
-    <div class="popular-links-grid">
-      <a href="/contadores-de-texto/contador-de-palabras/" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="7" y2="8"/></svg>
-        Contador de palabras online gratis
-      </a>
-      <a href="/contadores-de-texto/contador-de-caracteres/" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="12" height="10" rx="1.5"/><line x1="4" y1="6" x2="10" y2="6"/><line x1="4" y1="9" x2="7" y2="9"/></svg>
-        Contador de caracteres online
-      </a>
-      <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M4 5h6M4 8h4"/></svg>
-        Generador de meta tags SEO
-      </a>
-      <a href="/convertidores-de-texto/convertir-a-mayusculas" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 10L5 4l3 6M3.5 8h3"/></svg>
-        Convertir mayúsculas / minúsculas
-      </a>
-      <a href="/desarrollo-y-codificacion/formateador-json/" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2M10 2h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2"/></svg>
-        Formateador y validador JSON
-      </a>
-      <a href="/redes-sociales/contador-twitter/" class="popular-link">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3 8.5 7 12.5 12H10L7.5 8.5 4.5 12H2L5.5 8 1.5 3H4L6.5 6.5 9.5 3Z"/></svg>
-        Contador de caracteres para Twitter/X
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     FAQ
-═══════════════════════════════════════════ -->
-<section id="faq" class="faq-home" aria-labelledby="faq-home-title">
-  <div class="container">
-    <div class="faq-home__header">
-      <h2 id="faq-home-title">Preguntas frecuentes</h2>
-      <p>Todo lo que necesitas saber antes de empezar</p>
-    </div>
-    <div class="faq-home__list">
-
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿Son realmente gratuitas para siempre o aparecerán funciones de pago?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>Las herramientas básicas son y seguirán siendo gratuitas sin límites ni registro. Trabajamos en funciones avanzadas opcionales para usuarios que necesiten más, pero el acceso esencial siempre será libre.</p>
+        <div class="info-intro__stats" aria-label="Estadísticas">
+          <div class="info-stat">
+            <span class="info-stat__num" data-target="16">0</span>
+            <span class="info-stat__lbl">Herramientas</span>
+          </div>
+          <div class="info-stat">
+            <span class="info-stat__num" data-target="10">0</span>
+            <span class="info-stat__lbl">Categorías</span>
+          </div>
+          <div class="info-stat">
+            <span class="info-stat__num">0€</span>
+            <span class="info-stat__lbl">Coste</span>
+          </div>
+          <div class="info-stat">
+            <span class="info-stat__num">0s</span>
+            <span class="info-stat__lbl">Registro</span>
+          </div>
         </div>
       </div>
 
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿El contador de palabras funciona igual que el de Microsoft Word?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>Casi idéntico. Ambos separan palabras por espacios en blanco, por lo que «hola-mundo» cuenta como una sola palabra. La diferencia es que nuestra herramienta calcula frases, párrafos, sílabas y tiempo de lectura simultáneamente, algo que Word no hace nativamente.</p>
+      <h3 class="info-section-label">¿Quién las usa?</h3>
+      <div class="persona-grid">
+        <div class="persona-card reveal">
+          <div class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM3 18a7 7 0 0 1 14 0"/></svg>
+          </div>
+          <h4>Redactores y copywriters</h4>
+          <p>Cuentan palabras, analizan densidad de keywords y optimizan meta descriptions para SEO sin salir del navegador.</p>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="11" y2="10"/><line x1="7" y1="13" x2="9" y2="13"/></svg>
+          </div>
+          <h4>Estudiantes y académicos</h4>
+          <p>Verifican la extensión de ensayos, generan referencias APA o MLA y limpian textos copiados con un solo clic.</p>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="4 17 4 7 10 3 16 7 16 17"/><rect x="8" y="12" width="4" height="5"/></svg>
+          </div>
+          <h4>Community managers</h4>
+          <p>Ajustan publicaciones a los límites de X, LinkedIn e Instagram. Cuentan hashtags y menciones antes de publicar.</p>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="5 7 2 10 5 13"/><polyline points="15 7 18 10 15 13"/><line x1="9" y1="6" x2="11" y2="14"/></svg>
+          </div>
+          <h4>Desarrolladores</h4>
+          <p>Formatean JSON, codifican en Base64, convierten a slug y generan UUIDs sin abrir el terminal.</p>
         </div>
       </div>
 
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿Mis textos están seguros? ¿Los guardáis en algún servidor?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>Absolutamente seguros. Toda la lógica corre en JavaScript dentro de tu propio navegador. El texto que introduces nunca llega a ningún servidor nuestro. Puedes verificarlo desconectando el WiFi: las herramientas siguen funcionando perfectamente.</p>
-        </div>
-      </div>
-
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿Hay límite de texto que puedo analizar de una sola vez?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>No hay límite impuesto por nosotros. El único límite práctico es la memoria de tu dispositivo. En pruebas hemos procesado manuscritos de más de 200.000 palabras sin que la herramienta pierda velocidad en un ordenador moderno.</p>
-        </div>
-      </div>
-
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿Funcionan las herramientas sin conexión a internet?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>Una vez que la página ha cargado, sí. Como el procesamiento es 100% local, puedes desconectarte de internet y las herramientas seguirán funcionando hasta que cierres la pestaña. Solo necesitas conexión para la carga inicial.</p>
-        </div>
-      </div>
-
-      <div class="faq-home__item">
-        <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-          ¿Tenéis API para integrar las herramientas en mis propias aplicaciones?
-          <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-        </button>
-        <div class="faq-home__body">
-          <p>Por ahora no ofrecemos una API pública, pero dado que toda la lógica corre en el navegador, los desarrolladores pueden inspeccionar y reutilizar el código de cualquier herramienta. Si tienes un caso de uso empresarial, escríbenos en el <a href="/legal/contacto.html">formulario de contacto</a>.</p>
-        </div>
+      <h3 class="info-section-label">Herramientas más buscadas</h3>
+      <div class="popular-links-grid">
+        <a href="/contadores-de-texto/contador-de-palabras/" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="7" y2="8"/></svg>
+          Contador de palabras online gratis
+        </a>
+        <a href="/contadores-de-texto/contador-de-caracteres/" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="12" height="10" rx="1.5"/><line x1="4" y1="6" x2="10" y2="6"/><line x1="4" y1="9" x2="7" y2="9"/></svg>
+          Contador de caracteres online
+        </a>
+        <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M4 5h6M4 8h4"/></svg>
+          Generador de meta tags SEO
+        </a>
+        <a href="/convertidores-de-texto/convertir-a-mayusculas" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 10L5 4l3 6M3.5 8h3"/></svg>
+          Convertir mayúsculas / minúsculas
+        </a>
+        <a href="/desarrollo-y-codificacion/formateador-json/" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2M10 2h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2"/></svg>
+          Formateador y validador JSON
+        </a>
+        <a href="/redes-sociales/contador-twitter/" class="popular-link">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3 8.5 7 12.5 12H10L7.5 8.5 4.5 12H2L5.5 8 1.5 3H4L6.5 6.5 9.5 3Z"/></svg>
+          Contador de caracteres para Twitter/X
+        </a>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- ═══════════════════════════════════════════
+
+  <!-- ─────────────────────────────────────────
+       FAQ
+  ───────────────────────────────────────── -->
+  <section id="faq" class="faq-home" aria-labelledby="faq-home-title">
+    <div class="container">
+      <div class="faq-home__header reveal">
+        <h2 id="faq-home-title">Preguntas frecuentes</h2>
+        <p>Todo lo que necesitas saber antes de empezar</p>
+      </div>
+      <div class="faq-home__list">
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿Son realmente gratuitas para siempre o aparecerán funciones de pago?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>Las herramientas básicas son y seguirán siendo gratuitas sin límites ni registro. Trabajamos en funciones avanzadas opcionales para usuarios que necesiten más, pero el acceso esencial siempre será libre.</p>
+          </div>
+        </div>
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿El contador de palabras funciona igual que el de Microsoft Word?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>Casi idéntico. Ambos separan palabras por espacios en blanco, por lo que «hola-mundo» cuenta como una sola palabra. La diferencia es que nuestra herramienta calcula frases, párrafos, sílabas y tiempo de lectura simultáneamente, algo que Word no hace nativamente.</p>
+          </div>
+        </div>
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿Mis textos están seguros? ¿Los guardáis en algún servidor?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>Absolutamente seguros. Toda la lógica corre en JavaScript dentro de tu propio navegador. El texto que introduces nunca llega a ningún servidor nuestro. Puedes verificarlo desconectando el WiFi: las herramientas siguen funcionando perfectamente.</p>
+          </div>
+        </div>
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿Hay límite de texto que puedo analizar de una sola vez?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>No hay límite impuesto por nosotros. El único límite práctico es la memoria de tu dispositivo. En pruebas hemos procesado manuscritos de más de 200.000 palabras sin que la herramienta pierda velocidad en un ordenador moderno.</p>
+          </div>
+        </div>
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿Funcionan las herramientas sin conexión a internet?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>Una vez que la página ha cargado, sí. Como el procesamiento es 100% local, puedes desconectarte de internet y las herramientas seguirán funcionando hasta que cierres la pestaña. Solo necesitas conexión para la carga inicial.</p>
+          </div>
+        </div>
+
+        <div class="faq-home__item reveal">
+          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
+            ¿Tenéis API para integrar las herramientas en mis propias aplicaciones?
+            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="faq-home__body">
+            <p>Por ahora no ofrecemos una API pública, pero dado que toda la lógica corre en el navegador, los desarrolladores pueden inspeccionar y reutilizar el código de cualquier herramienta. Si tienes un caso de uso empresarial, escríbenos en el <a href="/legal/contacto.html">formulario de contacto</a>.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
        FOOTER
-  ═══════════════════════════════════════════ -->
+  ───────────────────────────────────────── -->
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
 
@@ -602,10 +1389,8 @@
         </div>
 
       </nav>
-
     </div>
 
-    <!-- Barra legal inferior -->
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <p>© 2026 HerramientasDeTexto.com — Todas las herramientas son gratuitas</p>
@@ -620,11 +1405,12 @@
   </footer>
 
 
-  <!-- ═══════════════════════════════════════════
+  <!-- ─────────────────────────────────────────
        JAVASCRIPT
-  ═══════════════════════════════════════════ -->
+  ───────────────────────────────────────── -->
   <script src="js/app.js"></script>
   <script>
+  /* ── FAQ accordion ── */
   function htFaq(btn) {
     var item = btn.parentElement;
     var isOpen = item.classList.contains('open');
@@ -637,6 +1423,104 @@
       btn.setAttribute('aria-expanded', 'true');
     }
   }
+
+  /* ── Sticky header ── */
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function() {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  /* ── Theme toggle ── */
+  (function() {
+    var html = document.documentElement;
+    var stored = localStorage.getItem('ht-theme') || 'dark';
+    var sun  = document.getElementById('iconSun');
+    var moon = document.getElementById('iconMoon');
+    function applyTheme(t) {
+      html.setAttribute('data-theme', t);
+      localStorage.setItem('ht-theme', t);
+      if (t === 'dark') { sun.style.display = ''; moon.style.display = 'none'; }
+      else              { sun.style.display = 'none'; moon.style.display = ''; }
+    }
+    applyTheme(stored);
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  })();
+
+  /* ── Mobile nav ── */
+  var navToggle = document.getElementById('navToggle');
+  var mainNav   = document.getElementById('mainNav');
+  navToggle.addEventListener('click', function() {
+    var open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+  mainNav.querySelectorAll('.nav__link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Intersection Observer ── */
+  (function() {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Reveal */
+    var revObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      if (reduced) { el.classList.add('visible'); } else { revObs.observe(el); }
+    });
+
+    /* Cat cards staggered */
+    var catGrid = document.querySelector('.cat-grid');
+    if (catGrid) {
+      if (reduced) {
+        catGrid.querySelectorAll('.cat-card').forEach(function(c) { c.classList.add('visible'); });
+      } else {
+        new IntersectionObserver(function(entries, obs) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              catGrid.querySelectorAll('.cat-card').forEach(function(card, i) {
+                setTimeout(function() { card.classList.add('visible'); }, i * 60);
+              });
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.05 }).observe(catGrid);
+      }
+    }
+
+    /* Animated counters */
+    var statsEl = document.querySelector('.info-intro__stats');
+    if (statsEl) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.querySelectorAll('[data-target]').forEach(function(el) {
+              var target = parseInt(el.getAttribute('data-target'), 10);
+              if (reduced) { el.textContent = target; return; }
+              var startTime = null;
+              (function step(ts) {
+                if (!startTime) startTime = ts;
+                var p = Math.min((ts - startTime) / 800, 1);
+                el.textContent = Math.floor(p * target);
+                if (p < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+              })(performance.now());
+            });
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 }).observe(statsEl);
+    }
+  })();
   </script>
 
 </body>

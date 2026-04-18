@@ -253,7 +253,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   transition: color 0.12s;
 }
 
-.ht-bc a:hover { color: var(--accent); }
+.ht-bc a:hover { color: var(--cat-color); }
 
 .ht-bc-sep {
   color: var(--border);
@@ -390,7 +390,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 
 .ht-textarea-card:focus-within {
   border-color: var(--cat-border);
-  box-shadow: var(--shadow-sm), 0 0 0 3px rgba(37, 99, 235, 0.08);
+  box-shadow: var(--shadow-sm), 0 0 0 3px var(--cat-border);
 }
 
 .ht-textarea-card-header {
@@ -494,9 +494,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 }
 
 .ht-btn:hover {
-  border-color: var(--accent-border);
-  color: var(--accent);
-  background: var(--accent-light);
+  border-color: var(--cat-border);
+  color: var(--cat-color);
+  background: var(--cat-bg);
   transform: translateY(-1px);
   box-shadow: var(--shadow-xs);
 }
@@ -510,9 +510,10 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 }
 
 .ht-btn--primary:hover {
-  background: var(--accent-2);
-  border-color: var(--accent-2);
+  background: var(--cat-color);
+  border-color: var(--cat-color);
   color: #fff;
+  filter: brightness(0.88);
 }
 
 .ht-btn--danger { color: var(--red); }
@@ -908,13 +909,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 .ht-tip strong { color: var(--ink); }
 
 .ht-tip a {
-  color: var(--accent);
+  color: var(--cat-color);
   text-decoration: underline;
-  text-decoration-color: var(--accent-border);
+  text-decoration-color: var(--cat-border);
   text-underline-offset: 2px;
 }
 
-.ht-tip a:hover { text-decoration-color: var(--accent); }
+.ht-tip a:hover { text-decoration-color: var(--cat-color); }
 
 /* ============================================================
    INFO GRID — 2x2 panel
@@ -1127,14 +1128,14 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 .ht-long strong { color: var(--ink); font-weight: 600; }
 
 .ht-long a {
-  color: var(--accent);
+  color: var(--cat-color);
   text-decoration: underline;
-  text-decoration-color: var(--accent-border);
+  text-decoration-color: var(--cat-border);
   text-underline-offset: 2px;
   transition: text-decoration-color 0.15s;
 }
 
-.ht-long a:hover { text-decoration-color: var(--accent); }
+.ht-long a:hover { text-decoration-color: var(--cat-color); }
 
 /* Reference table */
 .ht-ref-table-wrap {
@@ -1199,7 +1200,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 
 .ht-section-link {
   font-size: 13px;
-  color: var(--accent);
+  color: var(--cat-color);
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -1338,9 +1339,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 .ht-faq-body.open { display: block; }
 
 .ht-faq-body a {
-  color: var(--accent);
+  color: var(--cat-color);
   text-decoration: underline;
-  text-decoration-color: var(--accent-border);
+  text-decoration-color: var(--cat-border);
 }
 
 /* ============================================================
