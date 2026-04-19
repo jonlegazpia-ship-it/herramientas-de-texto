@@ -1,0 +1,296 @@
+/* ============================================================
+   HerramientasDeTexto.com — categories.css
+   Shared stylesheet for all category landing pages
+   ============================================================ */
+
+/* ── Hero content (inside .ht-dark-hero) ────────────────── */
+.cc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(8px);
+  animation: fadeSlideUp .6s var(--ease) both;
+}
+.cc-badge svg { width: 12px; height: 12px; color: rgba(255,255,255,.55); }
+
+.cc-h1 {
+  font-size: clamp(1.75rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  animation: fadeSlideUp .7s .08s var(--ease) both;
+}
+
+.cc-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0 auto 1.75rem;
+  animation: fadeSlideUp .7s .16s var(--ease) both;
+}
+
+.cc-kpis {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeSlideUp .7s .24s var(--ease) both;
+}
+
+.cc-kpi { display: flex; flex-direction: column; align-items: center; }
+
+.cc-kpi-val {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.cc-kpi-lbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── Filter pills ────────────────────────────────────────── */
+.cc-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.cc-filter {
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  text-decoration: none;
+}
+.cc-filter:hover, .cc-filter.active {
+  background: var(--cat-bg);
+  border-color: var(--cat-border);
+  color: var(--cat-color);
+}
+
+/* ── Grid header ─────────────────────────────────────────── */
+.cc-grid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.cc-grid-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cc-grid-count { font-size: 12px; color: var(--ink-3); }
+
+/* ── Tool cards ──────────────────────────────────────────── */
+.cc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.cc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.15s;
+  box-shadow: var(--shadow-xs);
+}
+.cc-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--cat-color);
+}
+.cc-card:hover .cc-card-name { color: var(--cat-color); }
+
+.cc-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--cat-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: background .15s;
+}
+.cc-card:hover .cc-card-icon { background: var(--cat-border); }
+.cc-card-icon svg { width: 16px; height: 16px; color: var(--cat-color); }
+
+.cc-card-body { flex: 1; min-width: 0; }
+.cc-card-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 3px;
+  transition: color 0.15s;
+}
+.cc-card-desc { font-size: 12px; color: var(--ink-3); line-height: 1.55; }
+.cc-card-arrow {
+  font-size: 18px;
+  color: var(--border);
+  flex-shrink: 0;
+  align-self: center;
+  transition: color 0.15s, transform 0.15s;
+}
+.cc-card:hover .cc-card-arrow { color: var(--cat-color); transform: translateX(3px); }
+
+/* Featured card (spans 2 columns) */
+.cc-card--featured {
+  grid-column: span 2;
+  border-left-color: var(--cat-color);
+  background: linear-gradient(135deg, var(--cat-bg), var(--surface));
+  border-color: var(--cat-border);
+}
+.cc-card--featured .cc-card-name { font-size: 14.5px; font-weight: 700; }
+.cc-card--featured .cc-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--cat-color);
+}
+.cc-card--featured .cc-card-icon svg { color: #fff; width: 20px; height: 20px; }
+
+/* "Coming soon" card */
+.cc-card--soon {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* "Coming soon" badge inside card */
+.cc-soon-tag {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--border-2, #e5e7eb);
+  color: var(--ink-3);
+  border-radius: 4px;
+  padding: 1px 5px;
+  vertical-align: middle;
+}
+
+/* ── Tip block ───────────────────────────────────────────── */
+.cc-tip {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fde68a;
+  border-radius: var(--r-sm);
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  font-size: 13.5px;
+  color: #78350f;
+  line-height: 1.65;
+}
+.cc-tip svg { width: 18px; height: 18px; color: #d97706; flex-shrink: 0; margin-top: 1px; }
+.cc-tip a { color: #92400e; font-weight: 600; }
+
+/* ── Mid-ad ──────────────────────────────────────────────── */
+.cc-ad-mid {
+  background: var(--border-2, #f0f0f2);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Emoji float (hero background) ──────────────────────── */
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.5; }
+  100% { opacity: 0; transform: translateY(-120vh) rotate(360deg); }
+}
+
+/* ── Marquee ticker ──────────────────────────────────────── */
+.cc-marquee-wrap {
+  background: #09090d;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+  padding: 11px 0;
+  cursor: default;
+}
+.cc-marquee-wrap:hover .cc-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.cc-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.cc-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.cc-marquee-dot {
+  color: rgba(255,255,255,0.2);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .cc-desc { font-size: 0.9375rem; }
+  .cc-kpis { gap: 1.5rem; }
+  .cc-grid { grid-template-columns: 1fr; }
+  .cc-card--featured { grid-column: span 1; }
+}
+@media (max-width: 480px) {
+  .cc-filters { display: none; }
+}

@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="30 utilidades de texto gratuitas: cifrados, anagramas, sentimientos, idioma, Braille y más.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <link rel="stylesheet" href="/css/tools.css">
-
+<link rel="stylesheet" href="/css/categories.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -83,69 +83,7 @@
   ]
 }
 </script>
-
-<style>
-:root {
-  --cat-color:  #D97706;
-  --cat-bg:     #FFFBEB;
-  --cat-border: #FDE68A;
-}
-.cc-hero {
-  background: linear-gradient(135deg, #78350f 0%, #D97706 60%, #f59e0b 100%);
-  border-radius: var(--r);
-  padding: 2.25rem 2rem 2rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  color: white;
-}
-.cc-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-}
-.cc-hero-inner { display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;position:relative;z-index:1; }
-.cc-hero-body { flex:1;min-width:0; }
-.cc-hero-icon { width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
-.cc-hero-icon svg { width:30px;height:30px;color:white; }
-.cc-badge { display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:3px 9px;border-radius:20px;margin-bottom:.75rem; }
-.cc-h1 { font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;color:white;margin-bottom:.5rem; }
-.cc-desc { font-size:.9375rem;color:rgba(255,255,255,.85);line-height:1.75;max-width:600px;margin-bottom:1.25rem; }
-.cc-kpis { display:flex;gap:1.5rem;flex-wrap:wrap; }
-.cc-kpi { display:flex;flex-direction:column; }
-.cc-kpi-val { font-size:1.4rem;font-weight:800;color:white;letter-spacing:-.03em;line-height:1; }
-.cc-kpi-lbl { font-size:10.5px;color:rgba(255,255,255,.65);font-weight:500;margin-top:3px;text-transform:uppercase;letter-spacing:.05em; }
-.cc-filters { display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem; }
-.cc-filter { padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;background:var(--surface);border:1px solid var(--border);color:var(--ink-2);cursor:pointer;transition:background .15s,border-color .15s,color .15s;text-decoration:none; }
-.cc-filter:hover,.cc-filter.active { background:var(--cat-bg);border-color:var(--cat-border);color:var(--cat-color); }
-.cc-grid-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem; }
-.cc-grid-label { font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3); }
-.cc-grid-count { font-size:12px;color:var(--ink-3); }
-.cc-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:8px;margin-bottom:2rem; }
-.cc-card { background:var(--surface);border:1px solid var(--border);border-left:3px solid transparent;border-radius:var(--r-sm);padding:.875rem 1rem;text-decoration:none;display:flex;align-items:flex-start;gap:.75rem;transition:transform .15s var(--ease),box-shadow .15s var(--ease),border-color .15s;box-shadow:var(--shadow-xs); }
-.cc-card:hover { transform:translateX(3px);box-shadow:var(--shadow);border-left-color:var(--cat-color); }
-.cc-card:hover .cc-card-name { color:var(--cat-color); }
-.cc-card-icon { width:34px;height:34px;border-radius:9px;background:var(--cat-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:background .15s; }
-.cc-card:hover .cc-card-icon { background:var(--cat-border); }
-.cc-card-icon svg { width:15px;height:15px;color:var(--cat-color); }
-.cc-card-body { flex:1;min-width:0; }
-.cc-card-name { font-size:13.5px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:3px;transition:color .15s; }
-.cc-card-desc { font-size:12px;color:var(--ink-3);line-height:1.55; }
-.cc-card-arrow { font-size:16px;color:var(--border);flex-shrink:0;align-self:center;transition:color .15s,transform .15s; }
-.cc-card:hover .cc-card-arrow { color:var(--cat-color);transform:translateX(2px); }
-.cc-card--featured { grid-column:span 2;background:linear-gradient(135deg,var(--cat-bg),#fff);border-color:var(--cat-border);border-left-color:var(--cat-color); }
-.cc-card--featured .cc-card-name { font-size:14.5px;font-weight:600; }
-.cc-card--featured .cc-card-icon { width:42px;height:42px;border-radius:12px;background:var(--cat-color); }
-.cc-card--featured .cc-card-icon svg { color:white;width:18px;height:18px; }
-.cc-tip { background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a;border-radius:var(--r-sm);padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;margin-bottom:1.5rem;font-size:13.5px;color:#78350f;line-height:1.65; }
-.cc-tip svg { width:18px;height:18px;color:#d97706;flex-shrink:0;margin-top:1px; }
-.cc-tip a { color:#92400e;font-weight:600; }
-.cc-ad-mid { background:var(--border-2,#f0f0f2);border:1px dashed var(--border);border-radius:var(--r-sm);height:90px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-3);margin-bottom:1.5rem; }
-@media (max-width:640px) { .cc-hero{padding:1.5rem 1.25rem;} .cc-hero-icon{display:none;} .cc-grid{grid-template-columns:1fr;} .cc-card--featured{grid-column:span 1;} .cc-kpis{gap:1rem;} }
-@media (max-width:480px) { .cc-filters{display:none;} }
-</style>
+<style>:root { --cat-color: #D97706; --cat-bg: #FFFBEB; --cat-border: #FDE68A; }</style>
 </head>
 <body>
 
@@ -170,34 +108,38 @@
   </div>
 </header>
 
-<div class="ht-wrap">
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+    <div class="cc-badge">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1 1-9 9-1-1 9-9zM3 11l1 2 1-1-2-1z"/></svg>
+      Categoría · Utilidades
+    </div>
+    <h1 class="cc-h1">Utilidades de texto online gratis</h1>
+    <p class="cc-desc">Cifra mensajes con César, Vigenère o ROT13; detecta anagramas; analiza el sentimiento de tus textos; convierte a Braille o código Morse; genera contraseñas seguras y tokens; calcula combinaciones y permutaciones. 30 utilidades gratuitas, sin registro.</p>
+    <div class="cc-kpis">
+      <div class="cc-kpi"><span class="cc-kpi-val">0</span><span class="cc-kpi-lbl">Herramientas</span></div>
+      <div class="cc-kpi"><span class="cc-kpi-val">100%</span><span class="cc-kpi-lbl">Gratuitas</span></div>
+      <div class="cc-kpi"><span class="cc-kpi-val">0</span><span class="cc-kpi-lbl">Registro</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="cc-marquee-wrap" aria-hidden="true">
+  <div class="cc-marquee-track">
+    <span>🔐 Cifrado César</span><span>🔄 ROT13</span><span>🔑 Vigenère</span><span>🔤 Anagramas</span><span>🛡️ Contraseñas</span><span>💬 Sentimientos</span><span>🌍 Detector idioma</span><span>⠃ Braille</span><span>📡 Código Morse</span><span>🎲 Generador aleatorio</span><span>🔐 Cifrado César</span><span>🔄 ROT13</span><span>🔑 Vigenère</span><span>🔤 Anagramas</span><span>🛡️ Contraseñas</span><span>💬 Sentimientos</span><span>🌍 Detector idioma</span><span>⠃ Braille</span><span>📡 Código Morse</span><span>🎲 Generador aleatorio</span>
+  </div>
+</div>
+
+<div class="ht-wrap ht-wrap--after-hero">
 
   <nav class="ht-bc" aria-label="Ruta de navegación">
     <a href="/">Inicio</a>
     <span class="ht-bc-sep" aria-hidden="true">›</span>
     <span aria-current="page">Utilidades de texto</span>
   </nav>
-
-  <div class="cc-hero">
-    <div class="cc-hero-inner">
-      <div class="cc-hero-body">
-        <div class="cc-badge">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1 1-9 9-1-1 9-9zM3 11l1 2 1-1-2-1z"/></svg>
-          Categoría · Utilidades
-        </div>
-        <h1 class="cc-h1">Utilidades de texto online gratis</h1>
-        <p class="cc-desc">Cifra mensajes con César, Vigenère o ROT13; detecta anagramas; analiza el sentimiento de tus textos; convierte a Braille o código Morse; genera contraseñas seguras y tokens; calcula combinaciones y permutaciones. 30 utilidades gratuitas, sin registro.</p>
-        <div class="cc-kpis">
-          <div class="cc-kpi"><span class="cc-kpi-val">0</span><span class="cc-kpi-lbl">Herramientas</span></div>
-          <div class="cc-kpi"><span class="cc-kpi-val">100%</span><span class="cc-kpi-lbl">Gratuitas</span></div>
-          <div class="cc-kpi"><span class="cc-kpi-val">0</span><span class="cc-kpi-lbl">Registro</span></div>
-        </div>
-      </div>
-      <div class="cc-hero-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-    </div>
-  </div>
 
   <div class="ht-ad-banner" aria-hidden="true">Publicidad · 728×90</div>
 
@@ -225,5 +167,32 @@
 </footer>
 
 <script src="/js/tools.js"></script>
+<script>
+(function(){
+  var EMOJIS=['📝','✍️','🔤','📋','💬','🔍','✨','🧹','📊','🔢','💡','⚡','🎯','🔄','📌'];
+  var heroEl=document.querySelector('.ht-dark-hero');
+  if(!heroEl)return;
+  function spawnEmoji(){
+    var el=document.createElement('div');
+    el.style.cssText='position:absolute;pointer-events:none;z-index:0;';
+    el.textContent=EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.bottom='-60px';
+    el.style.fontSize=(18+Math.random()*20)+'px';
+    var dur=14+Math.random()*12;
+    el.style.animation='floatUp '+dur+'s linear forwards';
+    heroEl.appendChild(el);
+    setTimeout(function(){el.remove();},dur*1000);
+  }
+  setInterval(spawnEmoji,1800);
+  spawnEmoji();spawnEmoji();spawnEmoji();
+}());
+(function(){
+  var io=new IntersectionObserver(function(e){
+    e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('revealed');io.unobserve(x.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+}());
+</script>
 </body>
 </html>
