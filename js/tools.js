@@ -217,3 +217,22 @@
   global.HT = HT;
 
 }(window));
+
+/* ── Theme toggle (tool & category pages) ───────────────── */
+(function () {
+  function init() {
+    var btn = document.getElementById('ht-theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var html = document.documentElement;
+      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+}());

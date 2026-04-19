@@ -1564,3 +1564,65 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
 }
 .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   DARK MODE — Token overrides for tool & category pages
+   ============================================================ */
+[data-theme="dark"] {
+  --canvas:        #0d0d14;
+  --surface:       #13131e;
+  --border:        rgba(255,255,255,0.08);
+  --border-2:      rgba(255,255,255,0.05);
+  --ink:           #e8e8f0;
+  --ink-2:         #8888a8;
+  --ink-3:         #44445a;
+  --cat-bg:        rgba(255,255,255,0.05);
+  --cat-border:    rgba(255,255,255,0.10);
+  --accent-light:  rgba(37,99,235,0.12);
+  --accent-border: rgba(37,99,235,0.25);
+  --green-bg:      rgba(22,163,74,0.12);
+  --amber-bg:      rgba(217,119,6,0.12);
+  --red-bg:        rgba(220,38,38,0.12);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.40), 0 1px 2px rgba(0,0,0,0.30);
+  --shadow:    0 4px 12px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.30);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.50), 0 2px 6px rgba(0,0,0,0.30);
+}
+
+[data-theme="dark"] .ht-site-header {
+  background: rgba(13,13,20,0.92);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+
+[data-theme="dark"] .ht-textarea:focus { background: #15151f; }
+
+/* ── Theme toggle button ─────────────────────────────────── */
+.ht-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  margin-right: 6px;
+}
+.ht-theme-toggle:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.ht-theme-toggle svg { width: 16px; height: 16px; }
+
+/* Default icon: dark mode active → show sun to switch to light */
+.ht-icon-sun  { display: block; }
+.ht-icon-moon { display: none; }
+[data-theme="light"] .ht-icon-sun  { display: none; }
+[data-theme="light"] .ht-icon-moon { display: block; }
+[data-theme="dark"]  .ht-icon-sun  { display: block; }
+[data-theme="dark"]  .ht-icon-moon { display: none; }
