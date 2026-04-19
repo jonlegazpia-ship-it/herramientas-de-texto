@@ -26,7 +26,14 @@
   --cat-border:  #EDE9FE;
 }
 </style>
-
+<style>
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
+</style>
 <link rel="stylesheet" href="/css/tools.css">
 
 <script type="application/ld+json">

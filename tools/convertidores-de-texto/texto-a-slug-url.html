@@ -195,6 +195,12 @@ a:hover{text-decoration:underline}
   .ht-stat-cards{grid-template-columns:1fr 1fr}
   .ht-stat-card--primary{grid-column:1/-1}
 }
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 <script type="application/ld+json">
@@ -432,19 +438,41 @@ a:hover{text-decoration:underline}
 
     <div class="ht-long reveal">
       <h2 id="que-es">Generador de slugs URL: crea URLs SEO-friendly al instante</h2>
-      <p>El <strong>conversor de texto a slug</strong> transforma cualquier t&#237;tulo en una URL amigable siguiendo las mejores pr&#225;cticas SEO. Elimina autom&#225;ticamente tildes (&#225;&#233;&#237;&#243;&#250; &#8594; aeiou), convierte espacios en guiones, pasa todo a min&#250;sculas y elimina caracteres especiales como &#8216;&#8217;!&#63;&#64;# que no son v&#225;lidos en URLs. Todo en tiempo real, directamente en tu navegador.</p>
+      <p>El <strong>conversor de texto a slug</strong> transforma cualquier t&#237;tulo en una URL amigable siguiendo las mejores pr&#225;cticas SEO. Elimina autom&#225;ticamente tildes (&#225;&#233;&#237;&#243;&#250; &#8594; aeiou), convierte espacios en guiones, pasa todo a min&#250;sculas y elimina caracteres especiales como comillas, signos de exclamaci&#243;n o arrobas que no son v&#225;lidos en URLs. Todo ocurre en tiempo real, directamente en tu navegador, sin enviar datos a ning&#250;n servidor.</p>
+
+      <h2 id="como-funciona">C&#243;mo usar el generador de slugs</h2>
+      <p>El proceso es inmediato: escribe o pega el t&#237;tulo de tu art&#237;culo, categor&#237;a o p&#225;gina en el campo de entrada. El conversor genera instant&#225;neamente el slug limpio, listo para copiar con un clic. Puedes elegir entre guion medio (el est&#225;ndar para SEO) o guion bajo (para casos espec&#237;ficos como nombres de archivos). El resultado se actualiza en tiempo real mientras escribes.</p>
 
       <h2 id="reglas">Reglas de un slug SEO perfecto</h2>
       <ul>
-        <li><strong>Solo min&#250;sculas:</strong> Google trata las URLs como sensibles a may&#250;sculas. Un slug en min&#250;sculas evita contenido duplicado.</li>
-        <li><strong>Guiones, no guiones bajos:</strong> Google separa palabras en guiones (-) pero une las del gui&#243;n bajo (_). Usa siempre guiones.</li>
-        <li><strong>Sin tildes ni &#241;:</strong> aunque los navegadores modernos los muestran, internamente se codifican (%C3%B3) creando URLs feas. Elimina siempre los diacr&#237;ticos.</li>
-        <li><strong>Corto y descriptivo:</strong> entre 3 y 5 palabras es el rango &#243;ptimo. Evita art&#237;culos innecesarios (el, la, un) salvo que sean parte de la keyword.</li>
-        <li><strong>Keyword al inicio:</strong> si es posible, pon la keyword principal al principio del slug para mayor relevancia.</li>
+        <li><strong>Solo min&#250;sculas:</strong> Google trata las URLs como sensibles a may&#250;sculas. Un slug en min&#250;sculas evita contenido duplicado y es m&#225;s f&#225;cil de compartir.</li>
+        <li><strong>Guiones, no guiones bajos:</strong> Google separa palabras en guiones (-) pero une las del gui&#243;n bajo (_) como si fueran una sola palabra. Usa siempre guiones medios.</li>
+        <li><strong>Sin tildes ni &#241;:</strong> aunque los navegadores modernos los muestran, internamente se codifican como %C3%B3 creando URLs ilegibles y dif&#237;ciles de compartir.</li>
+        <li><strong>Corto y descriptivo:</strong> entre 3 y 5 palabras es el rango &#243;ptimo. Evita art&#237;culos innecesarios (el, la, un, de) salvo que sean parte de la keyword principal.</li>
+        <li><strong>Keyword al inicio:</strong> pon la palabra clave principal al principio del slug para maximizar la relevancia en los resultados de b&#250;squeda.</li>
+        <li><strong>Sin par&#225;metros ni n&#250;meros innecesarios:</strong> evita incluir a&#241;os o IDs que har&#225;n el slug obsoleto. Una URL intemporal posiciona mejor a largo plazo.</li>
       </ul>
 
-      <h2 id="wordpress">&#191;C&#243;mo usar este generador con WordPress?</h2>
-      <p>Escribe el t&#237;tulo de tu art&#237;culo o p&#225;gina en el campo de entrada, copia el slug generado y p&#233;galo en el campo &#8220;Permalink&#8221; de tu editor WordPress. Tambi&#233;n es &#250;til para generar slugs en Webflow, Ghost, Shopify y cualquier CMS.</p>
+      <h2 id="comparativa">Ejemplos: slug malo vs. slug &#243;ptimo</h2>
+      <ul>
+        <li><strong>T&#237;tulo:</strong> &#171;C&#243;mo crear un blog desde cero paso a paso para principiantes en 2024&#187;</li>
+        <li><strong>Slug malo:</strong> <code>/como-crear-un-blog-desde-cero-paso-a-paso-para-principiantes-en-2024</code> (demasiado largo, incluye a&#241;o)</li>
+        <li><strong>Slug &#243;ptimo:</strong> <code>/crear-blog-desde-cero</code> (conciso, con keyword al inicio, intemporal)</li>
+      </ul>
+      <p>El criterio de oro es que el slug comunique de qu&#233; trata la p&#225;gina en el m&#237;nimo de palabras posible. Cuanto m&#225;s limpio y claro, mejor funciona tanto para el SEO como para la experiencia del usuario.</p>
+
+      <h2 id="cms">C&#243;mo usar este generador con tu CMS</h2>
+      <p>Escribe el t&#237;tulo de tu art&#237;culo en el campo de entrada, copia el slug generado y p&#233;galo en el campo de permalink o slug de tu CMS favorito:</p>
+      <ul>
+        <li><strong>WordPress:</strong> campo &#171;Permalink&#187; bajo el t&#237;tulo del post en el editor Gutenberg.</li>
+        <li><strong>Webflow:</strong> campo &#171;Slug&#187; en la configuraci&#243;n de la p&#225;gina o coleci&#243;n CMS.</li>
+        <li><strong>Ghost:</strong> campo &#171;Post URL&#187; en la barra lateral del editor.</li>
+        <li><strong>Shopify:</strong> campo &#171;URL and handle&#187; en la secci&#243;n de SEO del producto o p&#225;gina.</li>
+        <li><strong>Notion / Notion Sites:</strong> URL personalizada en la configuraci&#243;n de la p&#225;gina p&#250;blica.</li>
+      </ul>
+
+      <h2 id="seo-impact">El impacto real del slug en el SEO</h2>
+      <p>Un slug con la keyword principal mejora el CTR en los resultados de b&#250;squeda porque los usuarios ven la URL antes de hacer clic y reconocen que la p&#225;gina es relevante para su b&#250;squeda. Es una de las optimizaciones on-page m&#225;s sencillas de implementar y con impacto directo en rankings. Adem&#225;s, una URL limpia y descriptiva genera m&#225;s enlaces externos (backlinks) porque es f&#225;cil de entender y compartir por otros creadores de contenido.</p>
     </div>
 
     <section class="ht-related reveal" aria-labelledby="related-title">

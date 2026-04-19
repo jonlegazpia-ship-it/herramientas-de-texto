@@ -238,6 +238,12 @@ a:hover{text-decoration:underline}
   .ht-stat-cards{grid-template-columns:1fr 1fr}
   .ht-stat-card--primary{grid-column:1/-1}
 }
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 <script type="application/ld+json">
@@ -549,23 +555,39 @@ a:hover{text-decoration:underline}
       <h2 id="que-son">Generador de meta tags: todo el c&#243;digo SEO en segundos</h2>
       <p>El <strong>generador de meta tags online</strong> crea autom&#225;ticamente el bloque HTML completo que necesitas para optimizar cualquier p&#225;gina web. En lugar de escribir manualmente cada etiqueta y recordar la sintaxis exacta, rellenas un formulario y obtienes el c&#243;digo listo para copiar y pegar. Incluye las meta tags b&#225;sicas de SEO, las etiquetas Open Graph para Facebook, LinkedIn e Instagram, y las Twitter Cards para una vista previa perfecta en Twitter/X.</p>
 
+      <h2 id="como-funciona">C&#243;mo usar el generador paso a paso</h2>
+      <p>El proceso es sencillo: completa los campos del formulario (t&#237;tulo, descripci&#243;n, URL, imagen, tipo de p&#225;gina), activa las opciones que necesites (Open Graph, Twitter Cards, robots) y el generador produce instant&#225;neamente el bloque de HTML listo para insertar en el <code>&lt;head&gt;</code> de tu web. Puedes copiar todo el bloque de una vez o seleccionar etiquetas individuales seg&#250;n tu necesidad.</p>
+
       <h2 id="tipos">Tipos de meta tags que genera esta herramienta</h2>
       <ul>
-        <li><strong>Meta title:</strong> el t&#237;tulo que aparece en la pesta&#241;a del navegador y en los resultados de Google. M&#225;ximo 60 caracteres.</li>
-        <li><strong>Meta description:</strong> el fragmento de texto bajo el t&#237;tulo en Google. Entre 120 y 160 caracteres para evitar el truncado.</li>
-        <li><strong>Canonical:</strong> indica a Google cu&#225;l es la URL oficial de la p&#225;gina para evitar contenido duplicado.</li>
-        <li><strong>Robots:</strong> controla si Google debe indexar la p&#225;gina y seguir sus enlaces.</li>
-        <li><strong>Open Graph (og:):</strong> controla c&#243;mo se ve tu p&#225;gina cuando alguien la comparte en Facebook, LinkedIn o WhatsApp.</li>
-        <li><strong>Twitter Cards:</strong> igual que Open Graph pero espec&#237;ficas para Twitter/X, con soporte para imagen grande o peque&#241;a.</li>
+        <li><strong>Meta title:</strong> el t&#237;tulo que aparece en la pesta&#241;a del navegador y en los resultados de Google. M&#225;ximo 60 caracteres para evitar el truncado.</li>
+        <li><strong>Meta description:</strong> el fragmento de texto bajo el t&#237;tulo en Google. Entre 120 y 160 caracteres para maximizar visibilidad.</li>
+        <li><strong>Canonical:</strong> indica a Google cu&#225;l es la URL oficial de la p&#225;gina, evitando penalizaciones por contenido duplicado.</li>
+        <li><strong>Robots:</strong> controla si Google debe indexar la p&#225;gina y seguir sus enlaces. Usa <code>noindex</code> para p&#225;ginas de administraci&#243;n o privadas.</li>
+        <li><strong>Open Graph (og:):</strong> controla c&#243;mo se ve tu p&#225;gina cuando alguien la comparte en Facebook, LinkedIn o WhatsApp. Incluye t&#237;tulo, descripci&#243;n e imagen.</li>
+        <li><strong>Twitter Cards:</strong> igual que Open Graph pero espec&#237;ficas para Twitter/X, con soporte para imagen grande (<code>summary_large_image</code>) o peque&#241;a (<code>summary</code>).</li>
       </ul>
 
       <h2 id="buenas-practicas">Buenas pr&#225;cticas para meta tags SEO</h2>
       <ul>
-        <li>Cada p&#225;gina debe tener un title y description <strong>&#250;nicos</strong>. Las duplicadas confunden a Google.</li>
-        <li>Incluye la <strong>keyword principal</strong> en el title, preferiblemente al inicio.</li>
-        <li>La description debe ser persuasiva y tener una <strong>llamada a la acci&#243;n</strong> impl&#237;cita.</li>
-        <li>La imagen Open Graph debe medir <strong>1200&#215;630 px</strong> para verse correctamente en todas las plataformas.</li>
-        <li>Usa <code>summary_large_image</code> en Twitter Cards si tienes una imagen destacada de calidad.</li>
+        <li>Cada p&#225;gina debe tener un title y description <strong>&#250;nicos</strong>. Las etiquetas duplicadas confunden a Google y pueden afectar negativamente al posicionamiento.</li>
+        <li>Incluye la <strong>keyword principal</strong> en el title, preferiblemente al inicio del texto, donde tiene mayor peso para los algoritmos de b&#250;squeda.</li>
+        <li>La description debe ser persuasiva y contener una <strong>llamada a la acci&#243;n</strong> impl&#237;cita que invite al clic desde los resultados de Google.</li>
+        <li>La imagen Open Graph debe medir <strong>1200&#215;630 px</strong> para verse correctamente en todas las plataformas sociales sin recortes.</li>
+        <li>Usa <code>summary_large_image</code> en Twitter Cards si tienes una imagen destacada de calidad que aporte valor visual al share.</li>
+        <li>El tag <code>canonical</code> es especialmente importante en e-commerce, donde el mismo producto puede aparecer en m&#250;ltiples URLs con par&#225;metros de filtros.</li>
+      </ul>
+
+      <h2 id="impacto-seo">Por qu&#233; las meta tags impactan directamente en el SEO</h2>
+      <p>Las meta tags son la primera impresi&#243;n que Google y los usuarios tienen de tu p&#225;gina antes de visitarla. Un <strong>meta title optimizado</strong> con la keyword principal mejora el posicionamiento org&#225;nico porque le dice a Google de qu&#233; trata la p&#225;gina. Una <strong>meta description bien escrita</strong> aumenta el CTR (porcentaje de clics) en los resultados de b&#250;squeda, lo que a su vez refuerza la se&#241;al de relevancia para Google. Las etiquetas <strong>Open Graph y Twitter Cards</strong> no afectan directamente al SEO de Google, pero s&#237; mejoran la visibilidad y el engagement cuando el contenido se comparte en redes sociales, generando m&#225;s tr&#225;fico de referidos.</p>
+
+      <h2 id="donde-insertar">D&#243;nde pegar el c&#243;digo generado</h2>
+      <p>El bloque de meta tags debe ir siempre dentro del elemento <code>&lt;head&gt;</code> de tu HTML, antes del cierre <code>&lt;/head&gt;</code>. En los principales CMS:</p>
+      <ul>
+        <li><strong>WordPress:</strong> usa un plugin SEO como Yoast SEO o Rank Math, que gestiona las meta tags desde el editor sin tocar c&#243;digo.</li>
+        <li><strong>Shopify:</strong> edita el archivo <code>theme.liquid</code> o usa la secci&#243;n de SEO de cada producto o p&#225;gina.</li>
+        <li><strong>Webflow:</strong> secciones SEO en la configuraci&#243;n de cada p&#225;gina y en los ajustes del proyecto para las Open Graph.</li>
+        <li><strong>HTML est&#225;tico:</strong> copia el bloque generado directamente en el <code>&lt;head&gt;</code> de tu archivo HTML.</li>
       </ul>
     </div>
 

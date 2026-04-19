@@ -193,6 +193,12 @@ a:hover{text-decoration:underline}
   .ht-stat-cards{grid-template-columns:1fr 1fr}
   .ht-stat-card--primary{grid-column:1/-1}
 }
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 <script type="application/ld+json">
@@ -386,18 +392,41 @@ a:hover{text-decoration:underline}
 
     <div class="ht-long reveal">
       <h2 id="que-es">Contador de frases: an&#225;lisis de legibilidad en tiempo real</h2>
-      <p>El <strong>contador de frases online</strong> detecta todas las oraciones terminadas en punto, signo de exclamaci&#243;n, signo de interrogaci&#243;n o puntos suspensivos. Para cada frase calcula el n&#250;mero de palabras y clasifica las frases como cortas (&#8804;10 palabras) o largas (&#8805;25 palabras), dand&#243;te una visi&#243;n instant&#225;nea de la distribuci&#243;n del texto.</p>
+      <p>El <strong>contador de frases online</strong> detecta todas las oraciones terminadas en punto, signo de exclamaci&#243;n, signo de interrogaci&#243;n o puntos suspensivos. Para cada frase calcula el n&#250;mero de palabras y clasifica las frases como cortas (&#8804;10 palabras) o largas (&#8805;25 palabras), dand&#243;te una visi&#243;n instant&#225;nea de la distribuci&#243;n del texto y de su nivel de legibilidad global.</p>
+
+      <h2 id="como-funciona">C&#243;mo funciona el contador paso a paso</h2>
+      <p>Pega o escribe tu texto en el &#225;rea de entrada. El contador detecta instant&#225;neamente cada oraci&#243;n usando los signos de puntuaci&#243;n como delimitadores: punto final, punto y seguido, interrogaci&#243;n, exclamaci&#243;n y puntos suspensivos. A continuaci&#243;n calcula:</p>
+      <ul>
+        <li><strong>N&#250;mero total de frases</strong> en el texto.</li>
+        <li><strong>Longitud media</strong> expresada en palabras por frase.</li>
+        <li><strong>Frases cortas</strong> (hasta 10 palabras): f&#225;ciles de leer, ideales para impacto y claridad.</li>
+        <li><strong>Frases largas</strong> (25 o m&#225;s palabras): requieren mayor atenci&#243;n del lector; deben usarse con moderaci&#243;n.</li>
+      </ul>
+      <p>El resultado aparece en tiempo real sin necesidad de hacer clic en ning&#250;n bot&#243;n. Toda la computaci&#243;n ocurre en el navegador: tu texto nunca sale de tu dispositivo.</p>
 
       <h2 id="legibilidad">Longitud de frase y legibilidad en espa&#241;ol</h2>
-      <p>La investigaci&#243;n en legibilidad en castellano (&#237;ndice Flesch-Szigriszt) muestra que la longitud media de frase es uno de los dos factores principales que determinan la dificultad de lectura, junto con el n&#250;mero de s&#237;labas por palabra. Un texto con frases medias de 15&#8211;20 palabras es accesible para lectores con educaci&#243;n secundaria. Superar las 30 palabras de media eleva significativamente la carga cognitiva.</p>
+      <p>La investigaci&#243;n en legibilidad en castellano (&#237;ndice Flesch-Szigriszt) muestra que la longitud media de frase es uno de los dos factores principales que determinan la dificultad de lectura, junto con el n&#250;mero de s&#237;labas por palabra. Un texto con frases medias de 15&#8211;20 palabras es accesible para lectores con educaci&#243;n secundaria. Superar las 30 palabras de media eleva significativamente la carga cognitiva y aumenta el riesgo de que el lector abandone el texto.</p>
 
-      <h2 id="para-que">&#191;Cu&#225;ndo usar el contador de frases?</h2>
+      <h2 id="cuando-usar">&#191;Cu&#225;ndo usar el contador de frases?</h2>
       <ul>
         <li><strong>Revisi&#243;n editorial:</strong> detecta frases excesivamente largas antes de publicar un art&#237;culo, informe o email.</li>
-        <li><strong>SEO:</strong> Google premia los textos claros. Una media de frase razonable mejora el tiempo de permanencia y reduce el rebote.</li>
+        <li><strong>SEO y contenidos web:</strong> Google premia los textos claros. Una media de frase razonable mejora el tiempo de permanencia y reduce la tasa de rebote.</li>
         <li><strong>Escritura acad&#233;mica:</strong> comprueba que no abusas de las oraciones largas en tesis, TFGs o ensayos antes de entregar.</li>
         <li><strong>Copywriting:</strong> en p&#225;ginas de ventas y landing pages, las frases cortas convierten mejor porque comunican con claridad y urgencia.</li>
+        <li><strong>Accesibilidad:</strong> los textos con frases cortas son m&#225;s inclusivos para personas con dificultades de lectura o usuarios que leen en un segundo idioma.</li>
       </ul>
+
+      <h2 id="comparativa">Longitud &#243;ptima seg&#250;n el tipo de texto</h2>
+      <ul>
+        <li><strong>Contenido web y blogs:</strong> entre 15 y 20 palabras de media. Los p&#225;rrafos cortos y frases breves mejoran el scroll y reducen el abandono.</li>
+        <li><strong>Correo electr&#243;nico profesional:</strong> entre 12 y 18 palabras. El email se lee en diagonal; la brevedad facilita la comprensi&#243;n r&#225;pida.</li>
+        <li><strong>Textos acad&#233;micos:</strong> entre 18 y 25 palabras. El registro formal admite frases m&#225;s complejas, pero evitar superar las 35 palabras por oraci&#243;n.</li>
+        <li><strong>Redes sociales:</strong> entre 8 y 15 palabras. En Instagram y LinkedIn los usuarios escanean en lugar de leer; la concisi&#243;n es fundamental.</li>
+        <li><strong>Escritura creativa:</strong> varía deliberadamente. Alterna frases muy cortas (3&#8211;5 palabras) con largas para crear tensi&#243;n y ritmo narrativo.</li>
+      </ul>
+
+      <h2 id="otras-herramientas">Complementa el an&#225;lisis con otras herramientas</h2>
+      <p>El contador de frases es especialmente &#250;til cuando se combina con otras herramientas de an&#225;lisis de texto. El <a href="/contadores-de-texto/contador-de-palabras/">contador de palabras</a> te da la extensi&#243;n total y el tiempo de lectura estimado; el <a href="/contadores-de-texto/contador-de-caracteres/">contador de caracteres</a> te ayuda a respetar l&#237;mites de plataformas como Twitter/X o Meta description. Juntas, estas tres herramientas ofrecen un an&#225;lisis completo de la calidad y adecuaci&#243;n de cualquier texto.</p>
     </div>
 
     <section class="ht-related reveal" aria-labelledby="related-title">

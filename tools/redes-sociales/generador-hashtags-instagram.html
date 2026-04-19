@@ -207,6 +207,12 @@ a:hover{text-decoration:underline}
   .ht-stat-cards{grid-template-columns:1fr 1fr}
   .ht-stat-card--primary{grid-column:1/-1}
 }
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Hashtags Instagram","description":"Genera hashtags para Instagram por temática. Selecciona, personaliza y copia con un clic.","url":"https://herramientasdetexto.com/redes-sociales/generador-hashtags-instagram","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es"}</script>

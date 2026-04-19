@@ -715,6 +715,13 @@
 
 /* NAV label override for this page */
 .ht-header-nav a.active { background: var(--cat-bg); color: var(--cat-color); }
+
+/* Microanimaciones */
+.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ht-btn{ transition: all .18s var(--ease); }
+.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.ht-btn:active{ transform:translateY(0); }
 </style>
 
 <link rel="stylesheet" href="/css/tools.css">
@@ -767,11 +774,11 @@
 </header>
 
 <!-- ══ HERO ══ -->
-<section class="bio-hero">
-  <div class="bio-hero-orb"></div>
-  <div class="bio-hero-orb"></div>
-  <div class="bio-hero-orb"></div>
-  <div class="bio-hero-inner">
+<section class="bio-hero ht-dark-hero">
+  <div class="bio-hero-orb ht-dh-orb"></div>
+  <div class="bio-hero-orb ht-dh-orb"></div>
+  <div class="bio-hero-orb ht-dh-orb"></div>
+  <div class="bio-hero-inner ht-dh-inner">
     <div class="bio-hero-badge">
       <div class="bio-hero-badge-dot"></div>
       Redes sociales
