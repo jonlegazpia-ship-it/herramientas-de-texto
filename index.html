@@ -974,6 +974,125 @@
     50%      { box-shadow: 0 0 22px rgba(99,102,241,0.75), 0 0 44px rgba(99,102,241,0.25); }
   }
   .logo__icon { animation: logo-glow 3s ease-in-out infinite; }
+
+  /* ================================================================
+     HERO DEMO INTERACTIVO
+  ================================================================ */
+  .hero__demo {
+    max-width: 620px;
+    margin: 24px auto 0;
+    animation: hero-in 0.7s 0.45s ease both;
+    text-align: left;
+  }
+  .demo-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .demo-label-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease infinite;
+  }
+  .demo-textarea {
+    width: 100%;
+    min-height: 108px;
+    padding: 13px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.65;
+    resize: none;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    backdrop-filter: blur(10px);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .demo-textarea::placeholder { color: var(--text-3); }
+  .demo-textarea:focus {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.06);
+    box-shadow: 0 0 0 3px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .demo-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .demo-metric {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: border-color var(--transition), background var(--transition);
+  }
+  .demo-metric:hover { border-color: rgba(99,102,241,0.25); background: var(--surface-hover); }
+  .demo-metric__val {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .demo-metric__lbl {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .demo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(5px);
+    box-shadow: 0 2px 12px var(--accent-glow);
+  }
+  .demo-cta.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .demo-cta:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 4px 20px rgba(99,102,241,0.45);
+    transform: translateY(-1px);
+  }
+  .demo-cta svg { width: 13px; height: 13px; flex-shrink: 0; }
+  @media (max-width: 480px) {
+    .demo-metrics { grid-template-columns: repeat(2, 1fr); }
+    .demo-metric:last-child { grid-column: span 2; }
+  }
   </style>
 
   <!-- ── Overrides por tema — sin !important, ganan por especificidad ── -->
@@ -1008,6 +1127,15 @@
   html[data-theme="dark"] .search-box__input::placeholder { color: #475569; }
   html[data-theme="dark"] .search-box__input:focus { background: rgba(99,102,241,0.08); border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99,102,241,0.2), 0 4px 24px rgba(0,0,0,0.5); }
   html[data-theme="dark"] .search-box__kbd { color: #475569; border-color: rgba(255,255,255,0.08); }
+
+  html[data-theme="dark"] .demo-textarea { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
+  html[data-theme="dark"] .demo-textarea::placeholder { color: #475569; }
+  html[data-theme="dark"] .demo-textarea:focus { background: rgba(99,102,241,0.08); border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.2), 0 4px 20px rgba(0,0,0,0.5); }
+  html[data-theme="dark"] .demo-metric { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+  html[data-theme="dark"] .demo-metric:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+  html[data-theme="dark"] .demo-metric__val { color: #e2e8f0; }
+  html[data-theme="dark"] .demo-metric__lbl { color: #475569; }
+  html[data-theme="dark"] .demo-label { color: #475569; }
 
   html[data-theme="dark"] .section-title { color: #e2e8f0; }
   html[data-theme="dark"] .section-subtitle { color: #475569; }
@@ -1192,6 +1320,40 @@
           aria-label="Buscar herramienta"
         >
         <kbd class="search-box__kbd" aria-hidden="true">ESC</kbd>
+      </div>
+
+      <!-- ── Demo interactivo ── -->
+      <div class="hero__demo" id="heroDemoWrap">
+        <div class="demo-label">
+          <span class="demo-label-dot" aria-hidden="true"></span>
+          Prueba el contador de palabras
+        </div>
+        <textarea
+          id="demoTextarea"
+          class="demo-textarea"
+          placeholder="Pega aquí cualquier texto para analizarlo al instante…"
+          rows="5"
+          aria-label="Demo: analiza tu texto en tiempo real"
+          spellcheck="false"
+        ></textarea>
+        <div class="demo-metrics" aria-live="polite" aria-label="Métricas del texto">
+          <div class="demo-metric">
+            <span class="demo-metric__val" id="dm-words">0</span>
+            <span class="demo-metric__lbl">Palabras</span>
+          </div>
+          <div class="demo-metric">
+            <span class="demo-metric__val" id="dm-chars">0</span>
+            <span class="demo-metric__lbl">Caracteres</span>
+          </div>
+          <div class="demo-metric">
+            <span class="demo-metric__val" id="dm-time">—</span>
+            <span class="demo-metric__lbl">Lectura</span>
+          </div>
+        </div>
+        <a id="demoCta" class="demo-cta" href="/contadores-de-texto/contador-de-palabras/">
+          Ver análisis completo
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
       </div>
 
       <div class="hero__pills" aria-label="Características principales">
@@ -1920,6 +2082,55 @@
     var sel = '.cat-card:not([aria-disabled="true"]), .feature, .popular-group, .persona-card';
     document.querySelectorAll(sel).forEach(attachSpotlight);
   })();
+
+  /* ── Hero demo interactivo ── */
+  (function () {
+    var demoTa  = document.getElementById('demoTextarea');
+    var dmWords = document.getElementById('dm-words');
+    var dmChars = document.getElementById('dm-chars');
+    var dmTime  = document.getElementById('dm-time');
+    var demoCta = document.getElementById('demoCta');
+
+    if (!demoTa) return;
+
+    function fmtNum(n) { return n.toLocaleString('es'); }
+
+    function fmtTime(words) {
+      if (!words) return '—';
+      var secs = Math.round(words / 225 * 60);
+      if (secs < 60) return secs + 's';
+      var m = Math.floor(secs / 60);
+      var s = secs % 60;
+      return s === 0 ? m + ' min' : m + 'm ' + s + 's';
+    }
+
+    function runDemo() {
+      var txt   = demoTa.value;
+      var words = txt.trim() === '' ? 0 : txt.trim().split(/\s+/).length;
+      var chars = txt.length;
+
+      dmWords.textContent = fmtNum(words);
+      dmChars.textContent = fmtNum(chars);
+      dmTime.textContent  = fmtTime(words);
+
+      if (txt.trim()) {
+        demoCta.classList.add('visible');
+      } else {
+        demoCta.classList.remove('visible');
+      }
+    }
+
+    demoTa.addEventListener('input', runDemo);
+
+    demoCta.addEventListener('click', function () {
+      var txt = demoTa.value.trim();
+      if (txt) {
+        try { sessionStorage.setItem('demo_text', txt); } catch (err) {}
+      }
+    });
+
+    runDemo();
+  }());
   </script>
 
 </body>

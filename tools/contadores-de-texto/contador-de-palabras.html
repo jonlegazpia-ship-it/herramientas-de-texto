@@ -1211,7 +1211,17 @@ a:hover{text-decoration:underline}
     txt.focus();
   };
 
-  /* Initial run */
+  /* Initial run — preload from home demo if present */
+  (function () {
+    try {
+      var saved = sessionStorage.getItem('demo_text');
+      if (saved) {
+        txt.value = saved;
+        sessionStorage.removeItem('demo_text');
+      }
+    } catch (err) {}
+  }());
+
   analyse();
 }());
 </script>
