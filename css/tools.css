@@ -2059,14 +2059,17 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   .ht-stats-panel  { position: static; }
 }
 
-/* ── Header: prevent overflow — hide nav on small screens ─── */
-@media (max-width: 640px) {
-  .ht-site-header  { padding: 0 14px; gap: 12px; }
+/* ── Header: hide nav links on mobile ────────────────────── */
+@media (max-width: 768px) {
   .ht-header-sep   { display: none; }
   .ht-header-nav   { display: none; }
   /* Home button icon-only — hide text via font-size trick */
   .ht-home-btn     { font-size: 0; gap: 0; padding: 0 10px; }
   .ht-home-btn svg { width: 18px; height: 18px; }
+}
+
+@media (max-width: 640px) {
+  .ht-site-header  { padding: 0 14px; gap: 12px; }
   /* Dark hero: reduce to ≤40% viewport height */
   .ht-dark-hero    { padding: calc(var(--header-h) + 28px) 20px 36px; }
   /* Compact hero: tighter on phones */
