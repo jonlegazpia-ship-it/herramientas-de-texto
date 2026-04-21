@@ -173,10 +173,51 @@
 
   <main id="herramientas">
 
-    <div style="text-align:center;padding:3rem 1rem 2rem;color:var(--ink-3);">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".35" style="margin:0 auto 1rem;display:block"><rect x="8" y="8" width="32" height="32" rx="6"/><line x1="18" y1="24" x2="30" y2="24"/><line x1="24" y1="18" x2="24" y2="30"/></svg>
-      <p style="font-size:1rem;font-weight:600;color:var(--ink-2);margin-bottom:.5rem;">Todavía no hay herramientas disponibles</p>
-      <p style="font-size:.9rem;line-height:1.6;max-width:380px;margin:0 auto;">Las estamos creando. Vuelve pronto o explora las categorías que ya están disponibles.</p>
+    <div class="cc-grid-header">
+      <span class="cc-grid-label">Todas las herramientas</span>
+      <span class="cc-grid-count">1 disponible</span>
+    </div>
+
+    <div class="cc-grid reveal">
+
+      <a href="/generadores-de-texto/lorem-ipsum/" class="cc-card cc-card--featured">
+        <div class="cc-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg></div>
+        <div class="cc-card-body">
+          <div class="cc-card-name">Generador Lorem Ipsum</div>
+          <div class="cc-card-desc">Genera de 1 a 10 párrafos de texto de relleno clásico al instante. El estándar de la industria tipográfica desde el siglo XVI.</div>
+        </div>
+        <span class="cc-card-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <div class="cc-card cc-card--soon">
+        <div class="cc-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="12" height="8" rx="1.5"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="9.5" x2="8" y2="9.5"/></svg></div>
+        <div class="cc-card-body">
+          <div class="cc-card-name">Generador de contraseñas <span class="cc-soon-tag">Pronto</span></div>
+          <div class="cc-card-desc">Genera contraseñas seguras con longitud y símbolos configurables.</div>
+        </div>
+      </div>
+
+      <div class="cc-card cc-card--soon">
+        <div class="cc-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="8" y1="5" x2="8" y2="11"/><line x1="5" y1="8" x2="11" y2="8"/></svg></div>
+        <div class="cc-card-body">
+          <div class="cc-card-name">Generador de UUID <span class="cc-soon-tag">Pronto</span></div>
+          <div class="cc-card-desc">Genera identificadores únicos UUID v4 al instante.</div>
+        </div>
+      </div>
+
+      <div class="cc-card cc-card--soon">
+        <div class="cc-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12h12M4 8h8M6 4h4"/></svg></div>
+        <div class="cc-card-body">
+          <div class="cc-card-name">Generador de hashtags <span class="cc-soon-tag">Pronto</span></div>
+          <div class="cc-card-desc">Genera hashtags relevantes para cualquier tema o sector.</div>
+        </div>
+      </div>
+
+    </div><!-- /.cc-grid -->
+
+    <div class="cc-tip reveal" role="note">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg>
+      <div>El <a href="/generadores-de-texto/lorem-ipsum/">Generador Lorem Ipsum</a> es el punto de partida ideal para rellenar maquetas, wireframes y prototipos con texto representativo.</div>
     </div>
 
   </main>

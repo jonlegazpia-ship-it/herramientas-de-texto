@@ -103,6 +103,42 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- LIMPIADORES -->
+  <url>
+    <loc>https://herramientasdetexto.com/limpiadores-de-texto/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/limpiadores-de-texto/eliminar-espacios</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- MANIPULACIÓN -->
+  <url>
+    <loc>https://herramientasdetexto.com/manipulacion-de-texto/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/manipulacion-de-texto/invertir-texto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- GENERADORES -->
+  <url>
+    <loc>https://herramientasdetexto.com/generadores-de-texto/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/generadores-de-texto/lorem-ipsum</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- REDES SOCIALES -->
   <url>
     <loc>https://herramientasdetexto.com/redes-sociales/contador-twitter</loc>
