@@ -3,7 +3,6 @@
 <head>
 <script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contador de Palabras Online Gratis &#8212; Tiempo Real | HerramientasDeTexto.com</title>
@@ -21,114 +20,81 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 
 <style>
-  :root {
+:root {
   --cat-color:   #2563EB;
   --cat-color-2: #0EA5E9;
   --cat-color-3: #6366F1;
   --cat-bg:      #EFF6FF;
   --cat-border:  #DBEAFE;
+  --canvas:      #F6F7FB;
 }
-</style>
-
-<style>
-/* ── ESTILOS CRÍTICOS INLINE — hero y layout base ── */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin:0;background:#F8FAFC;color:#0F172A;line-height:1.6}
-a{color:var(--cat-color,#2563EB);text-decoration:none}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;margin:0;background:var(--canvas);color:#0F172A;line-height:1.6}
+a{color:var(--cat-color);text-decoration:none}
 a:hover{text-decoration:underline}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-/* Header */
-.ht-site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1.5px solid #E2E8F0;display:flex;align-items:center;padding:0 1.25rem;height:56px;gap:1rem;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.ht-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex-shrink:0}
-.ht-logo-icon{width:32px;height:32px;border-radius:7px;background:#2563EB;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;letter-spacing:-.02em}
-.ht-logo-text{font-size:.88rem;font-weight:700;color:#0F172A;white-space:nowrap}
-.ht-logo-text span{color:#94A3B8;font-weight:500}
-.ht-header-sep{width:1px;height:24px;background:#E2E8F0;flex-shrink:0}
-.ht-header-nav{display:flex;gap:.15rem;flex:1;overflow-x:auto}
-.ht-header-nav a{font-size:.82rem;font-weight:600;color:#64748B;padding:.35rem .65rem;border-radius:6px;white-space:nowrap;text-decoration:none;transition:color .15s,background .15s}
-.ht-header-nav a:hover{color:#0F172A;background:#F1F5F9}
-.ht-header-nav a.active{color:var(--cat-color,#2563EB);background:var(--cat-bg,#EFF6FF)}
-.ht-header-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
-.ht-home-btn{display:flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:#64748B;padding:.35rem .7rem;border-radius:6px;border:1.5px solid #E2E8F0;background:#fff;text-decoration:none;white-space:nowrap;transition:color .15s,border-color .15s,background .15s}
-.ht-home-btn:hover{color:#0F172A;border-color:var(--cat-color,#2563EB);background:var(--cat-bg,#EFF6FF)}
-.ht-home-btn svg{width:14px;height:14px}
-/* Dark hero */
-.ht-dark-hero{background:linear-gradient(135deg,#0F172A 0%,#1E293B 60%,#0F172A 100%);position:relative;overflow:hidden;padding:2.5rem 1.25rem 2rem}
-.ht-dh-orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.18;pointer-events:none}
-.ht-dh-orb:nth-child(1){width:300px;height:300px;background:var(--cat-color,#2563EB);top:-80px;right:10%}
-.ht-dh-orb:nth-child(2){width:200px;height:200px;background:var(--cat-color-2,#0EA5E9);bottom:-60px;left:5%}
-.ht-dh-orb:nth-child(3){width:150px;height:150px;background:var(--cat-color-3,#6366F1);top:30%;left:30%}
-.ht-dh-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-.ht-hero-left{max-width:680px}
-.ht-cat-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--cat-color,#2563EB);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:.3rem .8rem;margin-bottom:.85rem}
-.ht-cat-badge svg{width:12px;height:12px}
-.ht-h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:#F8FAFC;line-height:1.18;margin:0 0 .75rem;letter-spacing:-.02em}
-.ht-h1 mark{background:none;-webkit-text-fill-color:transparent;background-image:linear-gradient(90deg,var(--cat-color,#2563EB),var(--cat-color-2,#0EA5E9));-webkit-background-clip:text;background-clip:text}
-.ht-hero-desc{font-size:.97rem;color:#CBD5E1;line-height:1.65;margin:0 0 1.1rem;max-width:560px}
-.ht-hero-pills{display:flex;flex-wrap:wrap;gap:.5rem}
-.ht-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:600;color:#E2E8F0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:.3rem .75rem}
-.ht-pill svg{width:10px;height:10px;color:var(--cat-color,#2563EB)}
-/* Wrap */
-.ht-wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem 3rem}
-.ht-wrap--after-hero{padding-top:0}
-/* Breadcrumb */
-.ht-bc{display:flex;align-items:center;flex-wrap:wrap;gap:.3rem;padding:.9rem 0 0;font-size:.78rem;color:#64748B}
-.ht-bc a{color:#64748B;text-decoration:none}
-.ht-bc a:hover{color:var(--cat-color,#2563EB)}
-.ht-bc span[aria-current]{color:#0F172A;font-weight:500}
-.ht-bc-sep{color:#CBD5E1}
-/* Ad banners */
-.ht-ad-banner{margin:1rem 0;border-radius:10px;background:#F1F5F9;border:1.5px dashed #CBD5E1;height:90px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94A3B8;letter-spacing:.04em}
-.ht-ad-mid{margin:2rem 0;border-radius:10px;background:#F1F5F9;border:1.5px dashed #CBD5E1;height:280px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94A3B8;letter-spacing:.04em}
 /* Tool layout */
-.ht-tool-layout{display:grid;grid-template-columns:1fr 380px;gap:1.25rem;margin:1.5rem 0}
-@media(max-width:840px){.ht-tool-layout{grid-template-columns:1fr}}
+.ht-tool-layout{display:grid;grid-template-columns:1fr 360px;gap:1.25rem;margin-bottom:1.5rem}
+@media(max-width:820px){.ht-tool-layout{grid-template-columns:1fr}}
 /* Textarea card */
-.ht-textarea-card{background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;display:flex;flex-direction:column;overflow:hidden}
+.ht-textarea-card{background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.ht-textarea-card:focus-within{border-color:var(--cat-border);box-shadow:0 0 0 3px var(--cat-border)}
 .ht-textarea-card-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-bottom:1px solid #F1F5F9}
 .ht-textarea-card-title{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;color:#0F172A}
-.ht-textarea-card-title svg{width:15px;height:15px;color:var(--cat-color,#2563EB)}
+.ht-textarea-card-title svg{width:15px;height:15px;color:var(--cat-color)}
 .ht-char-count{font-size:.75rem;color:#94A3B8;font-variant-numeric:tabular-nums}
-.ht-textarea{flex:1;border:none;outline:none;resize:none;padding:1rem;font-size:.9rem;color:#0F172A;line-height:1.65;min-height:220px;font-family:inherit;background:transparent}
+.ht-textarea{flex:1;border:none;outline:none;resize:vertical;padding:1rem;font-size:.92rem;color:#0F172A;line-height:1.65;min-height:240px;font-family:inherit;background:transparent}
 .ht-textarea::placeholder{color:#CBD5E1}
-.ht-toolbar{padding:.6rem 1rem;border-top:1px solid #F1F5F9;background:#FAFBFF}
+.ht-toolbar{padding:.6rem 1rem;border-top:1px solid #F1F5F9;background:#FAFBFF;display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
 .ht-toolbar-btns{display:flex;flex-wrap:wrap;gap:.4rem}
 /* Buttons */
-.ht-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .85rem;border-radius:7px;border:1.5px solid #E2E8F0;background:#fff;font-size:.8rem;font-weight:600;color:#374151;cursor:pointer;transition:all .15s;white-space:nowrap}
-.ht-btn svg{width:13px;height:13px}
-.ht-btn:hover{border-color:var(--cat-color,#2563EB);color:var(--cat-color,#2563EB);background:var(--cat-bg,#EFF6FF)}
-.ht-btn--danger{border-color:#FEE2E2;color:#DC2626;background:#fff}
-.ht-btn--danger:hover{background:#FEF2F2;border-color:#FCA5A5}
+.ht-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .85rem;border-radius:7px;border:1.5px solid #E2E8F0;background:#fff;font-size:.8rem;font-weight:600;color:#374151;cursor:pointer;transition:all .18s;white-space:nowrap}
+.ht-btn svg{width:13px;height:13px;flex-shrink:0}
+.ht-btn:hover{border-color:var(--cat-color);color:var(--cat-color);background:var(--cat-bg);transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.07)}
+.ht-btn:active{transform:translateY(0)}
+.ht-btn--danger{border-color:#FEE2E2;color:#DC2626}
+.ht-btn--danger:hover{background:#FEF2F2;border-color:#FCA5A5;color:#DC2626}
+.ht-btn:disabled{opacity:.6;cursor:default;transform:none!important}
 /* Stats panel */
 .ht-stats-panel{display:flex;flex-direction:column}
-.ht-stats-box{background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;overflow:hidden;flex:1}
-.ht-panel-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--cat-color,#2563EB);color:#fff}
+.ht-stats-box{background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;overflow:hidden}
+.ht-panel-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--cat-color);color:#fff}
 .ht-panel-title{font-size:.85rem;font-weight:700}
 .ht-panel-live{display:flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;opacity:.85}
 .ht-panel-live-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .ht-panel-body{padding:.85rem 1rem}
 .ht-stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.ht-stat-card{border:1.5px solid #E2E8F0;border-radius:10px;padding:.75rem .85rem;text-align:center;background:#FAFBFF}
-.ht-stat-card--primary{grid-column:1/-1;background:var(--cat-bg,#EFF6FF);border-color:var(--cat-border,#BFDBFE)}
+.ht-stat-card{border:1.5px solid #E2E8F0;border-radius:10px;padding:.75rem .85rem;text-align:center;background:#FAFBFF;transition:transform .15s,box-shadow .15s}
+.ht-stat-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.ht-stat-card--primary{grid-column:1/-1;background:var(--cat-bg);border-color:var(--cat-border)}
 .ht-stat-label{font-size:.7rem;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
-.ht-stat-num{font-size:1.75rem;font-weight:800;color:var(--cat-color,#2563EB);line-height:1;font-variant-numeric:tabular-nums}
+.ht-stat-num{font-size:1.75rem;font-weight:800;color:var(--cat-color);line-height:1;font-variant-numeric:tabular-nums}
 .ht-stat-card:not(.ht-stat-card--primary) .ht-stat-num{font-size:1.4rem;color:#0F172A}
 .ht-stat-sublabel{font-size:.68rem;color:#94A3B8;margin-top:.2rem}
+/* Time stats */
+.ht-time-stats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
+.ht-time-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:#F8FAFC;border:1px solid #F1F5F9;border-radius:8px;transition:transform .15s,box-shadow .15s}
+.ht-time-item:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.06)}
+.ht-time-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cat-color)}
+.ht-time-icon svg{width:16px;height:16px}
+.ht-time-val{font-size:.9rem;font-weight:700;color:#0F172A;font-variant-numeric:tabular-nums}
+.ht-time-desc{font-size:.68rem;color:#94A3B8}
 /* Tip */
-.ht-tip{display:flex;gap:.85rem;align-items:flex-start;background:var(--cat-bg,#EFF6FF);border:1.5px solid var(--cat-border,#BFDBFE);border-radius:12px;padding:1rem 1.1rem;margin:1.25rem 0;font-size:.85rem;color:#0F172A;line-height:1.55}
-.ht-tip-icon{width:18px;height:18px;flex-shrink:0;color:var(--cat-color,#2563EB);margin-top:1px}
+.ht-tip{display:flex;gap:.85rem;align-items:flex-start;background:var(--cat-bg);border:1.5px solid var(--cat-border);border-radius:12px;padding:1rem 1.1rem;margin-bottom:1.5rem;font-size:.85rem;color:#0F172A;line-height:1.55}
+.ht-tip-icon{width:18px;height:18px;flex-shrink:0;color:var(--cat-color);margin-top:1px}
 /* Info grid */
-.ht-info-grid-section{margin:1.75rem 0}
+.ht-info-grid-section{margin-bottom:1.75rem}
 .ht-info-grid-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.1rem}
-.ht-info-grid-header-icon{width:42px;height:42px;border-radius:12px;background:var(--cat-bg,#EFF6FF);border:1.5px solid var(--cat-border,#BFDBFE);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ht-info-grid-header-icon svg{width:20px;height:20px;color:var(--cat-color,#2563EB)}
+.ht-info-grid-header-icon{width:42px;height:42px;border-radius:12px;background:var(--cat-bg);border:1.5px solid var(--cat-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ht-info-grid-header-icon svg{width:20px;height:20px;color:var(--cat-color)}
 .ht-info-grid-header-text h2{font-size:1rem;font-weight:700;color:#0F172A;margin:0 0 .2rem}
 .ht-info-grid-header-text p{font-size:.82rem;color:#64748B;margin:0}
 .ht-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
 @media(max-width:640px){.ht-info-grid{grid-template-columns:1fr}}
-.ht-info-cell{background:#fff;border:1.5px solid #E2E8F0;border-radius:12px;padding:1.1rem 1.2rem}
+.ht-info-cell{background:#fff;border:1.5px solid #E2E8F0;border-radius:12px;padding:1.1rem 1.2rem;transition:transform .15s,box-shadow .15s}
+.ht-info-cell:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.07)}
 .ht-info-cell-header{display:flex;align-items:center;gap:.65rem;margin-bottom:.6rem}
 .ht-info-dot{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ht-info-dot svg{width:16px;height:16px}
@@ -136,76 +102,65 @@ a:hover{text-decoration:underline}
 .ht-info-cell p{font-size:.83rem;color:#475569;line-height:1.55;margin:0}
 .ht-chips{display:flex;flex-wrap:wrap;gap:.4rem}
 .ht-chip{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:600;color:#0F172A;background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:20px;padding:.22rem .65rem}
-.ht-chip svg{width:10px;height:10px;color:var(--cat-color,#2563EB)}
+.ht-chip svg{width:10px;height:10px;color:var(--cat-color)}
+/* Ad */
+.ht-ad-banner{margin-bottom:1.25rem;border-radius:10px;background:#F1F5F9;border:1.5px dashed #CBD5E1;height:90px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94A3B8;letter-spacing:.04em}
+.ht-ad-mid{margin:1.75rem 0;border-radius:10px;background:#F1F5F9;border:1.5px dashed #CBD5E1;height:280px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94A3B8;letter-spacing:.04em}
 /* Long content */
 .ht-long{margin:0 0 2rem}
-.ht-long h2{font-size:1.1rem;font-weight:700;color:#0F172A;margin:2rem 0 .75rem;padding-top:2rem;border-top:1.5px solid #F1F5F9}
+.ht-long h2{font-size:1.05rem;font-weight:700;color:#0F172A;margin:2rem 0 .75rem;padding-top:2rem;border-top:1.5px solid #F1F5F9}
 .ht-long h2:first-child{margin-top:0;padding-top:0;border-top:none}
 .ht-long p{font-size:.9rem;color:#475569;line-height:1.7;margin:0 0 1rem}
 .ht-long ul,.ht-long ol{padding-left:1.5rem;color:#475569;font-size:.9rem;line-height:1.7;margin:0 0 1rem}
 .ht-long li{margin-bottom:.4rem}
 .ht-long strong{color:#0F172A}
-.ht-long a{color:var(--cat-color,#2563EB)}
+.ht-long a{color:var(--cat-color)}
 .ht-long code{font-size:.82rem;background:#F1F5F9;border:1px solid #E2E8F0;border-radius:4px;padding:.1rem .4rem;font-family:monospace;color:#0F172A}
 /* Section headers */
 .ht-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .ht-section-title{font-size:1rem;font-weight:700;color:#0F172A;margin:0}
-.ht-section-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:600;color:var(--cat-color,#2563EB);text-decoration:none}
+.ht-section-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:600;color:var(--cat-color);text-decoration:none}
 .ht-section-link svg{width:12px;height:12px}
 /* Related */
 .ht-related{margin:2rem 0}
 .ht-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
 .ht-related-card{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border:1.5px solid #E2E8F0;border-radius:12px;background:#fff;text-decoration:none;color:inherit;transition:box-shadow .15s,border-color .15s,transform .15s}
-.ht-related-card:hover{border-color:var(--cat-color,#2563EB);box-shadow:0 4px 16px rgba(0,0,0,.07);transform:translateY(-2px);text-decoration:none}
-.ht-related-card-icon{width:38px;height:38px;border-radius:10px;background:var(--cat-bg,#EFF6FF);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ht-related-card-icon svg{width:18px;height:18px;color:var(--cat-color,#2563EB)}
+.ht-related-card:hover{border-color:var(--cat-color);box-shadow:0 4px 16px rgba(0,0,0,.07);transform:translateY(-2px);text-decoration:none}
+.ht-related-card-icon{width:38px;height:38px;border-radius:10px;background:var(--cat-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ht-related-card-icon svg{width:18px;height:18px;color:var(--cat-color)}
 .ht-related-card-name{font-size:.83rem;font-weight:700;color:#0F172A;margin-bottom:.15rem}
 .ht-related-card-desc{font-size:.75rem;color:#64748B}
 /* FAQ */
 .ht-faq{margin:2rem 0}
 .ht-faq-list{display:flex;flex-direction:column;gap:.5rem}
 .ht-faq-item{border:1.5px solid #E2E8F0;border-radius:10px;background:#fff;overflow:hidden}
-.ht-faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;background:none;border:none;cursor:pointer;font-size:.88rem;font-weight:600;color:#0F172A;text-align:left;gap:.75rem}
-.ht-faq-btn:hover{color:var(--cat-color,#2563EB)}
+.ht-faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;background:none;border:none;cursor:pointer;font-size:.88rem;font-weight:600;color:#0F172A;text-align:left;gap:.75rem;font-family:inherit}
+.ht-faq-btn:hover{color:var(--cat-color);background:#F8FAFF}
+.ht-faq-btn[aria-expanded="true"]{background:var(--cat-bg);color:var(--cat-color)}
 .ht-faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform .2s;color:#94A3B8}
-.ht-faq-btn[aria-expanded="true"] .ht-faq-chevron{transform:rotate(180deg)}
+.ht-faq-btn[aria-expanded="true"] .ht-faq-chevron{transform:rotate(180deg);color:var(--cat-color)}
 .ht-faq-body{display:none;padding:0 1.1rem 1rem;font-size:.85rem;color:#475569;line-height:1.65}
-.ht-faq-body a{color:var(--cat-color,#2563EB)}
-.ht-faq-btn[aria-expanded="true"] + .ht-faq-body{display:block}
+.ht-faq-body.open{display:block;animation:fadeSlideUp .2s ease both}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.ht-faq-body a{color:var(--cat-color)}
 /* Toast */
 #ht-toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#0F172A;color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:.5rem;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;z-index:9999}
 #ht-toast svg{width:14px;height:14px;color:#4ADE80}
 #ht-toast.show{opacity:1;transform:none}
 /* Footer */
-.ht-page-footer{border-top:1.5px solid #E2E8F0;margin-top:3rem;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.ht-page-footer{border-top:1.5px solid #E2E8F0;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
 .ht-footer-copy{font-size:.78rem;color:#94A3B8}
 .ht-footer-nav{display:flex;flex-wrap:wrap;gap:.5rem}
 .ht-footer-nav a{font-size:.75rem;color:#64748B;text-decoration:none}
-.ht-footer-nav a:hover{color:var(--cat-color,#2563EB)}
-/* Time stats */
-.ht-time-stats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
-.ht-time-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:#F8FAFC;border:1px solid #F1F5F9;border-radius:8px}
-.ht-time-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cat-color,#2563EB)}
-.ht-time-icon svg{width:16px;height:16px}
-.ht-time-val{font-size:.9rem;font-weight:700;color:#0F172A}
-.ht-time-desc{font-size:.68rem;color:#94A3B8}
-/* Reveal animation */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.ht-footer-nav a:hover{color:var(--cat-color)}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .reveal.revealed{opacity:1;transform:none}
 /* Responsive */
 @media(max-width:640px){
-  .ht-dark-hero{padding:1.75rem 1rem 1.5rem}
-  .ht-header-nav{display:none}
-  .ht-tool-layout{grid-template-columns:1fr}
   .ht-stat-cards{grid-template-columns:1fr 1fr}
   .ht-stat-card--primary{grid-column:1/-1}
 }
-/* Microanimaciones */
-.ht-stat-card{ transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
-.ht-stat-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
-.ht-btn{ transition: all .18s var(--ease); }
-.ht-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow-sm); }
-.ht-btn:active{ transform:translateY(0); }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 
@@ -247,36 +202,10 @@ a:hover{text-decoration:underline}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "\u00bfC\u00f3mo contar palabras en un texto?",
-      "acceptedAnswer": { "@type": "Answer", "text": "La forma m\u00e1s r\u00e1pida es usar un contador de palabras online como este: pega o escribe tu texto en el cuadro y obtendr\u00e1s el recuento exacto en tiempo real, sin instalar nada ni registrarte. Tambi\u00e9n puedes usar el procesador de textos Word (men\u00fa Revisar \u2192 Contar palabras) o Google Docs (Herramientas \u2192 Recuento de palabras), aunque estas opciones no ofrecen las estad\u00edsticas adicionales como tiempo de lectura o recuento de caracteres sin espacios." }
-    },
-    {
-      "@type": "Question",
-      "name": "\u00bfCu\u00e1ntas palabras debe tener un art\u00edculo SEO?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Los art\u00edculos SEO bien posicionados suelen tener entre 1.000 y 2.500 palabras seg\u00fan el tema y la competencia. Para temas informativos generales, 1.000\u20131.500 palabras suelen ser suficientes. Para temas muy competidos o que requieren profundidad (gu\u00edas, comparativas, tutoriales), apunta a 1.800\u20132.500 palabras. Lo fundamental no es la cantidad, sino que el contenido responda de forma completa a la intenci\u00f3n de b\u00fasqueda del usuario sin relleno innecesario." }
-    },
-    {
-      "@type": "Question",
-      "name": "\u00bfQu\u00e9 es un contador de palabras?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Un contador de palabras es una herramienta digital que analiza un fragmento de texto y calcula autom\u00e1ticamente cu\u00e1ntas palabras contiene. Las versiones m\u00e1s completas, como esta, tambi\u00e9n muestran el n\u00famero de caracteres (con y sin espacios), frases, p\u00e1rrafos y el tiempo estimado de lectura y habla. Es imprescindible para redactores, estudiantes, especialistas en SEO y cualquier persona que necesite ajustar la extensi\u00f3n de sus textos." }
-    },
-    {
-      "@type": "Question",
-      "name": "\u00bfCu\u00e1ntas palabras tiene una p\u00e1gina A4?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Una p\u00e1gina A4 con fuente Times New Roman 12pt y m\u00e1rgenes est\u00e1ndar contiene entre 250 y 300 palabras. Con interlineado doble, baja a unas 125\u2013150 palabras. Pega tu texto aqu\u00ed para saber exactamente cu\u00e1ntas p\u00e1ginas ocupar\u00eda." }
-    },
-    {
-      "@type": "Question",
-      "name": "\u00bfCu\u00e1ntas palabras tiene un TFG?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Un Trabajo de Fin de Grado (TFG) en Espa\u00f1a suele exigir entre 10.000 y 15.000 palabras, dependiendo de la universidad y la titulaci\u00f3n. Los TFM (M\u00e1ster) suelen requerir entre 20.000 y 40.000 palabras. Consulta siempre las gu\u00edas espec\u00edficas de tu centro porque los m\u00e1rgenes var\u00edan." }
-    },
-    {
-      "@type": "Question",
-      "name": "\u00bfCu\u00e1l es la diferencia entre caracteres con y sin espacios?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Los caracteres con espacios cuentan cada letra, n\u00famero, signo de puntuaci\u00f3n Y cada espacio en blanco. Los caracteres sin espacios solo cuentan los s\u00edmbolos visibles, excluyendo los espacios. Plataformas como Twitter/X o LinkedIn suelen contar caracteres con espacios para sus l\u00edmites, mientras que algunas bases de datos o campos de formulario usan caracteres sin espacios." }
-    }
+    { "@type": "Question", "name": "\u00bfC\u00f3mo contar palabras en un texto?", "acceptedAnswer": { "@type": "Answer", "text": "La forma m\u00e1s r\u00e1pida es pegar el texto en este contador y obtener el resultado al instante, sin instalar nada. Tambi\u00e9n puedes usar Microsoft Word (Revisar \u2192 Contar palabras) o Google Docs (Herramientas \u2192 Recuento de palabras)." } },
+    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras debe tener un art\u00edculo SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Entre 1.000 y 2.500 palabras para la mayor\u00eda de temas. Lo clave es responder completamente la intenci\u00f3n de b\u00fasqueda sin a\u00f1adir relleno." } },
+    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras tiene una p\u00e1gina A4?", "acceptedAnswer": { "@type": "Answer", "text": "Con Times New Roman 12pt y m\u00e1rgenes est\u00e1ndar, entre 250 y 300 palabras. Con interlineado doble, unas 125\u2013150 palabras." } },
+    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras tiene un TFG?", "acceptedAnswer": { "@type": "Answer", "text": "Un TFG en Espa\u00f1a suele exigir entre 10.000 y 15.000 palabras. Los TFM (M\u00e1ster) requieren entre 20.000 y 40.000." } }
   ]
 }
 </script>
@@ -298,10 +227,10 @@ a:hover{text-decoration:underline}
     <a href="/redes-sociales/">Redes</a>
   </nav>
   <div class="ht-header-right">
-  <button class="ht-theme-toggle" id="ht-theme-toggle" aria-label="Cambiar tema">
-    <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
-    <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
-  </button>
+    <button class="ht-theme-toggle" id="ht-theme-toggle" aria-label="Cambiar tema">
+      <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
+      <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
+    </button>
     <a href="/" class="ht-home-btn">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
       Todas las herramientas
@@ -309,62 +238,89 @@ a:hover{text-decoration:underline}
   </div>
 </header>
 
-
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
+<!-- ── COMPACT HERO ── -->
+<div class="ht-compact-hero">
+  <div class="ht-dh-orb" style="width:280px;height:280px;top:-120px;right:12%;background:radial-gradient(circle,var(--cat-color),transparent 70%);opacity:.2;animation:orbFloat 11s ease-in-out infinite alternate;position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none"></div>
+  <div class="ht-dh-orb" style="width:180px;height:180px;bottom:-70px;left:6%;background:radial-gradient(circle,#0EA5E9,transparent 70%);opacity:.12;animation:orbFloat 14s ease-in-out infinite alternate;animation-delay:-4s;position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none"></div>
+  <div class="ht-ch-inner">
+    <!-- Left: breadcrumb + badge + title + pills -->
+    <div class="ht-ch-left">
+      <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
+        <a href="/">Inicio</a>
+        <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+        <a href="/contadores-de-texto/">Contadores de texto</a>
+        <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
+        <span aria-current="page">Contador de palabras</span>
+      </nav>
       <div class="ht-cat-badge">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
       </div>
       <h1 class="ht-h1">Contador de palabras <mark>online gratis</mark></h1>
-      <p class="ht-hero-desc">Pega o escribe tu texto y obtén al instante el recuento de palabras, caracteres, frases y p&#225;rrafos. Con tiempo de lectura y de habla estimado.</p>
       <div class="ht-hero-pills">
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Tiempo real
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          100&#37; privado
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Sin registro
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Sin l&#237;mites
-        </span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100&#37; privado</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin l&#237;mites</span>
+      </div>
+    </div>
+    <!-- Right: real-time mini stats -->
+    <div class="ht-ch-stats" aria-hidden="true">
+      <div class="ht-ch-stat">
+        <span class="ht-ch-stat-val" id="ch-words">0</span>
+        <span class="ht-ch-stat-lbl">Palabras</span>
+      </div>
+      <div class="ht-ch-stat">
+        <span class="ht-ch-stat-val" id="ch-chars">0</span>
+        <span class="ht-ch-stat-lbl">Caracteres</span>
+      </div>
+      <div class="ht-ch-stat">
+        <span class="ht-ch-stat-val" id="ch-time">&#8212;</span>
+        <span class="ht-ch-stat-lbl">Lectura</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── MAIN WRAP ── -->
-<div class="ht-wrap ht-wrap--after-hero">
+<!-- ── 3-COLUMN PAGE LAYOUT ── -->
+<div class="ht-page-layout">
 
-  <!-- Breadcrumb -->
-  <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
-    <a href="/">Inicio</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <a href="/contadores-de-texto/">Contadores de texto</a>
-    <span class="ht-bc-sep" aria-hidden="true">&#8250;</span>
-    <span aria-current="page">Contador de palabras</span>
-  </nav>
+  <!-- ═══ LEFT SIDEBAR ═══ -->
+  <aside class="ht-sidebar-left" aria-label="Navegaci&#243;n de herramientas">
+    <div class="ht-sb-section-title">Contadores de texto</div>
+    <a href="/contadores-de-texto/contador-de-palabras/" class="ht-sb-link ht-sb-link--active">
+      <span class="ht-sb-dot"></span>Contador de palabras
+    </a>
+    <a href="/contadores-de-texto/contador-de-caracteres/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Contador de caracteres
+    </a>
+    <a href="/contadores-de-texto/contador-de-frases/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Contador de frases
+    </a>
+    <div class="ht-sb-divider"></div>
+    <div class="ht-sb-section-title">Otras categor&#237;as</div>
+    <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Generador Meta Tags
+    </a>
+    <a href="/convertidores-de-texto/convertir-a-mayusculas/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Texto a may&#250;sculas
+    </a>
+    <a href="/convertidores-de-texto/texto-a-slug-url/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Texto a Slug URL
+    </a>
+    <a href="/redes-sociales/contador-twitter/" class="ht-sb-link">
+      <span class="ht-sb-dot"></span>Contador Twitter
+    </a>
+  </aside>
 
-  <!-- Ad Banner -->
-  <div class="ht-ad-banner" aria-hidden="true">
-    <span class="sr-only">Publicidad</span>
-    <!-- Google AdSense: reemplazar con script cuando est&#233; aprobado -->
-    Publicidad &#183; 728&#215;90
-  </div>
-
+  <!-- ═══ MAIN COLUMN ═══ -->
   <main id="herramienta">
+
+    <!-- Ad Banner -->
+    <div class="ht-ad-banner" aria-hidden="true">
+      <span class="sr-only">Publicidad</span>
+      Publicidad &#183; 728&#215;90
+    </div>
 
     <!-- ── TWO-COLUMN TOOL LAYOUT ── -->
     <div class="ht-tool-layout">
@@ -383,7 +339,7 @@ a:hover{text-decoration:underline}
         <textarea
           id="ht-txt"
           class="ht-textarea"
-          placeholder="Pega o escribe aqu&#237; tu texto para contar palabras al instante. Funciona con art&#237;culos, emails, trabajos acad&#233;micos o cualquier otro contenido&#8230;"
+          placeholder="Pega o escribe aqu&#237; tu texto para contar palabras al instante&#8230;"
           spellcheck="false"
           autocomplete="off"
           autocorrect="off"
@@ -394,19 +350,19 @@ a:hover{text-decoration:underline}
           <div class="ht-toolbar-btns">
             <button class="ht-btn" onclick="HT.paste('ht-txt')" title="Pegar desde portapapeles">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
-              Pegar
+              <span>Pegar</span>
             </button>
-            <button class="ht-btn" onclick="copyText()" title="Copiar texto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/><line x1="7" y1="8" x2="11" y2="8"/><line x1="9" y1="6" x2="9" y2="10"/></svg>
-              Copiar texto
+            <button class="ht-btn" id="btn-copy-text" onclick="copyText(this)" title="Copiar texto">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              <span>Copiar texto</span>
             </button>
-            <button class="ht-btn" onclick="copyMetrics()" title="Copiar m&#233;tricas">
+            <button class="ht-btn" id="btn-copy-metrics" onclick="copyMetrics(this)" title="Copiar m&#233;tricas">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="8" y2="9"/></svg>
-              Copiar m&#233;tricas
+              <span>Copiar m&#233;tricas</span>
             </button>
             <button class="ht-btn ht-btn--danger" onclick="clearText()" title="Limpiar texto">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
-              Limpiar
+              <span>Limpiar</span>
             </button>
           </div>
         </div>
@@ -415,8 +371,6 @@ a:hover{text-decoration:underline}
       <!-- RIGHT: Stats Panel -->
       <aside class="ht-stats-panel" aria-label="Estad&#237;sticas del texto en tiempo real" aria-live="polite">
         <div class="ht-stats-box">
-
-          <!-- Panel header -->
           <div class="ht-panel-header">
             <span class="ht-panel-title">Estad&#237;sticas</span>
             <span class="ht-panel-live">
@@ -424,50 +378,34 @@ a:hover{text-decoration:underline}
               En vivo
             </span>
           </div>
-
           <div class="ht-panel-body">
-
-            <!-- Stat cards -->
             <div class="ht-stat-cards">
-
-              <!-- Primary: Palabras -->
               <div class="ht-stat-card ht-stat-card--primary">
                 <div class="ht-stat-label">Palabras</div>
                 <div class="ht-stat-num" id="s-palabras">0</div>
                 <div class="ht-stat-sublabel">palabras totales</div>
               </div>
-
-              <!-- Secondary: Caracteres -->
               <div class="ht-stat-card">
                 <div class="ht-stat-label">Caracteres</div>
                 <div class="ht-stat-num" id="s-caracteres">0</div>
                 <div class="ht-stat-sublabel">con espacios</div>
               </div>
-
-              <!-- Secondary: Sin espacios -->
               <div class="ht-stat-card">
                 <div class="ht-stat-label">Sin espacios</div>
                 <div class="ht-stat-num" id="s-sinespacio">0</div>
                 <div class="ht-stat-sublabel">caracteres</div>
               </div>
-
-              <!-- Secondary: Frases -->
               <div class="ht-stat-card">
                 <div class="ht-stat-label">Frases</div>
                 <div class="ht-stat-num" id="s-frases">0</div>
                 <div class="ht-stat-sublabel">oraciones</div>
               </div>
-
-              <!-- Secondary: P&#225;rrafos -->
               <div class="ht-stat-card">
                 <div class="ht-stat-label">P&#225;rrafos</div>
                 <div class="ht-stat-num" id="s-parrafos">0</div>
                 <div class="ht-stat-sublabel">bloques</div>
               </div>
-
-            </div><!-- /.ht-stat-cards -->
-
-            <!-- Time stats -->
+            </div>
             <div class="ht-time-stats">
               <div class="ht-time-item">
                 <div class="ht-time-icon" aria-hidden="true">
@@ -487,11 +425,10 @@ a:hover{text-decoration:underline}
                   <div class="ht-time-desc">Habla (140 ppm)</div>
                 </div>
               </div>
-            </div><!-- /.ht-time-stats -->
-
-          </div><!-- /.ht-panel-body -->
-        </div><!-- /.ht-stats-box -->
-      </aside><!-- /.ht-stats-panel -->
+            </div>
+          </div>
+        </div>
+      </aside>
 
     </div><!-- /.ht-tool-layout -->
 
@@ -499,7 +436,7 @@ a:hover{text-decoration:underline}
     <div class="ht-tip reveal" role="note">
       <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div>
-        <strong>Referencia r&#225;pida:</strong> 1.000 palabras &#61; <strong>&#8776; 4 min 27 s de lectura</strong> y <strong>&#8776; 7 min 8 s hablando</strong> en voz alta. &#191;Necesitas ajustar la velocidad? Usa nuestra herramienta de tiempo de lectura personalizable.
+        <strong>Referencia r&#225;pida:</strong> 1.000 palabras &#61; <strong>&#8776; 4 min 27 s de lectura</strong> y <strong>&#8776; 7 min 8 s hablando</strong> en voz alta.
       </div>
     </div>
 
@@ -517,36 +454,28 @@ a:hover{text-decoration:underline}
       <div class="ht-info-grid">
         <div class="ht-info-cell">
           <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#EFF6FF">
-              <svg viewBox="0 0 16 16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
-            </div>
+            <div class="ht-info-dot" style="background:#EFF6FF"><svg viewBox="0 0 16 16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
             <h3 style="color:#2563EB">Qu&#233; es</h3>
           </div>
           <p>Un <strong>contador de palabras online</strong> analiza tu texto al instante y devuelve m&#233;tricas precisas: palabras, caracteres, frases y p&#225;rrafos. Sin instalaciones ni registro.</p>
         </div>
         <div class="ht-info-cell">
           <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#F5F3FF">
-              <svg viewBox="0 0 16 16" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg>
-            </div>
+            <div class="ht-info-dot" style="background:#F5F3FF"><svg viewBox="0 0 16 16" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg></div>
             <h3 style="color:#7C3AED">Para qu&#233; sirve</h3>
           </div>
           <p>Ideal para <strong>SEO y marketing</strong>, ajustar textos a los l&#237;mites de <strong>redes sociales</strong>, cumplir requisitos de <strong>trabajos acad&#233;micos</strong> y calcular presupuestos de <strong>traducci&#243;n</strong>.</p>
         </div>
         <div class="ht-info-cell">
           <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#ECFDF5">
-              <svg viewBox="0 0 16 16" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 8 6 13 15 3"/></svg>
-            </div>
+            <div class="ht-info-dot" style="background:#ECFDF5"><svg viewBox="0 0 16 16" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 8 6 13 15 3"/></svg></div>
             <h3 style="color:#16A34A">C&#243;mo usarla</h3>
           </div>
           <p>Pega tu texto en el recuadro. Las cifras se actualizan <strong>autom&#225;ticamente en tiempo real</strong>, sin hacer clic en ning&#250;n bot&#243;n.</p>
         </div>
         <div class="ht-info-cell">
           <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#FFFBEB">
-              <svg viewBox="0 0 16 16" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg>
-            </div>
+            <div class="ht-info-dot" style="background:#FFFBEB"><svg viewBox="0 0 16 16" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg></div>
             <h3 style="color:#D97706">Ventajas</h3>
           </div>
           <div class="ht-chips">
@@ -561,169 +490,81 @@ a:hover{text-decoration:underline}
     </div>
 
     <!-- Ad mid -->
-    <div class="ht-ad-mid reveal" aria-hidden="true">
-      Publicidad &#183; 336&#215;280
-    </div>
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
 
     <div class="ht-long reveal">
 
 <style>
-/* ── Visual enhancements scoped to .ht-long and .ht-faq ── */
-.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
-@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
-
-.htl-card {
-  border:1.5px solid #E2E8F0;
-  border-radius:14px;
-  padding:1.5rem 1.75rem;
-  background:#fff;
-  transition: box-shadow .18s, transform .18s;
-}
-.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
-.htl-card-icon {
-  width:40px; height:40px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:.9rem;
-}
-.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
-.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
-
-/* Steps */
-.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
-@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
-.htl-step {
-  display:flex; gap:1rem; align-items:flex-start;
-  padding:1.25rem 1.4rem; border-radius:14px;
-  border:1.5px solid #E2E8F0; background:#FAFBFF;
-}
-.htl-step-num {
-  min-width:32px; height:32px; border-radius:50%;
-  background:#2563EB; color:#fff;
-  display:flex; align-items:center; justify-content:center;
-  font-size:.8rem; font-weight:800; flex-shrink:0;
-}
-.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
-.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
-
-/* Chars comparison */
-.htl-chars { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
-@media(max-width:500px){ .htl-chars { grid-template-columns:1fr; } }
-.htl-char-box {
-  border-radius:14px; padding:1.4rem 1.6rem;
-  border:1.5px solid transparent;
-}
-.htl-char-box--a { background:#EFF6FF; border-color:#BFDBFE; }
-.htl-char-box--b { background:#F0FDF4; border-color:#BBF7D0; }
-.htl-char-box .htl-char-label {
-  font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-  margin-bottom:.5rem;
-}
-.htl-char-box--a .htl-char-label { color:#2563EB; }
-.htl-char-box--b .htl-char-label { color:#16A34A; }
-.htl-char-box h4 { font-size:.95rem; font-weight:700; color:#0F172A; margin:0 0 .4rem; }
-.htl-char-box p  { font-size:.83rem; color:#475569; margin:0; line-height:1.55; }
-.htl-char-example {
-  display:inline-block; margin-top:.65rem;
-  background:rgba(0,0,0,.05); border-radius:6px;
-  padding:.25rem .6rem; font-family:monospace; font-size:.8rem; color:#334155;
-}
-
-/* Use-cases */
-.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
-.htl-use {
-  display:flex; gap:.85rem; align-items:flex-start;
-  padding:1.1rem 1.2rem; border-radius:12px;
-  background:#FAFBFF; border:1.5px solid #E2E8F0;
-}
-.htl-use-dot {
-  width:8px; height:8px; border-radius:50%; flex-shrink:0;
-  margin-top:5px;
-}
-.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
-.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
-
-/* Reference table */
-.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
-.htl-table { width:100%; border-collapse:collapse; background:#fff; }
-.htl-table thead { background:#1E293B; }
-.htl-table thead th {
-  padding:.85rem 1.1rem; text-align:left;
-  font-size:.78rem; font-weight:700; letter-spacing:.05em;
-  text-transform:uppercase; color:#94A3B8;
-}
-.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
-.htl-table tbody tr:hover { background:#F8FAFF; }
-.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
-.htl-table td:first-child { font-weight:600; color:#0F172A; }
-.htl-range {
-  display:inline-block; background:#EFF6FF; color:#1D4ED8;
-  border-radius:20px; padding:.2rem .7rem;
-  font-size:.82rem; font-weight:700; white-space:nowrap;
-}
-.htl-badge {
-  display:inline-block; padding:.18rem .55rem; border-radius:6px;
-  font-size:.75rem; font-weight:600;
-}
-.htl-badge--blue  { background:#EFF6FF; color:#1D4ED8; }
-.htl-badge--green { background:#F0FDF4; color:#15803D; }
-.htl-badge--amber { background:#FFFBEB; color:#B45309; }
-.htl-badge--red   { background:#FFF1F2; color:#BE123C; }
-.htl-badge--purple{ background:#F5F3FF; color:#6D28D9; }
-
-/* Tips */
-.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
-@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
-.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
-.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
-.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
-.htl-tip-box h4 {
-  font-size:.88rem; font-weight:700; margin:0 0 .75rem;
-  display:flex; align-items:center; gap:.45rem;
-}
-.htl-tip-box--cut  h4 { color:#C2410C; }
-.htl-tip-box--grow h4 { color:#15803D; }
-.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
-.htl-tip-list li {
-  font-size:.83rem; color:#475569; line-height:1.55;
-  padding-left:1.1rem; position:relative;
-}
-.htl-tip-list li::before {
-  content:''; position:absolute; left:0; top:7px;
-  width:5px; height:5px; border-radius:50%;
-}
-.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
-.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
-
-/* Why us */
-.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
-@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
-.htl-why-item {
-  border-radius:12px; padding:1.1rem 1.2rem;
-  background:#FAFBFF; border:1.5px solid #E2E8F0;
-  text-align:center;
-}
-.htl-why-item .htl-why-icon {
-  font-size:1.5rem; display:block; margin-bottom:.5rem;
-}
-.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
-.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
-
-/* Section labels */
-.htl-section-label {
-  display:inline-flex; align-items:center; gap:.45rem;
-  font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
-  color:#2563EB; background:#EFF6FF; border-radius:20px;
-  padding:.3rem .8rem; margin-bottom:.75rem;
-}
-.htl-section-label svg { width:12px; height:12px; }
-
-/* Divider */
-.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+.htl-intro{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0}
+@media(max-width:640px){.htl-intro{grid-template-columns:1fr}}
+.htl-card{border:1.5px solid #E2E8F0;border-radius:14px;padding:1.5rem 1.75rem;background:#fff;transition:box-shadow .18s,transform .18s}
+.htl-card:hover{box-shadow:0 6px 24px rgba(37,99,235,.09);transform:translateY(-2px)}
+.htl-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+.htl-card h3{font-size:.95rem;font-weight:700;margin:0 0 .45rem;color:#0F172A}
+.htl-card p{font-size:.88rem;color:#475569;margin:0;line-height:1.6}
+.htl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.75rem 0}
+@media(max-width:640px){.htl-steps{grid-template-columns:1fr}}
+.htl-step{display:flex;gap:1rem;align-items:flex-start;padding:1.25rem 1.4rem;border-radius:14px;border:1.5px solid #E2E8F0;background:#FAFBFF}
+.htl-step-num{min-width:32px;height:32px;border-radius:50%;background:#2563EB;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;flex-shrink:0}
+.htl-step-body h4{font-size:.88rem;font-weight:700;color:#0F172A;margin:0 0 .3rem}
+.htl-step-body p{font-size:.83rem;color:#64748B;margin:0;line-height:1.55}
+.htl-chars{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:500px){.htl-chars{grid-template-columns:1fr}}
+.htl-char-box{border-radius:14px;padding:1.4rem 1.6rem;border:1.5px solid transparent}
+.htl-char-box--a{background:#EFF6FF;border-color:#BFDBFE}
+.htl-char-box--b{background:#F0FDF4;border-color:#BBF7D0}
+.htl-char-box .htl-char-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
+.htl-char-box--a .htl-char-label{color:#2563EB}
+.htl-char-box--b .htl-char-label{color:#16A34A}
+.htl-char-box h4{font-size:.95rem;font-weight:700;color:#0F172A;margin:0 0 .4rem}
+.htl-char-box p{font-size:.83rem;color:#475569;margin:0;line-height:1.55}
+.htl-char-example{display:inline-block;margin-top:.65rem;background:rgba(0,0,0,.05);border-radius:6px;padding:.25rem .6rem;font-family:monospace;font-size:.8rem;color:#334155}
+.htl-uses{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin:1.5rem 0}
+@media(max-width:540px){.htl-uses{grid-template-columns:1fr}}
+.htl-use{display:flex;gap:.85rem;align-items:flex-start;padding:1.1rem 1.2rem;border-radius:12px;background:#FAFBFF;border:1.5px solid #E2E8F0}
+.htl-use-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.htl-use h4{font-size:.88rem;font-weight:700;color:#0F172A;margin:0 0 .2rem}
+.htl-use p{font-size:.82rem;color:#64748B;margin:0;line-height:1.5}
+.htl-table-wrap{margin:1.75rem 0;border-radius:14px;overflow:hidden;border:1.5px solid #E2E8F0}
+.htl-table{width:100%;border-collapse:collapse;background:#fff}
+.htl-table thead{background:#1E293B}
+.htl-table thead th{padding:.85rem 1.1rem;text-align:left;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#94A3B8}
+.htl-table tbody tr{border-top:1px solid #F1F5F9;transition:background .12s}
+.htl-table tbody tr:hover{background:#F8FAFF}
+.htl-table td{padding:.85rem 1.1rem;font-size:.88rem;color:#334155;vertical-align:middle}
+.htl-table td:first-child{font-weight:600;color:#0F172A}
+.htl-range{display:inline-block;background:#EFF6FF;color:#1D4ED8;border-radius:20px;padding:.2rem .7rem;font-size:.82rem;font-weight:700;white-space:nowrap}
+.htl-badge{display:inline-block;padding:.18rem .55rem;border-radius:6px;font-size:.75rem;font-weight:600}
+.htl-badge--blue{background:#EFF6FF;color:#1D4ED8}
+.htl-badge--green{background:#F0FDF4;color:#15803D}
+.htl-badge--amber{background:#FFFBEB;color:#B45309}
+.htl-badge--red{background:#FFF1F2;color:#BE123C}
+.htl-badge--purple{background:#F5F3FF;color:#6D28D9}
+.htl-tips{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:560px){.htl-tips{grid-template-columns:1fr}}
+.htl-tip-box{border-radius:14px;padding:1.35rem 1.5rem}
+.htl-tip-box--cut{background:#FFF7ED;border:1.5px solid #FED7AA}
+.htl-tip-box--grow{background:#F0FDF4;border:1.5px solid #BBF7D0}
+.htl-tip-box h4{font-size:.88rem;font-weight:700;margin:0 0 .75rem;display:flex;align-items:center;gap:.45rem}
+.htl-tip-box--cut h4{color:#C2410C}
+.htl-tip-box--grow h4{color:#15803D}
+.htl-tip-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.htl-tip-list li{font-size:.83rem;color:#475569;line-height:1.55;padding-left:1.1rem;position:relative}
+.htl-tip-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%}
+.htl-tip-box--cut .htl-tip-list li::before{background:#FB923C}
+.htl-tip-box--grow .htl-tip-list li::before{background:#4ADE80}
+.htl-why{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:1.5rem 0}
+@media(max-width:600px){.htl-why{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.htl-why{grid-template-columns:1fr}}
+.htl-why-item{border-radius:12px;padding:1.1rem 1.2rem;background:#FAFBFF;border:1.5px solid #E2E8F0;text-align:center}
+.htl-why-item .htl-why-icon{font-size:1.5rem;display:block;margin-bottom:.5rem}
+.htl-why-item strong{display:block;font-size:.85rem;color:#0F172A;margin-bottom:.2rem}
+.htl-why-item span{font-size:.78rem;color:#64748B;line-height:1.5}
+.htl-section-label{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#2563EB;background:#EFF6FF;border-radius:20px;padding:.3rem .8rem;margin-bottom:.75rem}
+.htl-section-label svg{width:12px;height:12px}
+.htl-divider{border:none;border-top:1.5px solid #F1F5F9;margin:2.25rem 0}
 </style>
 
-<!-- ══ INTRO ══ -->
 <h2>Contador de palabras online: todo lo que necesitas en un vistazo</h2>
 <p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
   Pega tu texto y obtén al instante <strong>palabras, caracteres, frases, párrafos y tiempo de lectura</strong>. Sin instalar nada. Sin registrarte. 100% privado.
@@ -748,7 +589,6 @@ a:hover{text-decoration:underline}
 
 <hr class="htl-divider">
 
-<!-- ══ CÓMO CONTAR ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
   Paso a paso
@@ -781,7 +621,6 @@ a:hover{text-decoration:underline}
 
 <hr class="htl-divider">
 
-<!-- ══ CARACTERES ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="2"/><line x1="3" y1="5" x2="9" y2="5"/><line x1="3" y1="7.5" x2="7" y2="7.5"/></svg>
   Caracteres
@@ -805,7 +644,6 @@ a:hover{text-decoration:underline}
 
 <hr class="htl-divider">
 
-<!-- ══ USOS ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
   Casos de uso
@@ -815,51 +653,32 @@ a:hover{text-decoration:underline}
 <div class="htl-uses">
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#2563EB"></div>
-    <div>
-      <h4>SEO y contenido</h4>
-      <p>Los artículos que responden en profundidad una intención de búsqueda se posicionan mejor. Monitoriza la extensión mientras redactas.</p>
-    </div>
+    <div><h4>SEO y contenido</h4><p>Los artículos que responden en profundidad una intención de búsqueda se posicionan mejor. Monitoriza la extensión mientras redactas.</p></div>
   </div>
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#7C3AED"></div>
-    <div>
-      <h4>Trabajos académicos</h4>
-      <p>TFGs, TFMs y ensayos tienen límites estrictos. Quedarte corto o pasarte afecta directamente a la nota.</p>
-    </div>
+    <div><h4>Trabajos académicos</h4><p>TFGs, TFMs y ensayos tienen límites estrictos. Quedarte corto o pasarte afecta directamente a la nota.</p></div>
   </div>
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#0891B2"></div>
-    <div>
-      <h4>Redes sociales</h4>
-      <p>Cada plataforma tiene sus propias reglas. Superar el límite puede cortar tu mensaje o impedir la publicación.</p>
-    </div>
+    <div><h4>Redes sociales</h4><p>Cada plataforma tiene sus propias reglas. Superar el límite puede cortar tu mensaje o impedir la publicación.</p></div>
   </div>
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#D97706"></div>
-    <div>
-      <h4>Presentaciones y discursos</h4>
-      <p>El tiempo de habla estimado (140 ppm) te dice exactamente cuántos minutos durará tu guión antes de grabarlo.</p>
-    </div>
+    <div><h4>Presentaciones y discursos</h4><p>El tiempo de habla estimado (140 ppm) te dice exactamente cuántos minutos durará tu guión antes de grabarlo.</p></div>
   </div>
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#16A34A"></div>
-    <div>
-      <h4>Traducción</h4>
-      <p>Los traductores profesionales tarifan por palabras o caracteres sin espacios. Conoce la cifra antes de pedir presupuesto.</p>
-    </div>
+    <div><h4>Traducción</h4><p>Los traductores profesionales tarifan por palabras o caracteres sin espacios. Conoce la cifra antes de pedir presupuesto.</p></div>
   </div>
   <div class="htl-use">
     <div class="htl-use-dot" style="background:#E11D48"></div>
-    <div>
-      <h4>Email marketing</h4>
-      <p>Los correos más efectivos son cortos y directos. Controla que tu mensaje no se extienda más de lo necesario.</p>
-    </div>
+    <div><h4>Email marketing</h4><p>Los correos más efectivos son cortos y directos. Controla que tu mensaje no se extienda más de lo necesario.</p></div>
   </div>
 </div>
 
 <hr class="htl-divider">
 
-<!-- ══ TABLA ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
   Referencia rápida
@@ -869,55 +688,35 @@ a:hover{text-decoration:underline}
 <div class="htl-table-wrap">
   <table class="htl-table">
     <thead>
-      <tr>
-        <th>Formato</th>
-        <th>Extensión recomendada</th>
-        <th>Objetivo</th>
-        <th>Nivel</th>
-      </tr>
+      <tr><th>Formato</th><th>Extensión recomendada</th><th>Objetivo</th><th>Nivel</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 10V4a1 1 0 011-1h8a1 1 0 011 1v6"/><rect x="4" y="7" width="6" height="5" rx="1"/></svg>
-          Tweet / X
-        </td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 10V4a1 1 0 011-1h8a1 1 0 011 1v6"/><rect x="4" y="7" width="6" height="5" rx="1"/></svg>Tweet / X</td>
         <td><span class="htl-range">15 – 50 palabras</span></td>
         <td style="color:#64748B;font-size:.83rem">Impacto máximo, mínimo texto</td>
         <td><span class="htl-badge htl-badge--blue">Corto</span></td>
       </tr>
       <tr>
-        <td>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="1" y="3" width="12" height="9" rx="1.5"/><polyline points="1 5 7 8 13 5"/></svg>
-          Email profesional
-        </td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="1" y="3" width="12" height="9" rx="1.5"/><polyline points="1 5 7 8 13 5"/></svg>Email profesional</td>
         <td><span class="htl-range">50 – 200 palabras</span></td>
         <td style="color:#64748B;font-size:.83rem">Claro, directo y accionable</td>
         <td><span class="htl-badge htl-badge--green">Breve</span></td>
       </tr>
       <tr>
-        <td>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 12V3a1 1 0 011-1h6l3 3v7a1 1 0 01-1 1H3a1 1 0 01-1-1z"/><polyline points="8 2 8 5 11 5"/></svg>
-          Artículo SEO
-        </td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 12V3a1 1 0 011-1h6l3 3v7a1 1 0 01-1 1H3a1 1 0 01-1-1z"/><polyline points="8 2 8 5 11 5"/></svg>Artículo SEO</td>
         <td><span class="htl-range">1.000 – 2.500 palabras</span></td>
         <td style="color:#64748B;font-size:.83rem">Cubrir la intención de búsqueda</td>
         <td><span class="htl-badge htl-badge--amber">Medio</span></td>
       </tr>
       <tr>
-        <td>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="2" y="1" width="10" height="12" rx="1.5"/><line x1="5" y1="5" x2="9" y2="5"/><line x1="5" y1="7.5" x2="9" y2="7.5"/><line x1="5" y1="10" x2="7" y2="10"/></svg>
-          TFG / TFM
-        </td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="2" y="1" width="10" height="12" rx="1.5"/><line x1="5" y1="5" x2="9" y2="5"/><line x1="5" y1="7.5" x2="9" y2="7.5"/><line x1="5" y1="10" x2="7" y2="10"/></svg>TFG / TFM</td>
         <td><span class="htl-range">10.000 – 40.000 palabras</span></td>
         <td style="color:#64748B;font-size:.83rem">Investigación académica formal</td>
         <td><span class="htl-badge htl-badge--red">Largo</span></td>
       </tr>
       <tr>
-        <td>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M3 2h8a1 1 0 011 1v9a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="7" x2="10" y2="7"/><line x1="4" y1="9" x2="7" y2="9"/></svg>
-          Novela
-        </td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M3 2h8a1 1 0 011 1v9a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="7" x2="10" y2="7"/><line x1="4" y1="9" x2="7" y2="9"/></svg>Novela</td>
         <td><span class="htl-range">50.000 – 100.000+ palabras</span></td>
         <td style="color:#64748B;font-size:.83rem">Narrativa larga de ficción</td>
         <td><span class="htl-badge htl-badge--purple">Extenso</span></td>
@@ -928,7 +727,6 @@ a:hover{text-decoration:underline}
 
 <hr class="htl-divider">
 
-<!-- ══ TIPS ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
   Consejos
@@ -964,7 +762,6 @@ a:hover{text-decoration:underline}
 
 <hr class="htl-divider">
 
-<!-- ══ WHY US ══ -->
 <div class="htl-section-label">
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
   Por qué elegirnos
@@ -972,39 +769,15 @@ a:hover{text-decoration:underline}
 <h2>¿Por qué usar este contador de palabras gratis?</h2>
 
 <div class="htl-why">
-  <div class="htl-why-item">
-    <span class="htl-why-icon">⚡</span>
-    <strong>Tiempo real</strong>
-    <span>Sin botón de calcular. Se actualiza letra a letra.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">🔒</span>
-    <strong>100% privado</strong>
-    <span>Tu texto nunca sale del navegador. Cero servidores.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">📊</span>
-    <strong>6 métricas</strong>
-    <span>Palabras, chars, sin espacios, frases, párrafos y tiempos.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">📱</span>
-    <strong>Cualquier dispositivo</strong>
-    <span>Funciona igual en móvil, tablet y escritorio.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">✂️</span>
-    <strong>Sin registro</strong>
-    <span>Ni email, ni contraseña, ni formularios.</span>
-  </div>
-  <div class="htl-why-item">
-    <span class="htl-why-icon">∞</span>
-    <strong>Sin límites</strong>
-    <span>Pega textos de cualquier extensión, siempre gratis.</span>
-  </div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#9889;</span><strong>Tiempo real</strong><span>Sin botón de calcular. Se actualiza letra a letra.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#128274;</span><strong>100% privado</strong><span>Tu texto nunca sale del navegador. Cero servidores.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#128202;</span><strong>6 métricas</strong><span>Palabras, chars, sin espacios, frases, párrafos y tiempos.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#128241;</span><strong>Cualquier dispositivo</strong><span>Funciona igual en móvil, tablet y escritorio.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#9986;&#65039;</span><strong>Sin registro</strong><span>Ni email, ni contraseña, ni formularios.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">&#8734;</span><strong>Sin límites</strong><span>Pega textos de cualquier extensión, siempre gratis.</span></div>
 </div>
 
-    </div>
+    </div><!-- /.ht-long -->
 
     <!-- Related tools -->
     <section class="ht-related reveal" aria-labelledby="related-title">
@@ -1017,30 +790,26 @@ a:hover{text-decoration:underline}
       </div>
       <div class="ht-related-grid">
         <a href="/contadores-de-texto/contador-de-caracteres/" class="ht-related-card">
-          <div class="ht-related-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="9" y2="10"/></svg>
-          </div>
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="9" y2="10"/></svg></div>
           <div class="ht-related-card-body">
             <div class="ht-related-card-name">Contador de caracteres</div>
             <div class="ht-related-card-desc">Con l&#237;mites de plataforma en tiempo real</div>
           </div>
         </a>
-
         <a href="/contadores-de-texto/contador-de-frases/" class="ht-related-card">
-          <div class="ht-related-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h5"/></svg>
-          </div>
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h5"/></svg></div>
           <div class="ht-related-card-body">
             <div class="ht-related-card-name">Contador de frases</div>
             <div class="ht-related-card-desc">Oraciones y longitud media</div>
           </div>
         </a>
-
-        <a href="/seo-tools-de-texto/generador-de-meta-tags" class="ht-related-card">
-          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="1" y="1" width="14" height="14" rx="2"/><line x1="4" y1="5" x2="12" y2="5"/><line x1="4" y1="8" x2="10" y2="8"/></svg></div>
-          <div class="ht-related-card-body"><div class="ht-related-card-name">Generador de Meta Tags</div><div class="ht-related-card-desc">Title, description y OG para SEO</div></div>
+        <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="ht-related-card">
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="1" y="1" width="14" height="14" rx="2"/><line x1="4" y1="5" x2="12" y2="5"/><line x1="4" y1="8" x2="10" y2="8"/></svg></div>
+          <div class="ht-related-card-body">
+            <div class="ht-related-card-name">Generador de Meta Tags</div>
+            <div class="ht-related-card-desc">Title, description y OG para SEO</div>
+          </div>
         </a>
-
       </div>
     </section>
 
@@ -1050,7 +819,6 @@ a:hover{text-decoration:underline}
         <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
       </div>
       <div class="ht-faq-list">
-
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">
             &#191;C&#243;mo contar palabras en un texto?
@@ -1060,7 +828,6 @@ a:hover{text-decoration:underline}
             La forma m&#225;s r&#225;pida es usar este contador: pega o escribe tu texto arriba y obtendr&#225;s el resultado al instante, sin instalar nada. Tambi&#233;n puedes usar <strong>Microsoft Word</strong> (Revisar &#8594; Contar palabras) o <strong>Google Docs</strong> (Herramientas &#8594; Recuento de palabras), aunque ninguno ofrece las m&#233;tricas adicionales de esta herramienta.
           </div>
         </div>
-
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras debe tener un art&#237;culo SEO?
@@ -1070,53 +837,100 @@ a:hover{text-decoration:underline}
             Entre <strong>1.000 y 2.500 palabras</strong> para la mayoría de temas. Para temas informativos simples, 1.000&#8211;1.500 suelen bastar. Para guías, comparativas o tutoriales en nichos competidos, apunta a 1.800&#8211;2.500. Lo clave no es el número sino <strong>responder completamente la intenci&#243;n de b&#250;squeda</strong> sin añadir relleno.
           </div>
         </div>
-
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">
-            &#191;Qu&#233; es un contador de palabras?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="ht-faq-body" id="faq-3" role="region">
-            Una herramienta digital que analiza tu texto y calcula autom&#225;ticamente cu&#225;ntas palabras contiene. Las versiones avanzadas como esta tambi&#233;n muestran <strong>caracteres con y sin espacios, frases, p&#225;rrafos y tiempo de lectura y habla</strong>, todo en tiempo real sin necesidad de registro ni instalaci&#243;n.
-          </div>
-        </div>
-
-        <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras tiene una p&#225;gina A4?
             <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
-          <div class="ht-faq-body" id="faq-4" role="region">
+          <div class="ht-faq-body" id="faq-3" role="region">
             Con <strong>Times New Roman 12pt y m&#225;rgenes est&#225;ndar</strong>, una p&#225;gina A4 contiene entre 250 y 300 palabras. Con interlineado doble, baja a unas 125&#8211;150 palabras. Pega tu texto aqu&#237; para calcular exactamente cu&#225;ntas p&#225;ginas ocupar&#237;a.
           </div>
         </div>
-
         <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-5" onclick="HT.faqToggle(this)">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras tiene un TFG?
             <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
-          <div class="ht-faq-body" id="faq-5" role="region">
+          <div class="ht-faq-body" id="faq-4" role="region">
             Un TFG en Espa&#241;a suele exigir entre <strong>10.000 y 15.000 palabras</strong>. Los TFM (M&#225;ster) requieren entre 20.000 y 40.000. Consulta siempre las gu&#237;as de tu universidad, ya que los m&#225;rgenes var&#237;an por titulaci&#243;n y centro.
           </div>
         </div>
-
         <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-6" onclick="HT.faqToggle(this)">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-5" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;l es la diferencia entre caracteres con y sin espacios?
             <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
-          <div class="ht-faq-body" id="faq-6" role="region">
-            <strong>Con espacios</strong> cuenta cada letra, n&#250;mero, puntuaci&#243;n y espacio. Lo usan Twitter/X, LinkedIn o Meta Ads para sus l&#237;mites. <strong>Sin espacios</strong> solo cuenta s&#237;mbolos visibles, ignorando los espacios: lo solicitan algunas convocatorias acad&#233;micas y tarifas de traducci&#243;n. Este contador te muestra ambos valores simult&#225;neamente.
+          <div class="ht-faq-body" id="faq-5" role="region">
+            <strong>Con espacios</strong> cuenta cada letra, n&#250;mero, puntuaci&#243;n y espacio. Lo usan Twitter/X, LinkedIn o Meta Ads para sus l&#237;mites. <strong>Sin espacios</strong> solo cuenta s&#237;mbolos visibles, ignorando los espacios: lo solicitan algunas convocatorias acad&#233;micas y tarifas de traducci&#243;n. Este contador muestra ambos valores simult&#225;neamente.
           </div>
         </div>
-
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-6" onclick="HT.faqToggle(this)">
+            &#191;Qu&#233; es un contador de palabras?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-6" role="region">
+            Una herramienta digital que analiza tu texto y calcula autom&#225;ticamente cu&#225;ntas palabras contiene. Las versiones avanzadas como esta tambi&#233;n muestran <strong>caracteres con y sin espacios, frases, p&#225;rrafos y tiempo de lectura y habla</strong>, todo en tiempo real sin necesidad de registro ni instalaci&#243;n.
+          </div>
+        </div>
       </div>
     </section>
 
   </main><!-- /main -->
 
-</div><!-- /.ht-wrap -->
+  <!-- ═══ RIGHT SIDEBAR ═══ -->
+  <aside class="ht-sidebar-right" aria-label="Progreso y referencia">
+
+    <!-- Tu progreso -->
+    <div class="ht-sbr-card">
+      <div class="ht-sbr-title">Tu progreso</div>
+      <span class="ht-sbr-progress-val" id="sbr-words">0</span>
+      <span class="ht-sbr-progress-lbl">palabras escritas</span>
+    </div>
+
+    <!-- Referencia rápida -->
+    <div class="ht-sbr-card">
+      <div class="ht-sbr-title">Referencia r&#225;pida</div>
+      <table class="ht-sbr-table">
+        <tbody>
+          <tr><td>Email corto</td><td>~150 p.</td></tr>
+          <tr><td>Post blog</td><td>~800 p.</td></tr>
+          <tr><td>Art&#237;culo SEO</td><td>~1.500 p.</td></tr>
+          <tr><td>Correo formal</td><td>~200 p.</td></tr>
+          <tr><td>TFG</td><td>~12.000 p.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Populares -->
+    <div class="ht-sbr-card">
+      <div class="ht-sbr-title">Populares</div>
+      <a href="/contadores-de-texto/contador-de-caracteres/" class="ht-sbr-link">
+        <span class="ht-sbr-link-dot"></span>Contador de caracteres
+      </a>
+      <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="ht-sbr-link">
+        <span class="ht-sbr-link-dot"></span>Generador Meta Tags
+      </a>
+      <a href="/convertidores-de-texto/texto-a-slug-url/" class="ht-sbr-link">
+        <span class="ht-sbr-link-dot"></span>Texto a Slug URL
+      </a>
+      <a href="/redes-sociales/contador-twitter/" class="ht-sbr-link">
+        <span class="ht-sbr-link-dot"></span>Contador Twitter
+      </a>
+      <a href="/desarrollo-y-codificacion/codificador-base64/" class="ht-sbr-link">
+        <span class="ht-sbr-link-dot"></span>Codificador Base64
+      </a>
+    </div>
+
+  </aside><!-- /.ht-sidebar-right -->
+
+</div><!-- /.ht-page-layout -->
+
+<!-- Milestone notification -->
+<div id="ht-milestone" role="status" aria-live="polite">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="2 7 6 11 12 3"/></svg>
+  <span id="milestone-text"></span>
+</div>
 
 <!-- Toast notification -->
 <div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
@@ -1124,7 +938,7 @@ a:hover{text-decoration:underline}
   <span>Copiado</span>
 </div>
 
-<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+<footer class="ht-page-footer" style="max-width:1440px;margin:0 auto;padding-left:20px;padding-right:20px">
   <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
   <nav class="ht-footer-nav" aria-label="Legal">
     <a href="/">Inicio</a>
@@ -1140,59 +954,152 @@ a:hover{text-decoration:underline}
 (function () {
   'use strict';
 
-  var txt        = document.getElementById('ht-txt');
-  var sPalabras  = document.getElementById('s-palabras');
-  var sCaract    = document.getElementById('s-caracteres');
-  var sSinEsp    = document.getElementById('s-sinespacio');
-  var sFrases    = document.getElementById('s-frases');
-  var sParrafos  = document.getElementById('s-parrafos');
-  var tLectura   = document.getElementById('t-lectura');
-  var tHabla     = document.getElementById('t-habla');
-  var hdrChars   = document.getElementById('hdr-chars');
+  var txt       = document.getElementById('ht-txt');
+  var sPalabras = document.getElementById('s-palabras');
+  var sCaract   = document.getElementById('s-caracteres');
+  var sSinEsp   = document.getElementById('s-sinespacio');
+  var sFrases   = document.getElementById('s-frases');
+  var sParrafos = document.getElementById('s-parrafos');
+  var tLectura  = document.getElementById('t-lectura');
+  var tHabla    = document.getElementById('t-habla');
+  var hdrChars  = document.getElementById('hdr-chars');
+  var chWords   = document.getElementById('ch-words');
+  var chChars   = document.getElementById('ch-chars');
+  var chTime    = document.getElementById('ch-time');
+  var sbrWords  = document.getElementById('sbr-words');
+  var liveDot   = document.querySelector('.ht-panel-live-dot');
+  var milestone = document.getElementById('ht-milestone');
+  var mText     = document.getElementById('milestone-text');
+
+  var lastWords  = 0;
+  var shownMs    = {};
+  var MILESTONES = [100, 250, 500, 1000];
+  var typingTmr  = null;
+
+  /* ── Helpers ──────────────────────────────────────── */
+
+  function heroStat(el, val) {
+    if (!el || el.textContent === val) return;
+    el.textContent = val;
+    el.classList.remove('pop');
+    void el.offsetWidth;
+    el.classList.add('pop');
+    el.addEventListener('animationend', function cb() {
+      el.classList.remove('pop');
+      el.removeEventListener('animationend', cb);
+    });
+  }
+
+  function wordBounce() {
+    sPalabras.classList.remove('word-bounce');
+    void sPalabras.offsetWidth;
+    sPalabras.classList.add('word-bounce');
+    sPalabras.addEventListener('animationend', function cb() {
+      sPalabras.classList.remove('word-bounce');
+      sPalabras.removeEventListener('animationend', cb);
+    });
+  }
+
+  function celebrate() {
+    document.querySelectorAll('.ht-stat-card').forEach(function (c) {
+      c.classList.remove('celebrate');
+      void c.offsetWidth;
+      c.classList.add('celebrate');
+      c.addEventListener('animationend', function cb() {
+        c.classList.remove('celebrate');
+        c.removeEventListener('animationend', cb);
+      });
+    });
+  }
+
+  function showMilestone(n) {
+    if (shownMs[n]) return;
+    shownMs[n] = true;
+    mText.textContent = n + ' palabras \u2713';
+    milestone.classList.add('show');
+    setTimeout(function () { milestone.classList.remove('show'); }, 1500);
+  }
+
+  function setTyping() {
+    if (liveDot) liveDot.classList.add('typing');
+    clearTimeout(typingTmr);
+    typingTmr = setTimeout(function () {
+      if (liveDot) liveDot.classList.remove('typing');
+    }, 2000);
+  }
+
+  function btnFeedback(btn) {
+    var sp = btn ? btn.querySelector('span') : null;
+    if (!sp) return;
+    var orig = sp.textContent;
+    sp.textContent = '\u2713 Copiado';
+    btn.disabled = true;
+    setTimeout(function () {
+      sp.textContent = orig;
+      btn.disabled = false;
+    }, 1500);
+  }
+
+  /* ── Analyse ──────────────────────────────────────── */
 
   function analyse() {
-    var raw = txt.value;
+    var raw     = txt.value;
     var trimmed = raw.trim();
+    var words   = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
+    var chars   = raw.length;
+    var noSp    = raw.replace(/\s/g, '').length;
+    var m       = trimmed.match(/[^.!?\u2026]+[.!?\u2026]+/g);
+    var sents   = m ? m.length : (trimmed.length > 0 ? 1 : 0);
+    var paras   = trimmed === '' ? 0 : trimmed.split(/\n+/).filter(function (p) { return p.trim().length > 0; }).length;
 
-    /* Words */
-    var words = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
+    /* Word-level animations */
+    if (words > lastWords) {
+      wordBounce();
+      var prevH = Math.floor(lastWords / 100);
+      var currH = Math.floor(words / 100);
+      if (currH > prevH && words > 0) celebrate();
+      MILESTONES.forEach(function (ms) {
+        if (words >= ms && lastWords < ms) showMilestone(ms);
+      });
+    }
+    lastWords = words;
 
-    /* Characters */
-    var chars    = raw.length;
-    var noSpaces = raw.replace(/\s/g, '').length;
-
-    /* Sentences — sequences ending in . ! ? \u2026 */
-    var sentenceMatches = trimmed.match(/[^.!?\u2026]+[.!?\u2026]+/g);
-    var sentences = sentenceMatches ? sentenceMatches.length : (trimmed.length > 0 ? 1 : 0);
-
-    /* Paragraphs */
-    var paras = trimmed === '' ? 0 : trimmed.split(/\n+/).filter(function(p){ return p.trim().length > 0; }).length;
-
-    /* Update stats panel */
-    HT.pop(sPalabras,  HT.fmt(words));
-    HT.pop(sCaract,    HT.fmt(chars));
-    HT.pop(sSinEsp,    HT.fmt(noSpaces));
-    HT.pop(sFrases,    HT.fmt(sentences));
-    HT.pop(sParrafos,  HT.fmt(paras));
-
-    /* Time */
+    /* Stats panel */
+    HT.pop(sPalabras, HT.fmt(words));
+    HT.pop(sCaract,   HT.fmt(chars));
+    HT.pop(sSinEsp,   HT.fmt(noSp));
+    HT.pop(sFrases,   HT.fmt(sents));
+    HT.pop(sParrafos, HT.fmt(paras));
     tLectura.textContent = HT.fmtTime(words, 225);
     tHabla.textContent   = HT.fmtTime(words, 140);
-
-    /* Header char count */
     hdrChars.textContent = HT.fmt(chars) + ' caractere' + (chars === 1 ? '' : 's');
+
+    /* Hero mini-stats */
+    heroStat(chWords, HT.fmt(words));
+    heroStat(chChars, HT.fmt(chars));
+    var t = HT.fmtTime(words, 225);
+    if (chTime && chTime.textContent !== t) chTime.textContent = t;
+
+    /* Right sidebar progress */
+    if (sbrWords) {
+      var ws = HT.fmt(words);
+      if (sbrWords.textContent !== ws) sbrWords.textContent = ws;
+    }
+
+    setTyping();
   }
 
   var debouncedAnalyse = HT.debounce(analyse, 40);
-
   txt.addEventListener('input', debouncedAnalyse);
 
-  /* Toolbar helpers */
-  window.copyText = function () {
+  /* ── Toolbar helpers ──────────────────────────────── */
+
+  window.copyText = function (btn) {
     HT.copy(txt.value);
+    btnFeedback(btn);
   };
 
-  window.copyMetrics = function () {
+  window.copyMetrics = function (btn) {
     var lines = [
       'Palabras:          ' + sPalabras.textContent,
       'Caracteres:        ' + sCaract.textContent,
@@ -1203,6 +1110,7 @@ a:hover{text-decoration:underline}
       'Tiempo de habla:   ' + tHabla.textContent,
     ];
     HT.copy(lines.join('\n'));
+    btnFeedback(btn);
   };
 
   window.clearText = function () {
@@ -1211,15 +1119,12 @@ a:hover{text-decoration:underline}
     txt.focus();
   };
 
-  /* Initial run — preload from home demo if present */
+  /* Preload from home demo */
   (function () {
     try {
       var saved = sessionStorage.getItem('demo_text');
-      if (saved) {
-        txt.value = saved;
-        sessionStorage.removeItem('demo_text');
-      }
-    } catch (err) {}
+      if (saved) { txt.value = saved; sessionStorage.removeItem('demo_text'); }
+    } catch (e) {}
   }());
 
   analyse();
@@ -1227,14 +1132,14 @@ a:hover{text-decoration:underline}
 </script>
 
 <script>
-(function(){
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
     });
-  }, {threshold:0.07});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+}());
 </script>
 </body>
 </html>

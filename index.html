@@ -815,12 +815,13 @@
     .nav.open { transform:translateY(0); }
     .nav__link { font-size:16px; padding:12px 16px; width:100%; }
     .nav-toggle { display:flex; }
-    .hero { padding:70px 0 56px; }
+    .hero { padding:60px 0 44px; }
     .info-intro { grid-template-columns:1fr; gap:32px; }
     .info-intro__stats { grid-template-columns:repeat(4,1fr); }
     .footer__inner { grid-template-columns:1fr; gap:32px; }
     .footer__links { grid-template-columns:1fr 1fr; }
     .cat-grid { grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); }
+    .section { margin-bottom: 56px; }
   }
   @media (max-width: 480px) {
     .info-intro__stats { grid-template-columns:1fr 1fr; }
@@ -828,6 +829,17 @@
     .hero__stats { flex-direction:column; gap:4px; }
     .hero__stat-sep { display:none; }
     .popular-grid { grid-template-columns:1fr 1fr; }
+    /* Hero: keep ≤40% of screen height at 390px */
+    .hero { padding:36px 0 28px; }
+    .hero__subtitle { margin-bottom:18px; }
+    .hero__pills    { margin-bottom:18px; }
+    .search-box     { margin-bottom:12px; }
+    .search-box__kbd { display:none; }
+    .section        { margin-bottom:44px; }
+    /* Cat grid: single column on very small */
+    .cat-grid { grid-template-columns:1fr; }
+    /* Footer nav: single column */
+    .footer__legal-links { flex-direction:column; gap:6px; }
   }
 
   /* ================================================================
