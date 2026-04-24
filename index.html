@@ -1,2157 +1,969 @@
-<!DOCTYPE html>
-<html lang="es" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO primario -->
-  <title>HerramientasDeTexto.com — Herramientas de Texto Online Gratis</title>
-  <meta name="description" content="Herramientas de texto online y gratis en español. Contadores, convertidores, SEO, desarrollo y redes sociales. Sin registro, sin instalación, todo en tu navegador.">
-  <meta name="keywords" content="herramientas de texto, contador de palabras, convertidor de texto, herramientas SEO, generador de texto, limpiador de texto, herramientas gratis español">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://herramientasdetexto.com/">
-
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://herramientasdetexto.com/">
-  <meta property="og:title"       content="HerramientasDeTexto.com — Herramientas de Texto Online Gratis">
-  <meta property="og:description" content="Contadores, convertidores, limpiadores, SEO, generadores y más. Gratis, sin registro, en español.">
-  <meta property="og:image"       content="https://herramientasdetexto.com/assets/og-image.png">
-  <meta property="og:site_name"   content="HerramientasDeTexto.com">
-  <meta property="og:locale"      content="es_ES">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="HerramientasDeTexto.com — Herramientas de Texto Online Gratis">
-  <meta name="twitter:description" content="Todas las herramientas de texto que necesitas, gratis y en español.">
-  <meta name="twitter:image"       content="https://herramientasdetexto.com/assets/og-image.png">
-
-  <!-- Seed dark theme before app.js runs -->
-  <script>if(!localStorage.getItem('theme'))localStorage.setItem('theme','dark');</script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>T</text></svg>">
-
-  <!-- Structured Data: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "HerramientasDeTexto.com",
-    "url": "https://herramientasdetexto.com",
-    "description": "Herramientas de texto online gratis en español",
-    "inLanguage": "es",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://herramientasdetexto.com/?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- Structured Data: ItemList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Categorías de herramientas de texto",
-    "numberOfItems": 10,
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Contadores de texto","url":"https://herramientasdetexto.com/contadores-de-texto/"},
-      {"@type":"ListItem","position":2,"name":"Convertidores de texto","url":"https://herramientasdetexto.com/convertidores-de-texto/"},
-      {"@type":"ListItem","position":3,"name":"Formateadores de texto","url":"https://herramientasdetexto.com/limpiadores-de-texto/"},
-      {"@type":"ListItem","position":4,"name":"Generadores de texto","url":"https://herramientasdetexto.com/generadores-de-texto/"},
-      {"@type":"ListItem","position":5,"name":"SEO tools de texto","url":"https://herramientasdetexto.com/seo-tools-de-texto/"},
-      {"@type":"ListItem","position":6,"name":"Desarrollo y codificación","url":"https://herramientasdetexto.com/desarrollo-y-codificacion/"},
-      {"@type":"ListItem","position":7,"name":"Redes sociales","url":"https://herramientasdetexto.com/redes-sociales/"},
-      {"@type":"ListItem","position":8,"name":"Analizadores de texto","url":"https://herramientasdetexto.com/manipulacion-de-texto/"},
-      {"@type":"ListItem","position":9,"name":"Herramientas de escritura","url":"https://herramientasdetexto.com/herramientas-para-estudiantes/"},
-      {"@type":"ListItem","position":10,"name":"Utilidades de texto","url":"https://herramientasdetexto.com/utilidades-avanzadas/"}
-    ]
-  }
-  </script>
-
-  <style>
-  /* ================================================================
-     DESIGN TOKENS
-  ================================================================ */
-  :root {
-    --font: 'Inter', system-ui, -apple-system, sans-serif;
-
-    --bg:            #0a0a0f;
-    --bg-2:          #0f0f1a;
-    --bg-3:          #13131f;
-    --surface:       rgba(255,255,255,0.04);
-    --surface-hover: rgba(255,255,255,0.07);
-    --border:        rgba(255,255,255,0.08);
-    --border-hover:  rgba(99,102,241,0.5);
-    --text:          #f0f0ff;
-    --text-2:        #9898b8;
-    --text-3:        #5a5a7a;
-
-    --accent:        #6366f1;
-    --accent-light:  #818cf8;
-    --accent-dark:   #4f46e5;
-    --accent-glow:   rgba(99,102,241,0.25);
-
-    --radius-sm:  8px;
-    --radius-md:  14px;
-    --radius-lg:  20px;
-
-    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  [data-theme="light"] {
-    --bg:            #f8f8ff;
-    --bg-2:          #ffffff;
-    --bg-3:          #f0f0ff;
-    --surface:       rgba(0,0,0,0.03);
-    --surface-hover: rgba(99,102,241,0.06);
-    --border:        rgba(0,0,0,0.08);
-    --border-hover:  rgba(99,102,241,0.4);
-    --text:          #0f0f1a;
-    --text-2:        #4a4a6a;
-    --text-3:        #8888aa;
-    --accent-glow:   rgba(99,102,241,0.15);
-  }
-
-  /* ================================================================
-     RESET + BASE
-  ================================================================ */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herramientas de Texto Online Gratis |  Utilidades Rápidas</title>
+<meta name="description" content="Muchas herramientas de texto online gratis: contadores, convertidores, limpiadores, generadores SEO y más. Sin registro, sin instalación. Resultados al instante.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Ocultar header y footer de Astra */
+  #masthead, .site-header, .ast-site-header-wrap,
+  .site-footer, .ast-site-footer { display: none !important; }
+  .site-content, #content, .ast-container { padding-top: 0 !important; margin-top: 0 !important; }
+  .entry-content { padding: 0 !important; margin: 0 !important; }
+  .page-title, .entry-title { display: none !important; }
+
+  :root {
+    --ink: #0a0a0f;
+    --ink2: #3a3a4a;
+    --ink3: #7a7a8c;
+    --paper: #ffffff;
+    --surface: #f5f5f8;
+    --surface2: #eeeeF3;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --accent-mid: #93c5fd;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --border: #e2e2ea;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --font: 'Sora', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
+  }
+
   html { scroll-behavior: smooth; }
 
   body {
     font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
+    color: var(--ink);
+    background: var(--paper);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    min-height: 100vh;
   }
 
-  a { color: inherit; text-decoration: none; }
-  ul { list-style: none; }
-  button { cursor: pointer; font-family: var(--font); }
-  img, svg { display: block; }
-
-  .container {
-    width: 100%;
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0 20px;
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 5vw, 3rem);
   }
-
-  /* ================================================================
-     AMBIENT BLOBS
-  ================================================================ */
-  .bg-ambient {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
   }
-  .bg-ambient__blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.12;
-  }
-  .bg-ambient__blob--1 { width:600px;height:600px;background:#6366f1;top:-200px;left:-100px; }
-  .bg-ambient__blob--2 { width:500px;height:500px;background:#8b5cf6;top:200px;right:-150px; }
-  .bg-ambient__blob--3 { width:400px;height:400px;background:#3b82f6;bottom:100px;left:30%;opacity:.08; }
-  [data-theme="light"] .bg-ambient__blob { opacity: 0.06; }
-
-  /* ================================================================
-     HEADER
-  ================================================================ */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-    border-bottom: 1px solid transparent;
-  }
-  .header.scrolled {
-    background: rgba(10,10,15,0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-color: var(--border);
-    box-shadow: 0 1px 40px rgba(0,0,0,0.4);
-  }
-  [data-theme="light"] .header.scrolled {
-    background: rgba(248,248,255,0.85);
-    box-shadow: 0 1px 20px rgba(99,102,241,0.1);
-  }
-
-  .header__inner {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    height: 60px;
-  }
-
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    flex-shrink: 0;
-    transition: opacity var(--transition);
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none;
   }
-  .logo:hover { opacity: 0.85; }
-  .logo__icon {
-    width: 32px; height: 32px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 800;
-    color: #fff;
-    flex-shrink: 0;
-    box-shadow: 0 2px 12px var(--accent-glow);
+  .logo-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 0.85rem; font-weight: 500;
   }
-  .logo__text {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.3px;
-    white-space: nowrap;
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 500; color: var(--ink2);
+    text-decoration: none; transition: color .2s;
   }
-  .logo__text span { color: var(--accent-light); }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    padding: 0.5rem 1.25rem; border-radius: 8px;
+    font-size: 0.875rem; font-weight: 600;
+    text-decoration: none; transition: background .2s, transform .15s;
+  }
+  .nav-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
 
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-left: auto;
-  }
-  .nav__link {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text-2);
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
-    transition: color var(--transition), background var(--transition);
-    position: relative;
-  }
-  .nav__link::after {
-    content: '';
-    position: absolute;
-    bottom: 2px; left: 12px; right: 12px;
-    height: 1.5px;
-    background: var(--accent);
-    border-radius: 99px;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-  }
-  .nav__link:hover { color: var(--text); }
-  .nav__link:hover::after { transform: scaleX(1); }
-
-  .header__actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-  .btn-icon {
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-2);
-    transition: color var(--transition), background var(--transition), border-color var(--transition);
-  }
-  .btn-icon:hover {
-    color: var(--text);
-    background: var(--surface-hover);
-    border-color: var(--border-hover);
-  }
-  .nav-toggle { display: none; }
-
-  /* ================================================================
-     HERO
-  ================================================================ */
+  /* ── HERO ── */
   .hero {
-    position: relative;
-    z-index: 1;
-    padding: 100px 0 80px;
-    text-align: center;
-    overflow: hidden;
+    background: linear-gradient(160deg, #f0f4ff 0%, #ffffff 55%, #f0fdf4 100%);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+    position: relative; overflow: hidden; text-align: center;
   }
   .hero::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
-    opacity: 0.5;
-  }
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  .hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: rgba(99,102,241,0.12);
-    border: 1px solid rgba(99,102,241,0.3);
-    border-radius: 99px;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--accent-light);
-    margin-bottom: 28px;
-    letter-spacing: 0.02em;
-    animation: badge-in 0.6s ease both;
-  }
-  .hero__badge-dot {
-    width: 6px; height: 6px;
-    background: var(--accent-light);
-    border-radius: 50%;
-    animation: pulse-dot 2s ease infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse-dot {
-    0%,100% { opacity:1; transform:scale(1); }
-    50%      { opacity:.5; transform:scale(0.7); }
-  }
-  @keyframes badge-in {
-    from { opacity:0; transform:translateY(-10px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  .hero__title {
-    font-size: clamp(36px,7vw,68px);
-    font-weight: 900;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-    margin-bottom: 20px;
-    animation: hero-in 0.7s 0.1s ease both;
-  }
-  .hero__title span {
-    background: linear-gradient(135deg, #ffffff 30%, var(--accent-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  [data-theme="light"] .hero__title span {
-    background: linear-gradient(135deg, #0f0f1a 30%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  @keyframes hero-in {
-    from { opacity:0; transform:translateY(20px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  .hero__subtitle {
-    font-size: clamp(15px,2vw,18px);
-    color: var(--text-2);
-    margin-bottom: 36px;
-    line-height: 1.7;
-    animation: hero-in 0.7s 0.2s ease both;
-  }
-
-  .search-box {
-    position: relative;
-    max-width: 560px;
-    margin: 0 auto 24px;
-    animation: hero-in 0.7s 0.3s ease both;
-  }
-  .search-box__icon {
-    position: absolute;
-    left: 18px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-3);
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(37,99,235,0.07) 0%, transparent 70%);
     pointer-events: none;
   }
-  .search-box__input {
-    width: 100%;
-    padding: 16px 56px 16px 50px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 15px;
-    outline: none;
-    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-    backdrop-filter: blur(10px);
+  .hero-inner { max-width: 700px; margin: 0 auto; position: relative; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-light); color: var(--accent);
+    border: 1px solid #bfdbfe;
+    padding: 0.3rem 0.9rem; border-radius: 99px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
   }
-  .search-box__input::placeholder { color: var(--text-3); }
-  .search-box__input:focus {
-    border-color: var(--accent);
-    background: rgba(99,102,241,0.06);
-    box-shadow: 0 0 0 4px var(--accent-glow), 0 4px 24px rgba(0,0,0,0.4);
+  .hero-badge::before { content: '●'; font-size: 0.55rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.03em; margin-bottom: 1rem; color: var(--ink);
   }
-  .search-box__kbd {
-    position: absolute;
-    right: 14px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 11px;
-    color: var(--text-3);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 2px 7px;
-    font-family: var(--font);
-    pointer-events: none;
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--ink3);
+    margin-bottom: 2rem; font-weight: 400; line-height: 1.6;
   }
+  .search-wrap {
+    max-width: 580px; margin: 0 auto 2rem;
+    display: flex; gap: 0; position: relative;
+  }
+  .search-input {
+    flex: 1; padding: 1rem 1.25rem;
+    font-family: var(--font); font-size: 1rem; font-weight: 400;
+    border: 2px solid var(--border); border-right: none;
+    border-radius: var(--radius) 0 0 var(--radius);
+    outline: none; transition: border-color .2s;
+    color: var(--ink); background: #fff;
+    box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+  }
+  .search-input::placeholder { color: var(--ink3); }
+  .search-input:focus { border-color: var(--accent); }
+  .search-btn {
+    background: var(--accent); color: #fff;
+    border: 2px solid var(--accent); border-left: none;
+    padding: 0 1.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--font); font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; transition: background .2s; white-space: nowrap;
+  }
+  .search-btn:hover { background: #1d4ed8; }
 
-  .hero__pills {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Quick tools strip */
+  .hero-quick {
+    display: flex; justify-content: center; gap: 0.6rem;
+    flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .hero-quick-btn {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--paper); border: 1.5px solid var(--border);
+    border-radius: 99px; padding: 0.45rem 1rem;
+    font-family: var(--font); font-size: 0.8rem; font-weight: 500;
+    color: var(--ink2); text-decoration: none;
+    transition: all .2s; cursor: pointer;
+    white-space: nowrap;
+  }
+  .hero-quick-btn:hover {
+    border-color: var(--accent); color: var(--accent);
+    background: var(--accent-light); transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.12);
+  }
+  .hero-quick-btn span { font-size: 0.95rem; }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: clamp(1.5rem, 4vw, 3rem);
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 40px;
-    animation: hero-in 0.7s 0.4s ease both;
   }
-  .hero__pill {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-2);
-    padding: 5px 12px;
-    border: 1px solid var(--border);
-    border-radius: 99px;
-    background: var(--surface);
+  .stat { text-align: center; }
+  .stat-num {
+    display: block; font-size: 1.5rem; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.02em;
   }
+  .stat-label { font-size: 0.78rem; color: var(--ink3); font-weight: 500; }
 
-  .hero__stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px 0;
-    animation: hero-in 0.7s 0.5s ease both;
-  }
-  .hero__stat { font-size:14px; color:var(--text-2); padding:0 16px; }
-  .hero__stat strong { color:var(--text); font-weight:700; }
-  .hero__stat-sep { color:var(--text-3); }
-
-  /* ================================================================
-     SEARCH RESULTS
-  ================================================================ */
-  .search-results { position:relative; z-index:1; margin-bottom:20px; }
-  .search-results.hidden { display:none; }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-    gap: 14px;
-    margin-top: 16px;
-  }
-
-  /* ================================================================
-     MAIN
-  ================================================================ */
-  .main { position:relative; z-index:1; }
-
-  .ad-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 64px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    margin-bottom: 60px;
-    color: var(--text-3);
-    font-size: 12px;
-    font-weight: 500;
-  }
-  .ad-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-3);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 6px;
-  }
-
-  .section { margin-bottom: 80px; }
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
+  /* ── SECTIONS ── */
+  section { padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 5vw, 3rem); }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+    color: var(--accent); letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: .75rem;
   }
   .section-title {
-    font-size: clamp(20px,3vw,26px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--text);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700; letter-spacing: -0.025em;
+    margin-bottom: .75rem;
   }
-  .section-subtitle { font-size:13px; color:var(--text-3); font-weight:500; }
+  .section-sub {
+    color: var(--ink3); font-size: 1rem;
+    max-width: 520px; margin-bottom: 2.5rem;
+  }
 
-  /* ================================================================
-     CATEGORY CARDS
-  ================================================================ */
-  .cat-grid {
+  /* ── HERRAMIENTAS POPULARES ── */
+  #populares { background: var(--surface); }
+  .tools-filter {
+    display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .filter-btn {
+    padding: .4rem 1rem; border-radius: 99px;
+    border: 1.5px solid var(--border);
+    background: var(--paper); color: var(--ink2);
+    font-family: var(--font); font-size: .82rem; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .tool-card {
+    background: var(--paper); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 1.25rem;
+    text-decoration: none; color: inherit;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-mid);
+  }
+  .tool-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .tool-info { min-width: 0; }
+  .tool-name {
+    font-size: .9rem; font-weight: 600;
+    margin-bottom: .2rem; color: var(--ink);
+  }
+  .tool-desc { font-size: .78rem; color: var(--ink3); line-height: 1.4; }
+  .tool-badge {
+    font-family: var(--mono); font-size: .65rem; font-weight: 500;
+    padding: .15rem .5rem; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+    display: inline-block; margin-bottom: .4rem;
+  }
+
+  /* ── CATEGORÍAS ── */
+  #categorias { background: var(--paper); }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
   }
   .cat-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    opacity: 0;
-    transform: translateY(16px);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .cat-card.visible { opacity:1; transform:translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, border-color var(--transition), box-shadow var(--transition), background var(--transition); }
-  .cat-card:not([aria-disabled="true"]):hover {
-    transform: translateY(-3px);
-    border-color: var(--border-hover);
-    background: var(--surface-hover);
-    box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.15);
-  }
-  .cat-card[aria-disabled="true"] { opacity:0.45; cursor:default; pointer-events:none; }
-  .cat-card[aria-disabled="true"].visible { opacity:0.45; }
-
-  .cat-card__icon {
-    font-size: 24px;
-    width: 44px; height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--cat-color, #6366f1) 15%, transparent);
-    flex-shrink: 0;
-  }
-  .cat-card__body { flex:1; min-width:0; }
-  .cat-card__name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; letter-spacing:-0.01em; }
-  .cat-card__desc { font-size:12px; color:var(--text-2); line-height:1.5; margin-bottom:8px; }
-  .cat-card__count { font-size:11.5px; font-weight:600; color:var(--accent-light); }
-  .cat-card[aria-disabled="true"] .cat-card__count { color:var(--text-3); }
-
-  /* ================================================================
-     POPULAR
-  ================================================================ */
-  .popular-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-    gap: 16px;
-  }
-  .popular-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 18px;
-    transition: border-color var(--transition);
-  }
-  .popular-group:hover { border-color:rgba(99,102,241,0.2); }
-  .popular-group__title { font-size:12.5px; font-weight:700; color:var(--text-2); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; }
-  .popular-list { display:flex; flex-direction:column; gap:3px; }
-  .popular-list a { font-size:13px; color:var(--text-2); padding:5px 8px; border-radius:6px; transition:color var(--transition),background var(--transition); display:block; }
-  .popular-list a:hover { color:var(--text); background:var(--surface-hover); }
-
-  /* ================================================================
-     FEATURES
-  ================================================================ */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-    gap: 16px;
-    margin-top: 16px;
-  }
-  .feature {
-    padding: 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  }
-  .feature:hover { border-color:var(--border-hover); transform:translateY(-2px); box-shadow:0 4px 24px var(--accent-glow); }
-  .feature__icon { font-size:24px; display:block; margin-bottom:12px; }
-  .feature__title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-0.01em; }
-  .feature__desc { font-size:13px; color:var(--text-2); line-height:1.6; }
-
-  /* ================================================================
-     SEO BLOCK
-  ================================================================ */
-  .seo-block {
-    position: relative;
-    z-index: 1;
-    padding: 80px 0;
-    background: linear-gradient(180deg, transparent, rgba(99,102,241,0.04) 50%, transparent);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .info-intro {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: start;
-    margin-bottom: 56px;
-  }
-  .info-intro__text h2 { font-size:clamp(22px,3.5vw,30px); font-weight:800; letter-spacing:-0.03em; margin-bottom:16px; color:var(--text); }
-  .info-intro__text p { font-size:14.5px; color:var(--text-2); line-height:1.75; margin-bottom:12px; max-width:540px; }
-  .info-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: #fff;
-    font-size: 13.5px;
-    font-weight: 600;
-    border-radius: 99px;
-    transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
-    box-shadow: 0 2px 16px var(--accent-glow);
-  }
-  .info-cta:hover { opacity:.9; transform:translateY(-1px); box-shadow:0 4px 24px var(--accent-glow); }
-
-  .info-intro__stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-  .info-stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 20px 16px;
-    text-align: center;
-    min-width: 100px;
-  }
-  .info-stat__num {
+    border: 1.5px solid var(--border); border-radius: var(--radius-xl);
+    padding: 1.75rem; text-decoration: none; color: inherit;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    position: relative; overflow: hidden;
     display: block;
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin-bottom: 4px;
-    background: linear-gradient(135deg, var(--text), var(--accent-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
-  .info-stat__lbl { display:block; font-size:11px; font-weight:600; color:var(--text-3); text-transform:uppercase; letter-spacing:0.06em; }
-
-  .info-section-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-3);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .info-section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-  .persona-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-    gap: 16px;
-    margin-bottom: 56px;
-  }
-  .persona-card {
-    padding: 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: border-color var(--transition), transform var(--transition);
-  }
-  .persona-card:hover { border-color:rgba(99,102,241,0.3); transform:translateY(-2px); }
-  .persona-card__icon {
-    width: 40px; height: 40px;
-    margin-bottom: 14px;
-    background: rgba(99,102,241,0.1);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    color: var(--accent-light);
-  }
-  .persona-card__icon svg { width:100%; height:100%; }
-  .persona-card h4 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:8px; letter-spacing:-0.01em; }
-  .persona-card p { font-size:13px; color:var(--text-2); line-height:1.65; }
-
-  .popular-links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-    gap: 10px;
-  }
-  .popular-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    color: var(--text-2);
-    transition: color var(--transition), border-color var(--transition), background var(--transition);
-  }
-  .popular-link svg { flex-shrink:0; color:var(--accent-light); width:14px; height:14px; }
-  .popular-link:hover { color:var(--text); border-color:rgba(99,102,241,0.3); background:var(--surface-hover); }
-
-  /* ================================================================
-     FAQ
-  ================================================================ */
-  .faq-home { position:relative; z-index:1; padding:80px 0; }
-  .faq-home__header { text-align:center; margin-bottom:48px; }
-  .faq-home__header h2 { font-size:clamp(22px,3.5vw,30px); font-weight:800; letter-spacing:-0.03em; margin-bottom:8px; color:var(--text); }
-  .faq-home__header p { font-size:14px; color:var(--text-2); }
-  .faq-home__list { max-width:680px; margin:0 auto; display:flex; flex-direction:column; gap:8px; }
-  .faq-home__item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: border-color var(--transition);
-  }
-  .faq-home__item.open { border-color:rgba(99,102,241,0.3); }
-  .faq-home__btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 20px;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
-    text-align: left;
-    transition: color var(--transition);
-    line-height: 1.5;
-  }
-  .faq-home__btn:hover { color:var(--accent-light); }
-  .faq-home__arrow { width:16px; height:16px; flex-shrink:0; color:var(--text-3); transition:transform 0.25s ease, color 0.25s ease; }
-  .faq-home__item.open .faq-home__arrow { transform:rotate(180deg); color:var(--accent-light); }
-  .faq-home__body { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
-  .faq-home__item.open .faq-home__body { max-height:300px; }
-  .faq-home__body p { padding:0 20px 18px; font-size:13.5px; color:var(--text-2); line-height:1.75; }
-  .faq-home__body a { color:var(--accent-light); text-decoration:underline; text-underline-offset:2px; }
-
-  /* ================================================================
-     FOOTER
-  ================================================================ */
-  .footer { position:relative; z-index:1; border-top:1px solid var(--border); background:var(--bg-2); }
-  .footer__inner { display:grid; grid-template-columns:1fr 2fr; gap:48px; padding-top:48px; padding-bottom:48px; }
-  .footer__brand .logo { margin-bottom:14px; }
-  .footer__desc { font-size:13px; color:var(--text-3); line-height:1.65; }
-  .footer__links { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
-  .footer__col h4 { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-3); margin-bottom:14px; }
-  .footer__col a { display:block; font-size:13px; color:var(--text-2); padding:3px 0; transition:color var(--transition); }
-  .footer__col a:hover { color:var(--text); }
-  .footer__bottom { border-top:1px solid var(--border); padding:16px 0; }
-  .footer__bottom-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  .footer__bottom p { font-size:12px; color:var(--text-3); }
-  .footer__legal-links { display:flex; gap:20px; }
-  .footer__legal-links a { font-size:12px; color:var(--text-3); transition:color var(--transition); }
-  .footer__legal-links a:hover { color:var(--text-2); }
-
-  /* ================================================================
-     SCROLL REVEAL
-  ================================================================ */
-  .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
-
-  /* ================================================================
-     RESPONSIVE
-  ================================================================ */
-  @media (max-width: 768px) {
-    .nav { display: none !important; }
-    .nav-toggle { display: none !important; }
-    .hero { padding:60px 0 44px; }
-    .info-intro { grid-template-columns:1fr; gap:32px; }
-    .info-intro__stats { grid-template-columns:repeat(4,1fr); }
-    .footer__inner { grid-template-columns:1fr; gap:32px; }
-    .footer__links { grid-template-columns:1fr 1fr; }
-    .cat-grid { grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); }
-    .section { margin-bottom: 56px; }
-  }
-  @media (max-width: 480px) {
-    .info-intro__stats { grid-template-columns:1fr 1fr; }
-    .footer__links { grid-template-columns:1fr; }
-    .hero__stats { flex-direction:column; gap:4px; }
-    .hero__stat-sep { display:none; }
-    .popular-grid { grid-template-columns:1fr 1fr; }
-    /* Hero: keep ≤40% of screen height at 390px */
-    .hero { padding:36px 0 28px; }
-    .hero__subtitle { margin-bottom:18px; }
-    .hero__pills    { margin-bottom:18px; }
-    .search-box     { margin-bottom:12px; }
-    .search-box__kbd { display:none; }
-    .section        { margin-bottom:44px; }
-    /* Cat grid: single column on very small */
-    .cat-grid { grid-template-columns:1fr; }
-    /* Footer nav: single column */
-    .footer__legal-links { flex-direction:column; gap:6px; }
-  }
-
-  /* ================================================================
-     REDUCED MOTION
-  ================================================================ */
-  @media (prefers-reduced-motion: reduce) {
-    *,*::before,*::after { animation-duration:0.01ms!important; animation-iteration-count:1!important; transition-duration:0.01ms!important; }
-    .cat-card,.reveal { opacity:1!important; transform:none!important; }
-  }
-
-  /* ================================================================
-     1. SCROLL PROGRESS BAR
-  ================================================================ */
-  #scrollBar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    width: 0%;
-    background: linear-gradient(90deg, #6366f1, #818cf8, #a5b4fc);
-    z-index: 300;
-    pointer-events: none;
-    border-radius: 0 1px 1px 0;
-    transition: width 80ms linear;
-  }
-
-  /* ================================================================
-     2. CANVAS PARTICLES (hero)
-  ================================================================ */
-  #heroCanvas {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ================================================================
-     3. SECTION BLOBS ANIMADOS
-  ================================================================ */
-  .section-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  @keyframes blob-drift-a {
-    from { transform: translate(0,0) scale(1); }
-    to   { transform: translate(-28px,18px) scale(1.12); }
-  }
-  @keyframes blob-drift-b {
-    from { transform: translate(0,0) scale(1); }
-    to   { transform: translate(22px,-18px) scale(1.09); }
-  }
-  #categorias { position: relative; overflow: hidden; }
-  .blob-cats {
-    width: 440px; height: 440px;
-    background: radial-gradient(circle, #10b981, #06b6d4);
-    opacity: 0.13;
-    top: -140px; right: -100px;
-    animation-name: blob-drift-a;
-    animation-duration: 10s;
-  }
-  #por-que { position: relative; overflow: hidden; }
-  .blob-features {
-    width: 380px; height: 380px;
-    background: radial-gradient(circle, #ec4899, #8b5cf6);
-    opacity: 0.13;
-    bottom: -80px; left: -80px;
-    animation-name: blob-drift-b;
-    animation-duration: 12s;
-  }
-  [data-theme="light"] .section-blob { opacity: 0.06 !important; }
-
-  /* ================================================================
-     4. HERO WORD CYCLING
-  ================================================================ */
-  #heroWord {
-    display: inline-block;
-    color: var(--accent-light);
-    transition: opacity 0.28s ease, transform 0.28s ease;
-    font-style: normal;
-  }
-  #heroWord.fading {
-    opacity: 0;
-    transform: translateY(-7px);
-  }
-
-  /* ================================================================
-     5. CARD SPOTLIGHT
-  ================================================================ */
-  .cat-card    { position: relative; overflow: hidden; }
-  .feature     { position: relative; overflow: hidden; }
-  .popular-group { position: relative; overflow: hidden; }
-  .persona-card  { position: relative; overflow: hidden; }
-
-  .cat-card::after,
-  .feature::after,
-  .popular-group::after,
-  .persona-card::after {
+  .cat-card::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      260px circle at var(--mx, -200%) var(--my, -200%),
-      rgba(99,102,241,0.11),
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--cat-color, var(--accent));
+    border-radius: 2px 2px 0 0;
+  }
+  .cat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--cat-color, var(--accent-mid));
+  }
+  .cat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .cat-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    background: color-mix(in srgb, var(--cat-color, var(--accent)) 12%, transparent);
+  }
+  .cat-count {
+    font-family: var(--mono); font-size: .75rem; font-weight: 500;
+    color: var(--ink3);
+    background: var(--surface); padding: .25rem .6rem;
+    border-radius: 6px;
+  }
+  .cat-name {
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: .5rem; color: var(--ink);
+  }
+  .cat-desc { font-size: .82rem; color: var(--ink3); line-height: 1.5; }
+  .cat-tags {
+    display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 1rem;
+  }
+  .cat-tag {
+    font-size: .72rem; font-weight: 500;
+    padding: .2rem .55rem; border-radius: 5px;
+    background: color-mix(in srgb, var(--cat-color, var(--accent)) 10%, transparent);
+    color: color-mix(in srgb, var(--cat-color, var(--accent)) 80%, var(--ink));
+  }
+
+  /* ── BENEFICIOS ── */
+  #beneficios {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f2744 100%);
+    position: relative; overflow: hidden;
+  }
+  #beneficios::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 20%, rgba(37,99,235,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(5,150,105,0.15) 0%, transparent 50%);
     pointer-events: none;
-    border-radius: inherit;
-    z-index: 1;
   }
-  .cat-card:hover::after,
-  .feature:hover::after,
-  .popular-group:hover::after,
-  .persona-card:hover::after { opacity: 1; }
-
-  /* card children need z-index above spotlight */
-  .cat-card__icon,
-  .cat-card__body,
-  .feature__icon,
-  .feature__title,
-  .feature__desc,
-  .popular-group__title,
-  .popular-list,
-  .persona-card__icon,
-  .persona-card h4,
-  .persona-card p {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* ================================================================
-     6. LOGO GLOW PULSE
-  ================================================================ */
-  @keyframes logo-glow {
-    0%,100% { box-shadow: 0 2px 12px rgba(99,102,241,0.3); }
-    50%      { box-shadow: 0 0 22px rgba(99,102,241,0.75), 0 0 44px rgba(99,102,241,0.25); }
-  }
-  .logo__icon { animation: logo-glow 3s ease-in-out infinite; }
-
-  /* ================================================================
-     HERO DEMO INTERACTIVO
-  ================================================================ */
-  .hero__demo {
-    max-width: 620px;
-    margin: 24px auto 0;
-    animation: hero-in 0.7s 0.45s ease both;
-    text-align: left;
-  }
-  .demo-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .demo-label-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent-light);
-    flex-shrink: 0;
-    animation: pulse-dot 2s ease infinite;
-  }
-  .demo-textarea {
-    width: 100%;
-    min-height: 108px;
-    padding: 13px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 14px;
-    line-height: 1.65;
-    resize: none;
-    outline: none;
-    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
-    backdrop-filter: blur(10px);
-    display: block;
-    margin-bottom: 10px;
-  }
-  .demo-textarea::placeholder { color: var(--text-3); }
-  .demo-textarea:focus {
-    border-color: var(--accent);
-    background: rgba(99,102,241,0.06);
-    box-shadow: 0 0 0 3px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.3);
-  }
-  .demo-metrics {
+  #beneficios .container { position: relative; }
+  #beneficios .section-title { color: #fff; }
+  #beneficios .section-sub { color: rgba(255,255,255,.55); }
+  #beneficios .section-tag { color: #60a5fa; }
+  .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
   }
-  .demo-metric {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 12px;
-    text-align: center;
-    backdrop-filter: blur(8px);
-    transition: border-color var(--transition), background var(--transition);
+  .benefit-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-lg); padding: 1.75rem;
+    transition: background .25s, transform .25s, border-color .25s;
+    position: relative; overflow: hidden;
   }
-  .demo-metric:hover { border-color: rgba(99,102,241,0.25); background: var(--surface-hover); }
-  .demo-metric__val {
-    display: block;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 3px;
-    font-variant-numeric: tabular-nums;
+  .benefit-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--benefit-color, #3b82f6), transparent);
+    opacity: 0; transition: opacity .25s;
   }
-  .demo-metric__lbl {
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--text-3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+  .benefit-card:hover {
+    background: rgba(255,255,255,.1);
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.2);
   }
-  .demo-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 10px 20px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: var(--radius-sm);
-    font-size: 13.5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background var(--transition), transform var(--transition), box-shadow var(--transition), opacity 0.25s ease, visibility 0.25s ease;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(5px);
-    box-shadow: 0 2px 12px var(--accent-glow);
+  .benefit-card:hover::after { opacity: 1; }
+  .benefit-icon-wrap {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+    background: rgba(255,255,255,.08);
   }
-  .demo-cta.visible {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
+  .benefit-title {
+    font-size: 1rem; font-weight: 700; color: #fff;
+    margin-bottom: .5rem;
   }
-  .demo-cta:hover {
-    background: var(--accent-dark);
-    box-shadow: 0 4px 20px rgba(99,102,241,0.45);
-    transform: translateY(-1px);
+  .benefit-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+
+  /* ── FAQ ── */
+  #faq { background: var(--surface); }
+  .faq-list { max-width: 740px; display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; text-align: left; padding: 1.25rem 0;
+    background: none; border: none; cursor: pointer;
+    font-family: var(--font); font-size: .95rem; font-weight: 600;
+    color: var(--ink); display: flex; align-items: center;
+    gap: 1.25rem; text-transform: none;
   }
-  .demo-cta svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .faq-num {
+    font-family: var(--mono); font-size: .75rem; font-weight: 500;
+    color: var(--accent); min-width: 24px; opacity: .5;
+    transition: opacity .2s;
+  }
+  .faq-item.open .faq-num { opacity: 1; }
+  .faq-q-text { flex: 1; }
+  .faq-arrow {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--paper); border: 1.5px solid var(--border);
+    color: var(--ink3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; flex-shrink: 0;
+    transition: transform .3s, background .2s, border-color .2s, color .2s;
+  }
+  .faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, padding .35s;
+    font-size: .9rem; color: var(--ink3); line-height: 1.75;
+    padding: 0 0 0 2.25rem;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 0 1.25rem 2.25rem; }
+  #seo { background: var(--surface); }
+  .seo-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  @media (max-width: 720px) { .seo-inner { grid-template-columns: 1fr; gap: 2rem; } }
+  .seo-text h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700; letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+  .seo-text p {
+    color: var(--ink3); font-size: .95rem;
+    line-height: 1.75; margin-bottom: 1rem;
+  }
+  .seo-checklist { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .seo-checklist li {
+    display: flex; align-items: flex-start; gap: .75rem;
+    font-size: .9rem; color: var(--ink2);
+  }
+  .seo-checklist li::before {
+    content: '✓';
+    background: var(--green-light); color: var(--green);
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; font-weight: 700; flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .seo-stats-panel {
+    background: var(--paper); border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl); padding: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  }
+  .seo-stat {
+    text-align: center; padding: 1.25rem;
+    background: var(--surface); border-radius: var(--radius);
+  }
+  .seo-stat-num {
+    font-size: 1.8rem; font-weight: 800;
+    color: var(--accent); display: block;
+    letter-spacing: -0.02em;
+  }
+  .seo-stat-lbl { font-size: .78rem; color: var(--ink3); font-weight: 500; }
+
+  /* ── SEO BLOCK ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,.7);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 5vw, 3rem) 2rem;
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  @media (max-width: 820px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
   @media (max-width: 480px) {
-    .demo-metrics { grid-template-columns: repeat(2, 1fr); }
-    .demo-metric:last-child { grid-column: span 2; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
   }
-  </style>
+  .footer-brand .logo { color: #fff; margin-bottom: 1rem; }
+  .footer-brand p { font-size: .85rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 {
+    color: #fff; font-size: .85rem; font-weight: 600;
+    margin-bottom: 1rem; letter-spacing: .03em;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+  .footer-col a { color: rgba(255,255,255,.55); font-size: .83rem; text-decoration: none; transition: color .2s; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: .8rem; color: rgba(255,255,255,.4);
+  }
+  .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-legal a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+  .footer-legal a:hover { color: rgba(255,255,255,.8); }
 
-  <!-- ── Overrides por tema — sin !important, ganan por especificidad ── -->
-  <style>
-  /* ── DARK MODE ── */
-  html[data-theme="dark"] body { background: #080b14; color: #e2e8f0; }
+  /* ── SEARCH RESULTS ── */
+  #search-results {
+    display: none; position: fixed; top: 64px; left: 50%; transform: translateX(-50%);
+    width: min(580px, 94vw); z-index: 200;
+    background: #fff; border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+    max-height: 420px; overflow-y: auto;
+  }
+  .sr-item {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .9rem 1.25rem; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--ink); transition: background .15s;
+    font-size: .9rem;
+  }
+  .sr-item:hover { background: var(--surface); }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-cat { font-size: .72rem; color: var(--ink3); font-family: var(--mono); }
 
-  html[data-theme="dark"] .header { background: rgba(8,11,20,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.06); }
-  html[data-theme="dark"] .header.scrolled { background: rgba(8,11,20,0.95); box-shadow: 0 1px 40px rgba(0,0,0,0.7); }
+  /* Overlay */
+  #overlay { display:none; position:fixed; inset:0; z-index:150; }
 
-  html[data-theme="dark"] .logo__text { color: #e2e8f0; }
-  html[data-theme="dark"] .logo__text span { color: #818cf8; }
-
-  html[data-theme="dark"] .nav__link { color: #94a3b8; }
-  html[data-theme="dark"] .nav__link:hover { color: #ffffff; }
-
-  html[data-theme="dark"] .btn-icon { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: #94a3b8; }
-  html[data-theme="dark"] .btn-icon:hover { color: #e2e8f0; background: rgba(255,255,255,0.08); border-color: rgba(99,102,241,0.4); }
-
-  html[data-theme="dark"] .hero { background: transparent; }
-  html[data-theme="dark"] .hero__subtitle { color: #94a3b8; }
-  html[data-theme="dark"] #heroWord { color: #a5b4fc; }
-  html[data-theme="dark"] .hero__badge { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
-  html[data-theme="dark"] .hero__badge-dot { background: #a5b4fc; }
-  html[data-theme="dark"] .hero__pill { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #94a3b8; }
-  html[data-theme="dark"] .hero__stat { color: #94a3b8; }
-  html[data-theme="dark"] .hero__stat strong { color: #e2e8f0; }
-  html[data-theme="dark"] .hero__stat-sep { color: #334155; }
-
-  html[data-theme="dark"] .search-box__input { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
-  html[data-theme="dark"] .search-box__input::placeholder { color: #475569; }
-  html[data-theme="dark"] .search-box__input:focus { background: rgba(99,102,241,0.08); border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99,102,241,0.2), 0 4px 24px rgba(0,0,0,0.5); }
-  html[data-theme="dark"] .search-box__kbd { color: #475569; border-color: rgba(255,255,255,0.08); }
-
-  html[data-theme="dark"] .demo-textarea { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #e2e8f0; }
-  html[data-theme="dark"] .demo-textarea::placeholder { color: #475569; }
-  html[data-theme="dark"] .demo-textarea:focus { background: rgba(99,102,241,0.08); border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.2), 0 4px 20px rgba(0,0,0,0.5); }
-  html[data-theme="dark"] .demo-metric { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
-  html[data-theme="dark"] .demo-metric:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
-  html[data-theme="dark"] .demo-metric__val { color: #e2e8f0; }
-  html[data-theme="dark"] .demo-metric__lbl { color: #475569; }
-  html[data-theme="dark"] .demo-label { color: #475569; }
-
-  html[data-theme="dark"] .section-title { color: #e2e8f0; }
-  html[data-theme="dark"] .section-subtitle { color: #475569; }
-  html[data-theme="dark"] .ad-banner { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); color: #334155; }
-  html[data-theme="dark"] .ad-label { color: #334155; border-color: rgba(255,255,255,0.08); }
-
-  html[data-theme="dark"] .cat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; }
-  html[data-theme="dark"] .cat-card:not([aria-disabled="true"]):hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.6); box-shadow: 0 0 0 1px rgba(99,102,241,0.25), 0 8px 32px rgba(99,102,241,0.22); transform: translateY(-3px); }
-  html[data-theme="dark"] .cat-card__name { color: #e2e8f0; }
-  html[data-theme="dark"] .cat-card__desc { color: #94a3b8; }
-  html[data-theme="dark"] .cat-card__count { color: #818cf8; }
-  html[data-theme="dark"] .cat-card[aria-disabled="true"] .cat-card__count { color: #334155; }
-
-  html[data-theme="dark"] .popular-group { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-  html[data-theme="dark"] .popular-group:hover { border-color: rgba(99,102,241,0.3); }
-  html[data-theme="dark"] .popular-group__title { color: #94a3b8; }
-  html[data-theme="dark"] .popular-list a { color: #94a3b8; }
-  html[data-theme="dark"] .popular-list a:hover { color: #e2e8f0; background: rgba(255,255,255,0.05); }
-
-  html[data-theme="dark"] .feature { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-  html[data-theme="dark"] .feature:hover { border-color: rgba(99,102,241,0.6); box-shadow: 0 4px 24px rgba(99,102,241,0.2); transform: translateY(-2px); }
-  html[data-theme="dark"] .feature__title { color: #e2e8f0; }
-  html[data-theme="dark"] .feature__desc { color: #94a3b8; }
-
-  html[data-theme="dark"] .seo-block { background: rgba(99,102,241,0.03); border-color: rgba(255,255,255,0.06); }
-  html[data-theme="dark"] .info-intro__text h2 { color: #e2e8f0; }
-  html[data-theme="dark"] .info-intro__text p { color: #94a3b8; }
-  html[data-theme="dark"] .info-stat { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
-  html[data-theme="dark"] .info-stat__lbl { color: #475569; }
-  html[data-theme="dark"] .info-section-label { color: #475569; }
-  html[data-theme="dark"] .info-section-label::after { background: rgba(255,255,255,0.07); }
-
-  html[data-theme="dark"] .persona-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-  html[data-theme="dark"] .persona-card:hover { border-color: rgba(99,102,241,0.4); }
-  html[data-theme="dark"] .persona-card h4 { color: #e2e8f0; }
-  html[data-theme="dark"] .persona-card p { color: #94a3b8; }
-  html[data-theme="dark"] .persona-card__icon { background: rgba(99,102,241,0.12); color: #818cf8; }
-
-  html[data-theme="dark"] .popular-link { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
-  html[data-theme="dark"] .popular-link:hover { color: #e2e8f0; border-color: rgba(99,102,241,0.4); background: rgba(255,255,255,0.07); }
-  html[data-theme="dark"] .popular-link svg { color: #818cf8; }
-
-  html[data-theme="dark"] .faq-home { background: transparent; }
-  html[data-theme="dark"] .faq-home__header h2 { color: #e2e8f0; }
-  html[data-theme="dark"] .faq-home__header p { color: #94a3b8; }
-  html[data-theme="dark"] .faq-home__item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-  html[data-theme="dark"] .faq-home__item.open { border-color: rgba(99,102,241,0.4); }
-  html[data-theme="dark"] .faq-home__btn { color: #e2e8f0; }
-  html[data-theme="dark"] .faq-home__btn:hover { color: #a5b4fc; }
-  html[data-theme="dark"] .faq-home__arrow { color: #475569; }
-  html[data-theme="dark"] .faq-home__item.open .faq-home__arrow { color: #818cf8; }
-  html[data-theme="dark"] .faq-home__body p { color: #94a3b8; }
-  html[data-theme="dark"] .faq-home__body a { color: #818cf8; }
-
-  html[data-theme="dark"] .footer { background: #050709; border-color: rgba(255,255,255,0.06); }
-  html[data-theme="dark"] .footer__desc { color: #94a3b8; }
-  html[data-theme="dark"] .footer__col h4 { color: #475569; }
-  html[data-theme="dark"] .footer__col a { color: #94a3b8; }
-  html[data-theme="dark"] .footer__col a:hover { color: #e2e8f0; }
-  html[data-theme="dark"] .footer__bottom { border-color: rgba(255,255,255,0.05); }
-  html[data-theme="dark"] .footer__bottom p { color: #475569; }
-  html[data-theme="dark"] .footer__legal-links a { color: #475569; }
-  html[data-theme="dark"] .footer__legal-links a:hover { color: #94a3b8; }
-
-  html[data-theme="dark"] .bg-ambient__blob--1 { opacity: 0.22; }
-  html[data-theme="dark"] .bg-ambient__blob--2 { opacity: 0.16; }
-  html[data-theme="dark"] .bg-ambient__blob--3 { opacity: 0.10; }
-  html[data-theme="dark"] .blob-cats     { opacity: 0.30; }
-  html[data-theme="dark"] .blob-features { opacity: 0.30; }
-
-  /* ── LIGHT MODE ── */
-  html[data-theme="light"] body { background: #f8f8ff; color: #0f0f1a; }
-  html[data-theme="light"] .header { background: rgba(248,248,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.07); }
-  html[data-theme="light"] .header.scrolled { background: rgba(248,248,255,0.95); box-shadow: 0 1px 20px rgba(99,102,241,0.1); }
-  html[data-theme="light"] .nav__link { color: #4a4a6a; }
-  html[data-theme="light"] .nav__link:hover { color: #0f0f1a; }
-  html[data-theme="light"] .hero__subtitle { color: #4a4a6a; }
-  html[data-theme="light"] .hero__stat { color: #4a4a6a; }
-  html[data-theme="light"] .hero__pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); color: #4a4a6a; }
-  html[data-theme="light"] .cat-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); color: #0f0f1a; }
-  html[data-theme="light"] .cat-card:not([aria-disabled="true"]):hover { background: rgba(99,102,241,0.06); border-color: rgba(99,102,241,0.4); }
-  html[data-theme="light"] .cat-card__desc { color: #4a4a6a; }
-  html[data-theme="light"] .feature { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-  html[data-theme="light"] .feature__desc { color: #4a4a6a; }
-  html[data-theme="light"] .popular-group { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-  html[data-theme="light"] .popular-list a { color: #4a4a6a; }
-  html[data-theme="light"] .persona-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-  html[data-theme="light"] .faq-home__item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-  html[data-theme="light"] .footer { background: #eeeeff; border-color: rgba(0,0,0,0.07); }
-  html[data-theme="light"] .footer__col a { color: #4a4a6a; }
-  html[data-theme="light"] .footer__col a:hover { color: #0f0f1a; }
-  </style>
+  /* Divider */
+  .divider {
+    height: 1px; background: var(--border);
+    max-width: 1200px; margin: 0 auto;
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- Scroll progress bar -->
-  <div id="scrollBar" aria-hidden="true"></div>
-
-  <!-- Ambient background -->
-  <div class="bg-ambient" aria-hidden="true">
-    <div class="bg-ambient__blob bg-ambient__blob--1"></div>
-    <div class="bg-ambient__blob bg-ambient__blob--2"></div>
-    <div class="bg-ambient__blob bg-ambient__blob--3"></div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://herramientasdetexto.com" class="logo">
+      <div class="logo-icon">T</div>
+      HerramientasDeTexto
+    </a>
+    <ul class="nav-links">
+      <li><a href="#populares">Populares</a></li>
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#beneficios">¿Por qué?</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#categorias" class="nav-cta">Ver todas →</a>
   </div>
+</nav>
 
-  <!-- ─────────────────────────────────────────
-       HEADER
-  ───────────────────────────────────────── -->
-  <header class="header" role="banner" id="siteHeader">
-    <div class="container header__inner">
+<!-- Search overlay -->
+<div id="overlay" onclick="closeSearch()"></div>
+<div id="search-results"></div>
 
-      <a href="/" class="logo" aria-label="HerramientasDeTexto.com — Inicio">
-        <span class="logo__icon" aria-hidden="true">Ht</span>
-        <span class="logo__text">HerramientasDeTexto<span>.com</span></span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Resuelve tareas rápidas sin instalar nada</div>
+    <h1>Herramientas de <span>Texto Online</span><br>Gratis y Rápidas</h1>
+    <p class="hero-sub">Muchas utilidades especializadas para trabajar con texto. Sin registro, sin instalación, resultados al instante.</p>
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="hero-search"
+        placeholder="Busca una herramienta... ej: contador de palabras"
+        oninput="handleSearch(this.value)" onkeydown="handleKey(event)">
+      <button class="search-btn" onclick="doSearch()">Buscar →</button>
+    </div>
+    <div class="hero-quick" id="hero-quick"></div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">+300</span><span class="stat-label">Herramientas</span></div>
+      <div class="stat"><span class="stat-num">10</span><span class="stat-label">Categorías</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Gratis</span></div>
+      <div class="stat"><span class="stat-num">🔒</span><span class="stat-label">Sin registro</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTAS POPULARES -->
+<section id="populares">
+  <div class="container">
+    <p class="section-tag">★ Más usadas</p>
+    <h2 class="section-title">Herramientas populares</h2>
+    <p class="section-sub">Las que más utilizan nuestros usuarios cada día.</p>
+
+    <div class="tools-filter">
+      <button class="filter-btn active" onclick="filterTools('all', this)">Todas</button>
+      <button class="filter-btn" onclick="filterTools('texto', this)">Texto</button>
+      <button class="filter-btn" onclick="filterTools('seo', this)">SEO</button>
+      <button class="filter-btn" onclick="filterTools('dev', this)">Dev</button>
+      <button class="filter-btn" onclick="filterTools('estudio', this)">Estudio</button>
+    </div>
+
+    <div class="tools-grid" id="tools-grid">
+      <!-- generado por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- TODAS LAS CATEGORÍAS -->
+<section id="categorias">
+  <div class="container">
+    <p class="section-tag">// categorías</p>
+    <h2 class="section-title">Las 10 categorías</h2>
+    <p class="section-sub">300 herramientas organizadas en 10 bloques especializados. Cada categoría incluye 30 utilidades.</p>
+
+    <div class="cats-grid" id="cats-grid">
+      <!-- generado por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div class="container">
+    <p class="section-tag">// por qué elegirnos</p>
+    <h2 class="section-title">Todo lo que necesitas,<br>sin complicaciones</h2>
+    <p class="section-sub">Diseñado para que cualquier persona, sea técnica o no, pueda obtener resultados en segundos.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card" style="--benefit-color:#3b82f6">
+        <div class="benefit-icon-wrap">⚡</div>
+        <div class="benefit-title">Resultados instantáneos</div>
+        <p class="benefit-desc">Procesamos el texto directamente en tu navegador. Sin esperas, sin servidores lentos.</p>
+      </div>
+      <div class="benefit-card" style="--benefit-color:#10b981">
+        <div class="benefit-icon-wrap">🔒</div>
+        <div class="benefit-title">Privacidad total</div>
+        <p class="benefit-desc">Tu texto nunca abandona tu dispositivo. Cero registros, cero rastreo, cero almacenamiento.</p>
+      </div>
+      <div class="benefit-card" style="--benefit-color:#f59e0b">
+        <div class="benefit-icon-wrap">💸</div>
+        <div class="benefit-title">100% gratuito</div>
+        <p class="benefit-desc">Sin planes de pago, sin límites ocultos, sin funciones bloqueadas. Gratis para siempre.</p>
+      </div>
+      <div class="benefit-card" style="--benefit-color:#8b5cf6">
+        <div class="benefit-icon-wrap">📱</div>
+        <div class="benefit-title">Funciona en cualquier dispositivo</div>
+        <p class="benefit-desc">Móvil, tablet, ordenador. Adaptado para todos los tamaños de pantalla.</p>
+      </div>
+      <div class="benefit-card" style="--benefit-color:#ec4899">
+        <div class="benefit-icon-wrap">🎯</div>
+        <div class="benefit-title">Herramientas ultrespecializadas</div>
+        <p class="benefit-desc">Cada herramienta hace una sola cosa, pero la hace perfecta. Sin ruido, sin distracciones.</p>
+      </div>
+      <div class="benefit-card" style="--benefit-color:#06b6d4">
+        <div class="benefit-icon-wrap">🚫</div>
+        <div class="benefit-title">Sin registro</div>
+        <p class="benefit-desc">Entra, usa la herramienta y listo. No te pedimos email, contraseña ni datos personales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO BLOCK -->
+<section id="seo">
+  <div class="container">
+    <div class="seo-inner">
+      <div class="seo-text">
+        <p class="section-tag">// por qué somos diferentes</p>
+        <h2>Herramientas de texto online de alta precisión</h2>
+        <p>Nuestra plataforma procesa el texto localmente en tu navegador para ofrecerte resultados instantáneos con privacidad total. A diferencia de otros servicios, tus datos nunca tocan nuestros servidores.</p>
+        <p>Cada herramienta está construida con un único propósito: resolver exactamente ese problema, sin atajos, sin ambigüedades.</p>
+        <ul class="seo-checklist">
+          <li>Procesamiento local en el navegador, sin envío de datos</li>
+          <li>Más de 300 herramientas especializadas en texto</li>
+          <li>Actualizadas y mantenidas regularmente</li>
+          <li>Compatible con todos los navegadores modernos</li>
+          <li>Optimizado para velocidad y accesibilidad</li>
+          <li>Sin publicidad intrusiva ni rastreo</li>
+        </ul>
+      </div>
+      <div class="seo-stats-panel">
+        <div class="seo-stat"><span class="seo-stat-num">300+</span><span class="seo-stat-lbl">Herramientas</span></div>
+        <div class="seo-stat"><span class="seo-stat-num">10</span><span class="seo-stat-lbl">Categorías</span></div>
+        <div class="seo-stat"><span class="seo-stat-num">0ms</span><span class="seo-stat-lbl">Instalación</span></div>
+        <div class="seo-stat"><span class="seo-stat-num">100%</span><span class="seo-stat-lbl">Gratuito</span></div>
+        <div class="seo-stat" style="grid-column:1/-1"><span class="seo-stat-num">🔒 Local</span><span class="seo-stat-lbl">Privacidad garantizada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-tag">// preguntas frecuentes</p>
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <p class="section-sub">Todo lo que necesitas saber antes de empezar.</p>
+    <div class="faq-list" id="faq-list">
+      <!-- generado por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="https://herramientasdetexto.com" class="logo">
+        <div class="logo-icon">T</div>
+        HerramientasDeTexto
       </a>
-
-      <nav class="nav" id="mainNav" aria-label="Secciones de la página">
-        <a href="#categorias"    class="nav__link">Categorías</a>
-        <a href="#populares"     class="nav__link">Populares</a>
-        <a href="#por-que"       class="nav__link">Por qué nosotros</a>
-        <a href="#como-funciona" class="nav__link">Cómo funciona</a>
-        <a href="#faq"           class="nav__link">FAQ</a>
-      </nav>
-
-      <div class="header__actions">
-        <button class="btn-icon" id="themeToggle" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
-          <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-        <button class="btn-icon nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
-      </div>
-
+      <p>La colección más completa de herramientas de texto online gratis en español. Muchas utilidades especializadas, sin registro y sin coste.</p>
     </div>
-  </header>
-
-
-  <!-- ─────────────────────────────────────────
-       HERO
-  ───────────────────────────────────────── -->
-  <section class="hero" aria-label="Buscador de herramientas">
-    <canvas id="heroCanvas" aria-hidden="true"></canvas>
-    <div class="container hero__inner">
-
-      <div class="hero__badge" role="img" aria-label="19 herramientas gratis en español">
-        <span class="hero__badge-dot" aria-hidden="true"></span>
-        ✦ 19 herramientas gratis en español
-      </div>
-
-      <h1 class="hero__title">
-        <span>Herramientas de Texto<br>Online y Gratis</span>
-      </h1>
-
-      <p class="hero__subtitle">
-        <span id="heroWord">Contadores</span>, convertidores, SEO, generadores y mucho más.<br>
-        Sin registros · Sin instalaciones · Todo en tu navegador.
-      </p>
-
-      <div class="search-box" role="search">
-        <svg class="search-box__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input
-          type="search"
-          id="searchInput"
-          class="search-box__input"
-          placeholder="Buscar herramienta… ej: contador de palabras"
-          autocomplete="off"
-          spellcheck="false"
-          aria-label="Buscar herramienta"
-        >
-        <kbd class="search-box__kbd" aria-hidden="true">ESC</kbd>
-      </div>
-
-      <!-- ── Demo interactivo ── -->
-      <div class="hero__demo" id="heroDemoWrap">
-        <div class="demo-label">
-          <span class="demo-label-dot" aria-hidden="true"></span>
-          Prueba el contador de palabras
-        </div>
-        <textarea
-          id="demoTextarea"
-          class="demo-textarea"
-          placeholder="Pega aquí cualquier texto para analizarlo al instante…"
-          rows="5"
-          aria-label="Demo: analiza tu texto en tiempo real"
-          spellcheck="false"
-        ></textarea>
-        <div class="demo-metrics" aria-live="polite" aria-label="Métricas del texto">
-          <div class="demo-metric">
-            <span class="demo-metric__val" id="dm-words">0</span>
-            <span class="demo-metric__lbl">Palabras</span>
-          </div>
-          <div class="demo-metric">
-            <span class="demo-metric__val" id="dm-chars">0</span>
-            <span class="demo-metric__lbl">Caracteres</span>
-          </div>
-          <div class="demo-metric">
-            <span class="demo-metric__val" id="dm-time">—</span>
-            <span class="demo-metric__lbl">Lectura</span>
-          </div>
-        </div>
-        <a id="demoCta" class="demo-cta" href="/contadores-de-texto/contador-de-palabras/">
-          Ver análisis completo
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="hero__pills" aria-label="Características principales">
-        <span class="hero__pill">🔒 Sin registro</span>
-        <span class="hero__pill">⚡ Sin instalación</span>
-        <span class="hero__pill">🛡️ 100% privado</span>
-        <span class="hero__pill">✨ Siempre gratis</span>
-      </div>
-
-      <div class="hero__stats" aria-label="Estadísticas del sitio">
-        <span class="hero__stat"><strong data-count="19">0</strong> herramientas</span>
-        <span class="hero__stat-sep" aria-hidden="true">·</span>
-        <span class="hero__stat"><strong data-count="10">0</strong> categorías</span>
-        <span class="hero__stat-sep" aria-hidden="true">·</span>
-        <span class="hero__stat"><strong data-count="100" data-suffix="%">0%</strong> gratis</span>
-        <span class="hero__stat-sep" aria-hidden="true">·</span>
-        <span class="hero__stat"><strong>0</strong> registros</span>
-      </div>
-
+    <div class="footer-col">
+      <h4>Categorías</h4>
+      <ul>
+        <li><a href="https://herramientasdetexto.com/contadores/">Contadores de texto</a></li>
+        <li><a href="https://herramientasdetexto.com/convertidores/">Convertidores</a></li>
+        <li><a href="https://herramientasdetexto.com/limpiadores/">Limpiadores</a></li>
+        <li><a href="https://herramientasdetexto.com/manipulacion/">Manipulación</a></li>
+        <li><a href="https://herramientasdetexto.com/generadores/">Generadores</a></li>
+      </ul>
     </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────
-       RESULTADOS DE BÚSQUEDA
-  ───────────────────────────────────────── -->
-  <section class="search-results hidden container" id="searchResults" aria-live="polite" aria-label="Resultados de búsqueda">
-    <div class="section-header">
-      <h2 class="section-title" id="searchResultsTitle">Resultados</h2>
+    <div class="footer-col">
+      <h4>Más categorías</h4>
+      <ul>
+        <li><a href="https://herramientasdetexto.com/seo-tools-de-texto/">SEO Tools</a></li>
+        <li><a href="https://herramientasdetexto.com/herramientas-para-estudiantes/">Estudiantes</a></li>
+        <li><a href="https://herramientasdetexto.com/desarrollo-codificacion/">Desarrollo</a></li>
+        <li><a href="https://herramientasdetexto.com/conversores-de-unidades/">Conversores</a></li>
+        <li><a href="https://herramientasdetexto.com/utilidades-avanzadas/">Utilidades</a></li>
+      </ul>
     </div>
-    <div class="tools-grid" id="searchResultsGrid"></div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────
-       MAIN
-  ───────────────────────────────────────── -->
-  <main class="main" id="mainContent">
-    <div class="container">
-
-      <!-- Ad -->
-      <div class="ad-banner" aria-label="Publicidad" role="complementary">
-        <span class="ad-label">Publicidad</span>
-        <!-- Google AdSense — reemplaza con tu código real:
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        -->
-        <span>728 × 90 — Anuncio</span>
-      </div>
-
-
-      <!-- ── CATEGORÍAS ───────────────────────────────────── -->
-      <section id="categorias" class="section" aria-labelledby="cats-title">
-        <div class="section-blob blob-cats" aria-hidden="true"></div>
-        <div class="section-header">
-          <h2 class="section-title" id="cats-title">Explora por categoría</h2>
-          <span class="section-subtitle">10 categorías · 19 herramientas disponibles</span>
-        </div>
-
-        <div class="cat-grid">
-
-          <a href="/contadores-de-texto/" class="cat-card" style="--cat-color:#3B82F6">
-            <span class="cat-card__icon" aria-hidden="true">🔢</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Contadores de texto</h3>
-              <p class="cat-card__desc">Palabras, caracteres y frases en tiempo real</p>
-              <span class="cat-card__count">3 herramientas →</span>
-            </div>
-          </a>
-
-          <a href="/convertidores-de-texto/" class="cat-card" style="--cat-color:#8B5CF6">
-            <span class="cat-card__icon" aria-hidden="true">🔄</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Convertidores de texto</h3>
-              <p class="cat-card__desc">Mayúsculas, minúsculas, camelCase y slug URL</p>
-              <span class="cat-card__count">4 herramientas →</span>
-            </div>
-          </a>
-
-          <a href="/seo-tools-de-texto/" class="cat-card" style="--cat-color:#EF4444">
-            <span class="cat-card__icon" aria-hidden="true">📈</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">SEO tools de texto</h3>
-              <p class="cat-card__desc">Generador de meta tags con Open Graph integrado</p>
-              <span class="cat-card__count">1 herramienta →</span>
-            </div>
-          </a>
-
-          <a href="/desarrollo-y-codificacion/" class="cat-card" style="--cat-color:#6366F1">
-            <span class="cat-card__icon" aria-hidden="true">💻</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Desarrollo y codificación</h3>
-              <p class="cat-card__desc">JSON, Base64, UUID y hashes MD5</p>
-              <span class="cat-card__count">4 herramientas →</span>
-            </div>
-          </a>
-
-          <a href="/redes-sociales/" class="cat-card" style="--cat-color:#F43F5E">
-            <span class="cat-card__icon" aria-hidden="true">📱</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Redes sociales</h3>
-              <p class="cat-card__desc">Contadores para Twitter e Instagram, hashtags y bio</p>
-              <span class="cat-card__count">4 herramientas →</span>
-            </div>
-          </a>
-
-          <a href="/limpiadores-de-texto/" class="cat-card" style="--cat-color:#10B981">
-            <span class="cat-card__icon" aria-hidden="true">🧹</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Limpiadores de texto</h3>
-              <p class="cat-card__desc">Elimina espacios, duplicados y formato de Word</p>
-              <span class="cat-card__count">1 herramienta →</span>
-            </div>
-          </a>
-
-          <a href="/generadores-de-texto/" class="cat-card" style="--cat-color:#EC4899">
-            <span class="cat-card__icon" aria-hidden="true">⚡</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Generadores de texto</h3>
-              <p class="cat-card__desc">Lorem ipsum, nombres aleatorios y más</p>
-              <span class="cat-card__count">1 herramienta →</span>
-            </div>
-          </a>
-
-          <a class="cat-card" aria-disabled="true" style="--cat-color:#06B6D4">
-            <span class="cat-card__icon" aria-hidden="true">📚</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Herramientas para estudiantes</h3>
-              <p class="cat-card__desc">Citas APA/MLA, bibliografía y más</p>
-              <span class="cat-card__count">Próximamente →</span>
-            </div>
-          </a>
-
-          <a href="/manipulacion-de-texto/" class="cat-card" style="--cat-color:#F59E0B">
-            <span class="cat-card__icon" aria-hidden="true">✂️</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Manipulación de texto</h3>
-              <p class="cat-card__desc">Invertir, ordenar y buscar/reemplazar</p>
-              <span class="cat-card__count">1 herramienta →</span>
-            </div>
-          </a>
-
-          <a class="cat-card" aria-disabled="true" style="--cat-color:#7C3AED">
-            <span class="cat-card__icon" aria-hidden="true">🛠️</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Utilidades avanzadas</h3>
-              <p class="cat-card__desc">Comparador de textos, cifrados y más</p>
-              <span class="cat-card__count">Próximamente →</span>
-            </div>
-          </a>
-
-        </div>
-      </section>
-
-
-      <!-- ── HERRAMIENTAS POPULARES ───────────────────────── -->
-      <section id="populares" class="section" aria-labelledby="popular-title">
-        <div class="section-header">
-          <h2 class="section-title" id="popular-title">Herramientas más usadas</h2>
-        </div>
-
-        <div class="popular-grid">
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🔢 Contadores</h3>
-            <ul class="popular-list">
-              <li><a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a></li>
-              <li><a href="/contadores-de-texto/contador-de-caracteres/">Contador de caracteres</a></li>
-              <li><a href="/contadores-de-texto/contador-de-frases/">Contador de frases</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🔄 Convertidores</h3>
-            <ul class="popular-list">
-              <li><a href="/convertidores-de-texto/convertir-a-mayusculas/">Convertir a mayúsculas</a></li>
-              <li><a href="/convertidores-de-texto/convertir-a-minusculas/">Convertir a minúsculas</a></li>
-              <li><a href="/convertidores-de-texto/texto-a-camelcase/">Texto a camelCase</a></li>
-              <li><a href="/convertidores-de-texto/texto-a-slug-url/">Texto a slug URL</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">📈 SEO</h3>
-            <ul class="popular-list">
-              <li><a href="/seo-tools-de-texto/generador-de-meta-tags/">Generador de meta tags</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">💻 Desarrollo</h3>
-            <ul class="popular-list">
-              <li><a href="/desarrollo-y-codificacion/formateador-json/">Formateador JSON</a></li>
-              <li><a href="/desarrollo-y-codificacion/codificador-base64/">Codificador Base64</a></li>
-              <li><a href="/desarrollo-y-codificacion/generador-uuid/">Generador de UUID</a></li>
-              <li><a href="/desarrollo-y-codificacion/generador-md5/">Generador MD5</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">📱 Redes sociales</h3>
-            <ul class="popular-list">
-              <li><a href="/redes-sociales/contador-twitter/">Contador Twitter/X</a></li>
-              <li><a href="/redes-sociales/contador-instagram/">Contador Instagram</a></li>
-              <li><a href="/redes-sociales/generador-hashtags-instagram/">Generador de hashtags</a></li>
-              <li><a href="/redes-sociales/bio-instagram/">Bio para Instagram</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🧹 Limpiadores</h3>
-            <ul class="popular-list">
-              <li><a href="/limpiadores-de-texto/eliminar-espacios/">Eliminar espacios</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">⚡ Generadores</h3>
-            <ul class="popular-list">
-              <li><a href="/generadores-de-texto/lorem-ipsum/">Generador Lorem Ipsum</a></li>
-            </ul>
-          </div>
-
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">✂️ Manipulación</h3>
-            <ul class="popular-list">
-              <li><a href="/manipulacion-de-texto/invertir-texto/">Invertir texto</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-
-
-      <!-- ── POR QUÉ ────────────────────────────────────────── -->
-      <section id="por-que" class="section" aria-labelledby="features-title">
-        <div class="section-blob blob-features" aria-hidden="true"></div>
-        <h2 class="section-title" id="features-title" style="margin-bottom:24px">¿Por qué HerramientasDeTexto.com?</h2>
-        <div class="features-grid">
-          <div class="feature reveal">
-            <span class="feature__icon" aria-hidden="true">⚡</span>
-            <h3 class="feature__title">Ultra rápido</h3>
-            <p class="feature__desc">Todo se procesa en tu navegador. Sin esperas ni llamadas a servidor.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__icon" aria-hidden="true">🔒</span>
-            <h3 class="feature__title">100% privado</h3>
-            <p class="feature__desc">Tu texto nunca sale de tu dispositivo. No almacenamos nada.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__icon" aria-hidden="true">🎁</span>
-            <h3 class="feature__title">Siempre gratis</h3>
-            <p class="feature__desc">Todas las herramientas sin límites, sin registro y sin suscripciones.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__icon" aria-hidden="true">📱</span>
-            <h3 class="feature__title">Cualquier dispositivo</h3>
-            <p class="feature__desc">Diseño adaptado para móvil, tablet y escritorio.</p>
-          </div>
-        </div>
-      </section>
-
+    <div class="footer-col">
+      <h4>Legal y empresa</h4>
+      <ul>
+        <li><a href="https://herramientasdetexto.com/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="https://herramientasdetexto.com/contacto/">Contacto</a></li>
+        <li><a href="https://herramientasdetexto.com/politica-de-privacidad/">Política de privacidad</a></li>
+        <li><a href="https://herramientasdetexto.com/aviso-legal/">Aviso legal</a></li>
+        <li><a href="https://herramientasdetexto.com/cookies/">Cookies</a></li>
+      </ul>
     </div>
-  </main>
-
-
-  <!-- ─────────────────────────────────────────
-       CÓMO FUNCIONA
-  ───────────────────────────────────────── -->
-  <section id="como-funciona" class="seo-block" aria-labelledby="info-title">
-    <div class="container">
-
-      <div class="info-intro">
-        <div class="info-intro__text reveal">
-          <h2 id="info-title">La suite de herramientas de texto más completa en español</h2>
-          <p><strong>HerramientasDeTexto.com</strong> reúne en un solo lugar las utilidades de texto que necesitas para escribir, analizar, optimizar y transformar cualquier contenido. Todo funciona <strong>directamente en tu navegador</strong>: sin instalaciones, sin registro y con privacidad total porque tu texto nunca sale de tu dispositivo.</p>
-          <p>Cada herramienta está diseñada para dar una respuesta inmediata. Pegas el texto, obtienes el resultado. Sin esperas, sin formularios, sin trucos.</p>
-          <a href="#categorias" class="info-cta">Explorar las herramientas →</a>
-        </div>
-        <div class="info-intro__stats" aria-label="Estadísticas">
-          <div class="info-stat">
-            <span class="info-stat__num" data-target="16">0</span>
-            <span class="info-stat__lbl">Herramientas</span>
-          </div>
-          <div class="info-stat">
-            <span class="info-stat__num" data-target="10">0</span>
-            <span class="info-stat__lbl">Categorías</span>
-          </div>
-          <div class="info-stat">
-            <span class="info-stat__num">0€</span>
-            <span class="info-stat__lbl">Coste</span>
-          </div>
-          <div class="info-stat">
-            <span class="info-stat__num">0s</span>
-            <span class="info-stat__lbl">Registro</span>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="info-section-label">¿Quién las usa?</h3>
-      <div class="persona-grid">
-        <div class="persona-card reveal">
-          <div class="persona-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM3 18a7 7 0 0 1 14 0"/></svg>
-          </div>
-          <h4>Redactores y copywriters</h4>
-          <p>Cuentan palabras, analizan densidad de keywords y optimizan meta descriptions para SEO sin salir del navegador.</p>
-        </div>
-        <div class="persona-card reveal">
-          <div class="persona-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="11" y2="10"/><line x1="7" y1="13" x2="9" y2="13"/></svg>
-          </div>
-          <h4>Estudiantes y académicos</h4>
-          <p>Verifican la extensión de ensayos, generan referencias APA o MLA y limpian textos copiados con un solo clic.</p>
-        </div>
-        <div class="persona-card reveal">
-          <div class="persona-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="4 17 4 7 10 3 16 7 16 17"/><rect x="8" y="12" width="4" height="5"/></svg>
-          </div>
-          <h4>Community managers</h4>
-          <p>Ajustan publicaciones a los límites de X, LinkedIn e Instagram. Cuentan hashtags y menciones antes de publicar.</p>
-        </div>
-        <div class="persona-card reveal">
-          <div class="persona-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="5 7 2 10 5 13"/><polyline points="15 7 18 10 15 13"/><line x1="9" y1="6" x2="11" y2="14"/></svg>
-          </div>
-          <h4>Desarrolladores</h4>
-          <p>Formatean JSON, codifican en Base64, convierten a slug y generan UUIDs sin abrir el terminal.</p>
-        </div>
-      </div>
-
-      <h3 class="info-section-label">Herramientas más buscadas</h3>
-      <div class="popular-links-grid">
-        <a href="/contadores-de-texto/contador-de-palabras/" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="8" x2="7" y2="8"/></svg>
-          Contador de palabras online gratis
-        </a>
-        <a href="/contadores-de-texto/contador-de-caracteres/" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="12" height="10" rx="1.5"/><line x1="4" y1="6" x2="10" y2="6"/><line x1="4" y1="9" x2="7" y2="9"/></svg>
-          Contador de caracteres online
-        </a>
-        <a href="/seo-tools-de-texto/generador-de-meta-tags/" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="12" height="12" rx="2"/><path d="M4 5h6M4 8h4"/></svg>
-          Generador de meta tags SEO
-        </a>
-        <a href="/convertidores-de-texto/convertir-a-mayusculas" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 10L5 4l3 6M3.5 8h3"/></svg>
-          Convertir mayúsculas / minúsculas
-        </a>
-        <a href="/desarrollo-y-codificacion/formateador-json/" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2M10 2h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2"/></svg>
-          Formateador y validador JSON
-        </a>
-        <a href="/redes-sociales/contador-twitter/" class="popular-link">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3 8.5 7 12.5 12H10L7.5 8.5 4.5 12H2L5.5 8 1.5 3H4L6.5 6.5 9.5 3Z"/></svg>
-          Contador de caracteres para Twitter/X
-        </a>
-      </div>
-
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 HerramientasDeTexto.com — Todos los derechos reservados</span>
+    <div class="footer-legal">
+      <a href="https://herramientasdetexto.com/politica-de-privacidad/">Privacidad</a>
+      <a href="https://herramientasdetexto.com/aviso-legal/">Aviso legal</a>
+      <a href="https://herramientasdetexto.com/cookies/">Cookies</a>
+      <a href="https://herramientasdetexto.com/contacto/">Contacto</a>
     </div>
-  </section>
+  </div>
+</footer>
+<script>
+// ============================================================
+// ✅ FUENTE DE VERDAD ÚNICA
+//
+// CAMBIOS respecto a la versión anterior:
+//   1. ACTIVE_TOOLS → solo herramientas de categoría 'contadores'
+//   2. Los filtros se ocultan automáticamente si hay una sola categoría
+//   3. renderCats() ya no muestra el contador de herramientas
+//      para evitar mostrar números incorrectos
+//
+// Para añadir una categoría nueva en el futuro:
+//   - Añade herramientas con el nuevo cat a ACTIVE_TOOLS
+//   - Los filtros reaparecerán solos
+// ============================================================
+
+const BASE = 'https://herramientasdetexto.com';
+
+const ACTIVE_TOOLS = [
+
+  // ── CONTADORES ──
+  // Solo se incluyen herramientas con página real y funcional.
+  // Para añadir más, copia un bloque y cambia los campos.
+
+  { name: 'Contador de palabras',           desc: 'Cuenta las palabras de cualquier texto al instante',                    icon: '📊', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: true,  url: `${BASE}/herramienta/contador-de-palabras/`,           search: ['Contador de palabras', 'Contar palabras'] },
+  { name: 'Contador de caracteres',         desc: 'Cuenta los caracteres totales, con y sin espacios',                    icon: '🔤', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: true,  url: `${BASE}/herramienta/contador-de-caracteres/`,         search: ['Contador de caracteres', 'Contar letras y caracteres'] },
+  { name: 'Contador de caracteres sin espacios', desc: 'Cuenta solo los caracteres excluyendo los espacios',             icon: '✂️', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-caracteres-sin-espacios/`, search: ['Caracteres sin espacios'] },
+  { name: 'Contador de frases',             desc: 'Detecta y cuenta el número de frases de tu texto',                     icon: '💬', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-frases/`,             search: ['Contador de frases', 'Contar oraciones'] },
+  { name: 'Contador de párrafos',           desc: 'Cuenta los párrafos de cualquier bloque de texto',                     icon: '📄', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-parrafos/`,           search: ['Contador de párrafos'] },
+  { name: 'Contador de líneas',             desc: 'Cuenta las líneas de texto, incluyendo líneas vacías',                 icon: '📏', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-lineas/`,             search: ['Contador de líneas', 'Contar líneas'] },
+  { name: 'Contador de letras',             desc: 'Cuenta solo las letras, ignorando números y símbolos',                 icon: '🔡', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-letras/`,             search: ['Contador de letras'] },
+  { name: 'Contador de números',            desc: 'Cuenta todos los dígitos numéricos presentes en el texto',             icon: '🔢', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-numeros/`,            search: ['Contador de números', 'Contar dígitos'] },
+  { name: 'Contador de emojis',             desc: 'Detecta y cuenta todos los emojis de tu texto',                        icon: '😀', cat: 'contadores', color: '#fef3c7', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-emojis/`,             search: ['Contador de emojis', 'Contar emojis'] },
+  { name: 'Contador de hashtags',           desc: 'Cuenta y lista todos los hashtags presentes en el texto',              icon: '#️⃣', cat: 'contadores', color: '#fef3c7', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-hashtags/`,           search: ['Contador de hashtags'] },
+  { name: 'Contador de menciones',          desc: 'Encuentra y cuenta todas las menciones @ del texto',                   icon: '@',  cat: 'contadores', color: '#fef3c7', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-menciones/`,          search: ['Contador de menciones', 'Contar @'] },
+  { name: 'Contador de espacios',           desc: 'Cuenta los espacios en blanco de tu texto',                            icon: '⬜', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-espacios/`,           search: ['Contador de espacios'] },
+  { name: 'Contador de URLs',               desc: 'Detecta y cuenta todas las URLs de un bloque de texto',                icon: '🔗', cat: 'contadores', color: '#fef3c7', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-urls/`,               search: ['Contador de URLs', 'Contar enlaces'] },
+  { name: 'Contador de palabras únicas',    desc: 'Cuenta cuántas palabras distintas aparecen en el texto',               icon: '🦄', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-palabras-unicas/`,    search: ['Palabras únicas', 'Vocabulario único'] },
+  { name: 'Contador de palabras repetidas', desc: 'Detecta qué palabras se repiten y con qué frecuencia',                icon: '🔁', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-palabras-repetidas/`, search: ['Palabras repetidas', 'Palabras duplicadas'] },
+  { name: 'Contador de palabras largas',    desc: 'Identifica y cuenta las palabras con más caracteres',                  icon: '📐', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-palabras-largas/`,    search: ['Palabras largas'] },
+  { name: 'Contador de palabras cortas',    desc: 'Identifica y cuenta las palabras con menos caracteres',                icon: '🔬', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-palabras-cortas/`,    search: ['Palabras cortas'] },
+  { name: 'Contador de sílabas',            desc: 'Cuenta las sílabas de cualquier texto en español',                     icon: '🎵', cat: 'contadores', color: '#ede9fe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-silabas/`,            search: ['Contador de sílabas', 'Contar sílabas'] },
+  { name: 'Contador de tiempo de lectura',  desc: 'Calcula cuánto tardarás en leer un texto',                             icon: '⏱️', cat: 'contadores', color: '#d1fae5', tag: 'CONTADOR', quick: true,  url: `${BASE}/herramienta/contador-de-tiempo-de-lectura/`,  search: ['Tiempo de lectura', 'Velocidad de lectura'] },
+  { name: 'Contador de tiempo de habla',    desc: 'Estima cuánto dura leer un texto en voz alta',                         icon: '🎤', cat: 'contadores', color: '#d1fae5', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-tiempo-de-habla/`,    search: ['Tiempo de habla', 'Duración presentación'] },
+  { name: 'Contador de densidad de palabras', desc: 'Analiza la frecuencia de cada palabra en el texto',                 icon: '📈', cat: 'contadores', color: '#dbeafe', tag: 'CONTADOR', quick: false, url: `${BASE}/herramienta/contador-de-densidad-de-palabras/`, search: ['Densidad de palabras', 'Frecuencia palabras'] },
+  { name: 'Contador de palabras clave',     desc: 'Detecta y cuenta las keywords más relevantes del texto',               icon: '🔑', cat: 'contadores', color: '#cffafe', tag: 'CONTADOR', quick: true,  url: `${BASE}/herramienta/contador-de-palabras-clave/`,     search: ['Palabras clave', 'Keywords', 'Contador de keywords'] },
+
+  // ── AÑADE AQUÍ LAS PRÓXIMAS HERRAMIENTAS ──
+  // Cuando añadas una categoría nueva (ej: 'convertidores'),
+  // los botones de filtro reaparecerán automáticamente.
+  // { name: '...', desc: '...', icon: '🔧', cat: 'convertidores', color: '#ede9fe', tag: 'CONVERTIDOR', quick: false, url: `${BASE}/herramienta/slug/`, search: ['alias'] },
+];
 
 
-  <!-- ─────────────────────────────────────────
-       FAQ
-  ───────────────────────────────────────── -->
-  <section id="faq" class="faq-home" aria-labelledby="faq-home-title">
-    <div class="container">
-      <div class="faq-home__header reveal">
-        <h2 id="faq-home-title">Preguntas frecuentes</h2>
-        <p>Todo lo que necesitas saber antes de empezar</p>
-      </div>
-      <div class="faq-home__list">
+// ============================================================
+// ✅ A PARTIR DE AQUÍ TODO ES AUTOMÁTICO
+// ============================================================
 
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿Son realmente gratuitas para siempre o aparecerán funciones de pago?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>Las herramientas básicas son y seguirán siendo gratuitas sin límites ni registro. Trabajamos en funciones avanzadas opcionales para usuarios que necesiten más, pero el acceso esencial siempre será libre.</p>
-          </div>
-        </div>
+const popularTools = ACTIVE_TOOLS;
+const quickTools   = ACTIVE_TOOLS.filter(t => t.quick);
+const searchIndex  = ACTIVE_TOOLS.flatMap(t =>
+  (t.search || [t.name]).map(label => ({ label, url: t.url }))
+);
 
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿El contador de palabras funciona igual que el de Microsoft Word?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>Casi idéntico. Ambos separan palabras por espacios en blanco, por lo que «hola-mundo» cuenta como una sola palabra. La diferencia es que nuestra herramienta calcula frases, párrafos, sílabas y tiempo de lectura simultáneamente, algo que Word no hace nativamente.</p>
-          </div>
-        </div>
-
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿Mis textos están seguros? ¿Los guardáis en algún servidor?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>Absolutamente seguros. Toda la lógica corre en JavaScript dentro de tu propio navegador. El texto que introduces nunca llega a ningún servidor nuestro. Puedes verificarlo desconectando el WiFi: las herramientas siguen funcionando perfectamente.</p>
-          </div>
-        </div>
-
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿Hay límite de texto que puedo analizar de una sola vez?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>No hay límite impuesto por nosotros. El único límite práctico es la memoria de tu dispositivo. En pruebas hemos procesado manuscritos de más de 200.000 palabras sin que la herramienta pierda velocidad en un ordenador moderno.</p>
-          </div>
-        </div>
-
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿Funcionan las herramientas sin conexión a internet?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>Una vez que la página ha cargado, sí. Como el procesamiento es 100% local, puedes desconectarte de internet y las herramientas seguirán funcionando hasta que cierres la pestaña. Solo necesitas conexión para la carga inicial.</p>
-          </div>
-        </div>
-
-        <div class="faq-home__item reveal">
-          <button class="faq-home__btn" aria-expanded="false" onclick="htFaq(this)">
-            ¿Tenéis API para integrar las herramientas en mis propias aplicaciones?
-            <svg class="faq-home__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="faq-home__body">
-            <p>Por ahora no ofrecemos una API pública, pero dado que toda la lógica corre en el navegador, los desarrolladores pueden inspeccionar y reutilizar el código de cualquier herramienta. Si tienes un caso de uso empresarial, escríbenos en el <a href="/legal/contacto.html">formulario de contacto</a>.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+// Categorías únicas presentes en ACTIVE_TOOLS
+// Se usa para mostrar/ocultar filtros automáticamente
+const activeCats = [...new Set(ACTIVE_TOOLS.map(t => t.cat))];
 
 
-  <!-- ─────────────────────────────────────────
-       FOOTER
-  ───────────────────────────────────────── -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-
-      <div class="footer__brand">
-        <a href="/" class="logo" aria-label="HerramientasDeTexto.com inicio">
-          <span class="logo__icon" aria-hidden="true">Ht</span>
-          <span class="logo__text">HerramientasDeTexto<span>.com</span></span>
-        </a>
-        <p class="footer__desc">
-          Herramientas de texto online gratis.<br>
-          Rápidas, privadas y en español.
-        </p>
-        <p class="footer__desc" style="margin-top:10px">
-          Herramienta online sin registro,<br>procesamiento 100% en tu navegador.
-        </p>
-      </div>
-
-      <nav class="footer__links" aria-label="Enlaces del pie de página">
-
-        <div class="footer__col">
-          <h4>Herramientas populares</h4>
-          <a href="/contadores-de-texto/contador-de-palabras/">Contador de palabras</a>
-          <a href="/contadores-de-texto/contador-de-caracteres/">Contador de caracteres</a>
-          <a href="/convertidores-de-texto/convertir-a-mayusculas/">Mayúsculas / minúsculas</a>
-          <a href="/desarrollo-y-codificacion/formateador-json/">Formateador JSON</a>
-          <a href="/seo-tools-de-texto/generador-de-meta-tags/">Generador de meta tags</a>
-          <a href="/redes-sociales/generador-hashtags-instagram/">Generador de hashtags</a>
-          <a href="/limpiadores-de-texto/eliminar-espacios/">Eliminar espacios</a>
-          <a href="/manipulacion-de-texto/invertir-texto/">Invertir texto</a>
-          <a href="/generadores-de-texto/lorem-ipsum/">Lorem Ipsum</a>
-        </div>
-
-        <div class="footer__col">
-          <h4>Categorías</h4>
-          <a href="/contadores-de-texto/">Contadores</a>
-          <a href="/convertidores-de-texto/">Convertidores</a>
-          <a href="/seo-tools-de-texto/">SEO tools</a>
-          <a href="/desarrollo-y-codificacion/">Desarrollo</a>
-          <a href="/redes-sociales/">Redes sociales</a>
-          <a href="/herramientas-para-estudiantes/">Estudiantes</a>
-          <a href="/generadores-de-texto/">Generadores</a>
-          <a href="/limpiadores-de-texto/">Limpiadores</a>
-          <a href="/manipulacion-de-texto/">Manipulación</a>
-        </div>
-
-        <div class="footer__col">
-          <h4>Información</h4>
-          <a href="/legal/sobre-nosotros.html">Sobre nosotros</a>
-          <a href="/legal/contacto.html">Contacto</a>
-        </div>
-
-      </nav>
-    </div>
-
-    <div class="footer__bottom">
-      <div class="container footer__bottom-inner">
-        <p>© 2026 HerramientasDeTexto.com — Todas las herramientas son gratuitas</p>
-        <nav class="footer__legal-links" aria-label="Enlaces legales">
-          <a href="/legal/aviso-legal.html">Aviso legal</a>
-          <a href="/legal/politica-de-privacidad.html">Privacidad</a>
-          <a href="/legal/cookies.html">Cookies</a>
-          <a href="/legal/contacto.html">Contacto</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+// ── CATEGORÍAS (páginas de categoría — estáticas) ──
+const categories = [
+  { id:'contadores',    name:'Contadores de Texto',     icon:'📊', color:'#2563eb', desc:'Analiza cualquier texto: palabras, caracteres, frases, párrafos, sílabas y mucho más.',         tags:['Palabras','Caracteres','Frases','Sílabas'],   url:`${BASE}/categoria/contadores/` },
+  { id:'convertidores', name:'Convertidores de Texto',  icon:'🔄', color:'#7c3aed', desc:'Cambia entre formatos: mayúsculas, camelCase, slug URL, HTML, Markdown y más.',                 tags:['CamelCase','Slug','Markdown','Mayúsculas'],   url:`${BASE}/categoria/convertidores/` },
+  { id:'limpiadores',   name:'Limpiadores de Texto',    icon:'🧹', color:'#059669', desc:'Elimina espacios, líneas duplicadas, caracteres especiales, HTML y formatos sucios.',           tags:['Espacios','Duplicados','HTML','URLs'],         url:`${BASE}/categoria/limpiadores/` },
+  { id:'manipulacion',  name:'Manipulación de Texto',   icon:'✂️', color:'#d97706', desc:'Invierte, ordena, mezcla, extrae emails, URLs, números y hashtags de cualquier texto.',        tags:['Invertir','Extraer','Ordenar','Filtrar'],     url:`${BASE}/categoria/manipulacion/` },
+  { id:'generadores',   name:'Generadores de Texto',    icon:'✨', color:'#db2777', desc:'Lorem ipsum, nombres aleatorios, hashtags, hooks virales, bios y textos de ejemplo.',          tags:['Lorem','Hashtags','Bios','Hooks'],            url:`${BASE}/categoria/generadores/` },
+  { id:'seo',           name:'SEO Tools de Texto',      icon:'🔍', color:'#0891b2', desc:'Meta tags, slugs, densidad de keywords, legibilidad, OpenGraph y schema.',                     tags:['Meta tags','Slug','Legibilidad','Schema'],    url:`${BASE}/categoria/seo/` },
+  { id:'estudiantes',   name:'Herramientas Académicas', icon:'🎓', color:'#65a30d', desc:'Citas APA/MLA, bibliografías, flashcards, resúmenes y herramientas para trabajos académicos.', tags:['APA/MLA','Citas','Flashcards','Resúmenes'],  url:`${BASE}/herramientas-para-estudiantes/` },
+  { id:'desarrollo',    name:'Desarrollo y Código',     icon:'💻', color:'#4f46e5', desc:'JSON, Base64, URL encode, MD5, SHA256, XML, beautifiers y minificadores.',                     tags:['JSON','Base64','SHA256','XML'],               url:`${BASE}/categoria/desarrollo/` },
+  { id:'conversores',   name:'Conversores de Unidades', icon:'📐', color:'#be185d', desc:'Km a millas, kg a libras, Celsius a Fahrenheit, bytes, tiempo, binario y hexadecimal.',        tags:['Distancia','Peso','Temperatura','Datos'],    url:`${BASE}/categoria/conversores/` },
+  { id:'utilidades',    name:'Utilidades Avanzadas',    icon:'🔬', color:'#b45309', desc:'Palíndromos, anagramas, rimas, detector de idioma, emojis, combinaciones y tokens.',           tags:['Palíndromos','Anagramas','Emojis','Tokens'], url:`${BASE}/categoria/utilidades/` },
+];
 
 
-  <!-- ─────────────────────────────────────────
-       JAVASCRIPT
-  ───────────────────────────────────────── -->
-  <script src="js/app.js"></script>
-  <script>
-  /* ── FAQ accordion ── */
-  function htFaq(btn) {
-    var item = btn.parentElement;
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-home__item.open').forEach(function(el) {
-      el.classList.remove('open');
-      el.querySelector('.faq-home__btn').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
+// ── RENDER FILTROS ──
+// Si solo hay una categoría activa, oculta la barra de filtros
+// porque un solo filtro no aporta valor al usuario.
+// Cuando añadas una segunda categoría a ACTIVE_TOOLS, reaparecerá sola.
+function renderFilters() {
+  const wrap = document.querySelector('.tools-filter');
+  if (!wrap) return;
+
+  if (activeCats.length <= 1) {
+    // ✅ CAMBIO: ocultar filtros si solo hay una categoría
+    wrap.style.display = 'none';
+    return;
   }
 
-  /* ── Sticky header ── */
-  var header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', function() {
-    header.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
+  // Con 2+ categorías, genera los botones dinámicamente
+  const labels = {
+    contadores:    'Contadores',
+    convertidores: 'Convertidores',
+    limpiadores:   'Limpiadores',
+    manipulacion:  'Manipulación',
+    generadores:   'Generadores',
+    seo:           'SEO',
+    estudiantes:   'Académicas',
+    desarrollo:    'Dev',
+    conversores:   'Conversores',
+    utilidades:    'Utilidades',
+  };
 
-  /* ── Cerrar nav mobile al hacer click en un link (app.js cierra al click fuera) ── */
-  document.querySelectorAll('.nav__link').forEach(function(link) {
-    link.addEventListener('click', function() {
-      document.getElementById('mainNav').classList.remove('open');
-      document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
-    });
-  });
+  wrap.innerHTML = `
+    <button class="filter-btn active" onclick="filterTools('all', this)">Todas</button>
+    ${activeCats.map(cat => `
+      <button class="filter-btn" onclick="filterTools('${cat}', this)">${labels[cat] || cat}</button>
+    `).join('')}
+  `;
+}
 
-  /* ── Intersection Observer ── */
-  (function() {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* Reveal */
-    var revObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
+// ── RENDER TOOLS ──
+function renderTools(filter) {
+  const grid  = document.getElementById('tools-grid');
+  const items = filter === 'all'
+    ? popularTools
+    : popularTools.filter(t => t.cat === filter);
 
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      if (reduced) { el.classList.add('visible'); } else { revObs.observe(el); }
-    });
-
-    /* Cat cards staggered */
-    var catGrid = document.querySelector('.cat-grid');
-    if (catGrid) {
-      if (reduced) {
-        catGrid.querySelectorAll('.cat-card').forEach(function(c) { c.classList.add('visible'); });
-      } else {
-        new IntersectionObserver(function(entries, obs) {
-          entries.forEach(function(e) {
-            if (e.isIntersecting) {
-              catGrid.querySelectorAll('.cat-card').forEach(function(card, i) {
-                setTimeout(function() { card.classList.add('visible'); }, i * 60);
-              });
-              obs.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.05 }).observe(catGrid);
-      }
-    }
-
-    /* Animated counters — info stats */
-    var statsEl = document.querySelector('.info-intro__stats');
-    if (statsEl) {
-      new IntersectionObserver(function(entries, obs) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            e.target.querySelectorAll('[data-target]').forEach(function(el) {
-              var target = parseInt(el.getAttribute('data-target'), 10);
-              if (reduced) { el.textContent = target; return; }
-              var startTime = null;
-              (function step(ts) {
-                if (!startTime) startTime = ts;
-                var p = Math.min((ts - startTime) / 800, 1);
-                el.textContent = Math.floor(p * target);
-                if (p < 1) requestAnimationFrame(step);
-                else el.textContent = target;
-              })(performance.now());
-            });
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 }).observe(statsEl);
-    }
-
-    /* Cat cards staggered — 80ms delay */
-    var catGrid2 = document.querySelector('.cat-grid');
-    if (catGrid2) {
-      catGrid2.querySelectorAll('.cat-card').forEach(function(c, i) {
-        c.style.transitionDelay = (i * 80) + 'ms';
-      });
-    }
-  })();
-
-  /* ── 6. SCROLL PROGRESS BAR ── */
-  var scrollBar = document.getElementById('scrollBar');
-  if (scrollBar) {
-    window.addEventListener('scroll', function() {
-      var total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total > 0) scrollBar.style.width = (window.scrollY / total * 100).toFixed(2) + '%';
-    }, { passive: true });
+  if (!items.length) {
+    grid.innerHTML = `<p style="color:var(--ink3);font-size:.9rem;grid-column:1/-1;padding:1rem 0">
+      No hay herramientas disponibles en esta categoría todavía.
+    </p>`;
+    return;
   }
 
-  /* ── 1. CANVAS PARTICLES ── */
-  (function() {
-    var canvas = document.getElementById('heroCanvas');
-    if (!canvas) return;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) { canvas.style.display = 'none'; return; }
-    var ctx = canvas.getContext('2d');
-    var W, H, pts = [], RAF;
-    var MAX_DIST = 130;
+  grid.innerHTML = items.map(t => `
+    <a href="${t.url}" class="tool-card">
+      <div class="tool-icon" style="background:${t.color}">${t.icon}</div>
+      <div class="tool-info">
+        <div class="tool-badge">${t.tag}</div>
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-desc">${t.desc}</div>
+      </div>
+    </a>
+  `).join('');
+}
 
-    function resize() {
-      var hero = canvas.parentElement;
-      W = canvas.width  = hero.offsetWidth;
-      H = canvas.height = hero.offsetHeight;
-      var count = Math.min(75, Math.floor(W * H / 9500));
-      pts = [];
-      for (var i = 0; i < count; i++) {
-        pts.push({
-          x: Math.random() * W, y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.32,
-          vy: (Math.random() - 0.5) * 0.32,
-          r:  Math.random() * 1.3 + 0.5
-        });
-      }
-    }
+function filterTools(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTools(cat);
+}
 
-    function frame() {
-      ctx.clearRect(0, 0, W, H);
-      for (var i = 0; i < pts.length; i++) {
-        var p = pts[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; else if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 6.2832);
-        ctx.fillStyle = 'rgba(139,92,246,0.6)';
-        ctx.fill();
-      }
 
-      ctx.lineWidth = 0.8;
-      for (var i = 0; i < pts.length - 1; i++) {
-        for (var j = i + 1; j < pts.length; j++) {
-          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-          var d  = Math.sqrt(dx * dx + dy * dy);
-          if (d < MAX_DIST) {
-            ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = 'rgba(139,92,246,' + ((1 - d / MAX_DIST) * 0.25).toFixed(3) + ')';
-            ctx.stroke();
-          }
-        }
-      }
-      RAF = requestAnimationFrame(frame);
-    }
+// ── RENDER CATEGORIES ──
+// ✅ CAMBIO: las categorías sin herramientas en ACTIVE_TOOLS
+// se muestran como informativas pero sin listado de herramientas.
+// Esto lo gestiona la plantilla de WordPress de cada categoría,
+// no esta home. Aquí las tarjetas enlazan a la URL de categoría
+// sin ningún listado interior — el control está en la plantilla.
+function renderCats() {
+  document.getElementById('cats-grid').innerHTML = categories.map(c => `
+    <a href="${c.url}" class="cat-card" style="--cat-color:${c.color}">
+      <div class="cat-header">
+        <div class="cat-icon">${c.icon}</div>
+      </div>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-desc">${c.desc}</div>
+      <div class="cat-tags">${c.tags.map(t => `<span class="cat-tag">${t}</span>`).join('')}</div>
+    </a>
+  `).join('');
+}
 
-    window.addEventListener('resize', function() {
-      cancelAnimationFrame(RAF);
-      resize();
-      frame();
-    }, { passive: true });
 
-    resize();
-    frame();
-  })();
+// ── RENDER FAQ ──
+const faqs = [
+  { q:'¿Todas las herramientas son gratuitas?',           a:'Sí, todas las herramientas disponibles son completamente gratuitas, sin límites de uso, sin registro y sin tarjeta de crédito.' },
+  { q:'¿Mis textos se almacenan en vuestros servidores?', a:'No. Todo el procesamiento ocurre directamente en tu navegador. Tus textos nunca llegan a nuestros servidores, garantizando privacidad total.' },
+  { q:'¿Necesito instalar algo?',                         a:'No necesitas instalar absolutamente nada. Todas las herramientas funcionan en el navegador, en cualquier dispositivo.' },
+  { q:'¿Funciona en móvil y tablet?',                     a:'Sí. Toda la plataforma está optimizada para móvil, tablet y ordenador de escritorio.' },
+  { q:'¿Con qué frecuencia añadís nuevas herramientas?',  a:'Añadimos y mejoramos herramientas regularmente basándonos en las sugerencias de nuestros usuarios.' },
+  { q:'¿Puedo usar las herramientas para uso comercial?', a:'Por supuesto. Las herramientas son de libre uso, tanto para proyectos personales como comerciales.' },
+  { q:'¿Cómo puedo sugerir una nueva herramienta?',       a:'Puedes contactarnos a través de la página de contacto. Leemos todas las sugerencias y muchas se convierten en nuevas herramientas.' },
+];
 
-  /* ── 4. HERO WORD CYCLING ── */
-  (function() {
-    var el = document.getElementById('heroWord');
-    if (!el) return;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
-    var words = ['Contadores', 'Convertidores', 'Herramientas SEO', 'Generadores', 'Limpiadores'];
-    var idx = 0;
-    setInterval(function() {
-      el.classList.add('fading');
-      setTimeout(function() {
-        idx = (idx + 1) % words.length;
-        el.textContent = words[idx];
-        el.classList.remove('fading');
-      }, 300);
-    }, 2800);
-  })();
+function renderFaq() {
+  document.getElementById('faq-list').innerHTML = faqs.map((f, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" onclick="toggleFaq(${i})">
+        <span class="faq-num">0${i+1}</span>
+        <span class="faq-q-text">${f.q}</span>
+        <span class="faq-arrow">▾</span>
+      </button>
+      <div class="faq-a">${f.a}</div>
+    </div>
+  `).join('');
+}
 
-  /* ── 5. HERO STATS COUNT ANIMATION ── */
-  (function() {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-    function animCount(el) {
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var suffix = el.getAttribute('data-suffix') || '';
-      if (reduced) { el.textContent = target + suffix; return; }
-      var start = null, dur = 1000;
-      requestAnimationFrame(function step(ts) {
-        if (!start) start = ts;
-        var p = easeOut(Math.min((ts - start) / dur, 1));
-        el.textContent = Math.floor(p * target) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = target + suffix;
-      });
-    }
-    var heroCountEls = document.querySelectorAll('.hero__stat strong[data-count]');
-    if (heroCountEls.length) {
-      setTimeout(function() { heroCountEls.forEach(animCount); }, 500);
-    }
-  })();
+function toggleFaq(i) {
+  const item   = document.getElementById('faq-' + i);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
-  /* ── 3. CARD SPOTLIGHT (inline bg con setProperty important) ── */
-  (function() {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
-    var BASE_BG = {
-      card:    'rgba(255,255,255,0.04)',
-      feature: 'rgba(255,255,255,0.04)',
-      group:   'rgba(255,255,255,0.04)',
-      persona: 'rgba(255,255,255,0.04)'
-    };
-    function attachSpotlight(card) {
-      card.addEventListener('mousemove', function(e) {
-        var r = card.getBoundingClientRect();
-        var x = (e.clientX - r.left).toFixed(1);
-        var y = (e.clientY - r.top).toFixed(1);
-        card.style.setProperty(
-          'background',
-          'radial-gradient(280px circle at ' + x + 'px ' + y + 'px, rgba(99,102,241,0.13), rgba(255,255,255,0.04) 70%)',
-          'important'
-        );
-      }, { passive: true });
-      card.addEventListener('mouseleave', function() {
-        card.style.removeProperty('background');
-      });
-    }
-    var sel = '.cat-card:not([aria-disabled="true"]), .feature, .popular-group, .persona-card';
-    document.querySelectorAll(sel).forEach(attachSpotlight);
-  })();
 
-  /* ── Hero demo interactivo ── */
-  (function () {
-    var demoTa  = document.getElementById('demoTextarea');
-    var dmWords = document.getElementById('dm-words');
-    var dmChars = document.getElementById('dm-chars');
-    var dmTime  = document.getElementById('dm-time');
-    var demoCta = document.getElementById('demoCta');
+// ── SEARCH ──
+function handleSearch(val) {
+  const box     = document.getElementById('search-results');
+  const overlay = document.getElementById('overlay');
+  if (!val.trim()) { box.style.display='none'; overlay.style.display='none'; return; }
 
-    if (!demoTa) return;
+  const matches = searchIndex
+    .filter(t => t.label.toLowerCase().includes(val.toLowerCase()))
+    .slice(0, 8);
 
-    function fmtNum(n) { return n.toLocaleString('es'); }
+  if (!matches.length) { box.style.display='none'; return; }
 
-    function fmtTime(words) {
-      if (!words) return '—';
-      var secs = Math.round(words / 225 * 60);
-      if (secs < 60) return secs + 's';
-      var m = Math.floor(secs / 60);
-      var s = secs % 60;
-      return s === 0 ? m + ' min' : m + 'm ' + s + 's';
-    }
+  box.innerHTML = matches.map(m => `
+    <a href="${m.url}" class="sr-item">
+      <span>🔧</span>
+      <div>
+        <div>${m.label}</div>
+        <div class="sr-cat">herramientasdetexto.com</div>
+      </div>
+    </a>
+  `).join('');
+  box.style.display     = 'block';
+  overlay.style.display = 'block';
+}
 
-    function runDemo() {
-      var txt   = demoTa.value;
-      var words = txt.trim() === '' ? 0 : txt.trim().split(/\s+/).length;
-      var chars = txt.length;
+function closeSearch() {
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('overlay').style.display        = 'none';
+}
 
-      dmWords.textContent = fmtNum(words);
-      dmChars.textContent = fmtNum(chars);
-      dmTime.textContent  = fmtTime(words);
+function handleKey(e) { if (e.key === 'Escape') closeSearch(); }
+function doSearch()   { handleSearch(document.getElementById('hero-search').value); }
 
-      if (txt.trim()) {
-        demoCta.classList.add('visible');
-      } else {
-        demoCta.classList.remove('visible');
-      }
-    }
 
-    demoTa.addEventListener('input', runDemo);
+// ── RENDER QUICK TOOLS ──
+function renderQuickTools() {
+  document.getElementById('hero-quick').innerHTML = quickTools.map(t => `
+    <a href="${t.url}" class="hero-quick-btn">
+      <span>${t.icon}</span>${t.name}
+    </a>
+  `).join('');
+}
 
-    demoCta.addEventListener('click', function () {
-      var txt = demoTa.value.trim();
-      if (txt) {
-        try { sessionStorage.setItem('demo_text', txt); } catch (err) {}
-      }
-    });
 
-    runDemo();
-  }());
-  </script>
-
-</body>
-</html>
+// ── INIT ──
+renderFilters();      // ✅ nuevo — gestiona visibilidad de filtros
+renderTools('all');
+renderCats();
+renderFaq();
+renderQuickTools();
+</script>

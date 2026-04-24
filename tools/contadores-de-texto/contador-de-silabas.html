@@ -1,0 +1,765 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Sílabas Online Gratis — Español en Tiempo Real | HerramientasDeTexto.com</title>
+<meta name="description" content="Cuenta sílabas en español al instante: total de sílabas, media por palabra y palabra más larga. Algoritmo optimizado para diptongos e hiatos. Gratis, sin registro.">
+<link rel="canonical" href="https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas/">
+<meta property="og:title" content="Contador de Sílabas Online Gratis — Español">
+<meta property="og:description" content="Cuenta sílabas en español en tiempo real. Detecta diptongos e hiatos. Gratis, sin registro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="HerramientasDeTexto.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contador de Sílabas Online Gratis — Español">
+<meta name="twitter:description" content="Cuenta sílabas en español al instante. Diptongos e hiatos. Sin registro.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+
+<style>
+:root {
+  --cat-color:   #2563EB;
+  --cat-color-2: #0EA5E9;
+  --cat-color-3: #6366F1;
+  --cat-bg:      #EFF6FF;
+  --cat-border:  #DBEAFE;
+}
+</style>
+<link rel="stylesheet" href="/css/tools.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Contador de Sílabas Online Gratis",
+  "description": "Contador de sílabas online gratis para español. Cuenta sílabas totales, media por palabra y detecta la palabra más larga en tiempo real.",
+  "url": "https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "featureList": [
+    "Contador de sílabas en tiempo real",
+    "Algoritmo optimizado para español: diptongos e hiatos",
+    "Media de sílabas por palabra",
+    "Detección de la palabra más larga",
+    "Funciona en móvil y escritorio",
+    "Sin registro ni instalación"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",              "item": "https://herramientasdetexto.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Contadores de texto", "item": "https://herramientasdetexto.com/contadores-de-texto/" },
+    { "@type": "ListItem", "position": 3, "name": "Contador de sílabas", "item": "https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Cómo cuenta sílabas este contador?", "acceptedAnswer": { "@type": "Answer", "text": "El algoritmo aplica las reglas fonológicas del español estándar: detecta vocales fuertes (a, e, o) y débiles (i, u), forma diptongos cuando una vocal fuerte se une a una débil sin acento, y genera hiatos cuando ambas vocales son fuertes o una débil lleva tilde (ío, aéreo). El resultado es preciso para texto estándar en español." } },
+    { "@type": "Question", "name": "¿Para qué sirve contar sílabas?", "acceptedAnswer": { "@type": "Answer", "text": "El conteo de sílabas es esencial en poesía para verificar la métrica (endecasílabos, octosílabos), en análisis de legibilidad para estimar la dificultad de lectura, en logopedia y didáctica del español, y en diseño tipográfico para calcular el espacio que ocupará un texto." } },
+    { "@type": "Question", "name": "¿Qué es un diptongo y cómo afecta al conteo de sílabas?", "acceptedAnswer": { "@type": "Answer", "text": "Un diptongo es la unión de una vocal fuerte (a, e, o) con una débil (i, u) sin acento, o de dos vocales débiles, que forman una sola sílaba. Por ejemplo: 'bueno' tiene 2 sílabas (bue-no) porque 'ue' es un diptongo. Si la vocal débil lleva tilde (ú, í), se rompe el diptongo y se forma un hiato: 'lío' tiene 2 sílabas (lí-o) pero cada vocal es sílaba independiente." } },
+    { "@type": "Question", "name": "¿Cuántas sílabas tiene el español de media?", "acceptedAnswer": { "@type": "Answer", "text": "El español estándar tiene una media de aproximadamente 2,8 sílabas por palabra. Los textos con más de 3,5 sílabas de media tienden a percibirse como más complejos o formales. Los textos periodísticos y divulgativos suelen estar por debajo de 3 sílabas de media." } },
+    { "@type": "Question", "name": "¿El contador funciona con poesía y métrica española?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, el contador es útil como punto de partida para analizar la métrica. Cuenta las sílabas de cada palabra aplicando las reglas fonológicas del español. Ten en cuenta que en la métrica poética intervienen fenómenos adicionales como la sinalefa (unión de sílabas entre palabras), que este contador no aplica al analizar palabras aisladas." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ── SITE HEADER ── -->
+<header class="ht-site-header">
+  <a href="/" class="ht-logo" aria-label="HerramientasDeTexto.com — Inicio">
+    <div class="ht-logo-icon">Ht</div>
+    <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+  </a>
+  <div class="ht-header-sep"></div>
+  <nav class="ht-header-nav" aria-label="Categorías principales">
+    <a href="/contadores-de-texto/" class="active">Contadores</a>
+    <a href="/seo-tools-de-texto/">SEO</a>
+    <a href="/generadores-de-texto/">Generadores</a>
+    <a href="/desarrollo-y-codificacion/">Dev</a>
+    <a href="/redes-sociales/">Redes</a>
+  </nav>
+  <div class="ht-header-right">
+    <button class="ht-theme-toggle" id="ht-theme-toggle" aria-label="Cambiar tema">
+      <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
+      <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
+    </button>
+    <a href="/" class="ht-home-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      Todas las herramientas
+    </a>
+  </div>
+</header>
+
+<!-- ── DARK HERO ── -->
+<div class="ht-dark-hero">
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-orb"></div>
+  <div class="ht-dh-inner">
+    <div class="ht-hero-left">
+      <div class="ht-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+        Contadores de texto
+      </div>
+      <h1 class="ht-h1">Contador de sílabas <mark>online gratis</mark></h1>
+      <p class="ht-hero-desc">Pega tu texto y obtén al instante el total de sílabas, la media por palabra y la palabra más larga. Algoritmo adaptado al español con diptongos e hiatos.</p>
+      <div class="ht-hero-pills">
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100% privado</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Español</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTENT WRAP ── -->
+<div class="ht-wrap ht-wrap--after-hero">
+
+  <nav class="ht-bc" aria-label="Ruta de navegación">
+    <a href="/">Inicio</a>
+    <span class="ht-bc-sep" aria-hidden="true">›</span>
+    <a href="/contadores-de-texto/">Contadores de texto</a>
+    <span class="ht-bc-sep" aria-hidden="true">›</span>
+    <span aria-current="page">Contador de sílabas</span>
+  </nav>
+
+  <div class="ht-ad-banner" aria-hidden="true">
+    <span class="sr-only">Publicidad</span>
+    Publicidad · 728×90
+  </div>
+
+  <main id="herramienta">
+
+    <!-- ── TWO-COLUMN TOOL LAYOUT ── -->
+    <div class="ht-tool-layout">
+
+      <!-- LEFT: Textarea Card -->
+      <div class="ht-textarea-card">
+        <div class="ht-textarea-card-header">
+          <div class="ht-textarea-card-title">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg>
+            Tu texto
+          </div>
+          <span class="ht-char-count" id="hdr-palabras" aria-live="polite">0 palabras</span>
+        </div>
+        <label class="sr-only" for="ht-txt">Texto para contar sílabas en español</label>
+        <textarea
+          id="ht-txt"
+          class="ht-textarea"
+          placeholder="Pega o escribe aquí tu texto para contar sílabas al instante…"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          aria-label="Texto para contar sílabas"
+        ></textarea>
+        <div class="ht-toolbar">
+          <div class="ht-toolbar-btns">
+            <button class="ht-btn" onclick="HT.paste('ht-txt')" title="Pegar desde portapapeles">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+              <span>Pegar</span>
+            </button>
+            <button class="ht-btn" id="btn-copy-metrics" onclick="copyMetrics(this)" title="Copiar métricas">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="8" y2="9"/></svg>
+              <span>Copiar métricas</span>
+            </button>
+            <button class="ht-btn ht-btn--danger" onclick="clearText()" title="Limpiar texto">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+              <span>Limpiar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Stats Panel -->
+      <aside class="ht-stats-panel" aria-label="Estadísticas de sílabas en tiempo real" aria-live="polite">
+        <div class="ht-stats-box">
+          <div class="ht-panel-header">
+            <span class="ht-panel-title">Sílabas</span>
+            <span class="ht-panel-live">
+              <span class="ht-panel-live-dot" aria-hidden="true"></span>
+              En vivo
+            </span>
+          </div>
+          <div class="ht-panel-body">
+            <div class="ht-stat-cards">
+              <div class="ht-stat-card ht-stat-card--primary">
+                <div class="ht-stat-label">Sílabas totales</div>
+                <div class="ht-stat-num" id="s-silabas">0</div>
+                <div class="ht-stat-sublabel">en todo el texto</div>
+              </div>
+              <div class="ht-stat-card">
+                <div class="ht-stat-label">Media por palabra</div>
+                <div class="ht-stat-num" id="s-media">—</div>
+                <div class="ht-stat-sublabel">sílabas/palabra</div>
+              </div>
+              <div class="ht-stat-card" style="grid-column:1/-1">
+                <div class="ht-stat-label">Palabra más larga</div>
+                <div class="ht-stat-num" id="s-larga" style="font-size:1.1rem;word-break:break-all">—</div>
+                <div class="ht-stat-sublabel" id="s-larga-n">— sílabas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /.ht-tool-layout -->
+
+    <!-- Tip block -->
+    <div class="ht-tip reveal" role="note">
+      <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+      <div>
+        <strong>Referencia:</strong> el español estándar tiene una media de <strong>≈ 2,8 sílabas por palabra</strong>. Textos con más de 3,5 de media resultan más difíciles de leer.
+      </div>
+    </div>
+
+    <!-- Info grid 2x2 -->
+    <div class="ht-info-grid-section reveal">
+      <div class="ht-info-grid-header">
+        <div class="ht-info-grid-header-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+        </div>
+        <div class="ht-info-grid-header-text">
+          <h2>¿Qué es un contador de sílabas en español?</h2>
+          <p>Todo lo que necesitas saber sobre esta herramienta</p>
+        </div>
+      </div>
+      <div class="ht-info-grid">
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#EFF6FF"><svg viewBox="0 0 16 16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
+            <h3 style="color:#2563EB">Qué es</h3>
+          </div>
+          <p>Un <strong>contador de sílabas</strong> analiza cada palabra de tu texto aplicando las reglas fonológicas del español —diptongos, triptongos e hiatos— y devuelve el total al instante.</p>
+        </div>
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#F5F3FF"><svg viewBox="0 0 16 16" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg></div>
+            <h3 style="color:#7C3AED">Para qué sirve</h3>
+          </div>
+          <p>Ideal para <strong>métrica poética</strong> (endecasílabos, octosílabos), <strong>análisis de legibilidad</strong>, didáctica del español, logopedia y ejercicios de <strong>separación en sílabas</strong>.</p>
+        </div>
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#ECFDF5"><svg viewBox="0 0 16 16" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 8 6 13 15 3"/></svg></div>
+            <h3 style="color:#16A34A">Cómo usarlo</h3>
+          </div>
+          <p>Pega tu texto en el recuadro. Las sílabas totales, la media por palabra y la palabra más larga se actualizan <strong>automáticamente en tiempo real</strong>.</p>
+        </div>
+        <div class="ht-info-cell">
+          <div class="ht-info-cell-header">
+            <div class="ht-info-dot" style="background:#FFFBEB"><svg viewBox="0 0 16 16" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg></div>
+            <h3 style="color:#D97706">Ventajas</h3>
+          </div>
+          <div class="ht-chips">
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Gratis</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Privado</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Español</span>
+            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin límite</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad mid -->
+    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad · 336×280</div>
+
+    <!-- Long SEO content -->
+    <div class="ht-long reveal">
+
+<style>
+.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
+@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
+.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition:box-shadow .18s, transform .18s; }
+.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
+.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
+.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
+.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
+.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
+@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
+.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
+.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
+.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
+.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
+.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
+.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
+.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
+.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
+.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
+.htl-table { width:100%; border-collapse:collapse; background:#fff; }
+.htl-table thead { background:#1E293B; }
+.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
+.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
+.htl-table tbody tr:hover { background:#F8FAFF; }
+.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
+.htl-table td:first-child { font-weight:600; color:#0F172A; }
+.htl-syl { display:inline-block; font-family:monospace; background:#EFF6FF; color:#1D4ED8; border-radius:6px; padding:.2rem .6rem; font-size:.85rem; font-weight:700; }
+.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
+.htl-badge--blue   { background:#EFF6FF; color:#1D4ED8; }
+.htl-badge--green  { background:#F0FDF4; color:#15803D; }
+.htl-badge--amber  { background:#FFFBEB; color:#B45309; }
+.htl-badge--red    { background:#FFF1F2; color:#BE123C; }
+.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
+@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
+@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
+.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
+.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
+.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
+.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
+.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
+.htl-section-label svg { width:12px; height:12px; }
+.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
+.htl-rule-box { border-radius:14px; padding:1.4rem 1.6rem; border:1.5px solid; margin-bottom:1rem; }
+.htl-rule-box--blue  { background:#EFF6FF; border-color:#BFDBFE; }
+.htl-rule-box--green { background:#F0FDF4; border-color:#BBF7D0; }
+.htl-rule-box--amber { background:#FFFBEB; border-color:#FDE68A; }
+.htl-rule-label { font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.5rem; }
+.htl-rule-box--blue  .htl-rule-label { color:#2563EB; }
+.htl-rule-box--green .htl-rule-label { color:#16A34A; }
+.htl-rule-box--amber .htl-rule-label { color:#B45309; }
+.htl-rule-box h4 { font-size:.95rem; font-weight:700; color:#0F172A; margin:0 0 .4rem; }
+.htl-rule-box p  { font-size:.85rem; color:#475569; margin:0 0 .6rem; line-height:1.6; }
+.htl-examples { display:flex; flex-wrap:wrap; gap:.4rem; }
+</style>
+
+<h2>Contador de sílabas en español: cómo funciona</h2>
+<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
+  Pega tu texto y obtén al instante el <strong>total de sílabas</strong>, la <strong>media por palabra</strong> y la <strong>palabra más larga</strong>. El algoritmo aplica las reglas fonológicas del español: diptongos, triptongos e hiatos. Si también necesitas medir la extensión del texto, combina esta herramienta con el <a href="/contadores-de-texto/contador-de-palabras/">contador de palabras</a> o con el <a href="/contadores-de-texto/contador-de-caracteres/">contador de caracteres</a>.
+</p>
+
+<div class="htl-intro">
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#EFF6FF">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="3"/><line x1="6" y1="7" x2="14" y2="7"/><line x1="6" y1="10" x2="14" y2="10"/><line x1="6" y1="13" x2="10" y2="13"/></svg>
+    </div>
+    <h3>¿Qué es una sílaba?</h3>
+    <p>Una sílaba es la unidad mínima de pronunciación. Cada sílaba contiene un núcleo vocálico (una vocal o conjunto de vocales que suenan juntas) y puede ir acompañada de consonantes. En español, cada golpe de voz al pronunciar una palabra equivale a una sílaba.</p>
+  </div>
+  <div class="htl-card">
+    <div class="htl-card-icon" style="background:#F0FDF4">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><polyline points="10 7 10 10 12 11"/></svg>
+    </div>
+    <h3>¿Para quién es útil?</h3>
+    <p>Para poetas que verifican la métrica de sus versos, profesores y estudiantes de lengua española, logopedas que trabajan la conciencia fonológica, y redactores que analizan la legibilidad de sus textos.</p>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Reglas del español
+</div>
+<h2>Diptongos, hiatos y triptongos</h2>
+<p style="color:#475569;font-size:.9rem;line-height:1.7;margin-bottom:1.25rem">El español tiene reglas precisas para determinar cuándo dos vocales contiguas forman una sola sílaba o dos.</p>
+
+<div class="htl-rule-box htl-rule-box--blue">
+  <div class="htl-rule-label">Diptongo → 1 sílaba</div>
+  <h4>Vocal fuerte + débil (sin tilde), débil + fuerte, o débil + débil</h4>
+  <p>Cuando una vocal débil (i, u) se une a una fuerte (a, e, o) sin llevar tilde, ambas forman una sola sílaba.</p>
+  <div class="htl-examples">
+    <span class="htl-syl">bue-no</span>
+    <span class="htl-syl">ciu-dad</span>
+    <span class="htl-syl">ai-re</span>
+    <span class="htl-syl">pei-ne</span>
+    <span class="htl-syl">viu-da</span>
+    <span class="htl-syl">rui-do</span>
+  </div>
+</div>
+
+<div class="htl-rule-box htl-rule-box--amber">
+  <div class="htl-rule-label">Hiato → 2 sílabas</div>
+  <h4>Dos vocales fuertes, o vocal débil tónica</h4>
+  <p>Cuando dos vocales fuertes se encuentran, o cuando la vocal débil lleva tilde (rompe el diptongo), cada vocal es una sílaba independiente.</p>
+  <div class="htl-examples">
+    <span class="htl-syl">a-é-re-o</span>
+    <span class="htl-syl">lí-o</span>
+    <span class="htl-syl">ba-úl</span>
+    <span class="htl-syl">pa-ís</span>
+    <span class="htl-syl">re-a-li-dad</span>
+  </div>
+</div>
+
+<div class="htl-rule-box htl-rule-box--green">
+  <div class="htl-rule-label">Triptongo → 1 sílaba</div>
+  <h4>Débil + fuerte + débil (sin tildes en las débiles)</h4>
+  <p>Tres vocales que forman un solo núcleo silábico. La vocal central es siempre fuerte y las laterales débiles.</p>
+  <div class="htl-examples">
+    <span class="htl-syl">a-ve-ri-guáis</span>
+    <span class="htl-syl">buey</span>
+    <span class="htl-syl">miau</span>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
+  Ejemplos
+</div>
+<h2>Tabla de referencia: palabras con su silabeo</h2>
+
+<div class="htl-table-wrap">
+  <table class="htl-table">
+    <thead>
+      <tr><th>Palabra</th><th>Silabeo</th><th>Sílabas</th><th>Fenómeno</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>casa</td>
+        <td><span class="htl-syl">ca-sa</span></td>
+        <td>2</td>
+        <td><span class="htl-badge htl-badge--blue">Normal</span></td>
+      </tr>
+      <tr>
+        <td>bueno</td>
+        <td><span class="htl-syl">bue-no</span></td>
+        <td>2</td>
+        <td><span class="htl-badge htl-badge--green">Diptongo</span></td>
+      </tr>
+      <tr>
+        <td>ciudad</td>
+        <td><span class="htl-syl">ciu-dad</span></td>
+        <td>2</td>
+        <td><span class="htl-badge htl-badge--green">Diptongo</span></td>
+      </tr>
+      <tr>
+        <td>lío</td>
+        <td><span class="htl-syl">lí-o</span></td>
+        <td>2</td>
+        <td><span class="htl-badge htl-badge--amber">Hiato</span></td>
+      </tr>
+      <tr>
+        <td>aéreo</td>
+        <td><span class="htl-syl">a-é-re-o</span></td>
+        <td>4</td>
+        <td><span class="htl-badge htl-badge--amber">Hiato doble</span></td>
+      </tr>
+      <tr>
+        <td>reconocer</td>
+        <td><span class="htl-syl">re-co-no-cer</span></td>
+        <td>4</td>
+        <td><span class="htl-badge htl-badge--blue">Normal</span></td>
+      </tr>
+      <tr>
+        <td>extraordinario</td>
+        <td><span class="htl-syl">ex-tra-or-di-na-rio</span></td>
+        <td>6</td>
+        <td><span class="htl-badge htl-badge--red">Polisílabo</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="htl-divider">
+
+<div class="htl-section-label">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
+  Casos de uso
+</div>
+<h2>¿Para qué sirve contar sílabas?</h2>
+
+<div class="htl-uses">
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#2563EB"></div>
+    <div><h4>Métrica poética</h4><p>Verifica que tus versos tienen el número correcto de sílabas: 8 para el octosílabo, 11 para el endecasílabo. Complementa el análisis con el <a href="/contadores-de-texto/contador-de-frases/">contador de frases</a> para medir también la extensión de cada oración.</p></div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#7C3AED"></div>
+    <div><h4>Legibilidad y UX writing</h4><p>Los textos con palabras de más de 3 sílabas de media son más difíciles de leer. Una vez optimizado el texto, usa el <a href="/seo-tools-de-texto/generador-de-meta-tags/">generador de meta tags</a> para crear los metadatos SEO correctos para tu página.</p></div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#0891B2"></div>
+    <div><h4>Didáctica del español</h4><p>Profesores y estudiantes usan el conteo de sílabas para aprender a separar palabras y practicar el acento ortográfico. Combina con el <a href="/contadores-de-texto/contador-de-palabras/">contador de palabras</a> para ejercicios de redacción con límite de extensión.</p></div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#D97706"></div>
+    <div><h4>Logopedia</h4><p>El análisis silábico es una herramienta fundamental en la evaluación y rehabilitación de la conciencia fonológica en niños y adultos con dificultades del lenguaje.</p></div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#16A34A"></div>
+    <div><h4>Diseño tipográfico</h4><p>La media de sílabas por palabra influye en la longitud visual de los textos. Los diseñadores la usan para estimar el espacio que ocupará un copy antes de maquetar.</p></div>
+  </div>
+  <div class="htl-use">
+    <div class="htl-use-dot" style="background:#E11D48"></div>
+    <div><h4>Análisis lingüístico</h4><p>Investigadores y filólogos usan el conteo silábico para estudiar la evolución de la lengua, comparar registros formales e informales y analizar corpus textuales.</p></div>
+  </div>
+</div>
+
+<hr class="htl-divider">
+
+<p style="color:#475569;font-size:.88rem;line-height:1.7;margin:1.5rem 0 0;padding:1rem 1.25rem;background:#EFF6FF;border:1.5px solid #DBEAFE;border-radius:12px">
+  <strong>Suite completa de contadores:</strong> mide <a href="/contadores-de-texto/contador-de-palabras/">palabras</a>, <a href="/contadores-de-texto/contador-de-caracteres/">caracteres</a>, <a href="/contadores-de-texto/contador-de-frases/">frases</a> y sílabas de tu texto en un flujo continuo. Cada herramienta complementa a la anterior para un análisis lingüístico completo.
+</p>
+
+<div class="htl-section-label" style="margin-top:2rem">
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+  Por qué elegirnos
+</div>
+<h2>¿Por qué usar este contador de sílabas?</h2>
+
+<div class="htl-why">
+  <div class="htl-why-item"><span class="htl-why-icon">⚡</span><strong>Tiempo real</strong><span>Sin botón de calcular. Se actualiza letra a letra.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">🔒</span><strong>100% privado</strong><span>Tu texto nunca sale del navegador. Cero servidores.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">🇪🇸</span><strong>Español nativo</strong><span>Diptongos, hiatos y triptongos correctamente tratados.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">📱</span><strong>Cualquier dispositivo</strong><span>Funciona igual en móvil, tablet y escritorio.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">✂️</span><strong>Sin registro</strong><span>Ni email, ni contraseña, ni formularios.</span></div>
+  <div class="htl-why-item"><span class="htl-why-icon">∞</span><strong>Sin límites</strong><span>Pega textos de cualquier extensión, siempre gratis.</span></div>
+</div>
+
+    </div><!-- /.ht-long -->
+
+    <!-- Related tools -->
+    <section class="ht-related reveal" aria-labelledby="related-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
+        <a href="/contadores-de-texto/" class="ht-section-link">
+          Ver todas
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="ht-related-grid">
+        <a href="/contadores-de-texto/contador-de-palabras/" class="ht-related-card">
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
+          <div class="ht-related-card-body">
+            <div class="ht-related-card-name">Contador de palabras</div>
+            <div class="ht-related-card-desc">Palabras, frases, párrafos y tiempo de lectura</div>
+          </div>
+        </a>
+        <a href="/contadores-de-texto/contador-de-caracteres/" class="ht-related-card">
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="9" y2="10"/></svg></div>
+          <div class="ht-related-card-body">
+            <div class="ht-related-card-name">Contador de caracteres</div>
+            <div class="ht-related-card-desc">Con límites de plataforma en tiempo real</div>
+          </div>
+        </a>
+        <a href="/contadores-de-texto/contador-de-frases/" class="ht-related-card">
+          <div class="ht-related-card-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h5"/></svg></div>
+          <div class="ht-related-card-body">
+            <div class="ht-related-card-name">Contador de frases</div>
+            <div class="ht-related-card-desc">Oraciones y longitud media</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2>
+      </div>
+      <div class="ht-faq-list">
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">
+            ¿Cómo cuenta sílabas este contador?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-1" role="region">
+            El algoritmo identifica cada vocal del texto y aplica las reglas del español: dos vocales adyacentes forman <strong>diptongo</strong> (una sílaba) si se trata de fuerte+débil o débil+débil sin tilde. Forman <strong>hiato</strong> (sílabas separadas) si ambas son fuertes o si la débil lleva tilde. El resultado es preciso para texto estándar en castellano.
+          </div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">
+            ¿Para qué sirve contar sílabas?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-2" role="region">
+            El conteo silábico es esencial en <strong>poesía</strong> para verificar la métrica (endecasílabos, octosílabos, alejandrinos), en el análisis de <strong>legibilidad</strong> para estimar la dificultad lectora, en <strong>logopedia</strong> para evaluar la conciencia fonológica, y en <strong>diseño tipográfico</strong> para calcular el espacio visual de un texto.
+          </div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">
+            ¿Qué es un diptongo y cómo afecta al conteo?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-3" role="region">
+            Un diptongo es la unión de dos vocales que forman una sola sílaba: <strong>«bueno»</strong> (bue-no, 2 sílabas) porque «ue» es diptongo. Si la vocal débil lleva tilde, se rompe el diptongo y se forma un hiato: <strong>«lío»</strong> tiene 2 sílabas (lí-o) porque cada vocal es independiente. Este contador gestiona ambos casos automáticamente.
+          </div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">
+            ¿Cuántas sílabas tiene el español de media?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-4" role="region">
+            El español estándar tiene una media de <strong>aproximadamente 2,8 sílabas por palabra</strong>. Los textos periodísticos y divulgativos suelen estar entre 2,5 y 3. Los textos técnicos o académicos con vocabulario especializado suelen superar las 3,5 sílabas de media y se perciben como más complejos.
+          </div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-5" onclick="HT.faqToggle(this)">
+            ¿El contador funciona para análisis de poesía y métrica?
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+          </button>
+          <div class="ht-faq-body" id="faq-5" role="region">
+            Sí, es un punto de partida excelente para la métrica. Cuenta las sílabas de cada palabra con las reglas fonológicas del español. Ten en cuenta que en métrica poética interviene la <strong>sinalefa</strong> (unión de la última vocal de una palabra con la primera de la siguiente), que reduce el cómputo total de sílabas por verso. Esta herramienta cuenta palabras de forma aislada, sin aplicar sinalefa.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div><!-- /.ht-wrap -->
+
+<!-- Toast notification -->
+<div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+  <span>Copiado</span>
+</div>
+
+<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+  <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
+  <nav class="ht-footer-nav" aria-label="Legal">
+    <a href="/">Inicio</a>
+    <a href="/legal/aviso-legal.html">Aviso legal</a>
+    <a href="/legal/politica-de-privacidad.html">Privacidad</a>
+    <a href="/legal/cookies.html">Cookies</a>
+    <a href="/legal/contacto.html">Contacto</a>
+  </nav>
+</footer>
+
+<script src="/js/tools.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var txt       = document.getElementById('ht-txt');
+  var sSilabas  = document.getElementById('s-silabas');
+  var sMedia    = document.getElementById('s-media');
+  var sLarga    = document.getElementById('s-larga');
+  var sLargaN   = document.getElementById('s-larga-n');
+  var hdrPal    = document.getElementById('hdr-palabras');
+  var liveDot   = document.querySelector('.ht-panel-live-dot');
+
+  /* ── Syllabification algorithm for Spanish ── */
+  function syllablesES(word) {
+    word = word.toLowerCase().replace(/[^a-záéíóúüñ]/g, '');
+    if (!word) return 0;
+
+    var STRONG   = /[aeoáéó]/;
+    var WEAK_ACC = /[íú]/;    /* accented weak = hiatus */
+    var VOWEL    = /[aeiouáéíóúü]/;
+
+    var count = 0;
+    var prev  = '';
+
+    for (var i = 0; i < word.length; i++) {
+      var c = word[i];
+      if (!VOWEL.test(c)) { prev = ''; continue; }
+      if (!prev) { count++; prev = c; continue; }
+
+      var p = prev;
+      prev = c;
+
+      /* Hiatus: both strong, or either is an accented weak vowel */
+      if ((STRONG.test(p) && STRONG.test(c)) || WEAK_ACC.test(c) || WEAK_ACC.test(p)) {
+        count++;
+      }
+      /* else: diphthong → same syllable, no increment */
+    }
+
+    return Math.max(count, 1);
+  }
+
+  /* ── Analyse ── */
+  function analyse() {
+    var raw     = txt.value;
+    var trimmed = raw.trim();
+    var words   = trimmed === '' ? [] : trimmed.match(/[a-záéíóúüñA-ZÁÉÍÓÚÜÑ]+/g) || [];
+
+    hdrPal.textContent = words.length + ' palabra' + (words.length === 1 ? '' : 's');
+
+    if (words.length === 0) {
+      HT.pop(sSilabas, '0');
+      sMedia.textContent  = '—';
+      sLarga.textContent  = '—';
+      sLargaN.textContent = '— sílabas';
+      return;
+    }
+
+    var total     = 0;
+    var maxSyl    = 0;
+    var maxWord   = '';
+
+    for (var i = 0; i < words.length; i++) {
+      var s = syllablesES(words[i]);
+      total += s;
+      if (s > maxSyl || (s === maxSyl && words[i].length > maxWord.length)) {
+        maxSyl  = s;
+        maxWord = words[i];
+      }
+    }
+
+    var media = (total / words.length).toFixed(1);
+
+    HT.pop(sSilabas, HT.fmt(total));
+    sMedia.textContent  = media;
+    sLarga.textContent  = maxWord;
+    sLargaN.textContent = maxSyl + ' sílaba' + (maxSyl === 1 ? '' : 's');
+
+    if (liveDot) {
+      liveDot.classList.add('typing');
+      clearTimeout(liveDot._t);
+      liveDot._t = setTimeout(function () { liveDot.classList.remove('typing'); }, 2000);
+    }
+  }
+
+  var debouncedAnalyse = HT.debounce(analyse, 40);
+  txt.addEventListener('input', debouncedAnalyse);
+
+  /* ── Toolbar ── */
+  window.copyMetrics = function (btn) {
+    var lines = [
+      'Sílabas totales:   ' + sSilabas.textContent,
+      'Media por palabra: ' + sMedia.textContent,
+      'Palabra más larga: ' + sLarga.textContent + ' (' + sLargaN.textContent + ')',
+    ];
+    HT.copy(lines.join('\n'));
+    var sp = btn ? btn.querySelector('span') : null;
+    if (sp) {
+      var orig = sp.textContent;
+      sp.textContent = '✓ Copiado';
+      btn.disabled = true;
+      setTimeout(function () { sp.textContent = orig; btn.disabled = false; }, 1500);
+    }
+  };
+
+  window.clearText = function () {
+    txt.value = '';
+    analyse();
+    txt.focus();
+  };
+
+  analyse();
+}());
+</script>
+
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+}());
+</script>
+</body>
+</html>
