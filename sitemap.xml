@@ -8,162 +8,196 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- PÁGINAS DE CATEGORÍA -->
+  <!-- CATEGORÍAS -->
   <url>
-    <loc>https://herramientasdetexto.com/contadores-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/contadores-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/convertidores-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/convertidores-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/seo-tools-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/limpiadores-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/</loc>
+    <loc>https://herramientasdetexto.com/manipulacion-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/redes-sociales/</loc>
+    <loc>https://herramientasdetexto.com/generadores-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/limpiadores-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/seo-tools-de-texto</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/manipulacion-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/herramientas-para-estudiantes</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/generadores-de-texto/</loc>
+    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/conversores-de-unidades</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/utilidades-avanzadas</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- CONTADORES -->
+  <!-- CONTADORES DE TEXTO -->
   <url>
-    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-caracteres/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-frases/</loc>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas/</loc>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-caracteres</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-caracteres-sin-espacios</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-frases</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-parrafos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-lineas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-letras</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-numeros</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-emojis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-hashtags</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-menciones</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-espacios</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-urls</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras-unicas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras-repetidas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras-largas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras-cortas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-silabas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-lectura</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-habla</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-densidad-de-palabras</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras-clave</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
-  <!-- CONVERTIDORES -->
+  <!-- LIMPIADORES DE TEXTO -->
   <url>
-    <loc>https://herramientasdetexto.com/convertidores-de-texto/convertir-a-mayusculas/</loc>
+    <loc>https://herramientasdetexto.com/limpiadores-de-texto/eliminar-espacios</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/convertidores-de-texto/convertir-a-minusculas/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/convertidores-de-texto/texto-a-camelcase/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/convertidores-de-texto/texto-a-slug-url/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
-  <!-- SEO -->
+  <!-- MANIPULACIÓN DE TEXTO -->
   <url>
-    <loc>https://herramientasdetexto.com/seo-tools-de-texto/generador-de-meta-tags/</loc>
+    <loc>https://herramientasdetexto.com/manipulacion-de-texto/invertir-texto</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 
-  <!-- DESARROLLO -->
+  <!-- GENERADORES DE TEXTO -->
   <url>
-    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/formateador-json/</loc>
+    <loc>https://herramientasdetexto.com/generadores-de-texto/lorem-ipsum</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/codificador-base64/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/generador-uuid/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/generador-md5/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
-  <!-- LIMPIADORES -->
+  <!-- DESARROLLO Y CODIFICACIÓN -->
   <url>
-    <loc>https://herramientasdetexto.com/limpiadores-de-texto/eliminar-espacios/</loc>
+    <loc>https://herramientasdetexto.com/desarrollo-y-codificacion/codificador-base64</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- MANIPULACIÓN -->
-  <url>
-    <loc>https://herramientasdetexto.com/manipulacion-de-texto/invertir-texto/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- GENERADORES -->
-  <url>
-    <loc>https://herramientasdetexto.com/generadores-de-texto/lorem-ipsum/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- REDES SOCIALES -->
-  <url>
-    <loc>https://herramientasdetexto.com/redes-sociales/contador-twitter/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/redes-sociales/contador-instagram/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/redes-sociales/generador-hashtags-instagram/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://herramientasdetexto.com/redes-sociales/bio-instagram/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /ai/
-
 Sitemap: https://herramientasdetexto.com/sitemap.xml
