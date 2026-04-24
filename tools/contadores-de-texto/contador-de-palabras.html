@@ -21,33 +21,596 @@
 
 <style>
 :root {
-  --cat-color:   #2563EB;
-  --cat-color-2: #0EA5E9;
-  --cat-color-3: #6366F1;
-  --cat-bg:      #EFF6FF;
-  --cat-border:  #DBEAFE;
+  --cat-color:   #3b82f6;
+  --cat-color-2: #6366f1;
+  --cat-color-3: #a855f7;
+  --cat-bg:      rgba(59,130,246,0.08);
+  --cat-border:  rgba(59,130,246,0.2);
 }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM REDESIGN — Contador de Palabras
+   Linear / Vercel dark aesthetic + full light-mode support
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Base ─────────────────────────────────────────────────── */
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.pw-hero {
+  position: relative;
+  padding: calc(var(--header-h,56px) + 72px) 20px 88px;
+  overflow: hidden;
+  background: #07080f;
+}
+[data-theme="light"] .pw-hero { background: #f5f6fa; }
+
+.pw-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(59,130,246,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(99,102,241,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(168,85,247,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+[data-theme="light"] .pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(59,130,246,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(99,102,241,.07) 0%, transparent 60%);
+}
+
+.pw-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+[data-theme="light"] .pw-hero::after {
+  background-image: radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px);
+}
+
+.pw-hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 52px;
+  align-items: center;
+}
+@media (max-width: 980px) { .pw-hero-inner { grid-template-columns: 1fr; gap: 44px; } }
+
+/* Hero text */
+.pw-cat-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 13px 5px 10px;
+  background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25);
+  border-radius: 20px; font-size: 12px; font-weight: 600; color: #93c5fd;
+  margin-bottom: 22px;
+  animation: fadeSlideUp .55s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+}
+[data-theme="light"] .pw-cat-badge { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+.pw-cat-badge svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+.pw-h1 {
+  font-size: clamp(38px, 5.5vw, 66px);
+  font-weight: 800; line-height: 1.04; letter-spacing: -2.5px;
+  color: #fff; margin-bottom: 20px;
+  animation: fadeSlideUp .6s .07s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+}
+[data-theme="light"] .pw-h1 { color: #0f172a; }
+
+.pw-h1-grad {
+  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pw-desc {
+  font-size: 17px; line-height: 1.7;
+  color: rgba(255,255,255,.5); max-width: 500px; margin-bottom: 30px;
+  animation: fadeSlideUp .6s .14s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+}
+[data-theme="light"] .pw-desc { color: #475569; }
+
+.pw-pills {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  animation: fadeSlideUp .6s .21s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+}
+.pw-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 13px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6);
+  backdrop-filter: blur(8px);
+}
+[data-theme="light"] .pw-pill { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.09); color: #475569; }
+.pw-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+
+/* Hero preview card */
+.pw-preview-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 22px; padding: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04) inset,
+    0 32px 64px rgba(0,0,0,.55),
+    0 0 80px rgba(59,130,246,.07);
+  animation: fadeSlideUp .7s .28s var(--ease,cubic-bezier(.16,1,.3,1)) both, pwFloat 6s 1s ease-in-out infinite alternate;
+  position: relative;
+}
+[data-theme="light"] .pw-preview-card {
+  background: #fff; border-color: #e2e8f0;
+  box-shadow: 0 20px 60px rgba(0,0,0,.09), 0 4px 16px rgba(0,0,0,.05);
+  animation: fadeSlideUp .7s .28s var(--ease,cubic-bezier(.16,1,.3,1)) both, pwFloat 6s 1s ease-in-out infinite alternate;
+}
+@keyframes pwFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px); }
+}
+@media (prefers-reduced-motion: reduce) { .pw-preview-card { animation: fadeSlideUp .7s .28s var(--ease,cubic-bezier(.16,1,.3,1)) both !important; } }
+
+.pw-preview-card::before {
+  content: '';
+  position: absolute; top: -1px; left: 24px; right: 24px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,.7), transparent);
+}
+[data-theme="light"] .pw-preview-card::before { background: linear-gradient(90deg, transparent, rgba(99,102,241,.35), transparent); }
+
+.pw-preview-hdr {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+}
+.pw-preview-hdr-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.3); }
+[data-theme="light"] .pw-preview-hdr-title { color: #94a3b8; }
+.pw-preview-live { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; color: #4ade80; }
+.pw-preview-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+
+.pw-preview-main {
+  text-align: center; padding: 22px 0 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06); margin-bottom: 14px;
+  background: rgba(59,130,246,.04); border-radius: 12px 12px 0 0; margin: 0 -4px 14px; padding: 22px 4px 24px;
+}
+[data-theme="light"] .pw-preview-main { background: #eff6ff; border-bottom-color: #e2e8f0; }
+.pw-preview-big {
+  font-size: 76px; font-weight: 800; line-height: 1; letter-spacing: -3px;
+  color: #fff; font-variant-numeric: tabular-nums; transition: color .15s;
+}
+[data-theme="light"] .pw-preview-big { color: #1e3a8a; }
+.pw-preview-label { font-size: 11px; color: rgba(255,255,255,.3); font-weight: 600; margin-top: 8px; text-transform: uppercase; letter-spacing: .08em; }
+[data-theme="light"] .pw-preview-label { color: rgba(99,102,241,.65); }
+
+.pw-preview-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: rgba(255,255,255,.07); border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+}
+[data-theme="light"] .pw-preview-grid { background: #e2e8f0; }
+.pw-preview-cell {
+  background: rgba(255,255,255,.025); padding: 13px 14px; transition: background .15s;
+}
+[data-theme="light"] .pw-preview-cell { background: #f8fafc; }
+.pw-preview-cell:hover { background: rgba(255,255,255,.05); }
+[data-theme="light"] .pw-preview-cell:hover { background: #f1f5f9; }
+.pw-preview-cell-val { font-size: 24px; font-weight: 800; color: rgba(255,255,255,.85); font-variant-numeric: tabular-nums; letter-spacing: -.5px; line-height: 1; }
+[data-theme="light"] .pw-preview-cell-val { color: #0f172a; }
+.pw-preview-cell-lbl { font-size: 10px; color: rgba(255,255,255,.28); margin-top: 3px; font-weight: 500; }
+[data-theme="light"] .pw-preview-cell-lbl { color: #94a3b8; }
+
+.pw-preview-times { display: flex; gap: 8px; }
+.pw-preview-time {
+  flex: 1; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+  border-radius: 10px; padding: 10px 12px; text-align: center;
+}
+[data-theme="light"] .pw-preview-time { background: #f8fafc; border-color: #e2e8f0; }
+.pw-preview-time-val { font-size: 14px; font-weight: 700; color: rgba(255,255,255,.65); font-variant-numeric: tabular-nums; }
+[data-theme="light"] .pw-preview-time-val { color: #334155; }
+.pw-preview-time-lbl { font-size: 9px; color: rgba(255,255,255,.22); margin-top: 3px; text-transform: uppercase; letter-spacing: .07em; }
+[data-theme="light"] .pw-preview-time-lbl { color: #94a3b8; }
+
+/* ── Content wrapper ──────────────────────────────────────── */
+.pw-content {
+  max-width: 1180px; margin: 0 auto; padding: 28px 20px 80px;
+}
+
+/* ── Tool grid ────────────────────────────────────────────── */
+.pw-tool-grid {
+  display: grid; grid-template-columns: 1fr 372px; gap: 16px;
+  align-items: start; margin-bottom: 32px;
+  animation: fadeSlideUp .45s .05s var(--ease,cubic-bezier(.16,1,.3,1)) both;
+}
+@media (max-width: 900px) { .pw-tool-grid { grid-template-columns: 1fr; } }
+
+/* Textarea card */
+.pw-textarea-card {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color .25s, box-shadow .25s;
+}
+[data-theme="light"] .pw-textarea-card { background: #fff; border-color: #e2e8f0; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.pw-textarea-card:focus-within {
+  border-color: rgba(99,102,241,.45);
+  box-shadow: 0 0 0 3px rgba(99,102,241,.09), 0 0 40px rgba(99,102,241,.05);
+}
+[data-theme="light"] .pw-textarea-card:focus-within { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+
+.pw-tc-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.06);
+}
+[data-theme="light"] .pw-tc-header { border-bottom-color: #f1f5f9; }
+.pw-tc-title { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); }
+[data-theme="light"] .pw-tc-title { color: #64748b; }
+.pw-tc-title svg { width: 14px; height: 14px; color: #6366f1; }
+.pw-tc-chars { font-size: 12px; color: rgba(255,255,255,.22); font-variant-numeric: tabular-nums; }
+[data-theme="light"] .pw-tc-chars { color: #94a3b8; }
+
+.pw-textarea {
+  width: 100%; min-height: 300px; padding: 18px 20px;
+  font-size: 15px; line-height: 1.7; color: rgba(255,255,255,.85);
+  background: transparent; border: none; outline: none; resize: vertical;
+  font-family: var(--font,system-ui,sans-serif);
+}
+[data-theme="light"] .pw-textarea { color: #0f172a; }
+.pw-textarea::placeholder { color: rgba(255,255,255,.18); font-size: 14px; }
+[data-theme="light"] .pw-textarea::placeholder { color: #94a3b8; }
+@media (max-width: 640px) { .pw-textarea { resize: none; } }
+
+.pw-toolbar {
+  padding: 10px 14px; border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; gap: 6px; flex-wrap: wrap; background: rgba(0,0,0,.18);
+}
+[data-theme="light"] .pw-toolbar { background: #f8fafc; border-top-color: #f1f5f9; }
+
+.pw-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 500;
+  color: rgba(255,255,255,.45); background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09); cursor: pointer; transition: all .15s;
+  font-family: inherit; white-space: nowrap; user-select: none;
+}
+[data-theme="light"] .pw-btn { color: #475569; background: #fff; border-color: #e2e8f0; }
+.pw-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.pw-btn:hover { background: rgba(99,102,241,.14); border-color: rgba(99,102,241,.32); color: #a5b4fc; }
+[data-theme="light"] .pw-btn:hover { background: #eff6ff; border-color: #bfdbfe; color: #3b82f6; }
+.pw-btn:active { transform: translateY(1px); }
+.pw-btn--danger { color: rgba(239,68,68,.7); }
+.pw-btn--danger:hover { background: rgba(239,68,68,.09); border-color: rgba(239,68,68,.25); color: #fca5a5; }
+[data-theme="light"] .pw-btn--danger { color: #ef4444; }
+[data-theme="light"] .pw-btn--danger:hover { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
+@media (max-width: 768px) { .pw-btn { min-height: 44px; } }
+
+/* Stats panel */
+.pw-stats-card {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; overflow: hidden;
+  position: sticky; top: calc(var(--header-h,56px) + 16px);
+}
+[data-theme="light"] .pw-stats-card { background: #fff; border-color: #e2e8f0; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+@media (max-width: 900px) { .pw-stats-card { position: static; } }
+
+.pw-stats-hdr {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pw-stats-hdr-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.7); }
+.pw-stats-live { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; color: rgba(255,255,255,.6); }
+.pw-stats-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+
+/* Primary metric */
+.pw-stat-primary {
+  padding: 26px 20px 18px; text-align: center;
+  background: rgba(59,130,246,.05); border-bottom: 1px solid rgba(255,255,255,.06);
+}
+[data-theme="light"] .pw-stat-primary { background: #eff6ff; border-bottom-color: #e2e8f0; }
+.pw-stat-primary-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(99,102,241,.75); margin-bottom: 6px; }
+[data-theme="light"] .pw-stat-primary-label { color: rgba(99,102,241,.8); }
+.pw-stat-primary-num {
+  font-size: clamp(48px,5vw,62px); font-weight: 800;
+  color: #fff; letter-spacing: -3px; line-height: 1;
+  font-variant-numeric: tabular-nums; transition: color .15s;
+}
+[data-theme="light"] .pw-stat-primary-num { color: #1e3a8a; }
+.pw-stat-primary-sub { font-size: 11px; color: rgba(255,255,255,.22); margin-top: 6px; }
+[data-theme="light"] .pw-stat-primary-sub { color: #94a3b8; }
+
+/* Secondary grid */
+.pw-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: rgba(255,255,255,.06);
+}
+[data-theme="light"] .pw-stats-grid { background: #e2e8f0; }
+.pw-stat-cell {
+  background: rgba(255,255,255,.02); padding: 15px 16px; transition: background .15s;
+}
+[data-theme="light"] .pw-stat-cell { background: #fafafa; }
+.pw-stat-cell:hover { background: rgba(255,255,255,.045); }
+[data-theme="light"] .pw-stat-cell:hover { background: #f1f5f9; }
+.pw-stat-cell-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.28); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+[data-theme="light"] .pw-stat-cell-label { color: #94a3b8; }
+.pw-stat-cell-num { font-size: 28px; font-weight: 800; color: rgba(255,255,255,.85); letter-spacing: -1px; line-height: 1; font-variant-numeric: tabular-nums; }
+[data-theme="light"] .pw-stat-cell-num { color: #0f172a; }
+.pw-stat-cell-sub { font-size: 10px; color: rgba(255,255,255,.18); margin-top: 2px; }
+[data-theme="light"] .pw-stat-cell-sub { color: #94a3b8; }
+
+/* Time row */
+.pw-stats-times { display: flex; border-top: 1px solid rgba(255,255,255,.06); }
+[data-theme="light"] .pw-stats-times { border-top-color: #f1f5f9; }
+.pw-stat-time { flex: 1; padding: 12px 14px; display: flex; align-items: flex-start; gap: 9px; }
+.pw-stat-time + .pw-stat-time { border-left: 1px solid rgba(255,255,255,.05); }
+[data-theme="light"] .pw-stat-time + .pw-stat-time { border-left-color: #f1f5f9; }
+.pw-stat-time-icon {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+}
+[data-theme="light"] .pw-stat-time-icon { background: #f1f5f9; border-color: #e2e8f0; }
+.pw-stat-time-icon svg { width: 13px; height: 13px; color: rgba(255,255,255,.4); }
+[data-theme="light"] .pw-stat-time-icon svg { color: #64748b; }
+.pw-stat-time-val { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.7); font-variant-numeric: tabular-nums; line-height: 1.2; }
+[data-theme="light"] .pw-stat-time-val { color: #1e293b; }
+.pw-stat-time-desc { font-size: 10px; color: rgba(255,255,255,.22); margin-top: 3px; }
+[data-theme="light"] .pw-stat-time-desc { color: #94a3b8; }
+
+/* ── Tip ──────────────────────────────────────────────────── */
+.pw-tip {
+  background: rgba(59,130,246,.06); border: 1px solid rgba(59,130,246,.16);
+  border-left: 3px solid #3b82f6; border-radius: 10px;
+  padding: 12px 16px; display: flex; gap: 11px; align-items: flex-start;
+  margin-bottom: 36px; font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.6;
+}
+[data-theme="light"] .pw-tip { background: #eff6ff; border-color: #bfdbfe; border-left-color: #3b82f6; color: #1e40af; }
+.pw-tip svg { width: 16px; height: 16px; color: #60a5fa; flex-shrink: 0; margin-top: 2px; }
+[data-theme="light"] .pw-tip svg { color: #3b82f6; }
+.pw-tip strong { color: rgba(255,255,255,.8); }
+[data-theme="light"] .pw-tip strong { color: #1e3a8a; }
+.pw-tip a { color: #60a5fa; text-decoration: underline; text-decoration-color: rgba(96,165,250,.3); }
+[data-theme="light"] .pw-tip a { color: #2563eb; }
+
+/* ── Section heading ──────────────────────────────────────── */
+.pw-sh { margin-bottom: 18px; }
+.pw-sh-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: #818cf8; background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.22);
+  border-radius: 20px; padding: 3px 10px; margin-bottom: 10px;
+}
+[data-theme="light"] .pw-sh-tag { color: #4f46e5; background: #eef2ff; border-color: #c7d2fe; }
+.pw-sh-tag svg { width: 10px; height: 10px; }
+.pw-h2 { font-size: clamp(20px,2.5vw,27px); font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: -.6px; margin: 0; }
+[data-theme="light"] .pw-h2 { color: #0f172a; }
+.pw-h2-sub { font-size: 14px; color: rgba(255,255,255,.38); margin-top: 5px; font-weight: 400; }
+[data-theme="light"] .pw-h2-sub { color: #64748b; }
+
+/* ── Bento grid (info overview) ───────────────────────────── */
+.pw-bento {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px; margin-bottom: 40px;
+}
+@media (max-width: 780px) { .pw-bento { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .pw-bento { grid-template-columns: 1fr; } }
+
+.pw-bc {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px; padding: 22px 22px 20px;
+  position: relative; overflow: hidden;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+[data-theme="light"] .pw-bc { background: #fff; border-color: #e8ecf4; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+.pw-bc:hover { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.12); box-shadow: 0 8px 32px rgba(0,0,0,.28); }
+[data-theme="light"] .pw-bc:hover { background: #fff; border-color: #c7d2fe; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+.pw-bc::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--bc-accent, rgba(255,255,255,0)); transition: background .2s;
+}
+.pw-bc:hover::before { background: var(--bc-accent, rgba(99,102,241,.5)); }
+.pw-bc--wide { grid-column: span 2; }
+.pw-bc--blue  { --bc-accent: linear-gradient(90deg,#3b82f6,#6366f1); }
+.pw-bc--green { --bc-accent: linear-gradient(90deg,#10b981,#34d399); }
+.pw-bc--amber { --bc-accent: linear-gradient(90deg,#f59e0b,#fbbf24); }
+.pw-bc--purple{ --bc-accent: linear-gradient(90deg,#8b5cf6,#a855f7); }
+
+.pw-bc-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.pw-bc-icon svg { width: 18px; height: 18px; }
+.pw-bc-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
+.pw-bc-h3 { font-size: 16px; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 8px; letter-spacing: -.3px; }
+[data-theme="light"] .pw-bc-h3 { color: #0f172a; }
+.pw-bc-p { font-size: 13.5px; color: rgba(255,255,255,.42); line-height: 1.65; margin: 0; }
+[data-theme="light"] .pw-bc-p { color: #475569; }
+.pw-bc-p a { color: #60a5fa; }
+[data-theme="light"] .pw-bc-p a { color: #2563eb; }
+
+.pw-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.pw-chip {
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
+  background: rgba(74,222,128,.09); border: 1px solid rgba(74,222,128,.2);
+  border-radius: 20px; font-size: 12px; font-weight: 500; color: #4ade80;
+}
+[data-theme="light"] .pw-chip { background: rgba(22,163,74,.08); border-color: rgba(22,163,74,.22); color: #16a34a; }
+.pw-chip svg { width: 10px; height: 10px; }
+
+/* ── Steps ────────────────────────────────────────────────── */
+.pw-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 40px; }
+@media (max-width: 640px) { .pw-steps { grid-template-columns: 1fr; } }
+.pw-step {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: flex-start;
+  transition: border-color .2s, box-shadow .2s;
+}
+[data-theme="light"] .pw-step { background: #fff; border-color: #e8ecf4; }
+.pw-step:hover { border-color: rgba(99,102,241,.32); box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+[data-theme="light"] .pw-step:hover { border-color: #6366f1; box-shadow: 0 4px 16px rgba(99,102,241,.12); }
+.pw-step-num {
+  min-width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg,#3b82f6,#6366f1);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; flex-shrink: 0;
+}
+.pw-step-body h4 { font-size: 14px; font-weight: 700; color: rgba(255,255,255,.85); margin: 0 0 4px; }
+[data-theme="light"] .pw-step-body h4 { color: #0f172a; }
+.pw-step-body p { font-size: 12.5px; color: rgba(255,255,255,.38); margin: 0; line-height: 1.55; }
+[data-theme="light"] .pw-step-body p { color: #64748b; }
+
+/* ── Char boxes ───────────────────────────────────────────── */
+.pw-chars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+@media (max-width: 500px) { .pw-chars { grid-template-columns: 1fr; } }
+.pw-char-box { border-radius: 14px; padding: 20px 22px; }
+.pw-char-box--a { background: rgba(59,130,246,.07); border: 1px solid rgba(59,130,246,.2); }
+[data-theme="light"] .pw-char-box--a { background: #eff6ff; border-color: #bfdbfe; }
+.pw-char-box--b { background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); }
+[data-theme="light"] .pw-char-box--b { background: #f0fdf4; border-color: #bbf7d0; }
+.pw-char-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.pw-char-box--a .pw-char-tag { color: #60a5fa; }
+[data-theme="light"] .pw-char-box--a .pw-char-tag { color: #2563eb; }
+.pw-char-box--b .pw-char-tag { color: #34d399; }
+[data-theme="light"] .pw-char-box--b .pw-char-tag { color: #16a34a; }
+.pw-char-h4 { font-size: 15px; font-weight: 700; color: rgba(255,255,255,.85); margin: 0 0 8px; }
+[data-theme="light"] .pw-char-h4 { color: #0f172a; }
+.pw-char-p { font-size: 13px; color: rgba(255,255,255,.42); margin: 0; line-height: 1.6; }
+[data-theme="light"] .pw-char-p { color: #475569; }
+.pw-char-ex { display: inline-block; margin-top: 12px; background: rgba(255,255,255,.06); border-radius: 6px; padding: 3px 9px; font-family: monospace; font-size: 12px; color: rgba(255,255,255,.6); }
+[data-theme="light"] .pw-char-ex { background: rgba(0,0,0,.05); color: #334155; }
+
+/* ── Use cases ────────────────────────────────────────────── */
+.pw-uses { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 40px; }
+@media (max-width: 540px) { .pw-uses { grid-template-columns: 1fr; } }
+.pw-use {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start;
+  transition: border-color .2s;
+}
+[data-theme="light"] .pw-use { background: #fff; border-color: #e8ecf4; }
+.pw-use:hover { border-color: rgba(255,255,255,.13); }
+[data-theme="light"] .pw-use:hover { border-color: #c7d2fe; }
+.pw-use-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.pw-use h4 { font-size: 13.5px; font-weight: 700; color: rgba(255,255,255,.8); margin: 0 0 4px; }
+[data-theme="light"] .pw-use h4 { color: #0f172a; }
+.pw-use p { font-size: 12.5px; color: rgba(255,255,255,.38); margin: 0; line-height: 1.55; }
+[data-theme="light"] .pw-use p { color: #475569; }
+.pw-use p a { color: #60a5fa; }
+[data-theme="light"] .pw-use p a { color: #2563eb; }
+
+/* ── Table ────────────────────────────────────────────────── */
+.pw-table-wrap {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px; overflow: hidden; margin-bottom: 40px;
+}
+[data-theme="light"] .pw-table-wrap { background: #fff; border-color: #e2e8f0; }
+.pw-table { width: 100%; border-collapse: collapse; }
+.pw-table thead { background: rgba(255,255,255,.04); }
+[data-theme="light"] .pw-table thead { background: #f8fafc; }
+.pw-table thead th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.28); }
+[data-theme="light"] .pw-table thead th { color: #94a3b8; }
+.pw-table tbody tr { border-top: 1px solid rgba(255,255,255,.05); transition: background .12s; }
+[data-theme="light"] .pw-table tbody tr { border-top-color: #f1f5f9; }
+.pw-table tbody tr:hover { background: rgba(255,255,255,.03); }
+[data-theme="light"] .pw-table tbody tr:hover { background: #f8fafc; }
+.pw-table td { padding: 13px 16px; font-size: 13.5px; color: rgba(255,255,255,.5); }
+[data-theme="light"] .pw-table td { color: #475569; }
+.pw-table td:first-child { font-weight: 600; color: rgba(255,255,255,.8); }
+[data-theme="light"] .pw-table td:first-child { color: #0f172a; }
+.pw-range { display: inline-block; padding: 3px 10px; background: rgba(99,102,241,.12); border: 1px solid rgba(99,102,241,.22); border-radius: 20px; font-size: 12px; font-weight: 600; color: #a5b4fc; white-space: nowrap; }
+[data-theme="light"] .pw-range { background: #eef2ff; border-color: #c7d2fe; color: #4338ca; }
+.pw-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+.pw-badge--blue   { background: rgba(59,130,246,.1);  color: #93c5fd; }
+.pw-badge--green  { background: rgba(16,185,129,.1);  color: #6ee7b7; }
+.pw-badge--amber  { background: rgba(245,158,11,.1);  color: #fcd34d; }
+.pw-badge--red    { background: rgba(239,68,68,.1);   color: #fca5a5; }
+.pw-badge--purple { background: rgba(168,85,247,.1);  color: #d8b4fe; }
+[data-theme="light"] .pw-badge--blue   { background: #eff6ff;  color: #1d4ed8; }
+[data-theme="light"] .pw-badge--green  { background: #f0fdf4;  color: #15803d; }
+[data-theme="light"] .pw-badge--amber  { background: #fffbeb;  color: #b45309; }
+[data-theme="light"] .pw-badge--red    { background: #fef2f2;  color: #be123c; }
+[data-theme="light"] .pw-badge--purple { background: #f5f3ff;  color: #6d28d9; }
+
+/* ── Tip boxes ────────────────────────────────────────────── */
+.pw-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+@media (max-width: 560px) { .pw-tips { grid-template-columns: 1fr; } }
+.pw-tip-box { border-radius: 14px; padding: 20px 22px; }
+.pw-tip-box--cut  { background: rgba(245,158,11,.06); border: 1px solid rgba(245,158,11,.18); }
+.pw-tip-box--grow { background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.18); }
+[data-theme="light"] .pw-tip-box--cut  { background: #fffbeb; border-color: #fde68a; }
+[data-theme="light"] .pw-tip-box--grow { background: #f0fdf4; border-color: #bbf7d0; }
+.pw-tip-box h4 { font-size: 14px; font-weight: 700; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+.pw-tip-box--cut  h4 { color: #fbbf24; }
+.pw-tip-box--grow h4 { color: #34d399; }
+[data-theme="light"] .pw-tip-box--cut  h4 { color: #b45309; }
+[data-theme="light"] .pw-tip-box--grow h4 { color: #15803d; }
+.pw-tip-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.pw-tip-list li { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.55; padding-left: 14px; position: relative; }
+[data-theme="light"] .pw-tip-list li { color: #475569; }
+.pw-tip-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; }
+.pw-tip-box--cut  .pw-tip-list li::before { background: #f59e0b; }
+.pw-tip-box--grow .pw-tip-list li::before { background: #10b981; }
+
+/* ── Combo link banner ────────────────────────────────────── */
+.pw-combo {
+  background: rgba(99,102,241,.06); border: 1px solid rgba(99,102,241,.16);
+  border-radius: 14px; padding: 16px 20px;
+  font-size: 13.5px; color: rgba(255,255,255,.47); line-height: 1.7; margin-bottom: 40px;
+}
+[data-theme="light"] .pw-combo { background: #eef2ff; border-color: #c7d2fe; color: #4338ca; }
+.pw-combo strong { color: rgba(255,255,255,.8); }
+[data-theme="light"] .pw-combo strong { color: #312e81; }
+.pw-combo a { color: #818cf8; text-decoration: underline; text-decoration-color: rgba(129,140,248,.3); }
+[data-theme="light"] .pw-combo a { color: #4f46e5; }
+
+/* ── Why grid ─────────────────────────────────────────────── */
+.pw-why { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 40px; }
+@media (max-width: 600px) { .pw-why { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 380px) { .pw-why { grid-template-columns: 1fr; } }
+.pw-why-item {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px; padding: 16px; text-align: center;
+  transition: border-color .2s, box-shadow .2s;
+}
+[data-theme="light"] .pw-why-item { background: #fff; border-color: #e8ecf4; }
+.pw-why-item:hover { border-color: rgba(99,102,241,.28); box-shadow: 0 4px 20px rgba(0,0,0,.25), 0 0 20px rgba(99,102,241,.06); }
+[data-theme="light"] .pw-why-item:hover { border-color: #6366f1; box-shadow: 0 4px 16px rgba(99,102,241,.1); }
+.pw-why-icon { font-size: 20px; display: block; margin-bottom: 8px; }
+.pw-why-item strong { display: block; font-size: 13px; color: rgba(255,255,255,.8); margin-bottom: 4px; }
+[data-theme="light"] .pw-why-item strong { color: #0f172a; }
+.pw-why-item span { font-size: 11.5px; color: rgba(255,255,255,.33); line-height: 1.5; }
+[data-theme="light"] .pw-why-item span { color: #64748b; }
+
+/* ── Category link ────────────────────────────────────────── */
+.pw-catlink {
+  font-size: 13.5px; color: rgba(255,255,255,.4); line-height: 1.7; margin-bottom: 40px;
+  padding: 16px 20px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.07); border-radius: 12px;
+}
+[data-theme="light"] .pw-catlink { background: #f8fafc; border-color: #e2e8f0; color: #475569; }
+.pw-catlink a { color: #818cf8; font-weight: 600; }
+[data-theme="light"] .pw-catlink a { color: #4f46e5; }
+
+/* ── Divider ──────────────────────────────────────────────── */
+.pw-div { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 2.5rem 0; }
+[data-theme="light"] .pw-div { border-top-color: #f1f5f9; }
+
+/* ── Fix: ht-* dark overrides for elements kept in HTML ───── */
+.pw-stats-card .ht-stat-card { background: transparent !important; border: none !important; }
+.pw-stats-card .ht-stat-num.pop { animation: statPop .35s var(--ease,cubic-bezier(.16,1,.3,1)) both; }
+.pw-stats-card .ht-stat-num.word-bounce { animation: wordBounce .2s var(--ease,cubic-bezier(.16,1,.3,1)) both; }
+.pw-stats-card .ht-stat-card.celebrate { animation: celebFlash .55s var(--ease,cubic-bezier(.16,1,.3,1)) both; }
+</style>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Contador de Palabras Online Gratis",
-  "description": "Contador de palabras online gratis. Cuenta palabras, caracteres, frases y p\u00e1rrafos en tiempo real sin registro ni instalaci\u00f3n.",
+  "description": "Contador de palabras online gratis. Cuenta palabras, caracteres, frases y párrafos en tiempo real sin registro ni instalación.",
   "url": "https://herramientasdetexto.com/contadores-de-texto/contador-de-palabras/",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Web",
-  "featureList": [
-    "Contador de palabras en tiempo real",
-    "Contador de caracteres con y sin espacios",
-    "Contador de frases y p\u00e1rrafos",
-    "Estimaci\u00f3n de tiempo de lectura (225 ppm)",
-    "Estimaci\u00f3n de tiempo de habla (140 ppm)",
-    "Funciona en m\u00f3vil y escritorio",
-    "Sin registro ni instalaci\u00f3n"
-  ],
+  "featureList": ["Contador de palabras en tiempo real","Contador de caracteres con y sin espacios","Contador de frases y párrafos","Estimación de tiempo de lectura (225 ppm)","Estimación de tiempo de habla (140 ppm)","Funciona en móvil y escritorio","Sin registro ni instalación"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "es"
 }
@@ -68,10 +631,10 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "\u00bfC\u00f3mo contar palabras en un texto?", "acceptedAnswer": { "@type": "Answer", "text": "La forma m\u00e1s r\u00e1pida es pegar el texto en este contador y obtener el resultado al instante, sin instalar nada. Tambi\u00e9n puedes usar Microsoft Word (Revisar \u2192 Contar palabras) o Google Docs (Herramientas \u2192 Recuento de palabras)." } },
-    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras debe tener un art\u00edculo SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Entre 1.000 y 2.500 palabras para la mayor\u00eda de temas. Lo clave es responder completamente la intenci\u00f3n de b\u00fasqueda sin a\u00f1adir relleno." } },
-    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras tiene una p\u00e1gina A4?", "acceptedAnswer": { "@type": "Answer", "text": "Con Times New Roman 12pt y m\u00e1rgenes est\u00e1ndar, entre 250 y 300 palabras. Con interlineado doble, unas 125\u2013150 palabras." } },
-    { "@type": "Question", "name": "\u00bfCu\u00e1ntas palabras tiene un TFG?", "acceptedAnswer": { "@type": "Answer", "text": "Un TFG en Espa\u00f1a suele exigir entre 10.000 y 15.000 palabras. Los TFM (M\u00e1ster) requieren entre 20.000 y 40.000." } }
+    { "@type": "Question", "name": "¿Cómo contar palabras en un texto?", "acceptedAnswer": { "@type": "Answer", "text": "Pega el texto en este contador y obtén el resultado al instante, sin instalar nada." } },
+    { "@type": "Question", "name": "¿Cuántas palabras debe tener un artículo SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Entre 1.000 y 2.500 palabras para la mayoría de temas." } },
+    { "@type": "Question", "name": "¿Cuántas palabras tiene una página A4?", "acceptedAnswer": { "@type": "Answer", "text": "Con Times New Roman 12pt y márgenes estándar, entre 250 y 300 palabras." } },
+    { "@type": "Question", "name": "¿Cuántas palabras tiene un TFG?", "acceptedAnswer": { "@type": "Answer", "text": "Un TFG en España suele exigir entre 10.000 y 15.000 palabras." } }
   ]
 }
 </script>
@@ -94,41 +657,83 @@
   </nav>
   <div class="ht-header-right">
     <button class="ht-theme-toggle" id="ht-theme-toggle" aria-label="Cambiar tema">
-      <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
-      <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
+      <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
+      <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
     </button>
     <a href="/" class="ht-home-btn">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
       Todas las herramientas
     </a>
   </div>
 </header>
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+
+    <!-- Left: text -->
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
       </div>
-      <h1 class="ht-h1">Contador de palabras <mark>instantáneo, sin registro ni límites</mark></h1>
-      <p class="ht-hero-desc">Pega tu texto y obtén al instante palabras, caracteres, frases, p&#225;rrafos y tiempo de lectura. Sin registro, sin l&#237;mites, 100&#37; privado.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100&#37; privado</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>6 m&#233;tricas</span>
+      <h1 class="pw-h1">Contador de palabras<br><span class="pw-h1-grad">instantáneo y gratis</span></h1>
+      <p class="pw-desc">Pega tu texto y obtén palabras, caracteres, frases, párrafos y tiempo de lectura al instante. Sin registro, sin límites, 100&nbsp;% privado.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>6 métricas</span>
       </div>
     </div>
+
+    <!-- Right: floating live-stats preview card -->
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live">
+          <span class="pw-preview-live-dot"></span>En vivo
+        </span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-words">0</div>
+        <div class="pw-preview-label">Palabras</div>
+      </div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-chars">0</div>
+          <div class="pw-preview-cell-lbl">Caracteres</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-nosp">0</div>
+          <div class="pw-preview-cell-lbl">Sin espacios</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-sents">0</div>
+          <div class="pw-preview-cell-lbl">Frases</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-paras">0</div>
+          <div class="pw-preview-cell-lbl">Párrafos</div>
+        </div>
+      </div>
+      <div class="pw-preview-times">
+        <div class="pw-preview-time">
+          <div class="pw-preview-time-val" id="pw-tread">—</div>
+          <div class="pw-preview-time-lbl">Lectura</div>
+        </div>
+        <div class="pw-preview-time">
+          <div class="pw-preview-time-val" id="pw-tspeak">—</div>
+          <div class="pw-preview-time-lbl">Habla</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- ── CONTENT WRAP ── -->
-<div class="ht-wrap ht-wrap--after-hero">
+<!-- ── CONTENT ── -->
+<div class="pw-content">
 
   <nav class="ht-bc" aria-label="Ruta de navegaci&#243;n">
     <a href="/">Inicio</a>
@@ -138,473 +743,363 @@
     <span aria-current="page">Contador de palabras</span>
   </nav>
 
-  <div class="ht-ad-banner" aria-hidden="true">
-    <span class="sr-only">Publicidad</span>
-    Publicidad &#183; 728&#215;90
-  </div>
-
   <main id="herramienta">
 
-    <!-- ── TWO-COLUMN TOOL LAYOUT ── -->
-    <div class="ht-tool-layout">
+    <!-- ── TOOL ── -->
+    <div class="pw-tool-grid">
 
-      <!-- LEFT: Textarea Card -->
-      <div class="ht-textarea-card">
-        <div class="ht-textarea-card-header">
-          <div class="ht-textarea-card-title">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg>
+      <!-- Textarea card -->
+      <div class="pw-textarea-card">
+        <div class="pw-tc-header">
+          <div class="pw-tc-title">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg>
             Tu texto
           </div>
-          <span class="ht-char-count" id="hdr-chars" aria-live="polite">0 caracteres</span>
+          <span class="pw-tc-chars" id="hdr-chars" aria-live="polite">0 caracteres</span>
         </div>
         <label class="sr-only" for="ht-txt">Texto a analizar con el contador de palabras</label>
         <textarea
           id="ht-txt"
-          class="ht-textarea"
-          placeholder="Pega o escribe aqu&#237; tu texto para contar palabras al instante&#8230;"
+          class="pw-textarea"
+          placeholder="Pega o escribe aquí tu texto para contar palabras al instante…"
           spellcheck="false"
           autocomplete="off"
           autocorrect="off"
           aria-label="Texto a analizar"
         ></textarea>
-        <div class="ht-toolbar">
-          <div class="ht-toolbar-btns">
-            <button class="ht-btn" onclick="HT.paste('ht-txt')" title="Pegar desde portapapeles">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
-              <span>Pegar</span>
-            </button>
-            <button class="ht-btn" id="btn-copy-text" onclick="copyText(this)" title="Copiar texto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
-              <span>Copiar texto</span>
-            </button>
-            <button class="ht-btn" id="btn-copy-metrics" onclick="copyMetrics(this)" title="Copiar m&#233;tricas">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="8" y2="9"/></svg>
-              <span>Copiar m&#233;tricas</span>
-            </button>
-            <button class="ht-btn ht-btn--danger" onclick="clearText()" title="Limpiar texto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
+        <div class="pw-toolbar">
+          <button class="pw-btn" onclick="HT.paste('ht-txt')" title="Pegar desde portapapeles">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+            <span>Pegar</span>
+          </button>
+          <button class="pw-btn" id="btn-copy-text" onclick="copyText(this)" title="Copiar texto">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+            <span>Copiar texto</span>
+          </button>
+          <button class="pw-btn" id="btn-copy-metrics" onclick="copyMetrics(this)" title="Copiar m&#233;tricas">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="8" y2="9"/></svg>
+            <span>Copiar métricas</span>
+          </button>
+          <button class="pw-btn pw-btn--danger" onclick="clearText()" title="Limpiar texto">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+            <span>Limpiar</span>
+          </button>
         </div>
       </div>
 
-      <!-- RIGHT: Stats Panel -->
-      <aside class="ht-stats-panel" aria-label="Estad&#237;sticas del texto en tiempo real" aria-live="polite">
-        <div class="ht-stats-box">
-          <div class="ht-panel-header">
-            <span class="ht-panel-title">Estad&#237;sticas</span>
-            <span class="ht-panel-live">
-              <span class="ht-panel-live-dot" aria-hidden="true"></span>
-              En vivo
-            </span>
+      <!-- Stats panel -->
+      <aside class="pw-stats-card" aria-label="Estad&#237;sticas del texto en tiempo real" aria-live="polite">
+        <div class="pw-stats-hdr">
+          <span class="pw-stats-hdr-title">Estadísticas</span>
+          <span class="pw-stats-live">
+            <span class="pw-stats-live-dot ht-panel-live-dot"></span>
+            En vivo
+          </span>
+        </div>
+        <!-- Primary -->
+        <div class="pw-stat-primary ht-stat-card ht-stat-card--primary">
+          <div class="pw-stat-primary-label ht-stat-label">Palabras</div>
+          <div class="pw-stat-primary-num ht-stat-num" id="s-palabras">0</div>
+          <div class="pw-stat-primary-sub ht-stat-sublabel">palabras totales</div>
+        </div>
+        <!-- Grid -->
+        <div class="pw-stats-grid">
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Caracteres</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-caracteres">0</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">con espacios</div>
           </div>
-          <div class="ht-panel-body">
-            <div class="ht-stat-cards">
-              <div class="ht-stat-card ht-stat-card--primary">
-                <div class="ht-stat-label">Palabras</div>
-                <div class="ht-stat-num" id="s-palabras">0</div>
-                <div class="ht-stat-sublabel">palabras totales</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">Caracteres</div>
-                <div class="ht-stat-num" id="s-caracteres">0</div>
-                <div class="ht-stat-sublabel">con espacios</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">Sin espacios</div>
-                <div class="ht-stat-num" id="s-sinespacio">0</div>
-                <div class="ht-stat-sublabel">caracteres</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">Frases</div>
-                <div class="ht-stat-num" id="s-frases">0</div>
-                <div class="ht-stat-sublabel">oraciones</div>
-              </div>
-              <div class="ht-stat-card">
-                <div class="ht-stat-label">P&#225;rrafos</div>
-                <div class="ht-stat-num" id="s-parrafos">0</div>
-                <div class="ht-stat-sublabel">bloques</div>
-              </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Sin espacios</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-sinespacio">0</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">caracteres</div>
+          </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Frases</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-frases">0</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">oraciones</div>
+          </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Párrafos</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-parrafos">0</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">bloques</div>
+          </div>
+        </div>
+        <!-- Times -->
+        <div class="pw-stats-times">
+          <div class="pw-stat-time">
+            <div class="pw-stat-time-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10 9"/></svg></div>
+            <div>
+              <div class="pw-stat-time-val" id="t-lectura">&#8212;</div>
+              <div class="pw-stat-time-desc">Lectura (225 ppm)</div>
             </div>
-            <div class="ht-time-stats">
-              <div class="ht-time-item">
-                <div class="ht-time-icon" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10 9"/></svg>
-                </div>
-                <div>
-                  <div class="ht-time-val" id="t-lectura">&#8212;</div>
-                  <div class="ht-time-desc">Lectura (225 ppm)</div>
-                </div>
-              </div>
-              <div class="ht-time-item">
-                <div class="ht-time-icon" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v6M5 5c0 1.657 1.343 3 3 3s3-1.343 3-3"/><path d="M3 10c0 2.761 2.239 5 5 5s5-2.239 5-5"/><line x1="8" y1="15" x2="8" y2="13"/></svg>
-                </div>
-                <div>
-                  <div class="ht-time-val" id="t-habla">&#8212;</div>
-                  <div class="ht-time-desc">Habla (140 ppm)</div>
-                </div>
-              </div>
+          </div>
+          <div class="pw-stat-time">
+            <div class="pw-stat-time-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v6M5 5c0 1.657 1.343 3 3 3s3-1.343 3-3"/><path d="M3 10c0 2.761 2.239 5 5 5s5-2.239 5-5"/><line x1="8" y1="15" x2="8" y2="13"/></svg></div>
+            <div>
+              <div class="pw-stat-time-val" id="t-habla">&#8212;</div>
+              <div class="pw-stat-time-desc">Habla (140 ppm)</div>
             </div>
           </div>
         </div>
       </aside>
 
-    </div><!-- /.ht-tool-layout -->
+    </div><!-- /.pw-tool-grid -->
 
-    <!-- Tip block -->
-    <div class="ht-tip reveal" role="note">
-      <svg class="ht-tip-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+    <!-- Tip -->
+    <div class="pw-tip reveal">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
       <div>
-        <strong>Referencia r&#225;pida:</strong> 1.000 palabras &#61; <strong>&#8776; 4 min 27 s de lectura</strong> y <strong>&#8776; 7 min 8 s hablando</strong> en voz alta.
+        <strong>Referencia r&#225;pida:</strong> 1.000 palabras = <strong>&#8776;&nbsp;4 min 27&nbsp;s de lectura</strong> y <strong>&#8776;&nbsp;7 min 8&nbsp;s hablando</strong> en voz alta.
       </div>
     </div>
 
-    <!-- Info grid 2x2 -->
-    <div class="ht-info-grid-section reveal">
-      <div class="ht-info-grid-header">
-        <div class="ht-info-grid-header-icon" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+    <!-- ── INFO BENTO GRID ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh" style="margin-bottom:20px">
+        <div class="pw-sh-tag">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="2"/><line x1="3" y1="5" x2="9" y2="5"/><line x1="3" y1="7.5" x2="7" y2="7.5"/></svg>
+          Qué es
         </div>
-        <div class="ht-info-grid-header-text">
-          <h2>&#191;Qu&#233; es un contador de palabras online?</h2>
-          <p>Todo lo que necesitas saber sobre esta herramienta</p>
+        <h2 class="pw-h2">¿Qué es un contador de palabras online?</h2>
+        <p class="pw-h2-sub">Todo lo que necesitas saber sobre esta herramienta</p>
+      </div>
+      <div class="pw-bento">
+        <div class="pw-bc pw-bc--wide pw-bc--blue">
+          <div class="pw-bc-icon" style="background:rgba(59,130,246,.12)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+          </div>
+          <div class="pw-bc-tag" style="color:#60a5fa">Qué es</div>
+          <div class="pw-bc-h3">Un analizador de texto completo</div>
+          <p class="pw-bc-p">Un <strong style="color:rgba(255,255,255,.7)">contador de palabras online</strong> analiza tu texto al instante y devuelve métricas precisas: palabras, caracteres, frases y párrafos. Sin instalaciones ni registro. Es el recurso más rápido para saber cuántas palabras tiene un artículo, cuántos caracteres permite una red social o cuánto tiempo tardará alguien en leer tu contenido.</p>
+        </div>
+        <div class="pw-bc pw-bc--purple">
+          <div class="pw-bc-icon" style="background:rgba(168,85,247,.12)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg>
+          </div>
+          <div class="pw-bc-tag" style="color:#c084fc">Para quién</div>
+          <div class="pw-bc-h3">Redactores, estudiantes, SEOs</div>
+          <p class="pw-bc-p">Bloggers optimizando artículos, universitarios con límites de extensión, marketers ajustando mensajes o traductores presupuestando proyectos.</p>
+        </div>
+        <div class="pw-bc pw-bc--green">
+          <div class="pw-bc-icon" style="background:rgba(16,185,129,.12)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><polyline points="1 8 6 13 15 3"/></svg>
+          </div>
+          <div class="pw-bc-tag" style="color:#34d399">Cómo usarla</div>
+          <div class="pw-bc-h3">Pega y obtén resultado</div>
+          <p class="pw-bc-p">Pega tu texto en el recuadro. Las cifras se actualizan <strong style="color:rgba(255,255,255,.65)">automáticamente en tiempo real</strong>, sin ningún botón de "calcular".</p>
+        </div>
+        <div class="pw-bc pw-bc--amber pw-bc--wide">
+          <div class="pw-bc-icon" style="background:rgba(245,158,11,.12)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg>
+          </div>
+          <div class="pw-bc-tag" style="color:#fbbf24">Ventajas</div>
+          <div class="pw-bc-h3">Gratis, privado y sin límites</div>
+          <div class="pw-chips">
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Gratis</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>100&nbsp;% privado</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Móvil y escritorio</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Sin límite de texto</span>
+          </div>
         </div>
       </div>
-      <div class="ht-info-grid">
-        <div class="ht-info-cell">
-          <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#EFF6FF"><svg viewBox="0 0 16 16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
-            <h3 style="color:#2563EB">Qu&#233; es</h3>
-          </div>
-          <p>Un <strong>contador de palabras online</strong> analiza tu texto al instante y devuelve m&#233;tricas precisas: palabras, caracteres, frases y p&#225;rrafos. Sin instalaciones ni registro.</p>
+    </div>
+
+    <!-- ── STEPS ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
+          Paso a paso
         </div>
-        <div class="ht-info-cell">
-          <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#F5F3FF"><svg viewBox="0 0 16 16" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10.5 9"/></svg></div>
-            <h3 style="color:#7C3AED">Para qu&#233; sirve</h3>
+        <h2 class="pw-h2">Cómo contar palabras en un texto</h2>
+      </div>
+      <div class="pw-steps">
+        <div class="pw-step">
+          <div class="pw-step-num">1</div>
+          <div class="pw-step-body">
+            <h4>Pega o escribe</h4>
+            <p>Copia tu texto desde cualquier fuente y pégalo en el cuadro de arriba. También puedes escribir directamente.</p>
           </div>
-          <p>Ideal para <strong>SEO y marketing</strong>, ajustar textos a los l&#237;mites de <strong>redes sociales</strong>, cumplir requisitos de <strong>trabajos acad&#233;micos</strong> y calcular presupuestos de <strong>traducci&#243;n</strong>.</p>
         </div>
-        <div class="ht-info-cell">
-          <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#ECFDF5"><svg viewBox="0 0 16 16" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 8 6 13 15 3"/></svg></div>
-            <h3 style="color:#16A34A">C&#243;mo usarla</h3>
+        <div class="pw-step">
+          <div class="pw-step-num">2</div>
+          <div class="pw-step-body">
+            <h4>Resultado instantáneo</h4>
+            <p>Las métricas se actualizan en tiempo real, letra a letra. Sin botones de "calcular" ni tiempos de espera.</p>
           </div>
-          <p>Pega tu texto en el recuadro. Las cifras se actualizan <strong>autom&#225;ticamente en tiempo real</strong>, sin hacer clic en ning&#250;n bot&#243;n.</p>
         </div>
-        <div class="ht-info-cell">
-          <div class="ht-info-cell-header">
-            <div class="ht-info-dot" style="background:#FFFBEB"><svg viewBox="0 0 16 16" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="8 2 10 6 14 6.5 11 9.5 11.8 14 8 12 4.2 14 5 9.5 2 6.5 6 6"/></svg></div>
-            <h3 style="color:#D97706">Ventajas</h3>
-          </div>
-          <div class="ht-chips">
-            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Gratis</span>
-            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
-            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Privado</span>
-            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>M&#243;vil</span>
-            <span class="ht-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin l&#237;mite</span>
+        <div class="pw-step">
+          <div class="pw-step-num">3</div>
+          <div class="pw-step-body">
+            <h4>Exporta los datos</h4>
+            <p>Usa "Copiar métricas" para llevarte todas las cifras al portapapeles con un solo clic.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Ad mid -->
-    <div class="ht-ad-mid reveal" aria-hidden="true">Publicidad &#183; 336&#215;280</div>
-
-    <!-- Long SEO content -->
-    <div class="ht-long reveal">
-
-<style>
-.htl-intro { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2rem 0; }
-@media(max-width:640px){ .htl-intro { grid-template-columns:1fr; } }
-.htl-card { border:1.5px solid #E2E8F0; border-radius:14px; padding:1.5rem 1.75rem; background:#fff; transition:box-shadow .18s, transform .18s; }
-.htl-card:hover { box-shadow:0 6px 24px rgba(37,99,235,.09); transform:translateY(-2px); }
-.htl-card-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:.9rem; }
-.htl-card h3 { font-size:.95rem; font-weight:700; margin:0 0 .45rem; color:#0F172A; }
-.htl-card p  { font-size:.88rem; color:#475569; margin:0; line-height:1.6; }
-.htl-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.75rem 0; }
-@media(max-width:640px){ .htl-steps { grid-template-columns:1fr; } }
-.htl-step { display:flex; gap:1rem; align-items:flex-start; padding:1.25rem 1.4rem; border-radius:14px; border:1.5px solid #E2E8F0; background:#FAFBFF; }
-.htl-step-num { min-width:32px; height:32px; border-radius:50%; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800; flex-shrink:0; }
-.htl-step-body h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .3rem; }
-.htl-step-body p  { font-size:.83rem; color:#64748B; margin:0; line-height:1.55; }
-.htl-chars { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
-@media(max-width:500px){ .htl-chars { grid-template-columns:1fr; } }
-.htl-char-box { border-radius:14px; padding:1.4rem 1.6rem; border:1.5px solid transparent; }
-.htl-char-box--a { background:#EFF6FF; border-color:#BFDBFE; }
-.htl-char-box--b { background:#F0FDF4; border-color:#BBF7D0; }
-.htl-char-box .htl-char-label { font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.5rem; }
-.htl-char-box--a .htl-char-label { color:#2563EB; }
-.htl-char-box--b .htl-char-label { color:#16A34A; }
-.htl-char-box h4 { font-size:.95rem; font-weight:700; color:#0F172A; margin:0 0 .4rem; }
-.htl-char-box p  { font-size:.83rem; color:#475569; margin:0; line-height:1.55; }
-.htl-char-example { display:inline-block; margin-top:.65rem; background:rgba(0,0,0,.05); border-radius:6px; padding:.25rem .6rem; font-family:monospace; font-size:.8rem; color:#334155; }
-.htl-uses { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:540px){ .htl-uses { grid-template-columns:1fr; } }
-.htl-use { display:flex; gap:.85rem; align-items:flex-start; padding:1.1rem 1.2rem; border-radius:12px; background:#FAFBFF; border:1.5px solid #E2E8F0; }
-.htl-use-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
-.htl-use h4 { font-size:.88rem; font-weight:700; color:#0F172A; margin:0 0 .2rem; }
-.htl-use p  { font-size:.82rem; color:#64748B; margin:0; line-height:1.5; }
-.htl-table-wrap { margin:1.75rem 0; border-radius:14px; overflow:hidden; border:1.5px solid #E2E8F0; }
-.htl-table { width:100%; border-collapse:collapse; background:#fff; }
-.htl-table thead { background:#1E293B; }
-.htl-table thead th { padding:.85rem 1.1rem; text-align:left; font-size:.78rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#94A3B8; }
-.htl-table tbody tr { border-top:1px solid #F1F5F9; transition:background .12s; }
-.htl-table tbody tr:hover { background:#F8FAFF; }
-.htl-table td { padding:.85rem 1.1rem; font-size:.88rem; color:#334155; vertical-align:middle; }
-.htl-table td:first-child { font-weight:600; color:#0F172A; }
-.htl-range { display:inline-block; background:#EFF6FF; color:#1D4ED8; border-radius:20px; padding:.2rem .7rem; font-size:.82rem; font-weight:700; white-space:nowrap; }
-.htl-badge { display:inline-block; padding:.18rem .55rem; border-radius:6px; font-size:.75rem; font-weight:600; }
-.htl-badge--blue   { background:#EFF6FF; color:#1D4ED8; }
-.htl-badge--green  { background:#F0FDF4; color:#15803D; }
-.htl-badge--amber  { background:#FFFBEB; color:#B45309; }
-.htl-badge--red    { background:#FFF1F2; color:#BE123C; }
-.htl-badge--purple { background:#F5F3FF; color:#6D28D9; }
-.htl-tips { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
-@media(max-width:560px){ .htl-tips { grid-template-columns:1fr; } }
-.htl-tip-box { border-radius:14px; padding:1.35rem 1.5rem; }
-.htl-tip-box--cut  { background:#FFF7ED; border:1.5px solid #FED7AA; }
-.htl-tip-box--grow { background:#F0FDF4; border:1.5px solid #BBF7D0; }
-.htl-tip-box h4 { font-size:.88rem; font-weight:700; margin:0 0 .75rem; display:flex; align-items:center; gap:.45rem; }
-.htl-tip-box--cut  h4 { color:#C2410C; }
-.htl-tip-box--grow h4 { color:#15803D; }
-.htl-tip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
-.htl-tip-list li { font-size:.83rem; color:#475569; line-height:1.55; padding-left:1.1rem; position:relative; }
-.htl-tip-list li::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; }
-.htl-tip-box--cut  .htl-tip-list li::before { background:#FB923C; }
-.htl-tip-box--grow .htl-tip-list li::before { background:#4ADE80; }
-.htl-why { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin:1.5rem 0; }
-@media(max-width:600px){ .htl-why { grid-template-columns:1fr 1fr; } }
-@media(max-width:380px){ .htl-why { grid-template-columns:1fr; } }
-.htl-why-item { border-radius:12px; padding:1.1rem 1.2rem; background:#FAFBFF; border:1.5px solid #E2E8F0; text-align:center; }
-.htl-why-item .htl-why-icon { font-size:1.5rem; display:block; margin-bottom:.5rem; }
-.htl-why-item strong { display:block; font-size:.85rem; color:#0F172A; margin-bottom:.2rem; }
-.htl-why-item span   { font-size:.78rem; color:#64748B; line-height:1.5; }
-.htl-section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#2563EB; background:#EFF6FF; border-radius:20px; padding:.3rem .8rem; margin-bottom:.75rem; }
-.htl-section-label svg { width:12px; height:12px; }
-.htl-divider { border:none; border-top:1.5px solid #F1F5F9; margin:2.25rem 0; }
-</style>
-
-<h2>Contador de palabras online: todo lo que necesitas en un vistazo</h2>
-<p style="color:#475569;font-size:.95rem;line-height:1.7;max-width:680px">
-  Pega tu texto y obt&#233;n al instante <strong>palabras, caracteres, frases, p&#225;rrafos y tiempo de lectura</strong>. Sin instalar nada. Sin registrarte. 100&#37; privado. Si necesitas m&#225;s detalle, el <a href="/contadores-de-texto/contador-de-caracteres">contador de caracteres</a> te muestra los l&#237;mites de plataforma en tiempo real, y el <a href="/contadores-de-texto/contador-de-silabas">contador de s&#237;labas</a> analiza la complejidad ling&#252;&#237;stica de tu texto.
-</p>
-
-<div class="htl-intro">
-  <div class="htl-card">
-    <div class="htl-card-icon" style="background:#EFF6FF">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="3"/><line x1="6" y1="7" x2="14" y2="7"/><line x1="6" y1="10" x2="14" y2="10"/><line x1="6" y1="13" x2="10" y2="13"/></svg>
+    <!-- ── CHARS ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">Caracteres</div>
+        <h2 class="pw-h2">Contador de caracteres: con y sin espacios</h2>
+      </div>
+      <div class="pw-chars">
+        <div class="pw-char-box pw-char-box--a">
+          <div class="pw-char-tag">Con espacios</div>
+          <div class="pw-char-h4">Cada símbolo cuenta</div>
+          <p class="pw-char-p">Letras, números, puntuación <strong style="color:rgba(255,255,255,.65)">y espacios en blanco</strong>. Es el recuento que usan Twitter&#47;X, LinkedIn y Meta Ads para sus límites de caracteres.</p>
+          <span class="pw-char-ex">"Hola mundo" → 10</span>
+        </div>
+        <div class="pw-char-box pw-char-box--b">
+          <div class="pw-char-tag">Sin espacios</div>
+          <div class="pw-char-h4">Solo símbolos visibles</div>
+          <p class="pw-char-p">Ignora los espacios en blanco. Lo solicitan convocatorias académicas, bases de datos bibliográficas y algunas tarifas de traducción.</p>
+          <span class="pw-char-ex">"Hola mundo" → 9</span>
+        </div>
+      </div>
     </div>
-    <h3>&#191;Qu&#233; es un contador de palabras?</h3>
-    <p>Una herramienta que analiza tu texto al instante y calcula cu&#225;ntas palabras, caracteres, frases y p&#225;rrafos contiene. Esencial para redactores, estudiantes y especialistas en SEO.</p>
-  </div>
-  <div class="htl-card">
-    <div class="htl-card-icon" style="background:#F0FDF4">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><polyline points="10 7 10 10 12 11"/></svg>
+
+    <!-- ── USE CASES ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">Casos de uso</div>
+        <h2 class="pw-h2">¿Para qué sirve saber cuántas palabras tiene tu texto?</h2>
+      </div>
+      <div class="pw-uses">
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#3b82f6"></div>
+          <div><h4>SEO y contenido</h4><p>Los artículos que responden en profundidad una intención de búsqueda se posicionan mejor. Monitoriza la extensión y usa el <a href="/seo-tools-de-texto/generador-de-meta-tags">generador de meta tags</a> para optimizar títulos.</p></div>
+        </div>
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#8b5cf6"></div>
+          <div><h4>Trabajos académicos</h4><p>TFGs, TFMs y ensayos tienen límites estrictos. Analiza también la complejidad con el <a href="/contadores-de-texto/contador-de-frases">contador de frases</a>.</p></div>
+        </div>
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#0891b2"></div>
+          <div><h4>Redes sociales</h4><p>Cada plataforma tiene sus propias reglas. Usa el <a href="/redes-sociales/contador-twitter">contador de Twitter/X</a> o el <a href="/redes-sociales/contador-instagram">contador de Instagram</a>.</p></div>
+        </div>
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#f59e0b"></div>
+          <div><h4>Presentaciones y discursos</h4><p>El tiempo de habla estimado (140 ppm) te dice cuántos minutos durará tu guión. Genera texto de prueba con el <a href="/generadores-de-texto/lorem-ipsum">generador de Lorem Ipsum</a>.</p></div>
+        </div>
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#10b981"></div>
+          <div><h4>Traducción</h4><p>Los traductores profesionales tarifan por palabras o caracteres sin espacios. Limpia el texto primero con el <a href="/limpiadores-de-texto/eliminar-espacios">eliminador de espacios</a>.</p></div>
+        </div>
+        <div class="pw-use">
+          <div class="pw-use-dot" style="background:#e11d48"></div>
+          <div><h4>Email marketing</h4><p>Los correos más efectivos son cortos. Convierte el asunto a mayúsculas con el <a href="/convertidores-de-texto/convertir-a-mayusculas">conversor de mayúsculas</a> para mayor impacto.</p></div>
+        </div>
+      </div>
     </div>
-    <h3>&#191;Para qui&#233;n es &#250;til?</h3>
-    <p>Para cualquier persona que trabaje con texto: bloggers optimizando art&#237;culos SEO, universitarios con l&#237;mites de extensi&#243;n, marketers ajustando mensajes o traductores presupuestando proyectos.</p>
-  </div>
-</div>
 
-<hr class="htl-divider">
-
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-  Paso a paso
-</div>
-<h2>C&#243;mo contar palabras en un texto</h2>
-
-<div class="htl-steps">
-  <div class="htl-step">
-    <div class="htl-step-num">1</div>
-    <div class="htl-step-body">
-      <h4>Pega o escribe</h4>
-      <p>Copia tu texto desde cualquier fuente y p&#233;galo en el cuadro de arriba. Tambi&#233;n puedes escribir directamente.</p>
+    <!-- ── REFERENCE TABLE ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">Referencia rápida</div>
+        <h2 class="pw-h2">¿Cuántas palabras debería tener tu texto?</h2>
+      </div>
+      <div class="pw-table-wrap">
+        <table class="pw-table">
+          <thead>
+            <tr><th>Formato</th><th>Extensión recomendada</th><th>Objetivo</th><th>Nivel</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tweet / X</td>
+              <td><span class="pw-range">15 – 50 palabras</span></td>
+              <td>Impacto máximo, mínimo texto</td>
+              <td><span class="pw-badge pw-badge--blue">Corto</span></td>
+            </tr>
+            <tr>
+              <td>Email profesional</td>
+              <td><span class="pw-range">50 – 200 palabras</span></td>
+              <td>Claro, directo y accionable</td>
+              <td><span class="pw-badge pw-badge--green">Breve</span></td>
+            </tr>
+            <tr>
+              <td>Artículo SEO</td>
+              <td><span class="pw-range">1.000 – 2.500 palabras</span></td>
+              <td>Cubrir la intención de búsqueda</td>
+              <td><span class="pw-badge pw-badge--amber">Medio</span></td>
+            </tr>
+            <tr>
+              <td>TFG / TFM</td>
+              <td><span class="pw-range">10.000 – 40.000 palabras</span></td>
+              <td>Investigación académica formal</td>
+              <td><span class="pw-badge pw-badge--red">Largo</span></td>
+            </tr>
+            <tr>
+              <td>Novela</td>
+              <td><span class="pw-range">50.000 – 100.000+ palabras</span></td>
+              <td>Narrativa larga de ficción</td>
+              <td><span class="pw-badge pw-badge--purple">Extenso</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="htl-step">
-    <div class="htl-step-num">2</div>
-    <div class="htl-step-body">
-      <h4>Resultado instant&#225;neo</h4>
-      <p>Las m&#233;tricas se actualizan en tiempo real, letra a letra. Sin botones de &#8220;calcular&#8221; ni tiempos de espera.</p>
+
+    <!-- ── TIPS ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">Consejos</div>
+        <h2 class="pw-h2">Escribe mejor dentro de un límite de palabras</h2>
+      </div>
+      <div class="pw-tips">
+        <div class="pw-tip-box pw-tip-box--cut">
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+            Necesitas reducir palabras
+          </h4>
+          <ul class="pw-tip-list">
+            <li>Elimina adverbios innecesarios: "muy importante" → "importante"</li>
+            <li>Convierte frases pasivas en activas y gana claridad y brevedad</li>
+            <li>Fusiona dos frases que digan lo mismo en una sola</li>
+            <li>Revisa la intro: los primeros párrafos suelen ser los más inflados</li>
+          </ul>
+        </div>
+        <div class="pw-tip-box pw-tip-box--grow">
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+            Necesitas ampliar el texto
+          </h4>
+          <ul class="pw-tip-list">
+            <li>Añade un ejemplo concreto después de cada afirmación clave</li>
+            <li>Desarrolla los puntos de las listas con una frase de contexto</li>
+            <li>Incluye datos y estadísticas que respalden tus argumentos</li>
+            <li>Incorpora una sección de preguntas frecuentes al final</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="htl-step">
-    <div class="htl-step-num">3</div>
-    <div class="htl-step-body">
-      <h4>Exporta los datos</h4>
-      <p>Usa &#8220;Copiar m&#233;tricas&#8221; para llevarte todas las cifras al portapapeles con un solo clic.</p>
+
+    <!-- ── COMBO BANNER ── -->
+    <div class="pw-combo reveal">
+      <strong>Combina con otras herramientas:</strong> limpia el texto con el <a href="/limpiadores-de-texto/eliminar-espacios">eliminador de espacios</a> antes de contar → convierte con el <a href="/convertidores-de-texto/convertir-a-minusculas">conversor de minúsculas</a> → analiza la dificultad con el <a href="/contadores-de-texto/contador-de-silabas">contador de sílabas</a> → crea los meta tags con el <a href="/seo-tools-de-texto/generador-de-meta-tags">generador de meta tags</a>.
     </div>
-  </div>
-</div>
 
-<hr class="htl-divider">
+    <!-- ── WHY ── -->
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh">
+        <div class="pw-sh-tag">Por qué elegirnos</div>
+        <h2 class="pw-h2">¿Por qué usar este contador de palabras gratis?</h2>
+      </div>
+      <div class="pw-why">
+        <div class="pw-why-item"><span class="pw-why-icon">⚡</span><strong>Tiempo real</strong><span>Sin botón de calcular. Se actualiza letra a letra.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">🔒</span><strong>100&nbsp;% privado</strong><span>Tu texto nunca sale del navegador. Cero servidores.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">📊</span><strong>6 métricas</strong><span>Palabras, chars, sin espacios, frases, párrafos y tiempos.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">📱</span><strong>Cualquier dispositivo</strong><span>Funciona igual en móvil, tablet y escritorio.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">✂️</span><strong>Sin registro</strong><span>Ni email, ni contraseña, ni formularios.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">∞</span><strong>Sin límites</strong><span>Pega textos de cualquier extensión, siempre gratis.</span></div>
+      </div>
+    </div>
 
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="2"/><line x1="3" y1="5" x2="9" y2="5"/><line x1="3" y1="7.5" x2="7" y2="7.5"/></svg>
-  Caracteres
-</div>
-<h2>Contador de caracteres: con y sin espacios</h2>
-
-<div class="htl-chars">
-  <div class="htl-char-box htl-char-box--a">
-    <div class="htl-char-label">Con espacios</div>
-    <h4>Cada s&#237;mbolo cuenta</h4>
-    <p>Letras, n&#250;meros, puntuaci&#243;n <strong>y espacios en blanco</strong>. Es el recuento que usan Twitter&#47;X, LinkedIn y Meta Ads para sus l&#237;mites de caracteres.</p>
-    <span class="htl-char-example">&#8220;Hola mundo&#8221; &#8594; 10</span>
-  </div>
-  <div class="htl-char-box htl-char-box--b">
-    <div class="htl-char-label">Sin espacios</div>
-    <h4>Solo s&#237;mbolos visibles</h4>
-    <p>Ignora los espacios en blanco. Lo solicitan convocatorias acad&#233;micas, bases de datos bibliogr&#225;ficas y algunas tarifas de traducci&#243;n.</p>
-    <span class="htl-char-example">&#8220;Hola mundo&#8221; &#8594; 9</span>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="7"/><circle cx="6" cy="8.5" r=".4" fill="currentColor"/></svg>
-  Casos de uso
-</div>
-<h2>&#191;Para qu&#233; sirve saber cu&#225;ntas palabras tiene tu texto?</h2>
-
-<div class="htl-uses">
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#2563EB"></div>
-    <div><h4>SEO y contenido</h4><p>Los art&#237;culos que responden en profundidad una intenci&#243;n de b&#250;squeda se posicionan mejor. Monitoriza la extensi&#243;n mientras redactas y usa el <a href="/seo-tools-de-texto/generador-de-meta-tags">generador de meta tags</a> para optimizar t&#237;tulos y descripciones de la p&#225;gina.</p></div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#7C3AED"></div>
-    <div><h4>Trabajos acad&#233;micos</h4><p>TFGs, TFMs y ensayos tienen l&#237;mites estrictos. Quedarte corto o pasarte afecta a la nota. Analiza tambi&#233;n la complejidad con el <a href="/contadores-de-texto/contador-de-frases">contador de frases</a>.</p></div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#0891B2"></div>
-    <div><h4>Redes sociales</h4><p>Cada plataforma tiene sus propias reglas de longitud. Usa el <a href="/redes-sociales/contador-twitter">contador de caracteres de Twitter/X</a> o el <a href="/redes-sociales/contador-instagram">contador de Instagram</a> para ajustar tu mensaje exactamente.</p></div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#D97706"></div>
-    <div><h4>Presentaciones y discursos</h4><p>El tiempo de habla estimado (140 ppm) te dice exactamente cu&#225;ntos minutos durar&#225; tu gui&#243;n. Genera texto de relleno de prueba con el <a href="/generadores-de-texto/lorem-ipsum">generador de Lorem Ipsum</a>.</p></div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#16A34A"></div>
-    <div><h4>Traducci&#243;n</h4><p>Los traductores profesionales tarifan por palabras o caracteres sin espacios. Conoce la cifra antes de pedir presupuesto. Limpia el texto primero con el <a href="/limpiadores-de-texto/eliminar-espacios">eliminador de espacios</a>.</p></div>
-  </div>
-  <div class="htl-use">
-    <div class="htl-use-dot" style="background:#E11D48"></div>
-    <div><h4>Email marketing</h4><p>Los correos m&#225;s efectivos son cortos y directos. Controla la extensi&#243;n y convierte el asunto a may&#250;sculas con el <a href="/convertidores-de-texto/convertir-a-mayusculas">conversor de may&#250;sculas</a> para mayor impacto visual.</p></div>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="1" y="1" width="10" height="10" rx="1.5"/><line x1="1" y1="5" x2="11" y2="5"/><line x1="5" y1="5" x2="5" y2="11"/></svg>
-  Referencia r&#225;pida
-</div>
-<h2>&#191;Cu&#225;ntas palabras deber&#237;a tener tu texto?</h2>
-
-<div class="htl-table-wrap">
-  <table class="htl-table">
-    <thead>
-      <tr><th>Formato</th><th>Extensi&#243;n recomendada</th><th>Objetivo</th><th>Nivel</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 10V4a1 1 0 011-1h8a1 1 0 011 1v6"/><rect x="4" y="7" width="6" height="5" rx="1"/></svg>Tweet &#47; X</td>
-        <td><span class="htl-range">15 &#8211; 50 palabras</span></td>
-        <td style="color:#64748B;font-size:.83rem">Impacto m&#225;ximo, m&#237;nimo texto</td>
-        <td><span class="htl-badge htl-badge--blue">Corto</span></td>
-      </tr>
-      <tr>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="1" y="3" width="12" height="9" rx="1.5"/><polyline points="1 5 7 8 13 5"/></svg>Email profesional</td>
-        <td><span class="htl-range">50 &#8211; 200 palabras</span></td>
-        <td style="color:#64748B;font-size:.83rem">Claro, directo y accionable</td>
-        <td><span class="htl-badge htl-badge--green">Breve</span></td>
-      </tr>
-      <tr>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M2 12V3a1 1 0 011-1h6l3 3v7a1 1 0 01-1 1H3a1 1 0 01-1-1z"/><polyline points="8 2 8 5 11 5"/></svg>Art&#237;culo SEO</td>
-        <td><span class="htl-range">1.000 &#8211; 2.500 palabras</span></td>
-        <td style="color:#64748B;font-size:.83rem">Cubrir la intenci&#243;n de b&#250;squeda</td>
-        <td><span class="htl-badge htl-badge--amber">Medio</span></td>
-      </tr>
-      <tr>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><rect x="2" y="1" width="10" height="12" rx="1.5"/><line x1="5" y1="5" x2="9" y2="5"/><line x1="5" y1="7.5" x2="9" y2="7.5"/><line x1="5" y1="10" x2="7" y2="10"/></svg>TFG &#47; TFM</td>
-        <td><span class="htl-range">10.000 &#8211; 40.000 palabras</span></td>
-        <td style="color:#64748B;font-size:.83rem">Investigaci&#243;n acad&#233;mica formal</td>
-        <td><span class="htl-badge htl-badge--red">Largo</span></td>
-      </tr>
-      <tr>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-2px;margin-right:6px"><path d="M3 2h8a1 1 0 011 1v9a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z"/><line x1="4" y1="5" x2="10" y2="5"/><line x1="4" y1="7" x2="10" y2="7"/><line x1="4" y1="9" x2="7" y2="9"/></svg>Novela</td>
-        <td><span class="htl-range">50.000 &#8211; 100.000&#43; palabras</span></td>
-        <td style="color:#64748B;font-size:.83rem">Narrativa larga de ficci&#243;n</td>
-        <td><span class="htl-badge htl-badge--purple">Extenso</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<hr class="htl-divider">
-
-<div class="htl-section-label">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
-  Consejos
-</div>
-<h2>Escribe mejor dentro de un l&#237;mite de palabras</h2>
-
-<div class="htl-tips">
-  <div class="htl-tip-box htl-tip-box--cut">
-    <h4>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
-      Necesitas reducir palabras
-    </h4>
-    <ul class="htl-tip-list">
-      <li>Elimina adverbios innecesarios: &#8220;muy importante&#8221; &#8594; &#8220;importante&#8221;</li>
-      <li>Convierte frases pasivas en activas y gana claridad y brevedad</li>
-      <li>Fusiona dos frases que digan lo mismo en una sola</li>
-      <li>Revisa la intro: los primeros p&#225;rrafos suelen ser los m&#225;s inflados</li>
-    </ul>
-  </div>
-  <div class="htl-tip-box htl-tip-box--grow">
-    <h4>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
-      Necesitas ampliar el texto
-    </h4>
-    <ul class="htl-tip-list">
-      <li>A&#241;ade un ejemplo concreto despu&#233;s de cada afirmaci&#243;n clave</li>
-      <li>Desarrolla los puntos de las listas con una frase de contexto</li>
-      <li>Incluye datos y estad&#237;sticas que respalden tus argumentos</li>
-      <li>Incorpora una secci&#243;n de preguntas frecuentes al final</li>
-    </ul>
-  </div>
-</div>
-
-<hr class="htl-divider">
-
-<p style="color:#475569;font-size:.88rem;line-height:1.7;margin:1.5rem 0 0;padding:1rem 1.25rem;background:#EFF6FF;border:1.5px solid #DBEAFE;border-radius:12px">
-  <strong>Combina con otras herramientas:</strong> limpia el texto con el <a href="/limpiadores-de-texto/eliminar-espacios">eliminador de espacios</a> antes de contar → convierte con el <a href="/convertidores-de-texto/convertir-a-minusculas">conversor de min&#250;sculas</a> → analiza la dificultad con el <a href="/contadores-de-texto/contador-de-silabas">contador de s&#237;labas</a> → crea los meta tags con el <a href="/seo-tools-de-texto/generador-de-meta-tags">generador de meta tags</a>.
-</p>
-
-<div class="htl-section-label" style="margin-top:2rem">
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-  Por qu&#233; elegirnos
-</div>
-<h2>&#191;Por qu&#233; usar este contador de palabras gratis?</h2>
-
-<div class="htl-why">
-  <div class="htl-why-item"><span class="htl-why-icon">&#9889;</span><strong>Tiempo real</strong><span>Sin bot&#243;n de calcular. Se actualiza letra a letra.</span></div>
-  <div class="htl-why-item"><span class="htl-why-icon">&#128274;</span><strong>100&#37; privado</strong><span>Tu texto nunca sale del navegador. Cero servidores.</span></div>
-  <div class="htl-why-item"><span class="htl-why-icon">&#128202;</span><strong>6 m&#233;tricas</strong><span>Palabras, chars, sin espacios, frases, p&#225;rrafos y tiempos.</span></div>
-  <div class="htl-why-item"><span class="htl-why-icon">&#128241;</span><strong>Cualquier dispositivo</strong><span>Funciona igual en m&#243;vil, tablet y escritorio.</span></div>
-  <div class="htl-why-item"><span class="htl-why-icon">&#9986;&#65039;</span><strong>Sin registro</strong><span>Ni email, ni contrase&#241;a, ni formularios.</span></div>
-  <div class="htl-why-item"><span class="htl-why-icon">&#8734;</span><strong>Sin l&#237;mites</strong><span>Pega textos de cualquier extensi&#243;n, siempre gratis.</span></div>
-</div>
-
-    
-<p class="htl-category-link">Explora el resto de <a href="/contadores-de-texto"><strong>herramientas de contadores de texto</strong></a> para medir frases, sílabas y más métricas de lectura. Si además necesitas mejorar el posicionamiento de tus contenidos, visita nuestra sección de <a href="/seo-tools-de-texto"><strong>herramientas SEO de texto</strong></a>.</p>    </div><!-- /.ht-long -->
+    <!-- Category link -->
+    <p class="pw-catlink reveal">Explora el resto de <a href="/contadores-de-texto"><strong>herramientas de contadores de texto</strong></a> para medir frases, sílabas y más métricas de lectura. Si además necesitas mejorar el posicionamiento de tus contenidos, visita nuestra sección de <a href="/seo-tools-de-texto"><strong>herramientas SEO de texto</strong></a>.</p>
 
     <!-- Related tools -->
     <section class="ht-related reveal" aria-labelledby="related-title">
@@ -649,7 +1144,7 @@
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">
             &#191;C&#243;mo contar palabras en un texto?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-1" role="region">
             La forma m&#225;s r&#225;pida es usar este contador: pega o escribe tu texto arriba y obtendr&#225;s el resultado al instante, sin instalar nada. Tambi&#233;n puedes usar <strong>Microsoft Word</strong> (Revisar &#8594; Contar palabras) o <strong>Google Docs</strong> (Herramientas &#8594; Recuento de palabras), aunque ninguno ofrece las m&#233;tricas adicionales de esta herramienta.
@@ -658,46 +1153,37 @@
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras debe tener un art&#237;culo SEO?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-2" role="region">
-            Entre <strong>1.000 y 2.500 palabras</strong> para la mayor&#237;a de temas. Para temas informativos simples, 1.000&#8211;1.500 suelen bastar. Para gu&#237;as, comparativas o tutoriales en nichos competidos, apunta a 1.800&#8211;2.500. Lo clave no es el n&#250;mero sino <strong>responder completamente la intenci&#243;n de b&#250;squeda</strong> sin a&#241;adir relleno.
+            Entre <strong>1.000 y 2.500 palabras</strong> para la mayor&#237;a de temas. Para temas informativos simples, 1.000&#8211;1.500 suelen bastar. Para gu&#237;as o comparativas en nichos competidos, apunta a 1.800&#8211;2.500. Lo clave no es el n&#250;mero sino <strong>responder completamente la intenci&#243;n de b&#250;squeda</strong> sin a&#241;adir relleno.
           </div>
         </div>
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras tiene una p&#225;gina A4?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-3" role="region">
-            Con <strong>Times New Roman 12pt y m&#225;rgenes est&#225;ndar</strong>, una p&#225;gina A4 contiene entre 250 y 300 palabras. Con interlineado doble, baja a unas 125&#8211;150 palabras. Pega tu texto aqu&#237; para calcular exactamente cu&#225;ntas p&#225;ginas ocupar&#237;a.
+            Con <strong>Times New Roman 12pt y m&#225;rgenes est&#225;ndar</strong>, una p&#225;gina A4 contiene entre 250 y 300 palabras. Con interlineado doble, baja a unas 125&#8211;150 palabras.
           </div>
         </div>
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;ntas palabras tiene un TFG?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-4" role="region">
-            Un TFG en Espa&#241;a suele exigir entre <strong>10.000 y 15.000 palabras</strong>. Los TFM (M&#225;ster) requieren entre 20.000 y 40.000. Consulta siempre las gu&#237;as de tu universidad, ya que los m&#225;rgenes var&#237;an por titulaci&#243;n y centro.
+            Un TFG en Espa&#241;a suele exigir entre <strong>10.000 y 15.000 palabras</strong>. Los TFM (M&#225;ster) requieren entre 20.000 y 40.000. Consulta siempre las gu&#237;as de tu universidad.
           </div>
         </div>
         <div class="ht-faq-item">
           <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-5" onclick="HT.faqToggle(this)">
             &#191;Cu&#225;l es la diferencia entre caracteres con y sin espacios?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg>
           </button>
           <div class="ht-faq-body" id="faq-5" role="region">
-            <strong>Con espacios</strong> cuenta cada letra, n&#250;mero, puntuaci&#243;n y espacio. Lo usan Twitter&#47;X, LinkedIn o Meta Ads para sus l&#237;mites. <strong>Sin espacios</strong> solo cuenta s&#237;mbolos visibles, ignorando los espacios: lo solicitan algunas convocatorias acad&#233;micas y tarifas de traducci&#243;n. Este contador muestra ambos valores simult&#225;neamente.
-          </div>
-        </div>
-        <div class="ht-faq-item">
-          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-6" onclick="HT.faqToggle(this)">
-            &#191;Qu&#233; es un contador de palabras?
-            <svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
-          </button>
-          <div class="ht-faq-body" id="faq-6" role="region">
-            Una herramienta digital que analiza tu texto y calcula autom&#225;ticamente cu&#225;ntas palabras contiene. Las versiones avanzadas como esta tambi&#233;n muestran <strong>caracteres con y sin espacios, frases, p&#225;rrafos y tiempo de lectura y habla</strong>, todo en tiempo real sin necesidad de registro ni instalaci&#243;n.
+            <strong>Con espacios</strong> cuenta cada letra, n&#250;mero, puntuaci&#243;n y espacio. Lo usan Twitter&#47;X, LinkedIn o Meta Ads para sus l&#237;mites. <strong>Sin espacios</strong> solo cuenta s&#237;mbolos visibles: lo solicitan algunas convocatorias acad&#233;micas y tarifas de traducci&#243;n. Este contador muestra ambos valores simult&#225;neamente.
           </div>
         </div>
       </div>
@@ -705,21 +1191,21 @@
 
   </main>
 
-</div><!-- /.ht-wrap -->
+</div><!-- /.pw-content -->
 
-<!-- Milestone notification -->
+<!-- Milestone -->
 <div id="ht-milestone" role="status" aria-live="polite">
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="2 7 6 11 12 3"/></svg>
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round"><polyline points="2 7 6 11 12 3"/></svg>
   <span id="milestone-text"></span>
 </div>
 
-<!-- Toast notification -->
+<!-- Toast -->
 <div id="ht-toast" role="status" aria-live="polite" aria-atomic="true">
-  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="2 8 6 12 14 4"/></svg>
   <span>Copiado</span>
 </div>
 
-<footer class="ht-page-footer" style="max-width:1100px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+<footer class="ht-page-footer" style="max-width:1180px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
   <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
   <nav class="ht-footer-nav" aria-label="Legal">
     <a href="/">Inicio</a>
@@ -753,8 +1239,6 @@
   var MILESTONES = [100, 250, 500, 1000];
   var typingTmr  = null;
 
-  /* ── Animations ───────────────────────────────────── */
-
   function wordBounce() {
     sPalabras.classList.remove('word-bounce');
     void sPalabras.offsetWidth;
@@ -780,7 +1264,7 @@
   function showMilestone(n) {
     if (shownMs[n]) return;
     shownMs[n] = true;
-    mText.textContent = n + ' palabras \u2713';
+    mText.textContent = n + ' palabras ✓';
     milestone.classList.add('show');
     setTimeout(function () { milestone.classList.remove('show'); }, 1500);
   }
@@ -797,15 +1281,10 @@
     var sp = btn ? btn.querySelector('span') : null;
     if (!sp) return;
     var orig = sp.textContent;
-    sp.textContent = '\u2713 Copiado';
+    sp.textContent = '✓ Copiado';
     btn.disabled = true;
-    setTimeout(function () {
-      sp.textContent = orig;
-      btn.disabled = false;
-    }, 1500);
+    setTimeout(function () { sp.textContent = orig; btn.disabled = false; }, 1500);
   }
-
-  /* ── Analyse ──────────────────────────────────────── */
 
   function analyse() {
     var raw     = txt.value;
@@ -813,7 +1292,7 @@
     var words   = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
     var chars   = raw.length;
     var noSp    = raw.replace(/\s/g, '').length;
-    var m       = trimmed.match(/[^.!?\u2026]+[.!?\u2026]+/g);
+    var m       = trimmed.match(/[^.!?…]+[.!?…]+/g);
     var sents   = m ? m.length : (trimmed.length > 0 ? 1 : 0);
     var paras   = trimmed === '' ? 0 : trimmed.split(/\n+/).filter(function (p) { return p.trim().length > 0; }).length;
 
@@ -843,12 +1322,7 @@
   var debouncedAnalyse = HT.debounce(analyse, 40);
   txt.addEventListener('input', debouncedAnalyse);
 
-  /* ── Toolbar ──────────────────────────────────────── */
-
-  window.copyText = function (btn) {
-    HT.copy(txt.value);
-    btnFeedback(btn);
-  };
+  window.copyText = function (btn) { HT.copy(txt.value); btnFeedback(btn); };
 
   window.copyMetrics = function (btn) {
     var lines = [
@@ -856,7 +1330,7 @@
       'Caracteres:        ' + sCaract.textContent,
       'Sin espacios:      ' + sSinEsp.textContent,
       'Frases:            ' + sFrases.textContent,
-      'P\u00e1rrafos:         ' + sParrafos.textContent,
+      'Párrafos:         ' + sParrafos.textContent,
       'Tiempo de lectura: ' + tLectura.textContent,
       'Tiempo de habla:   ' + tHabla.textContent,
     ];
@@ -864,13 +1338,8 @@
     btnFeedback(btn);
   };
 
-  window.clearText = function () {
-    txt.value = '';
-    analyse();
-    txt.focus();
-  };
+  window.clearText = function () { txt.value = ''; analyse(); txt.focus(); };
 
-  /* Preload from home demo */
   (function () {
     try {
       var saved = sessionStorage.getItem('demo_text');
@@ -879,6 +1348,28 @@
   }());
 
   analyse();
+}());
+</script>
+
+<!-- Mirror stats to hero preview card -->
+<script>
+(function () {
+  var map = {
+    's-palabras':   'pw-words',
+    's-caracteres': 'pw-chars',
+    's-sinespacio': 'pw-nosp',
+    's-frases':     'pw-sents',
+    's-parrafos':   'pw-paras',
+    't-lectura':    'pw-tread',
+    't-habla':      'pw-tspeak'
+  };
+  Object.keys(map).forEach(function (srcId) {
+    var src = document.getElementById(srcId);
+    var dst = document.getElementById(map[srcId]);
+    if (!src || !dst) return;
+    new MutationObserver(function () { dst.textContent = src.textContent; })
+      .observe(src, { childList: true, characterData: true, subtree: true });
+  });
 }());
 </script>
 
