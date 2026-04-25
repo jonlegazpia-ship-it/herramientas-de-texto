@@ -1483,8 +1483,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   position: relative;
   background: #0d0d14;
   overflow: hidden;
-  padding: calc(var(--header-h) + 60px) 24px 64px;
-  text-align: center;
+  padding: calc(var(--header-h) + 40px) 24px 48px;
+  text-align: left;
 }
 
 .ht-dh-orb {
@@ -1512,13 +1512,20 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
 
 .ht-dh-inner {
   position: relative; z-index: 1;
-  max-width: 720px; margin: 0 auto;
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 480px);
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 920px) {
+  .ht-dh-inner { grid-template-columns: 1fr; gap: 32px; }
 }
 
 /* Restyle existing hero elements inside dark context */
 .ht-dark-hero .ht-hero-left {
-  min-width: 0; flex: none; width: 100%;
-  display: flex; flex-direction: column; align-items: center;
+  min-width: 0; flex: none; width: auto;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
 .ht-dark-hero .ht-cat-badge {
   background: rgba(255,255,255,.07);
@@ -1541,8 +1548,14 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   animation: fadeSlideUp .7s .16s var(--ease) both;
 }
 .ht-dark-hero .ht-hero-pills {
-  justify-content: center;
+  justify-content: flex-start;
   animation: fadeSlideUp .7s .24s var(--ease) both;
+}
+
+/* Tool layout inside dark hero */
+.ht-dark-hero .ht-tool-layout {
+  margin-bottom: 0;
+  animation: fadeSlideUp .7s .32s var(--ease) both;
 }
 .ht-dark-hero .ht-pill {
   background: rgba(255,255,255,.08);
