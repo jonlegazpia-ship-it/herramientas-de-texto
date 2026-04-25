@@ -111,12 +111,14 @@
    CSS CUSTOM PROPERTIES — LIGHT / DARK THEME
 ════════════════════════════════════════════════════════════════ */
 :root {
-  --cat-color:   #059669;
-  --cat-color-2: #0891B2;
-  --cat-color-3: #0D9488;
-  --cat-bg:      #ECFDF5;
-  --cat-border:  #A7F3D0;
+  --cat-color:   #06b6d4;
+  --cat-color-2: #10b981;
+  --cat-color-3: #3b82f6;
+  --cat-bg:      rgba(6,182,212,0.08);
+  --cat-border:  rgba(6,182,212,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 
 [data-theme="dark"] {
   --cat-color:  #A78BFA;
@@ -865,46 +867,50 @@ a:hover { text-decoration: underline; }
      MAIN WRAP
 ══════════════════════════════════════════════════════════════ -->
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
-          <rect x="2" y="2" width="12" height="12" rx="2"/>
-          <path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/>
-        </svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(6,182,212,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(16,185,129,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(59,130,246,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(6,182,212,.1); border-color: rgba(6,182,212,.25); color: #67e8f9; }
+[data-theme="light"] .pw-cat-badge { background: #ecfeff; border-color: #a5f3fc; color: #164e63; }
+.pw-uuid-demo { padding: 4px 0; }
+.pw-uuid-row { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 8px; padding: 9px 12px; margin-bottom: 6px; font-size: 11.5px; font-family: monospace; color: #67e8f9; word-break: break-all; }
+[data-theme="light"] .pw-uuid-row { background: #f0fdfa; border-color: #a5f3fc; color: #0e7490; }
+.pw-uuid-badge { display: inline-block; margin-top: 10px; padding: 4px 10px; background: rgba(6,182,212,.15); border: 1px solid rgba(6,182,212,.3); border-radius: 20px; font-size: 11px; color: #67e8f9; font-weight: 600; }
+[data-theme="light"] .pw-uuid-badge { background: #ecfeff; border-color: #a5f3fc; color: #164e63; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
         Desarrollo y codificación
       </div>
-      <h1 class="ht-h1">Genera UUID v4 únicos <mark>al instante para tus proyectos</mark></h1>
-      <p class="ht-hero-desc">
-        Crea uno o varios UUIDs v4 criptográficamente aleatorios al instante. Copia individualmente o todos de golpe, descarga en <code>.txt</code> y valida el formato con un clic. Sin registro, sin límites.
-      </p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          UUID v4 criptográfico
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Hasta 100 de golpe
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Descarga .txt
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Validador de formato
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Modo oscuro
-        </span>
+      <h1 class="pw-h1">Generador de<br><span class="pw-h1-grad">UUID / GUID online</span></h1>
+      <p class="pw-desc">Crea uno o varios UUIDs v4 criptográficamente aleatorios al instante. Copia, descarga en .txt y valida el formato. Sin registro.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>UUID v4 criptográfico</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Hasta 100 de golpe</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Descarga .txt</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Validador de formato</span>
       </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">UUIDs generados</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-uuid-demo">
+        <div class="pw-uuid-row">550e8400-e29b-41d4-a716-446655440000</div>
+        <div class="pw-uuid-row">6ba7b810-9dad-11d1-80b4-00c04fd430c8</div>
+        <div class="pw-uuid-row">6ba7b811-9dad-11d1-80b4-00c04fd430c8</div>
+      </div>
+      <span class="pw-uuid-badge">UUID v4 — RFC 4122</span>
     </div>
   </div>
 </div>

@@ -20,13 +20,15 @@
 <meta name="twitter:description" content="Genera meta tags SEO completas al instante. Para SEOs y desarrolladores.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #16A34A;
-  --cat-color-2: #CA8A04;
-  --cat-color-3: #0891B2;
-  --cat-bg:      #F0FDF4;
-  --cat-border:  #BBF7D0;
+:root {
+  --cat-color:   #f59e0b;
+  --cat-color-2: #f97316;
+  --cat-color-3: #eab308;
+  --cat-bg:      rgba(245,158,11,0.08);
+  --cat-border:  rgba(245,158,11,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
   .ht-form-group { margin-bottom: 1rem; }
   .ht-form-label { display: block; font-size: .8rem; font-weight: 600; color: #374151; margin-bottom: .35rem; }
   .ht-form-input, .ht-form-textarea {
@@ -335,24 +337,68 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
-        SEO tools de texto
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(245,158,11,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(249,115,22,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(234,179,8,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #fbbf24 0%, #fb923c 50%, #facc15 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(245,158,11,.1); border-color: rgba(245,158,11,.25); color: #fcd34d; }
+[data-theme="light"] .pw-cat-badge { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+.pw-serp-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+[data-theme="light"] .pw-serp-card { background: #fff; border-color: #e2e8f0; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.pw-serp-url { font-size: 11px; color: rgba(255,255,255,.3); margin-bottom: 4px; }
+[data-theme="light"] .pw-serp-url { color: #15803d; }
+.pw-serp-title { font-size: 15px; font-weight: 600; color: #93c5fd; margin-bottom: 5px; line-height: 1.3; }
+[data-theme="light"] .pw-serp-title { color: #1a0dab; }
+.pw-serp-desc { font-size: 12px; color: rgba(255,255,255,.38); line-height: 1.5; }
+[data-theme="light"] .pw-serp-desc { color: #4d5156; }
+.pw-serp-counts { display: flex; gap: 8px; }
+.pw-serp-count { flex: 1; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: 8px 10px; }
+[data-theme="light"] .pw-serp-count { background: #f8fafc; border-color: #e2e8f0; }
+.pw-serp-count-lbl { font-size: 9px; color: rgba(255,255,255,.25); text-transform: uppercase; letter-spacing: .08em; }
+[data-theme="light"] .pw-serp-count-lbl { color: #94a3b8; }
+.pw-serp-count-val { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.65); font-variant-numeric: tabular-nums; margin-top: 2px; }
+[data-theme="light"] .pw-serp-count-val { color: #334155; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="7" cy="7" r="4"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+        SEO tools
       </div>
-      <h1 class="ht-h1">Genera las meta tags perfectas <mark>para SEO y Open Graph</mark></h1>
-      <p class="ht-hero-desc">Rellena los campos y obtén al instante el código HTML completo de tus meta tags: title, description, Open Graph para redes sociales y Twitter Cards. Copia y pega directamente en tu web.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Open Graph</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Twitter Cards</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+      <h1 class="pw-h1">Generador de<br><span class="pw-h1-grad">meta tags SEO</span></h1>
+      <p class="pw-desc">Rellena los campos y obtén al instante el código HTML completo de tus meta tags: title, description, Open Graph y Twitter Cards.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Open Graph</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Twitter Cards</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Preview SERP</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-serp-card">
+        <div class="pw-serp-url">herramientasdetexto.com</div>
+        <div class="pw-serp-title">Mi Página Web — Título Optimizado</div>
+        <div class="pw-serp-desc">Meta descripción que aparece en Google con hasta 160 caracteres. Incluye la palabra clave principal para mejorar el CTR...</div>
+      </div>
+      <div class="pw-serp-counts">
+        <div class="pw-serp-count">
+          <div class="pw-serp-count-lbl">Title</div>
+          <div class="pw-serp-count-val">57 / 60</div>
+        </div>
+        <div class="pw-serp-count">
+          <div class="pw-serp-count-lbl">Description</div>
+          <div class="pw-serp-count-val">128 / 160</div>
+        </div>
       </div>
     </div>
   </div>

@@ -20,13 +20,15 @@
 <meta name="twitter:description" content="Formatea y valida JSON al instante. Sin registro.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #059669;
-  --cat-color-2: #0891B2;
-  --cat-color-3: #0D9488;
-  --cat-bg:      #ECFDF5;
-  --cat-border:  #A7F3D0;
+:root {
+  --cat-color:   #06b6d4;
+  --cat-color-2: #10b981;
+  --cat-color-3: #3b82f6;
+  --cat-bg:      rgba(6,182,212,0.08);
+  --cat-border:  rgba(6,182,212,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
   .ht-code-area { font-family: 'Courier New', Courier, monospace; font-size: .875rem; line-height: 1.6; resize: vertical; }
   .ht-output-box { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 1rem 1.25rem; font-family: 'Courier New', Courier, monospace; font-size: .85rem; line-height: 1.7; overflow: auto; white-space: pre; min-height: 200px; max-height: 500px; }
   .json-key    { color: #93C5FD; }
@@ -270,23 +272,64 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
-        Desarrollo y codificaci&#243;n
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(6,182,212,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(16,185,129,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(59,130,246,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(6,182,212,.1); border-color: rgba(6,182,212,.25); color: #67e8f9; }
+[data-theme="light"] .pw-cat-badge { background: #ecfeff; border-color: #a5f3fc; color: #164e63; }
+.pw-json-demo { padding: 4px 0; }
+.pw-json-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pw-json-block { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: 10px 12px; }
+[data-theme="light"] .pw-json-block { background: #f0fdfa; border-color: #a5f3fc; }
+.pw-json-lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.28); margin-bottom: 6px; }
+[data-theme="light"] .pw-json-lbl { color: #94a3b8; }
+.pw-json-code { font-size: 11px; font-family: monospace; color: rgba(255,255,255,.65); white-space: pre; line-height: 1.6; }
+[data-theme="light"] .pw-json-code { color: #0f172a; }
+.pw-json-key { color: #93c5fd; }
+.pw-json-str { color: #86efac; }
+.pw-json-num { color: #fca5a5; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
+        Desarrollo y codificación
       </div>
-      <h1 class="ht-h1">Formatea y valida JSON <mark>con detección de errores</mark></h1>
-      <p class="ht-hero-desc">Pega tu JSON y obt&#233;n al instante el c&#243;digo formateado, validado y con colores de sintaxis. Detecta errores con mensaje exacto del problema.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Validaci&#243;n instant&#225;nea</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sintaxis coloreada</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100% privado</span>
+      <h1 class="pw-h1">Formateador<br><span class="pw-h1-grad">JSON online</span></h1>
+      <p class="pw-desc">Pega tu JSON y obtén al instante el código formateado, validado y con colores de sintaxis. Detecta errores con mensaje exacto.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Validación instantánea</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sintaxis coloreada</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Minificado → Formateado</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-json-demo">
+        <div class="pw-json-split">
+          <div class="pw-json-block">
+            <div class="pw-json-lbl">Entrada</div>
+            <div class="pw-json-code">{"nombre":"Ana","edad":28}</div>
+          </div>
+          <div class="pw-json-block">
+            <div class="pw-json-lbl">Formateado</div>
+            <div class="pw-json-code">{
+  <span class="pw-json-key">"nombre"</span>: <span class="pw-json-str">"Ana"</span>,
+  <span class="pw-json-key">"edad"</span>: <span class="pw-json-num">28</span>
+}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -21,12 +21,14 @@
 
 <style>
 :root {
-  --cat-color:   #DB2777;
-  --cat-color-2: #EC4899;
-  --cat-color-3: #F472B6;
-  --cat-bg:      #FFF1F2;
-  --cat-border:  #FECDD3;
+  --cat-color:   #f43f5e;
+  --cat-color-2: #ec4899;
+  --cat-color-3: #d946ef;
+  --cat-bg:      rgba(244,63,94,0.08);
+  --cat-border:  rgba(244,63,94,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 
@@ -103,24 +105,69 @@
   </div>
 </header>
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(244,63,94,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(236,72,153,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(217,70,239,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #fb7185 0%, #f472b6 50%, #e879f9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(244,63,94,.1); border-color: rgba(244,63,94,.25); color: #fda4af; }
+[data-theme="light"] .pw-cat-badge { background: #fff1f2; border-color: #fecdd3; color: #9f1239; }
+.pw-lorem-preview { padding: 4px 0; }
+.pw-lorem-text { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,.4); padding: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; margin-bottom: 14px; font-family: Georgia, serif; }
+[data-theme="light"] .pw-lorem-text { background: #f8fafc; border-color: #e2e8f0; color: #475569; }
+.pw-lorem-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.pw-lorem-opt { background: rgba(244,63,94,.08); border: 1px solid rgba(244,63,94,.2); border-radius: 8px; padding: 8px 10px; text-align: center; }
+[data-theme="light"] .pw-lorem-opt { background: #fff1f2; border-color: #fecdd3; }
+.pw-lorem-opt-lbl { font-size: 10px; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .08em; }
+[data-theme="light"] .pw-lorem-opt-lbl { color: #94a3b8; }
+.pw-lorem-opt-val { font-size: 16px; font-weight: 700; color: #fda4af; margin-top: 2px; }
+[data-theme="light"] .pw-lorem-opt-val { color: #e11d48; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
         Generadores de texto
       </div>
-      <h1 class="ht-h1">Genera texto Lorem Ipsum <mark>de 1 a 10 párrafos al instante</mark></h1>
-      <p class="ht-hero-desc">Elige cu&#225;ntos p&#225;rrafos necesitas (de 1 a 10), pulsa &#171;Generar&#187; y copia el texto de relleno cl&#225;sico al instante. Sin registro ni instalaci&#243;n.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>1&#8211;10 p&#225;rrafos</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100&#37; privado</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Instant&#225;neo</span>
+      <h1 class="pw-h1">Generador de<br><span class="pw-h1-grad">Lorem Ipsum gratis</span></h1>
+      <p class="pw-desc">Elige cuántos párrafos necesitas, pulsa «Generar» y copia el texto de relleno clásico al instante. Sin registro ni instalación.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>1–10 párrafos</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Instantáneo</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-lorem-preview">
+        <div class="pw-lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
+        <div class="pw-lorem-opts">
+          <div class="pw-lorem-opt">
+            <div class="pw-lorem-opt-lbl">Párrafos</div>
+            <div class="pw-lorem-opt-val">1–10</div>
+          </div>
+          <div class="pw-lorem-opt">
+            <div class="pw-lorem-opt-lbl">Palabras</div>
+            <div class="pw-lorem-opt-val">~80</div>
+          </div>
+          <div class="pw-lorem-opt">
+            <div class="pw-lorem-opt-lbl">Oraciones</div>
+            <div class="pw-lorem-opt-val">~5</div>
+          </div>
+          <div class="pw-lorem-opt">
+            <div class="pw-lorem-opt-lbl">Formato</div>
+            <div class="pw-lorem-opt-val">HTML</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

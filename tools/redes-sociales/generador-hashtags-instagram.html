@@ -18,13 +18,15 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #C2185B;
-  --cat-color-2: #E1306C;
-  --cat-color-3: #F56040;
-  --cat-bg:      #FFF0F6;
-  --cat-border:  #FBCFE8;
+:root {
+  --cat-color:   #ec4899;
+  --cat-color-2: #a855f7;
+  --cat-color-3: #6366f1;
+  --cat-bg:      rgba(236,72,153,0.08);
+  --cat-border:  rgba(236,72,153,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
   .ht-cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: .5rem; margin-bottom: 1rem; }
   .ht-cat-btn  { padding: .5rem .75rem; border: 1.5px solid var(--cat-border); border-radius: 8px; background: transparent; font-size: .82rem; font-weight: 600; cursor: pointer; color: var(--cat-color); transition: background .15s, color .15s; text-align: left; }
   .ht-cat-btn.active { background: var(--cat-color); color: #fff; border-color: var(--cat-color); }
@@ -249,23 +251,55 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="2" x2="5" y2="14"/><line x1="11" y1="2" x2="11" y2="14"/><line x1="2" y1="6" x2="14" y2="6"/><line x1="2" y1="10" x2="14" y2="10"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(236,72,153,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(168,85,247,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(99,102,241,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #f472b6 0%, #c084fc 50%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(236,72,153,.1); border-color: rgba(236,72,153,.25); color: #f9a8d4; }
+[data-theme="light"] .pw-cat-badge { background: #fdf2f8; border-color: #fbcfe8; color: #9d174d; }
+.pw-htag-cloud { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 0; }
+.pw-htag { display: inline-flex; align-items: center; padding: 4px 10px; background: rgba(236,72,153,.12); border: 1px solid rgba(236,72,153,.25); border-radius: 999px; font-size: 12px; color: #f9a8d4; font-weight: 600; }
+[data-theme="light"] .pw-htag { background: #fdf2f8; border-color: #fbcfe8; color: #9d174d; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="2" x2="5" y2="14"/><line x1="11" y1="2" x2="11" y2="14"/><line x1="2" y1="6" x2="14" y2="6"/><line x1="2" y1="10" x2="14" y2="10"/></svg>
         Redes sociales
       </div>
-      <h1 class="ht-h1">Genera hashtags para Instagram <mark>por temática al instante</mark></h1>
-      <p class="ht-hero-desc">Selecciona tu tem&#225;tica, elige los hashtags que m&#225;s te convengan y c&#243;pialos todos con un clic. M&#225;ximo 30, que es el l&#237;mite de Instagram.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Por tem&#225;tica</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>M&#225;x. 30 hashtags</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Personalizable</span>
+      <h1 class="pw-h1">Generador de hashtags<br><span class="pw-h1-grad">para Instagram gratis</span></h1>
+      <p class="pw-desc">Selecciona tu temática, elige los hashtags que más te convengan y cópialos todos con un clic. Máximo 30, que es el límite de Instagram.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Por temática</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Máx. 30 hashtags</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Personalizable</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Hashtags de ejemplo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-htag-cloud">
+        <span class="pw-htag">#marketing</span>
+        <span class="pw-htag">#fotografía</span>
+        <span class="pw-htag">#españa</span>
+        <span class="pw-htag">#diseño</span>
+        <span class="pw-htag">#digital</span>
+        <span class="pw-htag">#creatividad</span>
+        <span class="pw-htag">#redes</span>
+        <span class="pw-htag">#social</span>
+        <span class="pw-htag">#contenido</span>
+        <span class="pw-htag">#viral</span>
+        <span class="pw-htag">#instagram</span>
+        <span class="pw-htag">#tendencias</span>
       </div>
     </div>
   </div>

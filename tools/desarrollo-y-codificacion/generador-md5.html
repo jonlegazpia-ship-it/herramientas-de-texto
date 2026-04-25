@@ -20,13 +20,15 @@
 <meta name="twitter:description" content="Genera hashes MD5 al instante. Sin registro.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #059669;
-  --cat-color-2: #0891B2;
-  --cat-color-3: #0D9488;
-  --cat-bg:      #ECFDF5;
-  --cat-border:  #A7F3D0;
+:root {
+  --cat-color:   #06b6d4;
+  --cat-color-2: #10b981;
+  --cat-color-3: #3b82f6;
+  --cat-bg:      rgba(6,182,212,0.08);
+  --cat-border:  rgba(6,182,212,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
   .ht-hash-out { font-family: 'Courier New', monospace; font-size: 1.05rem; letter-spacing: .05em; word-break: break-all; background: var(--cat-bg); border: 1.5px solid var(--cat-border); border-radius: 10px; padding: 1rem 1.25rem; min-height: 3.5rem; display: flex; align-items: center; color: var(--cat-color); font-weight: 700; }
   .ht-hash-placeholder { color: #94a3b8; font-weight: 400; font-size: .9rem; }
   .ht-also-hashes { display: flex; flex-direction: column; gap: .6rem; margin-top: .75rem; }
@@ -267,23 +269,60 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
-        Desarrollo y codificaci&#243;n
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(6,182,212,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(16,185,129,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(59,130,246,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(6,182,212,.1); border-color: rgba(6,182,212,.25); color: #67e8f9; }
+[data-theme="light"] .pw-cat-badge { background: #ecfeff; border-color: #a5f3fc; color: #164e63; }
+.pw-hash-demo { padding: 4px 0; }
+.pw-hash-input { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; }
+[data-theme="light"] .pw-hash-input { background: #f0fdfa; border-color: #a5f3fc; }
+.pw-hash-lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.28); margin-bottom: 4px; }
+[data-theme="light"] .pw-hash-lbl { color: #94a3b8; }
+.pw-hash-val { font-size: 12px; color: #67e8f9; font-family: monospace; word-break: break-all; }
+[data-theme="light"] .pw-hash-val { color: #0e7490; }
+.pw-hash-type { display: inline-block; padding: 1px 7px; background: rgba(6,182,212,.15); border-radius: 4px; font-size: 10px; font-weight: 700; color: #67e8f9; margin-right: 6px; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6l-2 2 2 2M11 6l2 2-2 2M9 4l-2 8"/></svg>
+        Desarrollo y codificación
       </div>
-      <h1 class="ht-h1">Genera hashes MD5 <mark>en tiempo real, 100% privado</mark></h1>
-      <p class="ht-hero-desc">Escribe o pega texto y obt&#233;n su hash MD5 al instante. Tambi&#233;n incluye SHA-1 y SHA-256 para comparar. Todo en el navegador, sin env&#237;ar datos.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>MD5 + SHA-1 + SHA-256</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100% privado</span>
+      <h1 class="pw-h1">Generador de hash<br><span class="pw-h1-grad">MD5 online</span></h1>
+      <p class="pw-desc">Escribe o pega texto y obtén su hash MD5 al instante. También incluye SHA-256 y CRC32 para comparar. Todo en el navegador.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>MD5 + SHA-256</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Demo de hashing</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-hash-demo">
+        <div class="pw-hash-input">
+          <div class="pw-hash-lbl">Entrada</div>
+          <div class="pw-hash-val">herramientas</div>
+        </div>
+        <div class="pw-hash-input">
+          <div class="pw-hash-lbl"><span class="pw-hash-type">MD5</span></div>
+          <div class="pw-hash-val">d41d8cd98f00b204e9800998ec...</div>
+        </div>
+        <div class="pw-hash-input">
+          <div class="pw-hash-lbl"><span class="pw-hash-type">SHA-256</span></div>
+          <div class="pw-hash-val">2cf24db5fb26e67a32c6c...</div>
+        </div>
       </div>
     </div>
   </div>

@@ -21,13 +21,15 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%237C3AED'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 
 <style>
-  :root {
-  --cat-color:   #2563EB;
-  --cat-color-2: #0EA5E9;
-  --cat-color-3: #6366F1;
-  --cat-bg:      #EFF6FF;
-  --cat-border:  #DBEAFE;
+:root {
+  --cat-color:   #3b82f6;
+  --cat-color-2: #6366f1;
+  --cat-color-3: #a855f7;
+  --cat-bg:      rgba(59,130,246,0.08);
+  --cat-border:  rgba(59,130,246,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 </style>
 
 <style>
@@ -310,32 +312,59 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
       </div>
-      <h1 class="ht-h1">Cuenta caracteres <mark>con y sin espacios, en tiempo real</mark></h1>
-      <p class="ht-hero-desc">Cuenta al instante caracteres con y sin espacios, palabras y espacios. Incluye barras de l&#237;mite para Twitter/X, Meta title, Meta description y SMS.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Tiempo real
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          L&#237;mites de plataforma
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Sin registro
-        </span>
+      <h1 class="pw-h1">Contador de caracteres<br><span class="pw-h1-grad">con y sin espacios</span></h1>
+      <p class="pw-desc">Pega tu texto y cuenta caracteres con y sin espacios en tiempo real. Barras de progreso para Twitter/X, meta title, meta description y SMS.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>4 límites</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-chars-big">0</div>
+        <div class="pw-preview-label">Caracteres totales</div>
+      </div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-sinespacio">0</div>
+          <div class="pw-preview-cell-lbl">Sin espacios</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-palabras">0</div>
+          <div class="pw-preview-cell-lbl">Palabras</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-lineas">0</div>
+          <div class="pw-preview-cell-lbl">Líneas</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-espacios">0</div>
+          <div class="pw-preview-cell-lbl">Espacios</div>
+        </div>
+      </div>
+      <div class="pw-preview-times">
+        <div class="pw-preview-time">
+          <div class="pw-preview-time-val">280</div>
+          <div class="pw-preview-time-lbl">Twitter/X</div>
+        </div>
+        <div class="pw-preview-time">
+          <div class="pw-preview-time-val">160</div>
+          <div class="pw-preview-time-lbl">SEO desc.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -765,6 +794,11 @@ a:hover{text-decoration:underline}
   var sEspacios  = document.getElementById('s-espacios');
   var sLineas    = document.getElementById('s-lineas');
   var hdrChars   = document.getElementById('hdr-chars');
+  var pwCharsBig   = document.getElementById('pw-chars-big');
+  var pwSinespacio = document.getElementById('pw-sinespacio');
+  var pwPalabras   = document.getElementById('pw-palabras');
+  var pwLineas     = document.getElementById('pw-lineas');
+  var pwEspacios   = document.getElementById('pw-espacios');
 
   function updateBar(id, current, limit) {
     var fill  = document.getElementById('bar-' + id + '-fill');
@@ -807,6 +841,13 @@ a:hover{text-decoration:underline}
 
     /* Header */
     hdrChars.textContent = HT.fmt(chars) + ' car&#225;cter' + (chars === 1 ? '' : 'es');
+
+    /* Hero preview */
+    if (pwCharsBig)   pwCharsBig.textContent   = HT.fmt(chars);
+    if (pwSinespacio) pwSinespacio.textContent  = HT.fmt(noSpaces);
+    if (pwPalabras)   pwPalabras.textContent    = HT.fmt(words);
+    if (pwLineas)     pwLineas.textContent      = HT.fmt(lines);
+    if (pwEspacios)   pwEspacios.textContent    = HT.fmt(spaces);
 
     /* Platform bars */
     updateBar('twitter',   chars, LIMITS.twitter);

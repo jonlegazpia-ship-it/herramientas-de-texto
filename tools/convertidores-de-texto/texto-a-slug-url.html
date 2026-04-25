@@ -20,13 +20,15 @@
 <meta name="twitter:description" content="Genera slugs URL amigables al instante. Sin registro.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #7C3AED;
-  --cat-color-2: #C026D3;
-  --cat-color-3: #A855F7;
-  --cat-bg:      #F5F3FF;
-  --cat-border:  #EDE9FE;
+:root {
+  --cat-color:   #10b981;
+  --cat-color-2: #14b8a6;
+  --cat-color-3: #06b6d4;
+  --cat-bg:      rgba(16,185,129,0.08);
+  --cat-border:  rgba(16,185,129,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 </style>
 <style>
 /* ── ESTILOS CRÍTICOS INLINE — hero y layout base ── */
@@ -292,25 +294,64 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="5" width="12" height="6" rx="3"/><line x1="5" y1="8" x2="11" y2="8"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(16,185,129,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(20,184,166,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(6,182,212,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #34d399 0%, #2dd4bf 50%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(16,185,129,.1); border-color: rgba(16,185,129,.25); color: #6ee7b7; }
+[data-theme="light"] .pw-cat-badge { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.pw-slug-demo { padding: 4px 0; }
+.pw-slug-row { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+[data-theme="light"] .pw-slug-row { border-bottom-color: #f1f5f9; }
+.pw-slug-row:last-child { border-bottom: none; }
+.pw-slug-from { font-size: 12px; color: rgba(255,255,255,.4); font-family: monospace; display: block; margin-bottom: 4px; }
+[data-theme="light"] .pw-slug-from { color: #64748b; }
+.pw-slug-to { font-size: 13px; color: #34d399; font-weight: 700; font-family: monospace; display: block; }
+[data-theme="light"] .pw-slug-to { color: #059669; }
+.pw-slug-badge { display: inline-block; margin-top: 12px; padding: 4px 10px; background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3); border-radius: 20px; font-size: 11px; color: #6ee7b7; font-weight: 600; }
+[data-theme="light"] .pw-slug-badge { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="5" width="12" height="6" rx="3"/><line x1="5" y1="8" x2="11" y2="8"/></svg>
         Convertidores de texto
       </div>
-      <h1 class="ht-h1">Texto a slug URL <mark>limpio, sin tildes ni espacios</mark></h1>
-      <p class="ht-hero-desc">Convierte cualquier t&#237;tulo o texto en un slug URL limpio al instante. Elimina tildes, espacios, caracteres especiales y genera la URL amigable perfecta para tu p&#225;gina web o blog.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Elimina tildes</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>SEO ready</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
+      <h1 class="pw-h1">Texto a slug URL<br><span class="pw-h1-grad">limpio y optimizado</span></h1>
+      <p class="pw-desc">Convierte cualquier título o texto en un slug URL limpio al instante. Elimina tildes, espacios y caracteres especiales.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Elimina tildes</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>SEO ready</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
       </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Slugs generados</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-slug-demo">
+        <div class="pw-slug-row">
+          <span class="pw-slug-from">Mi Título Increíble</span>
+          <span class="pw-slug-to">mi-titulo-increible</span>
+        </div>
+        <div class="pw-slug-row">
+          <span class="pw-slug-from">Herramienta de Texto</span>
+          <span class="pw-slug-to">herramienta-de-texto</span>
+        </div>
+        <div class="pw-slug-row">
+          <span class="pw-slug-from">Cómo crear URLs en 2025</span>
+          <span class="pw-slug-to">como-crear-urls-en-2025</span>
+        </div>
+      </div>
+      <span class="pw-slug-badge">URL SEO-friendly</span>
     </div>
   </div>
 </div>

@@ -25,10 +25,14 @@
   --ig-3: #E1306C;
   --ig-4: #F56040;
   --ig-5: #FFDC80;
-  --cat-color:  #C13584;
-  --cat-bg:     #FDF2F8;
-  --cat-border: #F5D0EA;
+  --cat-color:   #ec4899;
+  --cat-color-2: #a855f7;
+  --cat-color-3: #6366f1;
+  --cat-bg:      rgba(236,72,153,0.08);
+  --cat-border:  rgba(236,72,153,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 
 /* ══════════════════════════════════════════
    HERO
@@ -779,43 +783,68 @@
   </div>
 </header>
 
-<!-- ══ HERO ══ -->
-<section class="bio-hero ht-dark-hero">
-  <div class="bio-hero-orb ht-dh-orb"></div>
-  <div class="bio-hero-orb ht-dh-orb"></div>
-  <div class="bio-hero-orb ht-dh-orb"></div>
-  <div class="bio-hero-inner ht-dh-inner">
-    <div class="bio-hero-badge">
-      <div class="bio-hero-badge-dot"></div>
-      Redes sociales
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(236,72,153,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(168,85,247,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(99,102,241,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #f472b6 0%, #c084fc 50%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(236,72,153,.1); border-color: rgba(236,72,153,.25); color: #f9a8d4; }
+[data-theme="light"] .pw-cat-badge { background: #fdf2f8; border-color: #fbcfe8; color: #9d174d; }
+.pw-bio-progress { height: 6px; border-radius: 999px; background: rgba(255,255,255,.07); margin: 8px 0 4px; overflow: hidden; }
+[data-theme="light"] .pw-bio-progress { background: #f1f5f9; }
+.pw-bio-progress-bar { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, #ec4899, #a855f7); transition: width .2s; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle cx="11.5" cy="4.5" r=".6" fill="currentColor" stroke="none"/></svg>
+        Redes sociales
+      </div>
+      <h1 class="pw-h1">Generador de bio<br><span class="pw-h1-grad">para Instagram</span></h1>
+      <p class="pw-desc">150 caracteres para decidir si alguien te sigue o no. Rellena los campos, elige tu estilo y copia tu bio profesional al instante.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Preview en tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>4 plantillas</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>150 car. máx.</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Gratis, sin registro</span>
+      </div>
     </div>
-    <h1 class="bio-hero-h1">
-      Genera tu bio de Instagram<br>
-      <span class="bio-grad">profesional gratis</span>
-    </h1>
-    <p class="bio-hero-sub">
-      150 caracteres para decidir si alguien te sigue o no. Rellena los campos, elige tu estilo y copia tu bio profesional al instante.
-    </p>
-    <div class="bio-hero-pills">
-      <span class="bio-hero-pill">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-        Preview en tiempo real
-      </span>
-      <span class="bio-hero-pill">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-        4 plantillas
-      </span>
-      <span class="bio-hero-pill">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-        150 car. máx.
-      </span>
-      <span class="bio-hero-pill">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>
-        Gratis, sin registro
-      </span>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-bio-chars">0</div>
+        <div class="pw-preview-label">Caracteres usados / 150</div>
+      </div>
+      <div class="pw-bio-progress"><div class="pw-bio-progress-bar" id="pw-bio-bar"></div></div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-bio-lineas">0</div>
+          <div class="pw-preview-cell-lbl">Líneas</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-bio-emojis">0</div>
+          <div class="pw-preview-cell-lbl">Emojis</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-bio-hashtags">0</div>
+          <div class="pw-preview-cell-lbl">Hashtags</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-bio-menciones">0</div>
+          <div class="pw-preview-cell-lbl">Menciones</div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- breadcrumb -->
 <div style="background:#f8f8fb;border-bottom:1px solid #f0f0f5;">
@@ -1325,6 +1354,12 @@ function bioFaq(btn) {
   var sChars        = document.getElementById('s-chars');
   var sRemaining    = document.getElementById('s-remaining');
   var sLines        = document.getElementById('s-lines');
+  var pwBioChars     = document.getElementById('pw-bio-chars');
+  var pwBioBar       = document.getElementById('pw-bio-bar');
+  var pwBioLineas    = document.getElementById('pw-bio-lineas');
+  var pwBioEmojis    = document.getElementById('pw-bio-emojis');
+  var pwBioHashtags  = document.getElementById('pw-bio-hashtags');
+  var pwBioMenciones = document.getElementById('pw-bio-menciones');
 
   window.BIO = {
     setTemplate: function (tpl, btn) {
@@ -1370,6 +1405,17 @@ function bioFaq(btn) {
       HT.pop(sChars,     len);
       HT.pop(sRemaining, Math.max(0, remain));
       HT.pop(sLines,     lines);
+
+      /* Hero preview */
+      var emojis2    = (bio.match(/\p{Emoji_Presentation}/gu) || []).length;
+      var hashtags2  = (bio.match(/#\w+/g) || []).length;
+      var menciones2 = (bio.match(/@\w+/g) || []).length;
+      if (pwBioChars)     pwBioChars.textContent     = len;
+      if (pwBioBar)       pwBioBar.style.width        = pct + '%';
+      if (pwBioLineas)    pwBioLineas.textContent    = lines;
+      if (pwBioEmojis)    pwBioEmojis.textContent    = emojis2;
+      if (pwBioHashtags)  pwBioHashtags.textContent  = hashtags2;
+      if (pwBioMenciones) pwBioMenciones.textContent = menciones2;
 
       var nombre = data.nombre || 'Tu nombre';
       prevInitial.textContent = nombre.charAt(0).toUpperCase();

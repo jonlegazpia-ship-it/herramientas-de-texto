@@ -19,13 +19,17 @@
 <meta name="twitter:title" content="Contador de Frases Online Gratis">
 <meta name="twitter:description" content="Cuenta frases al instante. Media y distribuci&#243;n. Sin registro.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
-<style>:root {
-  --cat-color:   #2563EB;
-  --cat-color-2: #0EA5E9;
-  --cat-color-3: #6366F1;
-  --cat-bg:      #EFF6FF;
-  --cat-border:  #DBEAFE;
-}</style>
+<style>
+:root {
+  --cat-color:   #3b82f6;
+  --cat-color-2: #6366f1;
+  --cat-color-3: #a855f7;
+  --cat-bg:      rgba(59,130,246,0.08);
+  --cat-border:  rgba(59,130,246,0.2);
+}
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
+</style>
 <style>
 /* ── ESTILOS CRÍTICOS INLINE — hero y layout base ── */
 *,*::before,*::after{box-sizing:border-box}
@@ -242,24 +246,49 @@ a:hover{text-decoration:underline}
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
       </div>
-      <h1 class="ht-h1">Analiza frases y oraciones <mark>con métricas de legibilidad</mark></h1>
-      <p class="ht-hero-desc">Pega tu texto y obtén al instante el n&#250;mero de frases u oraciones, la longitud media, cu&#225;ntas son demasiado largas y cu&#225;ntas demasiado cortas. Mejora la legibilidad de tus textos con datos reales.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100&#37; privado</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin l&#237;mites</span>
+      <h1 class="pw-h1">Analiza frases y oraciones<br><span class="pw-h1-grad">con métricas de legibilidad</span></h1>
+      <p class="pw-desc">Pega tu texto y obtén el número de frases, la longitud media, cuántas son demasiado largas y cuántas demasiado cortas.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Legibilidad</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin límites</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-frases-big">0</div>
+        <div class="pw-preview-label">Frases totales</div>
+      </div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-palabras-f">0</div>
+          <div class="pw-preview-cell-lbl">Palabras</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-parrafos-f">0</div>
+          <div class="pw-preview-cell-lbl">Párrafos</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-largas-f">0</div>
+          <div class="pw-preview-cell-lbl">Frases largas</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-cortas-f">0</div>
+          <div class="pw-preview-cell-lbl">Frases cortas</div>
+        </div>
       </div>
     </div>
   </div>
@@ -518,6 +547,11 @@ a:hover{text-decoration:underline}
   var sCortas  = document.getElementById('s-cortas');
   var sLargas  = document.getElementById('s-largas');
   var sPalabras = document.getElementById('s-palabras');
+  var pwFrasesBig = document.getElementById('pw-frases-big');
+  var pwPalabrasF = document.getElementById('pw-palabras-f');
+  var pwParrafosF = document.getElementById('pw-parrafos-f');
+  var pwLargasF   = document.getElementById('pw-largas-f');
+  var pwCortasF   = document.getElementById('pw-cortas-f');
 
   function countSentences(text) {
     if (!text.trim()) return [];
@@ -546,6 +580,14 @@ a:hover{text-decoration:underline}
     HT.pop(sCortas,   HT.fmt(cortas));
     HT.pop(sLargas,   HT.fmt(largas));
     HT.pop(sPalabras, HT.fmt(words));
+
+    /* Hero preview */
+    var parrafos = text.trim() ? text.split(/\n\s*\n/).filter(function(p){return p.trim();}).length : 0;
+    if (pwFrasesBig) pwFrasesBig.textContent = HT.fmt(total);
+    if (pwPalabrasF) pwPalabrasF.textContent = HT.fmt(words);
+    if (pwParrafosF) pwParrafosF.textContent = HT.fmt(parrafos);
+    if (pwLargasF)   pwLargasF.textContent   = HT.fmt(largas);
+    if (pwCortasF)   pwCortasF.textContent   = HT.fmt(cortas);
   }
 
   txt.addEventListener('input', HT.debounce(analyze, 40));

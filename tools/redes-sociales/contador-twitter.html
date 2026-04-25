@@ -18,13 +18,15 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
 <style>
-  :root {
-  --cat-color:   #1D9BF0;
-  --cat-color-2: #0284C7;
-  --cat-color-3: #38BDF8;
-  --cat-bg:      #F0F9FF;
-  --cat-border:  #BAE6FD;
+:root {
+  --cat-color:   #0ea5e9;
+  --cat-color-2: #38bdf8;
+  --cat-color-3: #7dd3fc;
+  --cat-bg:      rgba(14,165,233,0.08);
+  --cat-border:  rgba(14,165,233,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
   .tw-circle-wrap { display: flex; justify-content: center; align-items: center; margin: 1rem 0; }
   .tw-circle { position: relative; width: 100px; height: 100px; }
   .tw-circle svg { transform: rotate(-90deg); }
@@ -82,23 +84,64 @@
 </header>
 
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-<div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(14,165,233,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(56,189,248,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(125,211,252,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(14,165,233,.1); border-color: rgba(14,165,233,.25); color: #7dd3fc; }
+[data-theme="light"] .pw-cat-badge { background: #f0f9ff; border-color: #bae6fd; color: #0369a1; }
+.pw-tw-progress { height: 6px; border-radius: 999px; background: rgba(255,255,255,.07); margin: 8px 0 4px; overflow: hidden; }
+[data-theme="light"] .pw-tw-progress { background: #f1f5f9; }
+.pw-tw-progress-bar { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, #0ea5e9, #38bdf8); transition: width .2s; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 12 L5 9 L2 3 L7 6 L12 2 L10 8 L14 10 L9 10 L8 14 Z"/></svg>
         Redes sociales
       </div>
-      <h1 class="ht-h1">Cuenta caracteres para Twitter/X <mark>con indicador visual</mark></h1>
-      <p class="ht-hero-desc">Escribe tu tuit y visualiza al instante cu&#225;ntos caracteres te quedan. Con indicador circular, preview del tuit y sugerencias de optimizaci&#243;n.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>L&#237;mite 280 caracteres</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Preview del tuit</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Contador URLs</span>
+      <h1 class="pw-h1">Contador de caracteres<br><span class="pw-h1-grad">para Twitter/X</span></h1>
+      <p class="pw-desc">Escribe tu tuit y visualiza al instante cuántos caracteres te quedan. Con indicador visual, preview del tuit y contador de URLs.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Límite 280 caracteres</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Preview del tuit</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Contador URLs</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-tw-chars">0</div>
+        <div class="pw-preview-label">Caracteres usados / 280</div>
+      </div>
+      <div class="pw-tw-progress"><div class="pw-tw-progress-bar" id="pw-tw-bar"></div></div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-tw-palabras">0</div>
+          <div class="pw-preview-cell-lbl">Palabras</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-tw-urls">0</div>
+          <div class="pw-preview-cell-lbl">URLs</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-tw-remaining">280</div>
+          <div class="pw-preview-cell-lbl">Restantes</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-tw-tweets">1</div>
+          <div class="pw-preview-cell-lbl">Tweets necesarios</div>
+        </div>
       </div>
     </div>
   </div>
@@ -627,6 +670,12 @@
   var lcUrlsN  = document.getElementById('lc-urls-n');
   var lcChars  = document.getElementById('lc-chars');
   var prevText = document.getElementById('tw-preview-text');
+  var pwTwChars     = document.getElementById('pw-tw-chars');
+  var pwTwBar       = document.getElementById('pw-tw-bar');
+  var pwTwPalabras  = document.getElementById('pw-tw-palabras');
+  var pwTwUrls      = document.getElementById('pw-tw-urls');
+  var pwTwRemaining = document.getElementById('pw-tw-remaining');
+  var pwTwTweets    = document.getElementById('pw-tw-tweets');
 
   function countURLs(s){ return (s.match(/https?:\/\/\S+/g) || []).length; }
 
@@ -652,6 +701,15 @@
 
     prevText.textContent = raw || 'Tu tuit aparecer\u00e1 aqu\u00ed\u2026';
     prevText.style.color = raw ? '#0f172a' : '#94a3b8';
+
+    /* Hero preview */
+    var tweets = Math.ceil(used / LIMIT) || 1;
+    if (pwTwChars)     pwTwChars.textContent     = used;
+    if (pwTwBar)       pwTwBar.style.width        = Math.min(100, pct * 100) + '%';
+    if (pwTwPalabras)  pwTwPalabras.textContent  = words;
+    if (pwTwUrls)      pwTwUrls.textContent       = urls;
+    if (pwTwRemaining) pwTwRemaining.textContent  = Math.max(0, remaining);
+    if (pwTwTweets)    pwTwTweets.textContent     = tweets;
   }
 
   window.TW = {

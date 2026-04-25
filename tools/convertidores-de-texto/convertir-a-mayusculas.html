@@ -22,12 +22,14 @@
 
 <style>
 :root {
-  --cat-color:   #7C3AED;
-  --cat-color-2: #C026D3;
-  --cat-color-3: #A855F7;
-  --cat-bg:      #F5F3FF;
-  --cat-border:  #EDE9FE;
+  --cat-color:   #10b981;
+  --cat-color-2: #14b8a6;
+  --cat-color-3: #06b6d4;
+  --cat-bg:      rgba(16,185,129,0.08);
+  --cat-border:  rgba(16,185,129,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 </style>
 <style>
 /* Microanimaciones */
@@ -139,37 +141,68 @@
   </div>
 </header>
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 12 L8 3 L13 12"/><line x1="5" y1="8.5" x2="11" y2="8.5"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<style>
+.pw-hero::before {
+  background:
+    radial-gradient(ellipse 900px 600px at 15% -5%,  rgba(16,185,129,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 85% 60%,  rgba(20,184,166,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 350px at 50% 110%, rgba(6,182,212,.08) 0%, transparent 60%);
+}
+.pw-h1-grad { background: linear-gradient(135deg, #34d399 0%, #2dd4bf 50%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pw-cat-badge { background: rgba(16,185,129,.1); border-color: rgba(16,185,129,.25); color: #6ee7b7; }
+[data-theme="light"] .pw-cat-badge { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.pw-conv-demo { padding: 8px 0 4px; }
+.pw-conv-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+[data-theme="light"] .pw-conv-row { border-bottom-color: #f1f5f9; }
+.pw-conv-row:last-child { border-bottom: none; }
+.pw-conv-from { font-size: 13px; color: rgba(255,255,255,.4); flex: 1; font-family: monospace; }
+[data-theme="light"] .pw-conv-from { color: #64748b; }
+.pw-conv-arrow { color: #34d399; font-size: 14px; flex-shrink: 0; }
+.pw-conv-to { font-size: 13px; color: #d1fae5; font-weight: 700; flex: 1; font-family: monospace; }
+[data-theme="light"] .pw-conv-to { color: #065f46; }
+.pw-conv-badge { display: inline-block; margin-top: 12px; padding: 4px 10px; background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3); border-radius: 20px; font-size: 11px; color: #6ee7b7; font-weight: 600; }
+[data-theme="light"] .pw-conv-badge { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+</style>
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12L8 3l5 9"/><line x1="5" y1="8.5" x2="11" y2="8.5"/></svg>
         Convertidores de texto
       </div>
-      <h1 class="ht-h1">Convierte texto a mayúsculas <mark>respetando tildes y la ñ</mark></h1>
-      <p class="ht-hero-desc">Pega tu texto y obtén al instante la versión en mayúsculas. Respeta tildes, ñ y todos los caracteres del español. Sin registro ni límites.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Tiempo real
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          100% privado
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Sin registro
-        </span>
-        <span class="ht-pill">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>
-          Con tildes y ñ
-        </span>
+      <h1 class="pw-h1">Convertir texto<br><span class="pw-h1-grad">a MAYÚSCULAS online</span></h1>
+      <p class="pw-desc">Convierte cualquier texto a mayúsculas al instante. Pega, convierte y copia con un clic. Sin registro ni instalación.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Instantáneo</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Un clic</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
       </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Resultado</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-conv-demo">
+        <div class="pw-conv-row">
+          <span class="pw-conv-from">hola mundo</span>
+          <span class="pw-conv-arrow">→</span>
+          <span class="pw-conv-to">HOLA MUNDO</span>
+        </div>
+        <div class="pw-conv-row">
+          <span class="pw-conv-from">texto en español</span>
+          <span class="pw-conv-arrow">→</span>
+          <span class="pw-conv-to">TEXTO EN ESPAÑOL</span>
+        </div>
+        <div class="pw-conv-row">
+          <span class="pw-conv-from">título con tildes</span>
+          <span class="pw-conv-arrow">→</span>
+          <span class="pw-conv-to">TÍTULO CON TILDES</span>
+        </div>
+      </div>
+      <span class="pw-conv-badge">Convertido al instante</span>
     </div>
   </div>
 </div>

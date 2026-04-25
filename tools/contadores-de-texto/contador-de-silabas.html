@@ -21,12 +21,14 @@
 
 <style>
 :root {
-  --cat-color:   #2563EB;
-  --cat-color-2: #0EA5E9;
-  --cat-color-3: #6366F1;
-  --cat-bg:      #EFF6FF;
-  --cat-border:  #DBEAFE;
+  --cat-color:   #3b82f6;
+  --cat-color-2: #6366f1;
+  --cat-color-3: #a855f7;
+  --cat-bg:      rgba(59,130,246,0.08);
+  --cat-border:  rgba(59,130,246,0.2);
 }
+body { background: #07080f; }
+[data-theme="light"] body { background: #f5f6fa; }
 </style>
 <link rel="stylesheet" href="/css/tools.css">
 
@@ -104,24 +106,49 @@
   </div>
 </header>
 
-<!-- ── DARK HERO ── -->
-<div class="ht-dark-hero">
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-orb"></div>
-  <div class="ht-dh-inner">
-    <div class="ht-hero-left">
-      <div class="ht-cat-badge">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+<!-- ── PREMIUM HERO ── -->
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
         Contadores de texto
       </div>
-      <h1 class="ht-h1">Cuenta sílabas en español <mark>con diptongos e hiatos</mark></h1>
-      <p class="ht-hero-desc">Pega tu texto y obtén al instante el total de sílabas, la media por palabra y la palabra más larga. Algoritmo adaptado al español con diptongos e hiatos.</p>
-      <div class="ht-hero-pills">
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Tiempo real</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>100% privado</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Sin registro</span>
-        <span class="ht-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="1 6 4 9 11 2"/></svg>Español</span>
+      <h1 class="pw-h1">Contador de sílabas<br><span class="pw-h1-grad">para español con diptongos</span></h1>
+      <p class="pw-desc">Cuenta sílabas en español con soporte completo de diptongos e hiatos. Obtén la media por palabra y la palabra más compleja.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Español nativo</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Diptongos e hiatos</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-silabas-big">0</div>
+        <div class="pw-preview-label">Sílabas totales</div>
+      </div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-palabras-s">0</div>
+          <div class="pw-preview-cell-lbl">Palabras</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-media-s">—</div>
+          <div class="pw-preview-cell-lbl">Síl. / palabra</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-largas-s">0</div>
+          <div class="pw-preview-cell-lbl">Palabras largas</div>
+        </div>
+        <div class="pw-preview-cell">
+          <div class="pw-preview-cell-val" id="pw-massilabas-s" style="font-size:13px;padding-top:3px">—</div>
+          <div class="pw-preview-cell-lbl">Más sílabas</div>
+        </div>
       </div>
     </div>
   </div>
@@ -649,6 +676,11 @@
   var sLargaN   = document.getElementById('s-larga-n');
   var hdrPal    = document.getElementById('hdr-palabras');
   var liveDot   = document.querySelector('.ht-panel-live-dot');
+  var pwSilabasBig  = document.getElementById('pw-silabas-big');
+  var pwPalabrasS   = document.getElementById('pw-palabras-s');
+  var pwMediaS      = document.getElementById('pw-media-s');
+  var pwLargasS     = document.getElementById('pw-largas-s');
+  var pwMassilabas  = document.getElementById('pw-massilabas-s');
 
   /* ── Syllabification algorithm for Spanish ── */
   function syllablesES(word) {
@@ -693,6 +725,11 @@
       sMedia.textContent  = '—';
       sLarga.textContent  = '—';
       sLargaN.textContent = '— sílabas';
+      if (pwSilabasBig) pwSilabasBig.textContent = '0';
+      if (pwPalabrasS)  pwPalabrasS.textContent  = '0';
+      if (pwMediaS)     pwMediaS.textContent     = '—';
+      if (pwLargasS)    pwLargasS.textContent    = '0';
+      if (pwMassilabas) pwMassilabas.textContent = '—';
       return;
     }
 
@@ -715,6 +752,14 @@
     sMedia.textContent  = media;
     sLarga.textContent  = maxWord;
     sLargaN.textContent = maxSyl + ' sílaba' + (maxSyl === 1 ? '' : 's');
+
+    /* Hero preview */
+    var largasPal = words.filter(function(w){ return syllablesES(w) >= 4; }).length;
+    if (pwSilabasBig) pwSilabasBig.textContent = HT.fmt(total);
+    if (pwPalabrasS)  pwPalabrasS.textContent  = HT.fmt(words.length);
+    if (pwMediaS)     pwMediaS.textContent     = media;
+    if (pwLargasS)    pwLargasS.textContent    = HT.fmt(largasPal);
+    if (pwMassilabas) pwMassilabas.textContent = maxWord || '—';
 
     if (liveDot) {
       liveDot.classList.add('typing');
