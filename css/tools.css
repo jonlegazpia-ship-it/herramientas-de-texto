@@ -1601,23 +1601,37 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -0
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--r-sm);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--ink-2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.11);
+  background: rgba(0,0,0,0.04);
+  color: #52525b;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
   flex-shrink: 0;
-  margin-right: 6px;
+  margin-right: 4px;
 }
 .ht-theme-toggle:hover {
+  background: var(--accent-light);
   border-color: var(--accent-border);
   color: var(--accent);
-  background: var(--accent-light);
+  transform: rotate(18deg);
 }
-.ht-theme-toggle svg { width: 16px; height: 16px; }
+.ht-theme-toggle:active { transform: scale(0.92); }
+.ht-theme-toggle svg { width: 15px; height: 15px; }
+
+[data-theme="dark"] .ht-theme-toggle {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.6);
+}
+[data-theme="dark"] .ht-theme-toggle:hover {
+  background: rgba(255,255,255,0.13);
+  border-color: rgba(255,255,255,0.28);
+  color: #fff;
+  transform: rotate(18deg);
+}
 
 /* Default icon: dark mode active → show sun to switch to light */
 .ht-icon-sun  { display: block; }
