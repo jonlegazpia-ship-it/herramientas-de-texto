@@ -6,7 +6,7 @@
 
   <!-- SEO primario -->
   <title>Herramientas de Texto Online Gratis — Sin Registro | HerramientasDeTexto.com</title>
-  <meta name="description" content="20 herramientas de texto online gratis: contadores, convertidores, limpiadores, SEO y más. Sin registro ni instalación. Todo funciona en tu navegador al instante.">
+  <meta name="description" content="34 herramientas de texto online gratis: contadores, convertidores, limpiadores, SEO y más. Sin registro ni instalación. Todo funciona en tu navegador al instante.">
   <meta name="keywords" content="herramientas de texto, contador de palabras, convertidor de texto, herramientas SEO, generador de texto, limpiador de texto, herramientas gratis español">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://herramientasdetexto.com/">
@@ -514,72 +514,174 @@
   ================================================================ */
   .cat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
   .cat-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 20px;
+    position: relative;
+    overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
-    text-decoration: none;
-    color: inherit;
     opacity: 0;
     transform: translateY(16px);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
   }
-  .cat-card.visible { opacity:1; transform:translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, border-color var(--transition), box-shadow var(--transition), background var(--transition); }
+  .cat-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease, border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  }
   .cat-card:not([aria-disabled="true"]):hover {
-    transform: translateY(-3px);
-    border-color: var(--border-hover);
-    background: var(--surface-hover);
-    box-shadow: 0 0 0 1px rgba(99,102,241,0.2), 0 8px 32px rgba(99,102,241,0.15);
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--cat-color, #6366f1) 50%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--cat-color, #6366f1) 20%, transparent), 0 12px 40px color-mix(in srgb, var(--cat-color, #6366f1) 15%, transparent);
   }
-  .cat-card[aria-disabled="true"] { opacity:0.45; cursor:default; pointer-events:none; }
-  .cat-card[aria-disabled="true"].visible { opacity:0.45; }
+  .cat-card[aria-disabled="true"] { opacity: 0.4; cursor: default; pointer-events: none; }
+  .cat-card[aria-disabled="true"].visible { opacity: 0.4; }
 
+  .cat-card__bar {
+    height: 3px;
+    background: var(--cat-color, #6366f1);
+    flex-shrink: 0;
+  }
+  .cat-card__main {
+    padding: 24px 24px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
   .cat-card__icon {
-    font-size: 24px;
-    width: 44px; height: 44px;
+    font-size: 26px;
+    width: 50px; height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-sm);
-    background: color-mix(in srgb, var(--cat-color, #6366f1) 15%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--cat-color, #6366f1) 12%, transparent);
+    margin-bottom: 14px;
     flex-shrink: 0;
   }
-  .cat-card__body { flex:1; min-width:0; }
-  .cat-card__name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; letter-spacing:-0.01em; }
-  .cat-card__desc { font-size:12px; color:var(--text-2); line-height:1.5; margin-bottom:8px; }
-  .cat-card__count { font-size:11.5px; font-weight:600; color:var(--accent-light); }
-  .cat-card[aria-disabled="true"] .cat-card__count { color:var(--text-3); }
+  .cat-card__badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--cat-color, #6366f1);
+    background: color-mix(in srgb, var(--cat-color, #6366f1) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cat-color, #6366f1) 25%, transparent);
+    border-radius: 999px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    letter-spacing: 0.02em;
+  }
+  .cat-card__name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 7px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .cat-card__desc {
+    font-size: 12.5px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .cat-card__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: auto;
+  }
+  .cat-card__link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-2);
+    padding: 5px 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: color var(--transition), background var(--transition);
+  }
+  .cat-card__link:hover {
+    color: var(--text);
+    background: color-mix(in srgb, var(--cat-color, #6366f1) 8%, transparent);
+  }
+  .cat-card__link-arrow {
+    font-size: 10px;
+    color: var(--cat-color, #6366f1);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .cat-card__footer {
+    padding: 12px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+  .cat-card__see-all {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--cat-color, #6366f1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: gap 0.15s ease, opacity var(--transition);
+    letter-spacing: -0.01em;
+  }
+  .cat-card:hover .cat-card__see-all { gap: 9px; }
 
   /* ================================================================
      POPULAR
   ================================================================ */
-  .popular-grid {
+  .popular-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
-  .popular-group {
+  .popular-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 18px;
-    transition: border-color var(--transition);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
   }
-  .popular-group:hover { border-color:rgba(99,102,241,0.2); }
-  .popular-group__title { font-size:12.5px; font-weight:700; color:var(--text-2); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; }
-  .popular-list { display:flex; flex-direction:column; gap:3px; }
-  .popular-list a { font-size:13px; color:var(--text-2); padding:5px 8px; border-radius:6px; transition:color var(--transition),background var(--transition); display:block; }
-  .popular-list a:hover { color:var(--text); background:var(--surface-hover); }
+  .popular-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 16px rgba(99,102,241,0.1);
+  }
+  .popular-card__icon {
+    font-size: 20px;
+    width: 38px; height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(99,102,241,0.08);
+    flex-shrink: 0;
+  }
+  .popular-card__body { flex: 1; min-width: 0; }
+  .popular-card__name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .popular-card__desc { font-size: 11.5px; color: var(--text-2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .popular-card__cat { display: inline-block; font-size: 10px; font-weight: 600; color: #6366f1; background: rgba(99,102,241,0.08); border-radius: 999px; padding: 2px 7px; margin-top: 4px; }
 
   /* ================================================================
      FEATURES
@@ -804,7 +906,8 @@
     .info-intro__stats { grid-template-columns:repeat(4,1fr); }
     .footer__inner { grid-template-columns:1fr; gap:32px; }
     .footer__links { grid-template-columns:1fr 1fr; }
-    .cat-grid { grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    .popular-cards { grid-template-columns: repeat(2, 1fr); }
     .section { margin-bottom: 56px; }
   }
   @media (max-width: 480px) {
@@ -812,7 +915,7 @@
     .footer__links { grid-template-columns:1fr; }
     .hero__stats { flex-direction:column; gap:4px; }
     .hero__stat-sep { display:none; }
-    .popular-grid { grid-template-columns:1fr 1fr; }
+    .popular-cards { grid-template-columns: 1fr; }
     /* Hero: keep ≤40% of screen height at 390px */
     .hero { padding:36px 0 28px; }
     .hero__subtitle { margin-bottom:18px; }
@@ -821,7 +924,7 @@
     .search-box__kbd { display:none; }
     .section        { margin-bottom:44px; }
     /* Cat grid: single column on very small */
-    .cat-grid { grid-template-columns:1fr; }
+    .cat-grid { grid-template-columns: 1fr; }
     /* Footer nav: single column */
     .footer__legal-links { flex-direction:column; gap:6px; }
   }
@@ -921,12 +1024,12 @@
   ================================================================ */
   .cat-card    { position: relative; overflow: hidden; }
   .feature     { position: relative; overflow: hidden; }
-  .popular-group { position: relative; overflow: hidden; }
+  .popular-card { position: relative; overflow: hidden; }
   .persona-card  { position: relative; overflow: hidden; }
 
   .cat-card::after,
   .feature::after,
-  .popular-group::after,
+  .popular-card::after,
   .persona-card::after {
     content: '';
     position: absolute;
@@ -944,17 +1047,18 @@
   }
   .cat-card:hover::after,
   .feature:hover::after,
-  .popular-group:hover::after,
+  .popular-card:hover::after,
   .persona-card:hover::after { opacity: 1; }
 
   /* card children need z-index above spotlight */
-  .cat-card__icon,
-  .cat-card__body,
+  .cat-card__bar,
+  .cat-card__main,
+  .cat-card__footer,
   .feature__icon,
   .feature__title,
   .feature__desc,
-  .popular-group__title,
-  .popular-list,
+  .popular-card__icon,
+  .popular-card__body,
   .persona-card__icon,
   .persona-card h4,
   .persona-card p {
@@ -1138,17 +1242,20 @@
   html[data-theme="dark"] .ad-label { color: #334155; border-color: rgba(255,255,255,0.08); }
 
   html[data-theme="dark"] .cat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; }
-  html[data-theme="dark"] .cat-card:not([aria-disabled="true"]):hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.6); box-shadow: 0 0 0 1px rgba(99,102,241,0.25), 0 8px 32px rgba(99,102,241,0.22); transform: translateY(-3px); }
+  html[data-theme="dark"] .cat-card:not([aria-disabled="true"]):hover { background: rgba(255,255,255,0.06); }
   html[data-theme="dark"] .cat-card__name { color: #e2e8f0; }
   html[data-theme="dark"] .cat-card__desc { color: #94a3b8; }
-  html[data-theme="dark"] .cat-card__count { color: #818cf8; }
-  html[data-theme="dark"] .cat-card[aria-disabled="true"] .cat-card__count { color: #334155; }
+  html[data-theme="dark"] .cat-card__badge { opacity: 0.9; }
+  html[data-theme="dark"] .cat-card__link { color: #94a3b8; }
+  html[data-theme="dark"] .cat-card__link:hover { color: #e2e8f0; }
+  html[data-theme="dark"] .cat-card__footer { border-color: rgba(255,255,255,0.08); }
 
-  html[data-theme="dark"] .popular-group { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
-  html[data-theme="dark"] .popular-group:hover { border-color: rgba(99,102,241,0.3); }
-  html[data-theme="dark"] .popular-group__title { color: #94a3b8; }
-  html[data-theme="dark"] .popular-list a { color: #94a3b8; }
-  html[data-theme="dark"] .popular-list a:hover { color: #e2e8f0; background: rgba(255,255,255,0.05); }
+  html[data-theme="dark"] .popular-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; }
+  html[data-theme="dark"] .popular-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(99,102,241,0.4); }
+  html[data-theme="dark"] .popular-card__name { color: #e2e8f0; }
+  html[data-theme="dark"] .popular-card__desc { color: #94a3b8; }
+  html[data-theme="dark"] .popular-card__icon { background: rgba(99,102,241,0.12); }
+  html[data-theme="dark"] .popular-card__cat { color: #818cf8; background: rgba(99,102,241,0.12); }
 
   html[data-theme="dark"] .feature { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
   html[data-theme="dark"] .feature:hover { border-color: rgba(99,102,241,0.6); box-shadow: 0 4px 24px rgba(99,102,241,0.2); transform: translateY(-2px); }
@@ -1210,13 +1317,16 @@
   html[data-theme="light"] .hero__subtitle { color: #4a4a6a; }
   html[data-theme="light"] .hero__stat { color: #4a4a6a; }
   html[data-theme="light"] .hero__pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); color: #4a4a6a; }
-  html[data-theme="light"] .cat-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); color: #0f0f1a; }
-  html[data-theme="light"] .cat-card:not([aria-disabled="true"]):hover { background: rgba(99,102,241,0.06); border-color: rgba(99,102,241,0.4); }
+  html[data-theme="light"] .cat-card { background: #ffffff; border-color: rgba(0,0,0,0.09); color: #0f0f1a; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+  html[data-theme="light"] .cat-card:not([aria-disabled="true"]):hover { background: #ffffff; }
   html[data-theme="light"] .cat-card__desc { color: #4a4a6a; }
+  html[data-theme="light"] .cat-card__link { color: #4a4a6a; }
+  html[data-theme="light"] .cat-card__footer { border-color: rgba(0,0,0,0.07); background: rgba(0,0,0,0.015); }
   html[data-theme="light"] .feature { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
   html[data-theme="light"] .feature__desc { color: #4a4a6a; }
-  html[data-theme="light"] .popular-group { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-  html[data-theme="light"] .popular-list a { color: #4a4a6a; }
+  html[data-theme="light"] .popular-card { background: #ffffff; border-color: rgba(0,0,0,0.09); color: #0f0f1a; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+  html[data-theme="light"] .popular-card__desc { color: #4a4a6a; }
+  html[data-theme="light"] .popular-card__icon { background: rgba(99,102,241,0.07); }
   html[data-theme="light"] .persona-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
   html[data-theme="light"] .faq-home__item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
   html[data-theme="light"] .footer { background: #eeeeff; border-color: rgba(0,0,0,0.07); }
@@ -1409,95 +1519,165 @@
 
         <div class="cat-grid">
 
-          <a href="/contadores-de-texto" class="cat-card" style="--cat-color:#3B82F6">
-            <span class="cat-card__icon" aria-hidden="true">🔢</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/contadores-de-texto" style="--cat-color:#3B82F6">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">🔢</span>
+              <span class="cat-card__badge">18 herramientas</span>
               <h3 class="cat-card__name">Contadores de texto</h3>
-              <p class="cat-card__desc">Palabras, caracteres y frases en tiempo real</p>
-              <span class="cat-card__count">18 herramientas →</span>
+              <p class="cat-card__desc">Palabras, caracteres, frases y tiempo de lectura — todo en tiempo real.</p>
+              <div class="cat-card__links">
+                <a href="/contadores-de-texto/contador-de-palabras" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Contador de palabras</a>
+                <a href="/contadores-de-texto/contador-de-caracteres" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Contador de caracteres</a>
+                <a href="/contadores-de-texto/contador-de-frases" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Contador de frases</a>
+                <a href="/contadores-de-texto/contador-de-tiempo-de-lectura" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Tiempo de lectura</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/contadores-de-texto" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/convertidores-de-texto" class="cat-card" style="--cat-color:#8B5CF6">
-            <span class="cat-card__icon" aria-hidden="true">🔄</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/convertidores-de-texto" style="--cat-color:#8B5CF6">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">🔄</span>
+              <span class="cat-card__badge">4 herramientas</span>
               <h3 class="cat-card__name">Convertidores de texto</h3>
-              <p class="cat-card__desc">Mayúsculas, minúsculas, camelCase y slug URL</p>
-              <span class="cat-card__count">4 herramientas →</span>
+              <p class="cat-card__desc">Transforma tu texto a mayúsculas, minúsculas, camelCase o slug URL al instante.</p>
+              <div class="cat-card__links">
+                <a href="/convertidores-de-texto/convertir-a-mayusculas" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Convertir a mayúsculas</a>
+                <a href="/convertidores-de-texto/convertir-a-minusculas" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Convertir a minúsculas</a>
+                <a href="/convertidores-de-texto/texto-a-camelcase" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Texto a camelCase</a>
+                <a href="/convertidores-de-texto/texto-a-slug-url" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Texto a slug URL</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/convertidores-de-texto" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/seo-tools-de-texto" class="cat-card" style="--cat-color:#EF4444">
-            <span class="cat-card__icon" aria-hidden="true">📈</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/seo-tools-de-texto" style="--cat-color:#EF4444">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">📈</span>
+              <span class="cat-card__badge">1 herramienta</span>
               <h3 class="cat-card__name">SEO tools de texto</h3>
-              <p class="cat-card__desc">Generador de meta tags con Open Graph integrado</p>
-              <span class="cat-card__count">1 herramienta →</span>
+              <p class="cat-card__desc">Genera meta tags optimizados con Open Graph y Twitter Cards integrados.</p>
+              <div class="cat-card__links">
+                <a href="/seo-tools-de-texto/generador-de-meta-tags" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Generador de meta tags</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/seo-tools-de-texto" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/desarrollo-y-codificacion" class="cat-card" style="--cat-color:#6366F1">
-            <span class="cat-card__icon" aria-hidden="true">💻</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/desarrollo-y-codificacion" style="--cat-color:#6366F1">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">💻</span>
+              <span class="cat-card__badge">4 herramientas</span>
               <h3 class="cat-card__name">Desarrollo y codificación</h3>
-              <p class="cat-card__desc">JSON, Base64, UUID y hashes MD5</p>
-              <span class="cat-card__count">4 herramientas →</span>
+              <p class="cat-card__desc">JSON formatter, Base64, UUID y hashes MD5 para tu flujo de desarrollo.</p>
+              <div class="cat-card__links">
+                <a href="/desarrollo-y-codificacion/formateador-json" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Formateador JSON</a>
+                <a href="/desarrollo-y-codificacion/codificador-base64" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Codificador Base64</a>
+                <a href="/desarrollo-y-codificacion/generador-uuid" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Generador UUID</a>
+                <a href="/desarrollo-y-codificacion/generador-md5" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Generador MD5</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/desarrollo-y-codificacion" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/redes-sociales" class="cat-card" style="--cat-color:#F43F5E">
-            <span class="cat-card__icon" aria-hidden="true">📱</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/redes-sociales" style="--cat-color:#F43F5E">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">📱</span>
+              <span class="cat-card__badge">4 herramientas</span>
               <h3 class="cat-card__name">Redes sociales</h3>
-              <p class="cat-card__desc">Contadores para Twitter e Instagram, hashtags y bio</p>
-              <span class="cat-card__count">4 herramientas →</span>
+              <p class="cat-card__desc">Contadores de caracteres para Twitter, Instagram, hashtags y bio optimizada.</p>
+              <div class="cat-card__links">
+                <a href="/redes-sociales/contador-twitter" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Contador Twitter/X</a>
+                <a href="/redes-sociales/contador-instagram" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Contador Instagram</a>
+                <a href="/redes-sociales/generador-hashtags-instagram" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Generador de hashtags</a>
+                <a href="/redes-sociales/bio-instagram" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Bio para Instagram</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/redes-sociales" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/limpiadores-de-texto" class="cat-card" style="--cat-color:#10B981">
-            <span class="cat-card__icon" aria-hidden="true">🧹</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/limpiadores-de-texto" style="--cat-color:#10B981">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">🧹</span>
+              <span class="cat-card__badge">1 herramienta</span>
               <h3 class="cat-card__name">Limpiadores de texto</h3>
-              <p class="cat-card__desc">Elimina espacios, duplicados y formato de Word</p>
-              <span class="cat-card__count">1 herramienta →</span>
+              <p class="cat-card__desc">Elimina espacios extra, líneas duplicadas y restos de formato de Word o PDF.</p>
+              <div class="cat-card__links">
+                <a href="/limpiadores-de-texto/eliminar-espacios" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Eliminar espacios</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/limpiadores-de-texto" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a href="/generadores-de-texto" class="cat-card" style="--cat-color:#EC4899">
-            <span class="cat-card__icon" aria-hidden="true">⚡</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/generadores-de-texto" style="--cat-color:#EC4899">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">⚡</span>
+              <span class="cat-card__badge">1 herramienta</span>
               <h3 class="cat-card__name">Generadores de texto</h3>
-              <p class="cat-card__desc">Lorem ipsum, nombres aleatorios y más</p>
-              <span class="cat-card__count">1 herramienta →</span>
+              <p class="cat-card__desc">Lorem ipsum, texto aleatorio y relleno para diseños y maquetaciones.</p>
+              <div class="cat-card__links">
+                <a href="/generadores-de-texto/lorem-ipsum" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Generador Lorem Ipsum</a>
+              </div>
             </div>
-          </a>
-
-          <a class="cat-card" aria-disabled="true" style="--cat-color:#06B6D4">
-            <span class="cat-card__icon" aria-hidden="true">📚</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Herramientas para estudiantes</h3>
-              <p class="cat-card__desc">Citas APA/MLA, bibliografía y más</p>
-              <span class="cat-card__count">Próximamente →</span>
+            <div class="cat-card__footer">
+              <a href="/generadores-de-texto" class="cat-card__see-all">Ver todas →</a>
             </div>
-          </a>
+          </div>
 
-          <a href="/manipulacion-de-texto" class="cat-card" style="--cat-color:#F59E0B">
-            <span class="cat-card__icon" aria-hidden="true">✂️</span>
-            <div class="cat-card__body">
+          <div class="cat-card" data-href="/manipulacion-de-texto" style="--cat-color:#F59E0B">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">✂️</span>
+              <span class="cat-card__badge">1 herramienta</span>
               <h3 class="cat-card__name">Manipulación de texto</h3>
-              <p class="cat-card__desc">Invertir, ordenar y buscar/reemplazar</p>
-              <span class="cat-card__count">1 herramienta →</span>
+              <p class="cat-card__desc">Invierte, ordena, busca y reemplaza texto con un solo clic.</p>
+              <div class="cat-card__links">
+                <a href="/manipulacion-de-texto/invertir-texto" class="cat-card__link"><span class="cat-card__link-arrow">›</span> Invertir texto</a>
+              </div>
             </div>
-          </a>
+            <div class="cat-card__footer">
+              <a href="/manipulacion-de-texto" class="cat-card__see-all">Ver todas →</a>
+            </div>
+          </div>
 
-          <a class="cat-card" aria-disabled="true" style="--cat-color:#7C3AED">
-            <span class="cat-card__icon" aria-hidden="true">🛠️</span>
-            <div class="cat-card__body">
-              <h3 class="cat-card__name">Utilidades avanzadas</h3>
-              <p class="cat-card__desc">Comparador de textos, cifrados y más</p>
-              <span class="cat-card__count">Próximamente →</span>
+          <div class="cat-card" aria-disabled="true" style="--cat-color:#06B6D4">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">📚</span>
+              <span class="cat-card__badge">Próximamente</span>
+              <h3 class="cat-card__name">Herramientas para estudiantes</h3>
+              <p class="cat-card__desc">Citas APA y MLA, generador de bibliografías y más.</p>
             </div>
-          </a>
+          </div>
+
+          <div class="cat-card" aria-disabled="true" style="--cat-color:#7C3AED">
+            <div class="cat-card__bar"></div>
+            <div class="cat-card__main">
+              <span class="cat-card__icon" aria-hidden="true">🛠️</span>
+              <span class="cat-card__badge">Próximamente</span>
+              <h3 class="cat-card__name">Utilidades avanzadas</h3>
+              <p class="cat-card__desc">Comparador de textos, cifrado y herramientas avanzadas.</p>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -1509,89 +1689,88 @@
           <h2 class="section-title" id="popular-title">Herramientas más usadas</h2>
         </div>
 
-        <div class="popular-grid">
+        <div class="popular-cards">
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🔢 Contadores</h3>
-            <ul class="popular-list">
-              <li><a href="/contadores-de-texto/contador-de-palabras">Contador de palabras</a></li>
-              <li><a href="/contadores-de-texto/contador-de-caracteres">Contador de caracteres</a></li>
-              <li><a href="/contadores-de-texto/contador-de-frases">Contador de frases</a></li>
-              <li><a href="/contadores-de-texto/contador-de-silabas">Contador de sílabas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-caracteres-sin-espacios">Caracteres sin espacios</a></li>
-              <li><a href="/contadores-de-texto/contador-de-parrafos">Contador de párrafos</a></li>
-              <li><a href="/contadores-de-texto/contador-de-lineas">Contador de líneas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-letras">Contador de letras</a></li>
-              <li><a href="/contadores-de-texto/contador-de-numeros">Contador de números</a></li>
-              <li><a href="/contadores-de-texto/contador-de-espacios">Contador de espacios</a></li>
-              <li><a href="/contadores-de-texto/contador-de-hashtags">Contador de hashtags</a></li>
-              <li><a href="/contadores-de-texto/contador-de-menciones">Contador de menciones</a></li>
-              <li><a href="/contadores-de-texto/contador-de-urls">Contador de URLs</a></li>
-              <li><a href="/contadores-de-texto/contador-de-palabras-unicas">Palabras únicas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-palabras-repetidas">Palabras repetidas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-palabras-largas">Palabras largas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-palabras-cortas">Palabras cortas</a></li>
-              <li><a href="/contadores-de-texto/contador-de-tiempo-de-lectura">Tiempo de lectura</a></li>
-            </ul>
-          </div>
+          <a href="/contadores-de-texto/contador-de-palabras" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">📝</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Contador de palabras</div>
+              <div class="popular-card__desc">Cuenta palabras en tiempo real</div>
+              <span class="popular-card__cat">Contadores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🔄 Convertidores</h3>
-            <ul class="popular-list">
-              <li><a href="/convertidores-de-texto/convertir-a-mayusculas">Convertir a mayúsculas</a></li>
-              <li><a href="/convertidores-de-texto/convertir-a-minusculas">Convertir a minúsculas</a></li>
-              <li><a href="/convertidores-de-texto/texto-a-camelcase">Texto a camelCase</a></li>
-              <li><a href="/convertidores-de-texto/texto-a-slug-url">Texto a slug URL</a></li>
-            </ul>
-          </div>
+          <a href="/contadores-de-texto/contador-de-caracteres" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">🔤</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Contador de caracteres</div>
+              <div class="popular-card__desc">Con y sin espacios al instante</div>
+              <span class="popular-card__cat">Contadores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">📈 SEO</h3>
-            <ul class="popular-list">
-              <li><a href="/seo-tools-de-texto/generador-de-meta-tags">Generador de meta tags</a></li>
-            </ul>
-          </div>
+          <a href="/contadores-de-texto/contador-de-tiempo-de-lectura" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">⏱️</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Tiempo de lectura</div>
+              <div class="popular-card__desc">A 200, 150 y 300 palabras/min</div>
+              <span class="popular-card__cat">Contadores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">💻 Desarrollo</h3>
-            <ul class="popular-list">
-              <li><a href="/desarrollo-y-codificacion/formateador-json">Formateador JSON</a></li>
-              <li><a href="/desarrollo-y-codificacion/codificador-base64">Codificador Base64</a></li>
-              <li><a href="/desarrollo-y-codificacion/generador-uuid">Generador de UUID</a></li>
-              <li><a href="/desarrollo-y-codificacion/generador-md5">Generador MD5</a></li>
-            </ul>
-          </div>
+          <a href="/contadores-de-texto/contador-de-frases" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">💬</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Contador de frases</div>
+              <div class="popular-card__desc">Detecta oraciones con precisión</div>
+              <span class="popular-card__cat">Contadores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">📱 Redes sociales</h3>
-            <ul class="popular-list">
-              <li><a href="/redes-sociales/contador-twitter">Contador Twitter/X</a></li>
-              <li><a href="/redes-sociales/contador-instagram">Contador Instagram</a></li>
-              <li><a href="/redes-sociales/generador-hashtags-instagram">Generador de hashtags</a></li>
-              <li><a href="/redes-sociales/bio-instagram">Bio para Instagram</a></li>
-            </ul>
-          </div>
+          <a href="/contadores-de-texto/contador-de-palabras-unicas" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">✨</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Palabras únicas</div>
+              <div class="popular-card__desc">Mide la riqueza léxica del texto</div>
+              <span class="popular-card__cat">Contadores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">🧹 Limpiadores</h3>
-            <ul class="popular-list">
-              <li><a href="/limpiadores-de-texto/eliminar-espacios">Eliminar espacios</a></li>
-            </ul>
-          </div>
+          <a href="/convertidores-de-texto/convertir-a-mayusculas" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">🔠</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Convertir a mayúsculas</div>
+              <div class="popular-card__desc">Todo el texto en MAYÚSCULAS</div>
+              <span class="popular-card__cat">Convertidores</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">⚡ Generadores</h3>
-            <ul class="popular-list">
-              <li><a href="/generadores-de-texto/lorem-ipsum">Generador Lorem Ipsum</a></li>
-            </ul>
-          </div>
+          <a href="/desarrollo-y-codificacion/formateador-json" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">{ }</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Formateador JSON</div>
+              <div class="popular-card__desc">Valida y embellece JSON al vuelo</div>
+              <span class="popular-card__cat">Desarrollo</span>
+            </div>
+          </a>
 
-          <div class="popular-group reveal">
-            <h3 class="popular-group__title">✂️ Manipulación</h3>
-            <ul class="popular-list">
-              <li><a href="/manipulacion-de-texto/invertir-texto">Invertir texto</a></li>
-            </ul>
-          </div>
+          <a href="/redes-sociales/contador-twitter" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">🐦</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Contador Twitter/X</div>
+              <div class="popular-card__desc">Límite de 280 caracteres visible</div>
+              <span class="popular-card__cat">Redes sociales</span>
+            </div>
+          </a>
+
+          <a href="/generadores-de-texto/lorem-ipsum" class="popular-card reveal">
+            <span class="popular-card__icon" aria-hidden="true">⚡</span>
+            <div class="popular-card__body">
+              <div class="popular-card__name">Generador Lorem Ipsum</div>
+              <div class="popular-card__desc">Texto de relleno para diseños</div>
+              <span class="popular-card__cat">Generadores</span>
+            </div>
+          </a>
 
         </div>
       </section>
@@ -2115,9 +2294,25 @@
         card.style.removeProperty('background');
       });
     }
-    var sel = '.cat-card:not([aria-disabled="true"]), .feature, .popular-group, .persona-card';
+    var sel = '.cat-card:not([aria-disabled="true"]), .feature, .popular-card, .persona-card';
     document.querySelectorAll(sel).forEach(attachSpotlight);
   })();
+
+  /* Cat card div click → navigate (inner <a> clicks handled by their own href) */
+  document.querySelectorAll('.cat-card[data-href]').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' || e.target.closest('a')) return;
+      window.location.href = card.getAttribute('data-href');
+    });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.location.href = card.getAttribute('data-href');
+      }
+    });
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+  });
 
   /* ── Hero demo interactivo ── */
   (function () {
