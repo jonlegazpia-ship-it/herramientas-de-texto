@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Tiempo de Lectura Online Gratis | HerramientasDeTexto.com</title>
+<meta name="description" content="Calcula el tiempo de lectura de tu texto al instante. Muestra el tiempo a 200, 150 y 300 palabras por minuto, más tiempo de locución. Sin registro, 100% privado.">
+<link rel="canonical" href="https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-lectura">
+<meta property="og:title" content="Contador de Tiempo de Lectura Online Gratis">
+<meta property="og:description" content="Calcula en segundos cuánto tarda en leerse tu texto. Velocidades lenta, normal y rápida. Gratis, sin registro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-lectura">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="HerramientasDeTexto.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contador de Tiempo de Lectura Online Gratis">
+<meta name="twitter:description" content="Tiempo de lectura al instante. Sin registro ni límites.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563EB'/><text x='50%25' y='54%25' font-family='system-ui' font-size='14' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>Ht</text></svg>">
+<style>
+:root{--cat-color:#3b82f6;--cat-color-2:#6366f1;--cat-color-3:#a855f7;--cat-bg:rgba(59,130,246,0.08);--cat-border:rgba(59,130,246,0.2)}
+</style>
+<link rel="stylesheet" href="/css/tools.css">
+<style>
+body{background:#07080f}
+[data-theme="light"] body{background:#f5f6fa}
+.pw-hero{position:relative;padding:calc(var(--header-h,56px) + 72px) 20px 88px;overflow:hidden;background:#07080f}
+[data-theme="light"] .pw-hero{background:#f5f6fa}
+.pw-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 600px at 15% -5%,rgba(59,130,246,.22) 0%,transparent 60%),radial-gradient(ellipse 600px 450px at 85% 60%,rgba(99,102,241,.14) 0%,transparent 60%),radial-gradient(ellipse 500px 350px at 50% 110%,rgba(168,85,247,.08) 0%,transparent 60%);pointer-events:none}
+[data-theme="light"] .pw-hero::before{background:radial-gradient(ellipse 900px 600px at 15% -5%,rgba(59,130,246,.10) 0%,transparent 60%),radial-gradient(ellipse 600px 450px at 85% 60%,rgba(99,102,241,.07) 0%,transparent 60%)}
+.pw-hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+[data-theme="light"] .pw-hero::after{background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px)}
+.pw-hero-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:52px;align-items:center}
+@media(max-width:980px){.pw-hero-inner{grid-template-columns:1fr;gap:44px}}
+.pw-cat-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 13px 5px 10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);border-radius:20px;font-size:12px;font-weight:600;color:#93c5fd;margin-bottom:22px;animation:fadeSlideUp .55s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+[data-theme="light"] .pw-cat-badge{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}
+.pw-cat-badge svg{width:12px;height:12px;flex-shrink:0}
+.pw-h1{font-size:clamp(38px,5.5vw,66px);font-weight:800;line-height:1.04;letter-spacing:-2.5px;color:#fff;margin-bottom:20px;animation:fadeSlideUp .6s .07s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+[data-theme="light"] .pw-h1{color:#0f172a}
+.pw-h1-grad{background:linear-gradient(135deg,#60a5fa 0%,#818cf8 50%,#c084fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pw-desc{font-size:17px;line-height:1.7;color:rgba(255,255,255,.5);max-width:500px;margin-bottom:30px;animation:fadeSlideUp .6s .14s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+[data-theme="light"] .pw-desc{color:#475569}
+.pw-pills{display:flex;gap:8px;flex-wrap:wrap;animation:fadeSlideUp .6s .21s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+.pw-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.6);backdrop-filter:blur(8px)}
+[data-theme="light"] .pw-pill{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.09);color:#475569}
+.pw-pill-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.pw-preview-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:24px;backdrop-filter:blur(20px);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 32px 64px rgba(0,0,0,.55),0 0 80px rgba(59,130,246,.07);animation:fadeSlideUp .7s .28s var(--ease,cubic-bezier(.16,1,.3,1)) both,pwFloat 6s 1s ease-in-out infinite alternate;position:relative}
+[data-theme="light"] .pw-preview-card{background:#fff;border-color:#e2e8f0;box-shadow:0 20px 60px rgba(0,0,0,.09),0 4px 16px rgba(0,0,0,.05)}
+@keyframes pwFloat{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+@media(prefers-reduced-motion:reduce){.pw-preview-card{animation:fadeSlideUp .7s .28s var(--ease,cubic-bezier(.16,1,.3,1)) both !important}}
+.pw-preview-card::before{content:'';position:absolute;top:-1px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.7),transparent)}
+[data-theme="light"] .pw-preview-card::before{background:linear-gradient(90deg,transparent,rgba(99,102,241,.35),transparent)}
+.pw-preview-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.pw-preview-hdr-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3)}
+[data-theme="light"] .pw-preview-hdr-title{color:#94a3b8}
+.pw-preview-live{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:#4ade80}
+.pw-preview-live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
+.pw-preview-main{text-align:center;padding:22px 4px 24px;border-bottom:1px solid rgba(255,255,255,.06);margin:0 -4px 14px;background:rgba(59,130,246,.04);border-radius:12px 12px 0 0}
+[data-theme="light"] .pw-preview-main{background:#eff6ff;border-bottom-color:#e2e8f0}
+.pw-preview-big{font-size:58px;font-weight:800;line-height:1;letter-spacing:-2px;color:#fff;font-variant-numeric:tabular-nums;transition:color .15s}
+[data-theme="light"] .pw-preview-big{color:#1e3a8a}
+.pw-preview-label{font-size:11px;color:rgba(255,255,255,.3);font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+[data-theme="light"] .pw-preview-label{color:rgba(99,102,241,.65)}
+.pw-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden;margin-bottom:12px}
+[data-theme="light"] .pw-preview-grid{background:#e2e8f0}
+.pw-preview-cell{background:rgba(255,255,255,.025);padding:13px 14px;transition:background .15s}
+[data-theme="light"] .pw-preview-cell{background:#f8fafc}
+.pw-preview-cell-val{font-size:20px;font-weight:800;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums;letter-spacing:-.5px;line-height:1}
+[data-theme="light"] .pw-preview-cell-val{color:#0f172a}
+.pw-preview-cell-lbl{font-size:10px;color:rgba(255,255,255,.28);margin-top:3px;font-weight:500}
+[data-theme="light"] .pw-preview-cell-lbl{color:#94a3b8}
+.pw-content{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+.pw-tool-grid{display:grid;grid-template-columns:1fr 372px;gap:16px;align-items:start;margin-bottom:32px;animation:fadeSlideUp .45s .05s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+@media(max-width:900px){.pw-tool-grid{grid-template-columns:1fr}}
+.pw-textarea-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+[data-theme="light"] .pw-textarea-card{background:#fff;border-color:#e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.pw-textarea-card:focus-within{border-color:rgba(99,102,241,.45);box-shadow:0 0 0 3px rgba(99,102,241,.09),0 0 40px rgba(99,102,241,.05)}
+[data-theme="light"] .pw-textarea-card:focus-within{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+.pw-tc-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+[data-theme="light"] .pw-tc-header{border-bottom-color:#f1f5f9}
+.pw-tc-title{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:rgba(255,255,255,.4)}
+[data-theme="light"] .pw-tc-title{color:#64748b}
+.pw-tc-title svg{width:14px;height:14px;color:#6366f1}
+.pw-tc-chars{font-size:12px;color:rgba(255,255,255,.22);font-variant-numeric:tabular-nums}
+[data-theme="light"] .pw-tc-chars{color:#94a3b8}
+.pw-textarea{width:100%;min-height:300px;padding:18px 20px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.85);background:transparent;border:none;outline:none;resize:vertical;font-family:var(--font,system-ui,sans-serif)}
+[data-theme="light"] .pw-textarea{color:#0f172a}
+.pw-textarea::placeholder{color:rgba(255,255,255,.18);font-size:14px}
+[data-theme="light"] .pw-textarea::placeholder{color:#94a3b8}
+@media(max-width:640px){.pw-textarea{resize:none}}
+.pw-toolbar{padding:10px 14px;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:6px;flex-wrap:wrap;background:rgba(0,0,0,.18)}
+[data-theme="light"] .pw-toolbar{background:#f8fafc;border-top-color:#f1f5f9}
+.pw-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.45);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap;user-select:none}
+[data-theme="light"] .pw-btn{color:#475569;background:#fff;border-color:#e2e8f0}
+.pw-btn svg{width:13px;height:13px;flex-shrink:0}
+.pw-btn:hover{background:rgba(99,102,241,.14);border-color:rgba(99,102,241,.32);color:#a5b4fc}
+[data-theme="light"] .pw-btn:hover{background:#eff6ff;border-color:#bfdbfe;color:#3b82f6}
+.pw-btn:active{transform:translateY(1px)}
+.pw-btn--danger{color:rgba(239,68,68,.7)}
+.pw-btn--danger:hover{background:rgba(239,68,68,.09);border-color:rgba(239,68,68,.25);color:#fca5a5}
+[data-theme="light"] .pw-btn--danger{color:#ef4444}
+[data-theme="light"] .pw-btn--danger:hover{background:#fef2f2;border-color:#fecaca;color:#dc2626}
+@media(max-width:768px){.pw-btn{min-height:44px}}
+.pw-stats-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;position:sticky;top:calc(var(--header-h,56px) + 16px)}
+[data-theme="light"] .pw-stats-card{background:#fff;border-color:#e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+@media(max-width:900px){.pw-stats-card{position:static}}
+.pw-stats-hdr{background:linear-gradient(135deg,#3b82f6 0%,#6366f1 100%);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.pw-stats-hdr-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+.pw-stats-live{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:500;color:rgba(255,255,255,.6)}
+.pw-stats-live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80}
+.pw-stat-primary{padding:26px 20px 18px;text-align:center;background:rgba(59,130,246,.05);border-bottom:1px solid rgba(255,255,255,.06)}
+[data-theme="light"] .pw-stat-primary{background:#eff6ff;border-bottom-color:#e2e8f0}
+.pw-stat-primary-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(99,102,241,.75);margin-bottom:6px}
+[data-theme="light"] .pw-stat-primary-label{color:rgba(99,102,241,.8)}
+.pw-stat-primary-num{font-size:clamp(36px,4vw,52px);font-weight:800;color:#fff;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums;transition:color .15s}
+[data-theme="light"] .pw-stat-primary-num{color:#1e3a8a}
+.pw-stat-primary-sub{font-size:11px;color:rgba(255,255,255,.22);margin-top:6px}
+[data-theme="light"] .pw-stat-primary-sub{color:#94a3b8}
+.pw-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06)}
+[data-theme="light"] .pw-stats-grid{background:#e2e8f0}
+.pw-stat-cell{background:rgba(255,255,255,.02);padding:15px 16px;transition:background .15s}
+[data-theme="light"] .pw-stat-cell{background:#fafafa}
+.pw-stat-cell:hover{background:rgba(255,255,255,.045)}
+[data-theme="light"] .pw-stat-cell:hover{background:#f1f5f9}
+.pw-stat-cell-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+[data-theme="light"] .pw-stat-cell-label{color:#94a3b8}
+.pw-stat-cell-num{font-size:22px;font-weight:800;color:rgba(255,255,255,.85);letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums}
+[data-theme="light"] .pw-stat-cell-num{color:#0f172a}
+.pw-stat-cell-sub{font-size:10px;color:rgba(255,255,255,.18);margin-top:2px}
+[data-theme="light"] .pw-stat-cell-sub{color:#94a3b8}
+.pw-tip{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.16);border-left:3px solid #3b82f6;border-radius:10px;padding:12px 16px;display:flex;gap:11px;align-items:flex-start;margin-bottom:36px;font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.6}
+[data-theme="light"] .pw-tip{background:#eff6ff;border-color:#bfdbfe;border-left-color:#3b82f6;color:#1e40af}
+.pw-tip svg{width:16px;height:16px;color:#60a5fa;flex-shrink:0;margin-top:2px}
+[data-theme="light"] .pw-tip svg{color:#3b82f6}
+.pw-tip strong{color:rgba(255,255,255,.8)}
+[data-theme="light"] .pw-tip strong{color:#1e3a8a}
+.pw-sh{margin-bottom:18px}
+.pw-sh-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#818cf8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.22);border-radius:20px;padding:3px 10px;margin-bottom:10px}
+[data-theme="light"] .pw-sh-tag{color:#4f46e5;background:#eef2ff;border-color:#c7d2fe}
+.pw-h2{font-size:clamp(20px,2.5vw,27px);font-weight:800;color:rgba(255,255,255,.9);letter-spacing:-.6px;margin:0}
+[data-theme="light"] .pw-h2{color:#0f172a}
+.pw-h2-sub{font-size:14px;color:rgba(255,255,255,.38);margin-top:5px;font-weight:400}
+[data-theme="light"] .pw-h2-sub{color:#64748b}
+.pw-bento{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:40px}
+@media(max-width:780px){.pw-bento{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pw-bento{grid-template-columns:1fr}}
+.pw-bc{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:background .2s,border-color .2s,box-shadow .2s}
+[data-theme="light"] .pw-bc{background:#fff;border-color:#e8ecf4;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.pw-bc:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);box-shadow:0 8px 32px rgba(0,0,0,.28)}
+[data-theme="light"] .pw-bc:hover{background:#fff;border-color:#c7d2fe;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.pw-bc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--bc-accent,rgba(255,255,255,0));transition:background .2s}
+.pw-bc:hover::before{background:var(--bc-accent,rgba(99,102,241,.5))}
+.pw-bc--wide{grid-column:span 2}
+.pw-bc--blue{--bc-accent:linear-gradient(90deg,#3b82f6,#6366f1)}
+.pw-bc--green{--bc-accent:linear-gradient(90deg,#10b981,#34d399)}
+.pw-bc--amber{--bc-accent:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.pw-bc--purple{--bc-accent:linear-gradient(90deg,#8b5cf6,#a855f7)}
+.pw-bc-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pw-bc-icon svg{width:18px;height:18px}
+.pw-bc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.pw-bc-h3{font-size:16px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:8px;letter-spacing:-.3px}
+[data-theme="light"] .pw-bc-h3{color:#0f172a}
+.pw-bc-p{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.65;margin:0}
+[data-theme="light"] .pw-bc-p{color:#475569}
+.pw-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pw-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(74,222,128,.09);border:1px solid rgba(74,222,128,.2);border-radius:20px;font-size:12px;font-weight:500;color:#4ade80}
+[data-theme="light"] .pw-chip{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.22);color:#16a34a}
+.pw-chip svg{width:10px;height:10px}
+.pw-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px}
+@media(max-width:640px){.pw-steps{grid-template-columns:1fr}}
+.pw-step{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s,box-shadow .2s}
+[data-theme="light"] .pw-step{background:#fff;border-color:#e8ecf4}
+.pw-step:hover{border-color:rgba(99,102,241,.32);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+[data-theme="light"] .pw-step:hover{border-color:#6366f1;box-shadow:0 4px 16px rgba(99,102,241,.12)}
+.pw-step-num{min-width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.pw-step-body h4{font-size:14px;font-weight:700;color:rgba(255,255,255,.85);margin:0 0 4px}
+[data-theme="light"] .pw-step-body h4{color:#0f172a}
+.pw-step-body p{font-size:12.5px;color:rgba(255,255,255,.38);margin:0;line-height:1.55}
+[data-theme="light"] .pw-step-body p{color:#64748b}
+.pw-uses{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:40px}
+@media(max-width:540px){.pw-uses{grid-template-columns:1fr}}
+.pw-use{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;transition:border-color .2s}
+[data-theme="light"] .pw-use{background:#fff;border-color:#e8ecf4}
+.pw-use:hover{border-color:rgba(255,255,255,.13)}
+[data-theme="light"] .pw-use:hover{border-color:#c7d2fe}
+.pw-use-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.pw-use h4{font-size:13.5px;font-weight:700;color:rgba(255,255,255,.8);margin:0 0 4px}
+[data-theme="light"] .pw-use h4{color:#0f172a}
+.pw-use p{font-size:12.5px;color:rgba(255,255,255,.38);margin:0;line-height:1.55}
+[data-theme="light"] .pw-use p{color:#475569}
+.pw-table-wrap{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;margin-bottom:40px}
+[data-theme="light"] .pw-table-wrap{background:#fff;border-color:#e2e8f0}
+.pw-table{width:100%;border-collapse:collapse}
+.pw-table thead{background:rgba(255,255,255,.04)}
+[data-theme="light"] .pw-table thead{background:#f8fafc}
+.pw-table thead th{padding:12px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28)}
+[data-theme="light"] .pw-table thead th{color:#94a3b8}
+.pw-table tbody tr{border-top:1px solid rgba(255,255,255,.05);transition:background .12s}
+[data-theme="light"] .pw-table tbody tr{border-top-color:#f1f5f9}
+.pw-table tbody tr:hover{background:rgba(255,255,255,.03)}
+[data-theme="light"] .pw-table tbody tr:hover{background:#f8fafc}
+.pw-table td{padding:13px 16px;font-size:13.5px;color:rgba(255,255,255,.5)}
+[data-theme="light"] .pw-table td{color:#475569}
+.pw-table td:first-child{font-weight:600;color:rgba(255,255,255,.8)}
+[data-theme="light"] .pw-table td:first-child{color:#0f172a}
+.pw-range{display:inline-block;padding:3px 10px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.22);border-radius:20px;font-size:12px;font-weight:600;color:#a5b4fc;white-space:nowrap}
+[data-theme="light"] .pw-range{background:#eef2ff;border-color:#c7d2fe;color:#4338ca}
+.pw-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600}
+.pw-badge--blue{background:rgba(59,130,246,.1);color:#93c5fd}
+.pw-badge--green{background:rgba(16,185,129,.1);color:#6ee7b7}
+.pw-badge--amber{background:rgba(245,158,11,.1);color:#fcd34d}
+.pw-badge--red{background:rgba(239,68,68,.1);color:#fca5a5}
+.pw-badge--purple{background:rgba(168,85,247,.1);color:#d8b4fe}
+[data-theme="light"] .pw-badge--blue{background:#eff6ff;color:#1d4ed8}
+[data-theme="light"] .pw-badge--green{background:#f0fdf4;color:#15803d}
+[data-theme="light"] .pw-badge--amber{background:#fffbeb;color:#b45309}
+[data-theme="light"] .pw-badge--red{background:#fef2f2;color:#be123c}
+[data-theme="light"] .pw-badge--purple{background:#f5f3ff;color:#6d28d9}
+.pw-combo{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.16);border-radius:14px;padding:16px 20px;font-size:13.5px;color:rgba(255,255,255,.47);line-height:1.7;margin-bottom:40px}
+[data-theme="light"] .pw-combo{background:#eef2ff;border-color:#c7d2fe;color:#4338ca}
+.pw-combo strong{color:rgba(255,255,255,.8)}
+[data-theme="light"] .pw-combo strong{color:#312e81}
+.pw-combo a{color:#818cf8;text-decoration:underline;text-decoration-color:rgba(129,140,248,.3)}
+[data-theme="light"] .pw-combo a{color:#4f46e5}
+.pw-why{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:40px}
+@media(max-width:600px){.pw-why{grid-template-columns:1fr 1fr}}
+.pw-why-item{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;text-align:center;transition:border-color .2s,box-shadow .2s}
+[data-theme="light"] .pw-why-item{background:#fff;border-color:#e8ecf4}
+.pw-why-item:hover{border-color:rgba(99,102,241,.28);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+[data-theme="light"] .pw-why-item:hover{border-color:#6366f1;box-shadow:0 4px 16px rgba(99,102,241,.1)}
+.pw-why-icon{font-size:20px;display:block;margin-bottom:8px}
+.pw-why-item strong{display:block;font-size:13px;color:rgba(255,255,255,.8);margin-bottom:4px}
+[data-theme="light"] .pw-why-item strong{color:#0f172a}
+.pw-why-item span{font-size:11.5px;color:rgba(255,255,255,.33);line-height:1.5}
+[data-theme="light"] .pw-why-item span{color:#64748b}
+.pw-catlink{font-size:13.5px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:40px;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:12px}
+[data-theme="light"] .pw-catlink{background:#f8fafc;border-color:#e2e8f0;color:#475569}
+.pw-catlink a{color:#818cf8;font-weight:600}
+[data-theme="light"] .pw-catlink a{color:#4f46e5}
+.pw-stats-card .ht-stat-num.pop{animation:statPop .35s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+.pw-stats-card .ht-stat-card.celebrate{animation:celebFlash .55s var(--ease,cubic-bezier(.16,1,.3,1)) both}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Contador de Tiempo de Lectura Online Gratis","description":"Calcula el tiempo de lectura de cualquier texto en tiempo real. Muestra el tiempo a velocidad normal (200 ppm), lenta (150 ppm), rápida (300 ppm) y de locución (125 ppm). Sin registro.","url":"https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-lectura/","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","featureList":["Tiempo de lectura en tiempo real","Velocidad normal, lenta y rápida","Tiempo de locución","Total de palabras","Sin registro"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://herramientasdetexto.com/"},{"@type":"ListItem","position":2,"name":"Contadores de texto","item":"https://herramientasdetexto.com/contadores-de-texto/"},{"@type":"ListItem","position":3,"name":"Contador de tiempo de lectura","item":"https://herramientasdetexto.com/contadores-de-texto/contador-de-tiempo-de-lectura/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuántas palabras por minuto lee una persona adulta de media?","acceptedAnswer":{"@type":"Answer","text":"La velocidad de lectura silenciosa en adultos se sitúa entre 200 y 250 palabras por minuto (ppm). Este contador usa 200 ppm como velocidad estándar, que es una estimación conservadora y realista para textos informativos."}},{"@type":"Question","name":"¿Para qué sirve calcular el tiempo de lectura?","acceptedAnswer":{"@type":"Answer","text":"Saber cuánto tarda un lector en consumir un contenido ayuda a los editores a fijar expectativas, a los creadores de pódcast a estimar duraciones y a los docentes a planificar sesiones de lectura con tiempos ajustados."}},{"@type":"Question","name":"¿Cuál es la diferencia entre tiempo de lectura y tiempo de locución?","acceptedAnswer":{"@type":"Answer","text":"El tiempo de lectura estima cuánto tarda un lector en leer el texto en silencio (200 ppm). El tiempo de locución estima cuánto tarda un locutor en leerlo en voz alta, que es más lento (125 ppm) porque hay que articular claramente cada palabra."}},{"@type":"Question","name":"¿Por qué la lectura rápida es el doble que la normal?","acceptedAnswer":{"@type":"Answer","text":"Los lectores entrenados o en modalidad de escaneo pueden alcanzar 300 ppm o más, saltando palabras funcionales. Este modo es útil para revisar texto conocido, pero puede reducir la comprensión profunda."}},{"@type":"Question","name":"¿El tiempo incluye las pausas para imágenes o vídeos?","acceptedAnswer":{"@type":"Answer","text":"No, el estimador solo cuenta el texto escrito. Las imágenes, infografías o vídeos incrustados añaden tiempo extra que debe calcularse por separado según el medio utilizado."}}]}
+</script>
+</head>
+<body>
+<header class="ht-site-header">
+  <a href="/" class="ht-logo" aria-label="HerramientasDeTexto.com — Inicio">
+    <div class="ht-logo-icon">Ht</div>
+    <span class="ht-logo-text">HerramientasDeTexto<span>.com</span></span>
+  </a>
+  <div class="ht-header-sep"></div>
+  <nav class="ht-header-nav" aria-label="Categorías principales">
+    <a href="/contadores-de-texto" class="active">Contadores</a>
+    <a href="/seo-tools-de-texto">SEO</a>
+    <a href="/generadores-de-texto">Generadores</a>
+    <a href="/desarrollo-y-codificacion">Dev</a>
+    <a href="/redes-sociales">Redes</a>
+  </nav>
+  <div class="ht-header-right">
+    <button class="ht-theme-toggle" id="ht-theme-toggle" aria-label="Cambiar tema">
+      <svg class="ht-icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.46" y2="4.46"/><line x1="11.54" y1="11.54" x2="12.95" y2="12.95"/><line x1="3.05" y1="12.95" x2="4.46" y2="11.54"/><line x1="11.54" y1="4.46" x2="12.95" y2="3.05"/></svg>
+      <svg class="ht-icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 10A6 6 0 1 1 6 2.5a4.5 4.5 0 0 0 7.5 7.5z"/></svg>
+    </button>
+    <a href="/" class="ht-home-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 2 6 8 2 14 6 14 12"/><rect x="5" y="9" width="6" height="7" rx="1"/></svg>
+      Todas las herramientas
+    </a>
+  </div>
+</header>
+
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <div class="pw-hero-text">
+      <div class="pw-cat-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg>
+        Contadores de texto
+      </div>
+      <h1 class="pw-h1">Tiempo de lectura<br><span class="pw-h1-grad">al instante, 4 velocidades</span></h1>
+      <p class="pw-desc">Calcula en segundos cuánto tarda en leerse tu texto a velocidad normal, lenta, rápida y de locución. Perfecto para artículos, pódcast, presentaciones y contenido web.</p>
+      <div class="pw-pills">
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Tiempo real</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>100&nbsp;% privado</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>Sin registro</span>
+        <span class="pw-pill"><span class="pw-pill-dot"></span>4 velocidades</span>
+      </div>
+    </div>
+    <div class="pw-preview-card" aria-hidden="true">
+      <div class="pw-preview-hdr">
+        <span class="pw-preview-hdr-title">Vista previa en vivo</span>
+        <span class="pw-preview-live"><span class="pw-preview-live-dot"></span>En vivo</span>
+      </div>
+      <div class="pw-preview-main">
+        <div class="pw-preview-big" id="pw-normal">0:00</div>
+        <div class="pw-preview-label">Lectura normal (200 ppm)</div>
+      </div>
+      <div class="pw-preview-grid">
+        <div class="pw-preview-cell"><div class="pw-preview-cell-val" id="pw-lenta">0:00</div><div class="pw-preview-cell-lbl">Lenta (150 ppm)</div></div>
+        <div class="pw-preview-cell"><div class="pw-preview-cell-val" id="pw-rapida">0:00</div><div class="pw-preview-cell-lbl">Rápida (300 ppm)</div></div>
+        <div class="pw-preview-cell"><div class="pw-preview-cell-val" id="pw-locucion">0:00</div><div class="pw-preview-cell-lbl">Locución (125 ppm)</div></div>
+        <div class="pw-preview-cell"><div class="pw-preview-cell-val" id="pw-palabras">0</div><div class="pw-preview-cell-lbl">Palabras</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pw-content">
+  <nav class="ht-bc" aria-label="Ruta de navegación">
+    <a href="/">Inicio</a><span class="ht-bc-sep" aria-hidden="true">›</span>
+    <a href="/contadores-de-texto">Contadores de texto</a><span class="ht-bc-sep" aria-hidden="true">›</span>
+    <span aria-current="page">Tiempo de lectura</span>
+  </nav>
+
+  <main id="herramienta">
+    <div class="pw-tool-grid">
+      <div class="pw-textarea-card">
+        <div class="pw-tc-header">
+          <div class="pw-tc-title">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8.5" y2="10.5"/></svg>
+            Tu texto
+          </div>
+          <span class="pw-tc-chars" id="hdr-lectura" aria-live="polite">0:00 de lectura</span>
+        </div>
+        <label class="sr-only" for="ht-txt">Texto a analizar</label>
+        <textarea id="ht-txt" class="pw-textarea" placeholder="Pega o escribe aquí tu texto para calcular el tiempo de lectura…" spellcheck="false" autocomplete="off" autocorrect="off" aria-label="Texto a analizar"></textarea>
+        <div class="pw-toolbar">
+          <button class="pw-btn" onclick="HT.paste('ht-txt')">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="9" height="11" rx="1.5"/><path d="M3 12H2.5A1.5 1.5 0 0 1 1 10.5v-8A1.5 1.5 0 0 1 2.5 1h8A1.5 1.5 0 0 1 12 2.5V4"/></svg>
+            <span>Pegar</span>
+          </button>
+          <button class="pw-btn" onclick="copyMetrics(this)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="8" y2="9"/></svg>
+            <span>Copiar métricas</span>
+          </button>
+          <button class="pw-btn pw-btn--danger" onclick="clearText()">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12M5 4V2h6v2M6 7v5M10 7v5M3 4l1 10h8l1-10"/></svg>
+            <span>Limpiar</span>
+          </button>
+        </div>
+      </div>
+
+      <aside class="pw-stats-card" aria-label="Estadísticas en tiempo real" aria-live="polite">
+        <div class="pw-stats-hdr">
+          <span class="pw-stats-hdr-title">Estadísticas</span>
+          <span class="pw-stats-live"><span class="pw-stats-live-dot ht-panel-live-dot"></span>En vivo</span>
+        </div>
+        <div class="pw-stat-primary ht-stat-card ht-stat-card--primary">
+          <div class="pw-stat-primary-label ht-stat-label">Lectura normal</div>
+          <div class="pw-stat-primary-num ht-stat-num" id="s-normal">0:00</div>
+          <div class="pw-stat-primary-sub ht-stat-sublabel">a 200 palabras/min</div>
+        </div>
+        <div class="pw-stats-grid">
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Lenta</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-lenta">0:00</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">150 ppm</div>
+          </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Rápida</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-rapida">0:00</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">300 ppm</div>
+          </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Locución</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-locucion">0:00</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">125 ppm</div>
+          </div>
+          <div class="pw-stat-cell ht-stat-card">
+            <div class="pw-stat-cell-label ht-stat-label">Palabras</div>
+            <div class="pw-stat-cell-num ht-stat-num" id="s-palabras">0</div>
+            <div class="pw-stat-cell-sub ht-stat-sublabel">en el texto</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="pw-tip reveal">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/></svg>
+      <div><strong>Regla de los 7 minutos:</strong> los artículos de blog con tiempo de lectura entre <strong>5 y 7 minutos</strong> (aprox. 1.000–1.400 palabras) consiguen la mayor tasa de lectura completa según estudios de plataformas como Medium.</div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh"><div class="pw-sh-tag">Cómo funciona</div><h2 class="pw-h2">4 velocidades de lectura calibradas</h2><p class="pw-h2-sub">Estimaciones basadas en datos reales de velocidad lectora</p></div>
+      <div class="pw-bento">
+        <div class="pw-bc pw-bc--wide pw-bc--blue">
+          <div class="pw-bc-icon" style="background:rgba(59,130,246,.12)"><svg viewBox="0 0 16 16" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg></div>
+          <div class="pw-bc-tag" style="color:#60a5fa">Método</div>
+          <div class="pw-bc-h3">Palabras ÷ velocidad = minutos</div>
+          <p class="pw-bc-p">La fórmula es simple: se divide el número de palabras entre la velocidad en palabras por minuto (ppm). El resultado se convierte a minutos y segundos. Las <strong style="color:rgba(255,255,255,.7)">4 velocidades</strong> (150, 200, 300 y 125 ppm) cubren desde un lector lento hasta un locutor profesional, pasando por la media adulta.</p>
+        </div>
+        <div class="pw-bc pw-bc--purple">
+          <div class="pw-bc-icon" style="background:rgba(168,85,247,.12)"><svg viewBox="0 0 16 16" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 2v12"/></svg></div>
+          <div class="pw-bc-tag" style="color:#c084fc">Locución</div>
+          <div class="pw-bc-h3">125 ppm para voz en off</div>
+          <p class="pw-bc-p">Los locutores profesionales hablan entre 120 y 150 ppm para garantizar claridad. 125 ppm es el estándar usado en pódcast informativos y audiolibros de calidad.</p>
+        </div>
+        <div class="pw-bc pw-bc--green">
+          <div class="pw-bc-icon" style="background:rgba(16,185,129,.12)"><svg viewBox="0 0 16 16" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><polyline points="1 8 6 13 15 3"/></svg></div>
+          <div class="pw-bc-tag" style="color:#34d399">Privacidad</div>
+          <div class="pw-bc-h3">100 % local, sin servidores</div>
+          <p class="pw-bc-p">Todo el cálculo ocurre en tu navegador. Tus textos confidenciales no se envían a ningún servidor ni se almacenan en ningún lugar.</p>
+        </div>
+        <div class="pw-bc pw-bc--amber pw-bc--wide">
+          <div class="pw-bc-icon" style="background:rgba(245,158,11,.12)"><svg viewBox="0 0 16 16" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="2"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="9" y2="10"/></svg></div>
+          <div class="pw-bc-tag" style="color:#fbbf24">Velocidades</div>
+          <div class="pw-bc-h3">4 estimaciones simultáneas</div>
+          <div class="pw-chips">
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Normal (200 ppm)</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Lenta (150 ppm)</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Rápida (300 ppm)</span>
+            <span class="pw-chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="1 6 4 9 11 2"/></svg>Locución (125 ppm)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh"><div class="pw-sh-tag">Paso a paso</div><h2 class="pw-h2">Cómo calcular el tiempo de lectura</h2></div>
+      <div class="pw-steps">
+        <div class="pw-step"><div class="pw-step-num">1</div><div class="pw-step-body"><h4>Pega el texto</h4><p>Introduce tu artículo, guión o presentación en el cuadro. El tiempo se calcula en el momento.</p></div></div>
+        <div class="pw-step"><div class="pw-step-num">2</div><div class="pw-step-body"><h4>Elige la velocidad</h4><p>Selecciona el tiempo que más se ajusta a tu caso: lectura normal para blogs, locución para pódcast.</p></div></div>
+        <div class="pw-step"><div class="pw-step-num">3</div><div class="pw-step-body"><h4>Ajusta el contenido</h4><p>Si el tiempo es mayor al objetivo, recorta el texto. Si es menor, añade más detalle o ejemplos.</p></div></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh"><div class="pw-sh-tag">Casos de uso</div><h2 class="pw-h2">¿Cuándo necesitas calcular el tiempo de lectura?</h2></div>
+      <div class="pw-uses">
+        <div class="pw-use"><div class="pw-use-dot" style="background:#3b82f6"></div><div><h4>Artículos de blog y contenido web</h4><p>Mostrar el tiempo de lectura estimado al inicio de un artículo reduce la tasa de abandono y mejora la experiencia de usuario.</p></div></div>
+        <div class="pw-use"><div class="pw-use-dot" style="background:#8b5cf6"></div><div><h4>Guiones de pódcast y vídeo</h4><p>Usa la velocidad de locución (125 ppm) para estimar con precisión la duración de tu episodio o vídeo antes de grabarlo.</p></div></div>
+        <div class="pw-use"><div class="pw-use-dot" style="background:#0891b2"></div><div><h4>Presentaciones y discursos</h4><p>Ajusta la extensión de tu presentación para que encaje en el tiempo asignado usando la velocidad de locución como referencia.</p></div></div>
+        <div class="pw-use"><div class="pw-use-dot" style="background:#f59e0b"></div><div><h4>Materiales educativos</h4><p>Los docentes pueden estimar el tiempo de lectura de los textos asignados para calibrar las sesiones de clase.</p></div></div>
+        <div class="pw-use"><div class="pw-use-dot" style="background:#10b981"></div><div><h4>Newsletters y emails</h4><p>Un email con tiempo de lectura menor a 2 minutos tiene mayor tasa de apertura completa. Mídelo antes de enviar.</p></div></div>
+        <div class="pw-use"><div class="pw-use-dot" style="background:#e11d48"></div><div><h4>Audiolibros y voz en off</h4><p>Calcula la duración total de un audiolibro antes de grabar, para planificar sesiones de estudio o contratación de locutores.</p></div></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh"><div class="pw-sh-tag">Referencia</div><h2 class="pw-h2">Tiempos de lectura orientativos por extensión</h2></div>
+      <div class="pw-table-wrap">
+        <table class="pw-table">
+          <thead><tr><th>Tipo de contenido</th><th>Palabras aprox.</th><th>Lectura normal</th><th>Locución</th></tr></thead>
+          <tbody>
+            <tr><td>Tweet / post corto</td><td><span class="pw-range">50 – 100</span></td><td>~30 seg</td><td><span class="pw-badge pw-badge--green">~1 min</span></td></tr>
+            <tr><td>Email profesional</td><td><span class="pw-range">150 – 300</span></td><td>1 – 1,5 min</td><td><span class="pw-badge pw-badge--blue">1,5 – 2,5 min</span></td></tr>
+            <tr><td>Artículo de blog medio</td><td><span class="pw-range">800 – 1.200</span></td><td>4 – 6 min</td><td><span class="pw-badge pw-badge--purple">6 – 10 min</span></td></tr>
+            <tr><td>Artículo largo / guía</td><td><span class="pw-range">2.000 – 3.000</span></td><td>10 – 15 min</td><td><span class="pw-badge pw-badge--amber">16 – 24 min</span></td></tr>
+            <tr><td>Capítulo de libro</td><td><span class="pw-range">4.000 – 6.000</span></td><td>20 – 30 min</td><td><span class="pw-badge pw-badge--red">32 – 48 min</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pw-combo reveal">
+      <strong>Flujo para contenido web optimizado:</strong> calcula el tiempo de lectura aquí → ajusta la extensión → mide el <a href="/contadores-de-texto/contador-de-palabras">total de palabras</a> → publica con el tiempo estimado visible para mejorar el engagement.
+    </div>
+
+    <div class="reveal" style="margin-bottom:40px">
+      <div class="pw-sh"><div class="pw-sh-tag">Por qué elegirnos</div><h2 class="pw-h2">¿Por qué usar este contador?</h2></div>
+      <div class="pw-why">
+        <div class="pw-why-item"><span class="pw-why-icon">⚡</span><strong>Tiempo real</strong><span>Actualizado a cada pulsación.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">🔒</span><strong>100&nbsp;% privado</strong><span>Sin servidores, sin registro.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">🎙️</span><strong>Locución incluida</strong><span>Estimación para pódcast y vídeo.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">📱</span><strong>Cualquier dispositivo</strong><span>Móvil, tablet y escritorio.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">✂️</span><strong>Sin registro</strong><span>Sin email ni formularios.</span></div>
+        <div class="pw-why-item"><span class="pw-why-icon">∞</span><strong>Sin límites</strong><span>Textos de cualquier extensión.</span></div>
+      </div>
+    </div>
+
+    <p class="pw-catlink reveal">Explora el resto de <a href="/contadores-de-texto"><strong>contadores de texto</strong></a>: palabras únicas, palabras repetidas, palabras largas y más.</p>
+
+    <section class="ht-related reveal" aria-labelledby="related-title">
+      <div class="ht-section-header">
+        <h2 class="ht-section-title" id="related-title">Herramientas relacionadas</h2>
+        <a href="/contadores-de-texto" class="ht-section-link">Ver todas <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      </div>
+      <div class="ht-related-grid">
+        <a href="/contadores-de-texto/contador-de-palabras" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador de palabras</div><div class="ht-related-card-desc">Total de palabras, frases y caracteres</div></div>
+        </a>
+        <a href="/contadores-de-texto/contador-de-palabras-unicas" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="10" x2="8" y2="10"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Palabras únicas</div><div class="ht-related-card-desc">Vocabulario y riqueza léxica</div></div>
+        </a>
+        <a href="/contadores-de-texto/contador-de-parrafos" class="ht-related-card">
+          <div class="ht-related-card-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="5.5" x2="11" y2="5.5"/><line x1="5" y1="8" x2="11" y2="8"/><line x1="5" y1="10.5" x2="8" y2="10.5"/></svg></div>
+          <div class="ht-related-card-body"><div class="ht-related-card-name">Contador de párrafos</div><div class="ht-related-card-desc">Párrafos, frases y estructura</div></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="ht-faq reveal" aria-labelledby="faq-title">
+      <div class="ht-section-header"><h2 class="ht-section-title" id="faq-title">Preguntas frecuentes</h2></div>
+      <div class="ht-faq-list">
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-1" onclick="HT.faqToggle(this)">¿Cuántas palabras por minuto lee una persona adulta de media?<svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg></button>
+          <div class="ht-faq-body" id="faq-1" role="region">La velocidad de lectura silenciosa en adultos se sitúa entre 200 y 250 palabras por minuto. Este contador usa 200 ppm como velocidad estándar, una estimación conservadora y realista para textos informativos.</div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-2" onclick="HT.faqToggle(this)">¿Para qué sirve calcular el tiempo de lectura?<svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg></button>
+          <div class="ht-faq-body" id="faq-2" role="region">Saber cuánto tarda un lector en consumir un contenido ayuda a los editores a fijar expectativas, a los creadores de pódcast a estimar duraciones y a los docentes a planificar sesiones de lectura con tiempos ajustados.</div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-3" onclick="HT.faqToggle(this)">¿Cuál es la diferencia entre lectura y locución?<svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg></button>
+          <div class="ht-faq-body" id="faq-3" role="region">El tiempo de lectura estima cuánto tarda un lector en leer el texto en silencio (200 ppm). El tiempo de locución estima cuánto tarda un locutor en leerlo en voz alta (125 ppm), que es más lento porque hay que articular claramente cada palabra.</div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-4" onclick="HT.faqToggle(this)">¿Por qué la lectura rápida es el doble que la normal?<svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg></button>
+          <div class="ht-faq-body" id="faq-4" role="region">Los lectores entrenados o en modalidad de escaneo pueden alcanzar 300 ppm o más, saltando palabras funcionales. Este modo es útil para revisar texto conocido, pero puede reducir la comprensión profunda del contenido.</div>
+        </div>
+        <div class="ht-faq-item">
+          <button class="ht-faq-btn" aria-expanded="false" aria-controls="faq-5" onclick="HT.faqToggle(this)">¿El tiempo incluye las pausas para imágenes o vídeos?<svg class="ht-faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 6 8 10 12 6"/></svg></button>
+          <div class="ht-faq-body" id="faq-5" role="region">No, el estimador solo cuenta el texto escrito. Las imágenes, infografías o vídeos incrustados añaden tiempo extra que debe calcularse por separado según el medio utilizado.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="ht-toast" role="status" aria-live="polite" aria-atomic="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="2 8 6 12 14 4"/></svg><span>Copiado</span></div>
+
+<footer class="ht-page-footer" style="max-width:1180px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem">
+  <span class="ht-footer-copy">&copy; 2026 HerramientasDeTexto.com</span>
+  <nav class="ht-footer-nav" aria-label="Legal">
+    <a href="/">Inicio</a><a href="/legal/aviso-legal">Aviso legal</a><a href="/legal/politica-de-privacidad">Privacidad</a><a href="/legal/cookies">Cookies</a><a href="/legal/sobre-nosotros">Sobre nosotros</a><a href="/legal/contacto">Contacto</a>
+  </nav>
+</footer>
+
+<script src="/js/tools.js"></script>
+<script>
+(function(){
+  'use strict';
+  var txt=document.getElementById('ht-txt');
+  var sNormal=document.getElementById('s-normal');
+  var sLenta=document.getElementById('s-lenta');
+  var sRapida=document.getElementById('s-rapida');
+  var sLocucion=document.getElementById('s-locucion');
+  var sPalabras=document.getElementById('s-palabras');
+  var hdr=document.getElementById('hdr-lectura');
+  var liveDot=document.querySelector('.ht-panel-live-dot');
+  var timer=null;
+
+  function fmt(mins){
+    var m=Math.floor(mins);
+    var s=Math.round((mins-m)*60);
+    if(s===60){m++;s=0}
+    return m+':'+(s<10?'0':'')+s;
+  }
+
+  function setTyping(){if(liveDot)liveDot.classList.add('typing');clearTimeout(timer);timer=setTimeout(function(){if(liveDot)liveDot.classList.remove('typing')},2000)}
+
+  function analyse(){
+    var raw=txt.value;
+    var trimmed=raw.trim();
+    if(!trimmed){
+      sNormal.textContent='0:00';sLenta.textContent='0:00';sRapida.textContent='0:00';sLocucion.textContent='0:00';
+      HT.pop(sPalabras,'0');hdr.textContent='0:00 de lectura';setTyping();return;
+    }
+    var words=trimmed.split(/\s+/).filter(Boolean).length;
+    var normal=words/200;
+    var lenta=words/150;
+    var rapida=words/300;
+    var locucion=words/125;
+
+    sNormal.textContent=fmt(normal);
+    sLenta.textContent=fmt(lenta);
+    sRapida.textContent=fmt(rapida);
+    sLocucion.textContent=fmt(locucion);
+    HT.pop(sPalabras,HT.fmt(words));
+    hdr.textContent=fmt(normal)+' de lectura';
+    setTyping();
+  }
+
+  txt.addEventListener('input',HT.debounce(analyse,40));
+
+  window.copyMetrics=function(btn){
+    HT.copy('Normal (200 ppm): '+sNormal.textContent+'\nLenta (150 ppm): '+sLenta.textContent+'\nRápida (300 ppm): '+sRapida.textContent+'\nLocución (125 ppm): '+sLocucion.textContent+'\nPalabras: '+sPalabras.textContent);
+    var sp=btn.querySelector('span');if(!sp)return;var orig=sp.textContent;sp.textContent='✓ Copiado';btn.disabled=true;setTimeout(function(){sp.textContent=orig;btn.disabled=false},1500);
+  };
+  window.clearText=function(){txt.value='';analyse();txt.focus()};
+  analyse();
+}());
+</script>
+<script>
+(function(){
+  var map={'s-normal':'pw-normal','s-lenta':'pw-lenta','s-rapida':'pw-rapida','s-locucion':'pw-locucion','s-palabras':'pw-palabras'};
+  Object.keys(map).forEach(function(s){
+    var src=document.getElementById(s),dst=document.getElementById(map[s]);
+    if(!src||!dst)return;
+    new MutationObserver(function(){dst.textContent=src.textContent}).observe(src,{childList:true,characterData:true,subtree:true});
+  });
+}());
+</script>
+<script>
+(function(){
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('revealed');io.unobserve(x.target)}})},{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+}());
+</script>
+</body>
+</html>
